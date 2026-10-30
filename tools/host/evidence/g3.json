@@ -1,0 +1,1497 @@
+{
+  "tool": "run_g3.py",
+  "version": 1,
+  "started": "2026-10-31T00:20:29.758+08:00",
+  "finished": "2026-10-31T00:21:08.650+08:00",
+  "mode": "serial",
+  "port": "COM7",
+  "baud": 115200,
+  "rounds": [
+    {
+      "round": 1,
+      "time": "2026-10-31T00:20:30.480+08:00",
+      "injected": [
+        "c",
+        "c",
+        "c",
+        "c"
+      ],
+      "assertions": [
+        {
+          "what": "c×3",
+          "expected": [
+            "ALPHA",
+            "BETA",
+            "GAMMA"
+          ],
+          "actual": [
+            "ALPHA",
+            "BETA",
+            "GAMMA"
+          ],
+          "ok": true,
+          "status_line": "STATUS state=IDLE frame=0 cards=3 fps=8 heap=8449336",
+          "cards_line": "CARDS ALPHA|BETA|GAMMA"
+        },
+        {
+          "what": "c#4",
+          "expected": [
+            "DELTA",
+            "ALPHA",
+            "BETA"
+          ],
+          "actual": [
+            "DELTA",
+            "ALPHA",
+            "BETA"
+          ],
+          "ok": true,
+          "status_line": "STATUS state=IDLE frame=0 cards=3 fps=8 heap=8449336",
+          "cards_line": "CARDS DELTA|ALPHA|BETA"
+        }
+      ],
+      "cards_before": 0,
+      "after3": [
+        "ALPHA",
+        "BETA",
+        "GAMMA"
+      ],
+      "after4": [
+        "DELTA",
+        "ALPHA",
+        "BETA"
+      ],
+      "eliminated": "GAMMA",
+      "state": "IDLE",
+      "crc32": "e38967a9",
+      "png": "g3_round01.png",
+      "png_sha256": "15723c274424ce7606c006b919e89979cdade54986cc3105fdebfc1f624b7881",
+      "layout_ok": true,
+      "ok": true,
+      "layout_failed": []
+    },
+    {
+      "round": 2,
+      "time": "2026-10-31T00:20:32.268+08:00",
+      "injected": [
+        "c",
+        "c",
+        "c",
+        "c"
+      ],
+      "assertions": [
+        {
+          "what": "c×3",
+          "expected": [
+            "ALPHA",
+            "BETA",
+            "GAMMA"
+          ],
+          "actual": [
+            "ALPHA",
+            "BETA",
+            "GAMMA"
+          ],
+          "ok": true,
+          "status_line": "STATUS state=IDLE frame=1 cards=3 fps=7 heap=8449336",
+          "cards_line": "CARDS ALPHA|BETA|GAMMA"
+        },
+        {
+          "what": "c#4",
+          "expected": [
+            "DELTA",
+            "ALPHA",
+            "BETA"
+          ],
+          "actual": [
+            "DELTA",
+            "ALPHA",
+            "BETA"
+          ],
+          "ok": true,
+          "status_line": "STATUS state=IDLE frame=0 cards=3 fps=9 heap=8449336",
+          "cards_line": "CARDS DELTA|ALPHA|BETA"
+        }
+      ],
+      "cards_before": 0,
+      "after3": [
+        "ALPHA",
+        "BETA",
+        "GAMMA"
+      ],
+      "after4": [
+        "DELTA",
+        "ALPHA",
+        "BETA"
+      ],
+      "eliminated": "GAMMA",
+      "state": "IDLE",
+      "crc32": "b82019ff",
+      "png": "g3_round02.png",
+      "png_sha256": "ed31391fbf3c2b1e5b3910dc0affbf176b39a63596a31176682b5f8de9cf9b63",
+      "layout_ok": true,
+      "ok": true,
+      "layout_failed": []
+    },
+    {
+      "round": 3,
+      "time": "2026-10-31T00:20:33.957+08:00",
+      "injected": [
+        "c",
+        "c",
+        "c",
+        "c"
+      ],
+      "assertions": [
+        {
+          "what": "c×3",
+          "expected": [
+            "ALPHA",
+            "BETA",
+            "GAMMA"
+          ],
+          "actual": [
+            "ALPHA",
+            "BETA",
+            "GAMMA"
+          ],
+          "ok": true,
+          "status_line": "STATUS state=IDLE frame=0 cards=3 fps=8 heap=8449336",
+          "cards_line": "CARDS ALPHA|BETA|GAMMA"
+        },
+        {
+          "what": "c#4",
+          "expected": [
+            "DELTA",
+            "ALPHA",
+            "BETA"
+          ],
+          "actual": [
+            "DELTA",
+            "ALPHA",
+            "BETA"
+          ],
+          "ok": true,
+          "status_line": "STATUS state=IDLE frame=1 cards=3 fps=8 heap=8449336",
+          "cards_line": "CARDS DELTA|ALPHA|BETA"
+        }
+      ],
+      "cards_before": 0,
+      "after3": [
+        "ALPHA",
+        "BETA",
+        "GAMMA"
+      ],
+      "after4": [
+        "DELTA",
+        "ALPHA",
+        "BETA"
+      ],
+      "eliminated": "GAMMA",
+      "state": "IDLE",
+      "crc32": "b82019ff",
+      "png": "g3_round03.png",
+      "png_sha256": "ed31391fbf3c2b1e5b3910dc0affbf176b39a63596a31176682b5f8de9cf9b63",
+      "layout_ok": true,
+      "ok": true,
+      "layout_failed": []
+    },
+    {
+      "round": 4,
+      "time": "2026-10-31T00:20:35.635+08:00",
+      "injected": [
+        "c",
+        "c",
+        "c",
+        "c"
+      ],
+      "assertions": [
+        {
+          "what": "c×3",
+          "expected": [
+            "ALPHA",
+            "BETA",
+            "GAMMA"
+          ],
+          "actual": [
+            "ALPHA",
+            "BETA",
+            "GAMMA"
+          ],
+          "ok": true,
+          "status_line": "STATUS state=IDLE frame=0 cards=3 fps=7 heap=8449336",
+          "cards_line": "CARDS ALPHA|BETA|GAMMA"
+        },
+        {
+          "what": "c#4",
+          "expected": [
+            "DELTA",
+            "ALPHA",
+            "BETA"
+          ],
+          "actual": [
+            "DELTA",
+            "ALPHA",
+            "BETA"
+          ],
+          "ok": true,
+          "status_line": "STATUS state=IDLE frame=0 cards=3 fps=9 heap=8449336",
+          "cards_line": "CARDS DELTA|ALPHA|BETA"
+        }
+      ],
+      "cards_before": 0,
+      "after3": [
+        "ALPHA",
+        "BETA",
+        "GAMMA"
+      ],
+      "after4": [
+        "DELTA",
+        "ALPHA",
+        "BETA"
+      ],
+      "eliminated": "GAMMA",
+      "state": "IDLE",
+      "crc32": "e38967a9",
+      "png": "g3_round04.png",
+      "png_sha256": "15723c274424ce7606c006b919e89979cdade54986cc3105fdebfc1f624b7881",
+      "layout_ok": true,
+      "ok": true,
+      "layout_failed": []
+    },
+    {
+      "round": 5,
+      "time": "2026-10-31T00:20:37.305+08:00",
+      "injected": [
+        "c",
+        "c",
+        "c",
+        "c"
+      ],
+      "assertions": [
+        {
+          "what": "c×3",
+          "expected": [
+            "ALPHA",
+            "BETA",
+            "GAMMA"
+          ],
+          "actual": [
+            "ALPHA",
+            "BETA",
+            "GAMMA"
+          ],
+          "ok": true,
+          "status_line": "STATUS state=IDLE frame=1 cards=3 fps=8 heap=8449336",
+          "cards_line": "CARDS ALPHA|BETA|GAMMA"
+        },
+        {
+          "what": "c#4",
+          "expected": [
+            "DELTA",
+            "ALPHA",
+            "BETA"
+          ],
+          "actual": [
+            "DELTA",
+            "ALPHA",
+            "BETA"
+          ],
+          "ok": true,
+          "status_line": "STATUS state=IDLE frame=0 cards=3 fps=8 heap=8449336",
+          "cards_line": "CARDS DELTA|ALPHA|BETA"
+        }
+      ],
+      "cards_before": 0,
+      "after3": [
+        "ALPHA",
+        "BETA",
+        "GAMMA"
+      ],
+      "after4": [
+        "DELTA",
+        "ALPHA",
+        "BETA"
+      ],
+      "eliminated": "GAMMA",
+      "state": "IDLE",
+      "crc32": "b82019ff",
+      "png": "g3_round05.png",
+      "png_sha256": "ed31391fbf3c2b1e5b3910dc0affbf176b39a63596a31176682b5f8de9cf9b63",
+      "layout_ok": true,
+      "ok": true,
+      "layout_failed": []
+    },
+    {
+      "round": 6,
+      "time": "2026-10-31T00:20:38.977+08:00",
+      "injected": [
+        "c",
+        "c",
+        "c",
+        "c"
+      ],
+      "assertions": [
+        {
+          "what": "c×3",
+          "expected": [
+            "ALPHA",
+            "BETA",
+            "GAMMA"
+          ],
+          "actual": [
+            "ALPHA",
+            "BETA",
+            "GAMMA"
+          ],
+          "ok": true,
+          "status_line": "STATUS state=IDLE frame=0 cards=3 fps=7 heap=8449336",
+          "cards_line": "CARDS ALPHA|BETA|GAMMA"
+        },
+        {
+          "what": "c#4",
+          "expected": [
+            "DELTA",
+            "ALPHA",
+            "BETA"
+          ],
+          "actual": [
+            "DELTA",
+            "ALPHA",
+            "BETA"
+          ],
+          "ok": true,
+          "status_line": "STATUS state=IDLE frame=1 cards=3 fps=9 heap=8449336",
+          "cards_line": "CARDS DELTA|ALPHA|BETA"
+        }
+      ],
+      "cards_before": 0,
+      "after3": [
+        "ALPHA",
+        "BETA",
+        "GAMMA"
+      ],
+      "after4": [
+        "DELTA",
+        "ALPHA",
+        "BETA"
+      ],
+      "eliminated": "GAMMA",
+      "state": "IDLE",
+      "crc32": "b82019ff",
+      "png": "g3_round06.png",
+      "png_sha256": "ed31391fbf3c2b1e5b3910dc0affbf176b39a63596a31176682b5f8de9cf9b63",
+      "layout_ok": true,
+      "ok": true,
+      "layout_failed": []
+    },
+    {
+      "round": 7,
+      "time": "2026-10-31T00:20:40.657+08:00",
+      "injected": [
+        "c",
+        "c",
+        "c",
+        "c"
+      ],
+      "assertions": [
+        {
+          "what": "c×3",
+          "expected": [
+            "ALPHA",
+            "BETA",
+            "GAMMA"
+          ],
+          "actual": [
+            "ALPHA",
+            "BETA",
+            "GAMMA"
+          ],
+          "ok": true,
+          "status_line": "STATUS state=IDLE frame=0 cards=3 fps=8 heap=8449336",
+          "cards_line": "CARDS ALPHA|BETA|GAMMA"
+        },
+        {
+          "what": "c#4",
+          "expected": [
+            "DELTA",
+            "ALPHA",
+            "BETA"
+          ],
+          "actual": [
+            "DELTA",
+            "ALPHA",
+            "BETA"
+          ],
+          "ok": true,
+          "status_line": "STATUS state=IDLE frame=0 cards=3 fps=8 heap=8449336",
+          "cards_line": "CARDS DELTA|ALPHA|BETA"
+        }
+      ],
+      "cards_before": 0,
+      "after3": [
+        "ALPHA",
+        "BETA",
+        "GAMMA"
+      ],
+      "after4": [
+        "DELTA",
+        "ALPHA",
+        "BETA"
+      ],
+      "eliminated": "GAMMA",
+      "state": "IDLE",
+      "crc32": "e38967a9",
+      "png": "g3_round07.png",
+      "png_sha256": "15723c274424ce7606c006b919e89979cdade54986cc3105fdebfc1f624b7881",
+      "layout_ok": true,
+      "ok": true,
+      "layout_failed": []
+    },
+    {
+      "round": 8,
+      "time": "2026-10-31T00:20:42.345+08:00",
+      "injected": [
+        "c",
+        "c",
+        "c",
+        "c"
+      ],
+      "assertions": [
+        {
+          "what": "c×3",
+          "expected": [
+            "ALPHA",
+            "BETA",
+            "GAMMA"
+          ],
+          "actual": [
+            "ALPHA",
+            "BETA",
+            "GAMMA"
+          ],
+          "ok": true,
+          "status_line": "STATUS state=IDLE frame=1 cards=3 fps=7 heap=8449336",
+          "cards_line": "CARDS ALPHA|BETA|GAMMA"
+        },
+        {
+          "what": "c#4",
+          "expected": [
+            "DELTA",
+            "ALPHA",
+            "BETA"
+          ],
+          "actual": [
+            "DELTA",
+            "ALPHA",
+            "BETA"
+          ],
+          "ok": true,
+          "status_line": "STATUS state=IDLE frame=0 cards=3 fps=9 heap=8449336",
+          "cards_line": "CARDS DELTA|ALPHA|BETA"
+        }
+      ],
+      "cards_before": 0,
+      "after3": [
+        "ALPHA",
+        "BETA",
+        "GAMMA"
+      ],
+      "after4": [
+        "DELTA",
+        "ALPHA",
+        "BETA"
+      ],
+      "eliminated": "GAMMA",
+      "state": "IDLE",
+      "crc32": "b82019ff",
+      "png": "g3_round08.png",
+      "png_sha256": "ed31391fbf3c2b1e5b3910dc0affbf176b39a63596a31176682b5f8de9cf9b63",
+      "layout_ok": true,
+      "ok": true,
+      "layout_failed": []
+    },
+    {
+      "round": 9,
+      "time": "2026-10-31T00:20:44.021+08:00",
+      "injected": [
+        "c",
+        "c",
+        "c",
+        "c"
+      ],
+      "assertions": [
+        {
+          "what": "c×3",
+          "expected": [
+            "ALPHA",
+            "BETA",
+            "GAMMA"
+          ],
+          "actual": [
+            "ALPHA",
+            "BETA",
+            "GAMMA"
+          ],
+          "ok": true,
+          "status_line": "STATUS state=IDLE frame=0 cards=3 fps=8 heap=8449336",
+          "cards_line": "CARDS ALPHA|BETA|GAMMA"
+        },
+        {
+          "what": "c#4",
+          "expected": [
+            "DELTA",
+            "ALPHA",
+            "BETA"
+          ],
+          "actual": [
+            "DELTA",
+            "ALPHA",
+            "BETA"
+          ],
+          "ok": true,
+          "status_line": "STATUS state=IDLE frame=0 cards=3 fps=8 heap=8449336",
+          "cards_line": "CARDS DELTA|ALPHA|BETA"
+        }
+      ],
+      "cards_before": 0,
+      "after3": [
+        "ALPHA",
+        "BETA",
+        "GAMMA"
+      ],
+      "after4": [
+        "DELTA",
+        "ALPHA",
+        "BETA"
+      ],
+      "eliminated": "GAMMA",
+      "state": "IDLE",
+      "crc32": "b82019ff",
+      "png": "g3_round09.png",
+      "png_sha256": "ed31391fbf3c2b1e5b3910dc0affbf176b39a63596a31176682b5f8de9cf9b63",
+      "layout_ok": true,
+      "ok": true,
+      "layout_failed": []
+    },
+    {
+      "round": 10,
+      "time": "2026-10-31T00:20:45.710+08:00",
+      "injected": [
+        "c",
+        "c",
+        "c",
+        "c"
+      ],
+      "assertions": [
+        {
+          "what": "c×3",
+          "expected": [
+            "ALPHA",
+            "BETA",
+            "GAMMA"
+          ],
+          "actual": [
+            "ALPHA",
+            "BETA",
+            "GAMMA"
+          ],
+          "ok": true,
+          "status_line": "STATUS state=IDLE frame=0 cards=3 fps=7 heap=8449336",
+          "cards_line": "CARDS ALPHA|BETA|GAMMA"
+        },
+        {
+          "what": "c#4",
+          "expected": [
+            "DELTA",
+            "ALPHA",
+            "BETA"
+          ],
+          "actual": [
+            "DELTA",
+            "ALPHA",
+            "BETA"
+          ],
+          "ok": true,
+          "status_line": "STATUS state=IDLE frame=0 cards=3 fps=9 heap=8449336",
+          "cards_line": "CARDS DELTA|ALPHA|BETA"
+        }
+      ],
+      "cards_before": 0,
+      "after3": [
+        "ALPHA",
+        "BETA",
+        "GAMMA"
+      ],
+      "after4": [
+        "DELTA",
+        "ALPHA",
+        "BETA"
+      ],
+      "eliminated": "GAMMA",
+      "state": "IDLE",
+      "crc32": "e38967a9",
+      "png": "g3_round10.png",
+      "png_sha256": "15723c274424ce7606c006b919e89979cdade54986cc3105fdebfc1f624b7881",
+      "layout_ok": true,
+      "ok": true,
+      "layout_failed": []
+    },
+    {
+      "round": 11,
+      "time": "2026-10-31T00:20:47.373+08:00",
+      "injected": [
+        "c",
+        "c",
+        "c",
+        "c"
+      ],
+      "assertions": [
+        {
+          "what": "c×3",
+          "expected": [
+            "ALPHA",
+            "BETA",
+            "GAMMA"
+          ],
+          "actual": [
+            "ALPHA",
+            "BETA",
+            "GAMMA"
+          ],
+          "ok": true,
+          "status_line": "STATUS state=IDLE frame=1 cards=3 fps=8 heap=8449336",
+          "cards_line": "CARDS ALPHA|BETA|GAMMA"
+        },
+        {
+          "what": "c#4",
+          "expected": [
+            "DELTA",
+            "ALPHA",
+            "BETA"
+          ],
+          "actual": [
+            "DELTA",
+            "ALPHA",
+            "BETA"
+          ],
+          "ok": true,
+          "status_line": "STATUS state=IDLE frame=1 cards=3 fps=8 heap=8449336",
+          "cards_line": "CARDS DELTA|ALPHA|BETA"
+        }
+      ],
+      "cards_before": 0,
+      "after3": [
+        "ALPHA",
+        "BETA",
+        "GAMMA"
+      ],
+      "after4": [
+        "DELTA",
+        "ALPHA",
+        "BETA"
+      ],
+      "eliminated": "GAMMA",
+      "state": "IDLE",
+      "crc32": "5040df85",
+      "png": "g3_round11.png",
+      "png_sha256": "b51c5d55f7a9174be4cbb17c6abc541f3c7c3f8b150f399ea8b5c2e7a8b7300c",
+      "layout_ok": true,
+      "ok": true,
+      "layout_failed": []
+    },
+    {
+      "round": 12,
+      "time": "2026-10-31T00:20:49.066+08:00",
+      "injected": [
+        "c",
+        "c",
+        "c",
+        "c"
+      ],
+      "assertions": [
+        {
+          "what": "c×3",
+          "expected": [
+            "ALPHA",
+            "BETA",
+            "GAMMA"
+          ],
+          "actual": [
+            "ALPHA",
+            "BETA",
+            "GAMMA"
+          ],
+          "ok": true,
+          "status_line": "STATUS state=IDLE frame=1 cards=3 fps=7 heap=8449336",
+          "cards_line": "CARDS ALPHA|BETA|GAMMA"
+        },
+        {
+          "what": "c#4",
+          "expected": [
+            "DELTA",
+            "ALPHA",
+            "BETA"
+          ],
+          "actual": [
+            "DELTA",
+            "ALPHA",
+            "BETA"
+          ],
+          "ok": true,
+          "status_line": "STATUS state=IDLE frame=0 cards=3 fps=9 heap=8449336",
+          "cards_line": "CARDS DELTA|ALPHA|BETA"
+        }
+      ],
+      "cards_before": 0,
+      "after3": [
+        "ALPHA",
+        "BETA",
+        "GAMMA"
+      ],
+      "after4": [
+        "DELTA",
+        "ALPHA",
+        "BETA"
+      ],
+      "eliminated": "GAMMA",
+      "state": "IDLE",
+      "crc32": "b82019ff",
+      "png": "g3_round12.png",
+      "png_sha256": "ed31391fbf3c2b1e5b3910dc0affbf176b39a63596a31176682b5f8de9cf9b63",
+      "layout_ok": true,
+      "ok": true,
+      "layout_failed": []
+    },
+    {
+      "round": 13,
+      "time": "2026-10-31T00:20:50.753+08:00",
+      "injected": [
+        "c",
+        "c",
+        "c",
+        "c"
+      ],
+      "assertions": [
+        {
+          "what": "c×3",
+          "expected": [
+            "ALPHA",
+            "BETA",
+            "GAMMA"
+          ],
+          "actual": [
+            "ALPHA",
+            "BETA",
+            "GAMMA"
+          ],
+          "ok": true,
+          "status_line": "STATUS state=IDLE frame=0 cards=3 fps=8 heap=8449336",
+          "cards_line": "CARDS ALPHA|BETA|GAMMA"
+        },
+        {
+          "what": "c#4",
+          "expected": [
+            "DELTA",
+            "ALPHA",
+            "BETA"
+          ],
+          "actual": [
+            "DELTA",
+            "ALPHA",
+            "BETA"
+          ],
+          "ok": true,
+          "status_line": "STATUS state=IDLE frame=0 cards=3 fps=8 heap=8449336",
+          "cards_line": "CARDS DELTA|ALPHA|BETA"
+        }
+      ],
+      "cards_before": 0,
+      "after3": [
+        "ALPHA",
+        "BETA",
+        "GAMMA"
+      ],
+      "after4": [
+        "DELTA",
+        "ALPHA",
+        "BETA"
+      ],
+      "eliminated": "GAMMA",
+      "state": "IDLE",
+      "crc32": "e38967a9",
+      "png": "g3_round13.png",
+      "png_sha256": "15723c274424ce7606c006b919e89979cdade54986cc3105fdebfc1f624b7881",
+      "layout_ok": true,
+      "ok": true,
+      "layout_failed": []
+    },
+    {
+      "round": 14,
+      "time": "2026-10-31T00:20:52.422+08:00",
+      "injected": [
+        "c",
+        "c",
+        "c",
+        "c"
+      ],
+      "assertions": [
+        {
+          "what": "c×3",
+          "expected": [
+            "ALPHA",
+            "BETA",
+            "GAMMA"
+          ],
+          "actual": [
+            "ALPHA",
+            "BETA",
+            "GAMMA"
+          ],
+          "ok": true,
+          "status_line": "STATUS state=IDLE frame=0 cards=3 fps=7 heap=8449336",
+          "cards_line": "CARDS ALPHA|BETA|GAMMA"
+        },
+        {
+          "what": "c#4",
+          "expected": [
+            "DELTA",
+            "ALPHA",
+            "BETA"
+          ],
+          "actual": [
+            "DELTA",
+            "ALPHA",
+            "BETA"
+          ],
+          "ok": true,
+          "status_line": "STATUS state=IDLE frame=0 cards=3 fps=9 heap=8449336",
+          "cards_line": "CARDS DELTA|ALPHA|BETA"
+        }
+      ],
+      "cards_before": 0,
+      "after3": [
+        "ALPHA",
+        "BETA",
+        "GAMMA"
+      ],
+      "after4": [
+        "DELTA",
+        "ALPHA",
+        "BETA"
+      ],
+      "eliminated": "GAMMA",
+      "state": "IDLE",
+      "crc32": "e38967a9",
+      "png": "g3_round14.png",
+      "png_sha256": "15723c274424ce7606c006b919e89979cdade54986cc3105fdebfc1f624b7881",
+      "layout_ok": true,
+      "ok": true,
+      "layout_failed": []
+    },
+    {
+      "round": 15,
+      "time": "2026-10-31T00:20:54.102+08:00",
+      "injected": [
+        "c",
+        "c",
+        "c",
+        "c"
+      ],
+      "assertions": [
+        {
+          "what": "c×3",
+          "expected": [
+            "ALPHA",
+            "BETA",
+            "GAMMA"
+          ],
+          "actual": [
+            "ALPHA",
+            "BETA",
+            "GAMMA"
+          ],
+          "ok": true,
+          "status_line": "STATUS state=IDLE frame=0 cards=3 fps=8 heap=8449336",
+          "cards_line": "CARDS ALPHA|BETA|GAMMA"
+        },
+        {
+          "what": "c#4",
+          "expected": [
+            "DELTA",
+            "ALPHA",
+            "BETA"
+          ],
+          "actual": [
+            "DELTA",
+            "ALPHA",
+            "BETA"
+          ],
+          "ok": true,
+          "status_line": "STATUS state=IDLE frame=0 cards=3 fps=8 heap=8449336",
+          "cards_line": "CARDS DELTA|ALPHA|BETA"
+        }
+      ],
+      "cards_before": 0,
+      "after3": [
+        "ALPHA",
+        "BETA",
+        "GAMMA"
+      ],
+      "after4": [
+        "DELTA",
+        "ALPHA",
+        "BETA"
+      ],
+      "eliminated": "GAMMA",
+      "state": "IDLE",
+      "crc32": "b82019ff",
+      "png": "g3_round15.png",
+      "png_sha256": "ed31391fbf3c2b1e5b3910dc0affbf176b39a63596a31176682b5f8de9cf9b63",
+      "layout_ok": true,
+      "ok": true,
+      "layout_failed": []
+    },
+    {
+      "round": 16,
+      "time": "2026-10-31T00:20:55.780+08:00",
+      "injected": [
+        "c",
+        "c",
+        "c",
+        "c"
+      ],
+      "assertions": [
+        {
+          "what": "c×3",
+          "expected": [
+            "ALPHA",
+            "BETA",
+            "GAMMA"
+          ],
+          "actual": [
+            "ALPHA",
+            "BETA",
+            "GAMMA"
+          ],
+          "ok": true,
+          "status_line": "STATUS state=IDLE frame=0 cards=3 fps=7 heap=8449336",
+          "cards_line": "CARDS ALPHA|BETA|GAMMA"
+        },
+        {
+          "what": "c#4",
+          "expected": [
+            "DELTA",
+            "ALPHA",
+            "BETA"
+          ],
+          "actual": [
+            "DELTA",
+            "ALPHA",
+            "BETA"
+          ],
+          "ok": true,
+          "status_line": "STATUS state=IDLE frame=0 cards=3 fps=9 heap=8449336",
+          "cards_line": "CARDS DELTA|ALPHA|BETA"
+        }
+      ],
+      "cards_before": 0,
+      "after3": [
+        "ALPHA",
+        "BETA",
+        "GAMMA"
+      ],
+      "after4": [
+        "DELTA",
+        "ALPHA",
+        "BETA"
+      ],
+      "eliminated": "GAMMA",
+      "state": "IDLE",
+      "crc32": "0be9a1d3",
+      "png": "g3_round16.png",
+      "png_sha256": "279cf12cd1fb19c0aba250512f3dd52695d465f551bebd40e53c2f9e0dc675d9",
+      "layout_ok": true,
+      "ok": true,
+      "layout_failed": []
+    },
+    {
+      "round": 17,
+      "time": "2026-10-31T00:20:57.468+08:00",
+      "injected": [
+        "c",
+        "c",
+        "c",
+        "c"
+      ],
+      "assertions": [
+        {
+          "what": "c×3",
+          "expected": [
+            "ALPHA",
+            "BETA",
+            "GAMMA"
+          ],
+          "actual": [
+            "ALPHA",
+            "BETA",
+            "GAMMA"
+          ],
+          "ok": true,
+          "status_line": "STATUS state=IDLE frame=0 cards=3 fps=8 heap=8449336",
+          "cards_line": "CARDS ALPHA|BETA|GAMMA"
+        },
+        {
+          "what": "c#4",
+          "expected": [
+            "DELTA",
+            "ALPHA",
+            "BETA"
+          ],
+          "actual": [
+            "DELTA",
+            "ALPHA",
+            "BETA"
+          ],
+          "ok": true,
+          "status_line": "STATUS state=IDLE frame=0 cards=3 fps=8 heap=8449336",
+          "cards_line": "CARDS DELTA|ALPHA|BETA"
+        }
+      ],
+      "cards_before": 0,
+      "after3": [
+        "ALPHA",
+        "BETA",
+        "GAMMA"
+      ],
+      "after4": [
+        "DELTA",
+        "ALPHA",
+        "BETA"
+      ],
+      "eliminated": "GAMMA",
+      "state": "IDLE",
+      "crc32": "e38967a9",
+      "png": "g3_round17.png",
+      "png_sha256": "15723c274424ce7606c006b919e89979cdade54986cc3105fdebfc1f624b7881",
+      "layout_ok": true,
+      "ok": true,
+      "layout_failed": []
+    },
+    {
+      "round": 18,
+      "time": "2026-10-31T00:20:59.140+08:00",
+      "injected": [
+        "c",
+        "c",
+        "c",
+        "c"
+      ],
+      "assertions": [
+        {
+          "what": "c×3",
+          "expected": [
+            "ALPHA",
+            "BETA",
+            "GAMMA"
+          ],
+          "actual": [
+            "ALPHA",
+            "BETA",
+            "GAMMA"
+          ],
+          "ok": true,
+          "status_line": "STATUS state=IDLE frame=0 cards=3 fps=7 heap=8449336",
+          "cards_line": "CARDS ALPHA|BETA|GAMMA"
+        },
+        {
+          "what": "c#4",
+          "expected": [
+            "DELTA",
+            "ALPHA",
+            "BETA"
+          ],
+          "actual": [
+            "DELTA",
+            "ALPHA",
+            "BETA"
+          ],
+          "ok": true,
+          "status_line": "STATUS state=IDLE frame=0 cards=3 fps=9 heap=8449336",
+          "cards_line": "CARDS DELTA|ALPHA|BETA"
+        }
+      ],
+      "cards_before": 0,
+      "after3": [
+        "ALPHA",
+        "BETA",
+        "GAMMA"
+      ],
+      "after4": [
+        "DELTA",
+        "ALPHA",
+        "BETA"
+      ],
+      "eliminated": "GAMMA",
+      "state": "IDLE",
+      "crc32": "b82019ff",
+      "png": "g3_round18.png",
+      "png_sha256": "ed31391fbf3c2b1e5b3910dc0affbf176b39a63596a31176682b5f8de9cf9b63",
+      "layout_ok": true,
+      "ok": true,
+      "layout_failed": []
+    },
+    {
+      "round": 19,
+      "time": "2026-10-31T00:21:00.827+08:00",
+      "injected": [
+        "c",
+        "c",
+        "c",
+        "c"
+      ],
+      "assertions": [
+        {
+          "what": "c×3",
+          "expected": [
+            "ALPHA",
+            "BETA",
+            "GAMMA"
+          ],
+          "actual": [
+            "ALPHA",
+            "BETA",
+            "GAMMA"
+          ],
+          "ok": true,
+          "status_line": "STATUS state=IDLE frame=0 cards=3 fps=8 heap=8449336",
+          "cards_line": "CARDS ALPHA|BETA|GAMMA"
+        },
+        {
+          "what": "c#4",
+          "expected": [
+            "DELTA",
+            "ALPHA",
+            "BETA"
+          ],
+          "actual": [
+            "DELTA",
+            "ALPHA",
+            "BETA"
+          ],
+          "ok": true,
+          "status_line": "STATUS state=IDLE frame=0 cards=3 fps=8 heap=8449336",
+          "cards_line": "CARDS DELTA|ALPHA|BETA"
+        }
+      ],
+      "cards_before": 0,
+      "after3": [
+        "ALPHA",
+        "BETA",
+        "GAMMA"
+      ],
+      "after4": [
+        "DELTA",
+        "ALPHA",
+        "BETA"
+      ],
+      "eliminated": "GAMMA",
+      "state": "IDLE",
+      "crc32": "0be9a1d3",
+      "png": "g3_round19.png",
+      "png_sha256": "279cf12cd1fb19c0aba250512f3dd52695d465f551bebd40e53c2f9e0dc675d9",
+      "layout_ok": true,
+      "ok": true,
+      "layout_failed": []
+    },
+    {
+      "round": 20,
+      "time": "2026-10-31T00:21:02.502+08:00",
+      "injected": [
+        "c",
+        "c",
+        "c",
+        "c"
+      ],
+      "assertions": [
+        {
+          "what": "c×3",
+          "expected": [
+            "ALPHA",
+            "BETA",
+            "GAMMA"
+          ],
+          "actual": [
+            "ALPHA",
+            "BETA",
+            "GAMMA"
+          ],
+          "ok": true,
+          "status_line": "STATUS state=IDLE frame=0 cards=3 fps=7 heap=8449336",
+          "cards_line": "CARDS ALPHA|BETA|GAMMA"
+        },
+        {
+          "what": "c#4",
+          "expected": [
+            "DELTA",
+            "ALPHA",
+            "BETA"
+          ],
+          "actual": [
+            "DELTA",
+            "ALPHA",
+            "BETA"
+          ],
+          "ok": true,
+          "status_line": "STATUS state=IDLE frame=0 cards=3 fps=9 heap=8449336",
+          "cards_line": "CARDS DELTA|ALPHA|BETA"
+        }
+      ],
+      "cards_before": 0,
+      "after3": [
+        "ALPHA",
+        "BETA",
+        "GAMMA"
+      ],
+      "after4": [
+        "DELTA",
+        "ALPHA",
+        "BETA"
+      ],
+      "eliminated": "GAMMA",
+      "state": "IDLE",
+      "crc32": "e38967a9",
+      "png": "g3_round20.png",
+      "png_sha256": "15723c274424ce7606c006b919e89979cdade54986cc3105fdebfc1f624b7881",
+      "layout_ok": true,
+      "ok": true,
+      "layout_failed": []
+    }
+  ],
+  "specials": [
+    {
+      "label": "c#5 同名 BETA 置顶",
+      "name": "special5_beta_dedup",
+      "time": "2026-10-31T00:21:05.050+08:00",
+      "expected": [
+        "BETA",
+        "DELTA",
+        "ALPHA"
+      ],
+      "notes": "同名（title+project）更新并移到 cards[0]",
+      "titles": [
+        "BETA",
+        "DELTA",
+        "ALPHA"
+      ],
+      "cards": 3,
+      "state": "IDLE",
+      "crc32": "da6b2b6f",
+      "png": "g3_special5_beta_dedup.png",
+      "png_sha256": "cb59c93876c16a8f079142c821d89fa10a92873dd2669d5e58468c77bd9865c3",
+      "layout_ok": true,
+      "ok": true,
+      "assertions": [
+        {
+          "what": "c#5 同名 BETA 置顶",
+          "expected": [
+            "BETA",
+            "DELTA",
+            "ALPHA"
+          ],
+          "actual": [
+            "BETA",
+            "DELTA",
+            "ALPHA"
+          ],
+          "ok": true,
+          "status_line": "STATUS state=IDLE frame=0 cards=3 fps=8 heap=8449336",
+          "cards_line": "CARDS BETA|DELTA|ALPHA"
+        }
+      ],
+      "titles_normalized": [
+        "BETA",
+        "DELTA",
+        "ALPHA"
+      ],
+      "layout_failed": []
+    },
+    {
+      "label": "c#6 空 title 占位",
+      "name": "special6_untitled",
+      "time": "2026-10-31T00:21:05.863+08:00",
+      "expected": [
+        "",
+        "BETA",
+        "DELTA"
+      ],
+      "notes": "空 title 必须接收并渲染 (untitled)；固件 CARDS 行用 `-` 打印空 title，断言把首项 `-` 归一化为空串",
+      "titles": [
+        "-",
+        "BETA",
+        "DELTA"
+      ],
+      "cards": 3,
+      "state": "IDLE",
+      "crc32": "88a61c65",
+      "png": "g3_special6_untitled.png",
+      "png_sha256": "fcbdda4b903f7c5a4b4c87f7fe0d145fbcbe99e6eb605fefb7f1477b2c7349c0",
+      "layout_ok": true,
+      "ok": true,
+      "assertions": [
+        {
+          "what": "c#6 空 title 占位",
+          "expected": [
+            "",
+            "BETA",
+            "DELTA"
+          ],
+          "actual": [
+            "",
+            "BETA",
+            "DELTA"
+          ],
+          "ok": true,
+          "status_line": "STATUS state=IDLE frame=0 cards=3 fps=7 heap=8449336",
+          "cards_line": "CARDS -|BETA|DELTA"
+        },
+        {
+          "what": "首项空 title",
+          "expected": "",
+          "actual": "-",
+          "ok": true
+        }
+      ],
+      "titles_normalized": [
+        "",
+        "BETA",
+        "DELTA"
+      ],
+      "layout_failed": []
+    },
+    {
+      "label": "c#7 长标题截断",
+      "name": "special7_long",
+      "time": "2026-10-31T00:21:06.706+08:00",
+      "expected": [
+        "THIS-IS-A-VERY-LONG-TITLE-0123456789",
+        "",
+        "BETA"
+      ],
+      "notes": "行 2 宽 ≤180，溢出尾 `..`，不覆盖时长区",
+      "titles": [
+        "THIS-IS-A-VERY-LONG-TITLE-0123456789",
+        "-",
+        "BETA"
+      ],
+      "cards": 3,
+      "state": "IDLE",
+      "crc32": "9dab1781",
+      "png": "g3_special7_long.png",
+      "png_sha256": "b021c67459a08933c99ee55e023a0cfb31a5b85c9ac8c7570611599f81502566",
+      "layout_ok": true,
+      "ok": true,
+      "assertions": [
+        {
+          "what": "c#7 长标题截断",
+          "expected": [
+            "THIS-IS-A-VERY-LONG-TITLE-0123456789",
+            "",
+            "BETA"
+          ],
+          "actual": [
+            "THIS-IS-A-VERY-LONG-TITLE-0123456789",
+            "",
+            "BETA"
+          ],
+          "ok": true,
+          "status_line": "STATUS state=IDLE frame=0 cards=3 fps=9 heap=8449336",
+          "cards_line": "CARDS THIS-IS-A-VERY-LONG-TITLE-0123456789|-|BETA"
+        }
+      ],
+      "titles_normalized": [
+        "THIS-IS-A-VERY-LONG-TITLE-0123456789",
+        "",
+        "BETA"
+      ],
+      "layout_failed": []
+    },
+    {
+      "label": "c#8 CJK 标题",
+      "name": "special8_cjk",
+      "time": "2026-10-31T00:21:07.548+08:00",
+      "expected": [
+        "中文标题测试",
+        "THIS-IS-A-VERY-LONG-TITLE-0123456789",
+        ""
+      ],
+      "notes": "16×16 CJK，顶边 y+12",
+      "titles": [
+        "中文标题测试",
+        "THIS-IS-A-VERY-LONG-TITLE-0123456789",
+        "-"
+      ],
+      "cards": 3,
+      "state": "IDLE",
+      "crc32": "1ef984b0",
+      "png": "g3_special8_cjk.png",
+      "png_sha256": "e5628c24154399a0b0a0071a9c84e33a931ae357ce2fdf6a1a5568d1168051a5",
+      "layout_ok": true,
+      "ok": true,
+      "assertions": [
+        {
+          "what": "c#8 CJK 标题",
+          "expected": [
+            "中文标题测试",
+            "THIS-IS-A-VERY-LONG-TITLE-0123456789",
+            ""
+          ],
+          "actual": [
+            "中文标题测试",
+            "THIS-IS-A-VERY-LONG-TITLE-0123456789",
+            ""
+          ],
+          "ok": true,
+          "status_line": "STATUS state=IDLE frame=0 cards=3 fps=9 heap=8449336",
+          "cards_line": "CARDS 中文标题测试|THIS-IS-A-VERY-LONG-TITLE-0123456789|-"
+        }
+      ],
+      "titles_normalized": [
+        "中文标题测试",
+        "THIS-IS-A-VERY-LONG-TITLE-0123456789",
+        ""
+      ],
+      "layout_failed": []
+    }
+  ],
+  "preflight": {
+    "clear_cards": {
+      "cards": 0,
+      "ok": true
+    },
+    "idle": {
+      "state": "IDLE",
+      "ok": true
+    },
+    "final_link_up": {
+      "injected": "u",
+      "state": "IDLE",
+      "ok": true
+    }
+  },
+  "summary": {
+    "rounds": 20,
+    "rounds_recorded": 20,
+    "rounds_pass": 20,
+    "rounds_fail": 0,
+    "specials": 4,
+    "specials_pass": 4,
+    "specials_fail": 0,
+    "layout_total": 24,
+    "layout_pass": 24,
+    "layout_fail": 0,
+    "failures": []
+  },
+  "result": "PASS",
+  "error": null
+}

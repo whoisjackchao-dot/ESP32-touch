@@ -34,9 +34,13 @@ typedef enum {
 
 #define PET_TITLE_MAX   64
 #define PET_PROJECT_MAX 64
+/* 本项目 M2 增量：Agent 前缀（"OC"/"CC"/"CX"…），见 docs/contracts/C03 §7 R2。
+ * 空串 = 不显示前缀；最长 7 字符 + NUL。 */
+#define PET_AGENT_MAX   8
 
 typedef struct {
     char        title[PET_TITLE_MAX];
+    char        agent[PET_AGENT_MAX];
     char        project[PET_PROJECT_MAX];
     pet_state_t state;
     int32_t     elapsed_s;

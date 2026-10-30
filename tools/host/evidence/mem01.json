@@ -1,0 +1,1791 @@
+{
+ "duration_s": 600.0,
+ "samples": [
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 3.1
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 3,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=3 fps=8 heap=8449336",
+   "t": 6.3
+  },
+  {
+   "state": "IDLE",
+   "frame": 1,
+   "cards": 3,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=1 cards=3 fps=8 heap=8449336",
+   "t": 9.4
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 2,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=2 fps=8 heap=8449336",
+   "t": 12.5
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 1,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=1 fps=8 heap=8449336",
+   "t": 15.6
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 18.7
+  },
+  {
+   "state": "OFFLINE",
+   "frame": 1,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=OFFLINE frame=1 cards=0 fps=8 heap=8449336",
+   "t": 21.8
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 25.0
+  },
+  {
+   "state": "FAILED",
+   "frame": 3,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=FAILED frame=3 cards=0 fps=8 heap=8449336",
+   "t": 28.1
+  },
+  {
+   "state": "DONE",
+   "frame": 2,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=DONE frame=2 cards=0 fps=8 heap=8449336",
+   "t": 31.2
+  },
+  {
+   "state": "INPUT_REQUIRED",
+   "frame": 5,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=INPUT_REQUIRED frame=5 cards=0 fps=8 heap=8449336",
+   "t": 34.3
+  },
+  {
+   "state": "WORKING",
+   "frame": 4,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=WORKING frame=4 cards=0 fps=8 heap=8449336",
+   "t": 37.4
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 40.6
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 43.7
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 3,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=3 fps=8 heap=8449336",
+   "t": 46.8
+  },
+  {
+   "state": "IDLE",
+   "frame": 1,
+   "cards": 3,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=1 cards=3 fps=8 heap=8449336",
+   "t": 50.0
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 2,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=2 fps=8 heap=8449336",
+   "t": 53.2
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 1,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=1 fps=8 heap=8449336",
+   "t": 56.3
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 59.4
+  },
+  {
+   "state": "OFFLINE",
+   "frame": 1,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=OFFLINE frame=1 cards=0 fps=8 heap=8449336",
+   "t": 62.6
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 65.8
+  },
+  {
+   "state": "FAILED",
+   "frame": 3,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=FAILED frame=3 cards=0 fps=8 heap=8449336",
+   "t": 68.9
+  },
+  {
+   "state": "DONE",
+   "frame": 2,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=DONE frame=2 cards=0 fps=8 heap=8449336",
+   "t": 72.0
+  },
+  {
+   "state": "INPUT_REQUIRED",
+   "frame": 5,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=INPUT_REQUIRED frame=5 cards=0 fps=8 heap=8449336",
+   "t": 75.1
+  },
+  {
+   "state": "WORKING",
+   "frame": 4,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=WORKING frame=4 cards=0 fps=8 heap=8449336",
+   "t": 78.2
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 81.4
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 84.5
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 3,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=3 fps=8 heap=8449336",
+   "t": 87.6
+  },
+  {
+   "state": "IDLE",
+   "frame": 1,
+   "cards": 3,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=1 cards=3 fps=8 heap=8449336",
+   "t": 90.8
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 2,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=2 fps=8 heap=8449336",
+   "t": 93.8
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 1,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=1 fps=8 heap=8449336",
+   "t": 97.0
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 100.1
+  },
+  {
+   "state": "OFFLINE",
+   "frame": 1,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=OFFLINE frame=1 cards=0 fps=8 heap=8449336",
+   "t": 103.2
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 106.4
+  },
+  {
+   "state": "FAILED",
+   "frame": 3,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=FAILED frame=3 cards=0 fps=8 heap=8449336",
+   "t": 109.4
+  },
+  {
+   "state": "DONE",
+   "frame": 2,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=DONE frame=2 cards=0 fps=8 heap=8449336",
+   "t": 112.6
+  },
+  {
+   "state": "INPUT_REQUIRED",
+   "frame": 5,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=INPUT_REQUIRED frame=5 cards=0 fps=8 heap=8449336",
+   "t": 115.7
+  },
+  {
+   "state": "WORKING",
+   "frame": 4,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=WORKING frame=4 cards=0 fps=8 heap=8449336",
+   "t": 118.8
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 121.9
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 125.1
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 3,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=3 fps=8 heap=8449336",
+   "t": 128.2
+  },
+  {
+   "state": "IDLE",
+   "frame": 1,
+   "cards": 3,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=1 cards=3 fps=8 heap=8449336",
+   "t": 131.3
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 2,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=2 fps=8 heap=8449336",
+   "t": 134.4
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 1,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=1 fps=8 heap=8449336",
+   "t": 137.5
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 140.7
+  },
+  {
+   "state": "OFFLINE",
+   "frame": 1,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=OFFLINE frame=1 cards=0 fps=8 heap=8449336",
+   "t": 143.8
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 147.0
+  },
+  {
+   "state": "FAILED",
+   "frame": 3,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=FAILED frame=3 cards=0 fps=8 heap=8449336",
+   "t": 150.1
+  },
+  {
+   "state": "DONE",
+   "frame": 2,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=DONE frame=2 cards=0 fps=8 heap=8449336",
+   "t": 153.2
+  },
+  {
+   "state": "INPUT_REQUIRED",
+   "frame": 5,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=INPUT_REQUIRED frame=5 cards=0 fps=8 heap=8449336",
+   "t": 156.4
+  },
+  {
+   "state": "WORKING",
+   "frame": 4,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=WORKING frame=4 cards=0 fps=8 heap=8449336",
+   "t": 159.5
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 162.6
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 165.7
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 3,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=3 fps=8 heap=8449336",
+   "t": 168.8
+  },
+  {
+   "state": "IDLE",
+   "frame": 1,
+   "cards": 3,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=1 cards=3 fps=8 heap=8449336",
+   "t": 172.0
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 2,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=2 fps=8 heap=8449336",
+   "t": 175.1
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 1,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=1 fps=8 heap=8449336",
+   "t": 178.2
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 181.3
+  },
+  {
+   "state": "OFFLINE",
+   "frame": 1,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=OFFLINE frame=1 cards=0 fps=8 heap=8449336",
+   "t": 184.5
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 187.5
+  },
+  {
+   "state": "FAILED",
+   "frame": 3,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=FAILED frame=3 cards=0 fps=8 heap=8449336",
+   "t": 190.7
+  },
+  {
+   "state": "DONE",
+   "frame": 2,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=DONE frame=2 cards=0 fps=8 heap=8449336",
+   "t": 193.8
+  },
+  {
+   "state": "INPUT_REQUIRED",
+   "frame": 5,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=INPUT_REQUIRED frame=5 cards=0 fps=8 heap=8449336",
+   "t": 196.9
+  },
+  {
+   "state": "WORKING",
+   "frame": 4,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=WORKING frame=4 cards=0 fps=8 heap=8449336",
+   "t": 200.0
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 203.2
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 206.3
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 3,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=3 fps=8 heap=8449336",
+   "t": 209.4
+  },
+  {
+   "state": "IDLE",
+   "frame": 1,
+   "cards": 3,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=1 cards=3 fps=8 heap=8449336",
+   "t": 212.6
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 2,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=2 fps=8 heap=8449336",
+   "t": 215.8
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 1,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=1 fps=8 heap=8449336",
+   "t": 218.9
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 222.0
+  },
+  {
+   "state": "OFFLINE",
+   "frame": 1,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=OFFLINE frame=1 cards=0 fps=8 heap=8449336",
+   "t": 225.2
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 228.4
+  },
+  {
+   "state": "FAILED",
+   "frame": 3,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=FAILED frame=3 cards=0 fps=8 heap=8449336",
+   "t": 231.5
+  },
+  {
+   "state": "DONE",
+   "frame": 2,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=DONE frame=2 cards=0 fps=8 heap=8449336",
+   "t": 234.6
+  },
+  {
+   "state": "INPUT_REQUIRED",
+   "frame": 5,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=INPUT_REQUIRED frame=5 cards=0 fps=8 heap=8449336",
+   "t": 237.7
+  },
+  {
+   "state": "WORKING",
+   "frame": 4,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=WORKING frame=4 cards=0 fps=8 heap=8449336",
+   "t": 240.8
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 244.0
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 247.1
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 3,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=3 fps=8 heap=8449336",
+   "t": 250.2
+  },
+  {
+   "state": "IDLE",
+   "frame": 1,
+   "cards": 3,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=1 cards=3 fps=8 heap=8449336",
+   "t": 253.3
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 2,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=2 fps=8 heap=8449336",
+   "t": 256.4
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 1,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=1 fps=8 heap=8449336",
+   "t": 259.6
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 262.7
+  },
+  {
+   "state": "OFFLINE",
+   "frame": 1,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=OFFLINE frame=1 cards=0 fps=8 heap=8449336",
+   "t": 265.8
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 269.0
+  },
+  {
+   "state": "FAILED",
+   "frame": 3,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=FAILED frame=3 cards=0 fps=8 heap=8449336",
+   "t": 272.2
+  },
+  {
+   "state": "DONE",
+   "frame": 2,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=DONE frame=2 cards=0 fps=8 heap=8449336",
+   "t": 275.3
+  },
+  {
+   "state": "INPUT_REQUIRED",
+   "frame": 5,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=INPUT_REQUIRED frame=5 cards=0 fps=8 heap=8449336",
+   "t": 278.4
+  },
+  {
+   "state": "WORKING",
+   "frame": 4,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=WORKING frame=4 cards=0 fps=8 heap=8449336",
+   "t": 281.5
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 284.6
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 287.8
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 3,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=3 fps=8 heap=8449336",
+   "t": 290.9
+  },
+  {
+   "state": "IDLE",
+   "frame": 1,
+   "cards": 3,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=1 cards=3 fps=8 heap=8449336",
+   "t": 294.0
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 2,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=2 fps=8 heap=8449336",
+   "t": 297.2
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 1,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=1 fps=8 heap=8449336",
+   "t": 300.2
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 303.4
+  },
+  {
+   "state": "OFFLINE",
+   "frame": 1,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=OFFLINE frame=1 cards=0 fps=8 heap=8449336",
+   "t": 306.5
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 309.6
+  },
+  {
+   "state": "FAILED",
+   "frame": 3,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=FAILED frame=3 cards=0 fps=8 heap=8449336",
+   "t": 312.7
+  },
+  {
+   "state": "DONE",
+   "frame": 2,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=DONE frame=2 cards=0 fps=8 heap=8449336",
+   "t": 315.9
+  },
+  {
+   "state": "INPUT_REQUIRED",
+   "frame": 5,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=INPUT_REQUIRED frame=5 cards=0 fps=8 heap=8449336",
+   "t": 319.0
+  },
+  {
+   "state": "WORKING",
+   "frame": 4,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=WORKING frame=4 cards=0 fps=8 heap=8449336",
+   "t": 322.1
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 325.2
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 328.3
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 3,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=3 fps=8 heap=8449336",
+   "t": 331.5
+  },
+  {
+   "state": "IDLE",
+   "frame": 1,
+   "cards": 3,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=1 cards=3 fps=8 heap=8449336",
+   "t": 334.6
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 2,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=2 fps=8 heap=8449336",
+   "t": 337.7
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 1,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=1 fps=8 heap=8449336",
+   "t": 340.8
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 343.9
+  },
+  {
+   "state": "OFFLINE",
+   "frame": 1,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=OFFLINE frame=1 cards=0 fps=8 heap=8449336",
+   "t": 347.1
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 350.3
+  },
+  {
+   "state": "FAILED",
+   "frame": 3,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=FAILED frame=3 cards=0 fps=8 heap=8449336",
+   "t": 353.4
+  },
+  {
+   "state": "DONE",
+   "frame": 2,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=DONE frame=2 cards=0 fps=8 heap=8449336",
+   "t": 356.5
+  },
+  {
+   "state": "INPUT_REQUIRED",
+   "frame": 5,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=INPUT_REQUIRED frame=5 cards=0 fps=8 heap=8449336",
+   "t": 359.6
+  },
+  {
+   "state": "WORKING",
+   "frame": 4,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=WORKING frame=4 cards=0 fps=8 heap=8449336",
+   "t": 362.8
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 365.9
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 369.0
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 3,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=3 fps=8 heap=8449336",
+   "t": 372.1
+  },
+  {
+   "state": "IDLE",
+   "frame": 1,
+   "cards": 3,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=1 cards=3 fps=8 heap=8449336",
+   "t": 375.3
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 2,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=2 fps=8 heap=8449336",
+   "t": 378.3
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 1,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=1 fps=8 heap=8449336",
+   "t": 381.5
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 384.6
+  },
+  {
+   "state": "OFFLINE",
+   "frame": 1,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=OFFLINE frame=1 cards=0 fps=8 heap=8449336",
+   "t": 387.8
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 390.8
+  },
+  {
+   "state": "FAILED",
+   "frame": 3,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=FAILED frame=3 cards=0 fps=8 heap=8449336",
+   "t": 394.0
+  },
+  {
+   "state": "DONE",
+   "frame": 2,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=DONE frame=2 cards=0 fps=8 heap=8449336",
+   "t": 397.1
+  },
+  {
+   "state": "INPUT_REQUIRED",
+   "frame": 5,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=INPUT_REQUIRED frame=5 cards=0 fps=8 heap=8449336",
+   "t": 400.2
+  },
+  {
+   "state": "WORKING",
+   "frame": 4,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=WORKING frame=4 cards=0 fps=8 heap=8449336",
+   "t": 403.3
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 406.5
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 409.6
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 3,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=3 fps=8 heap=8449336",
+   "t": 412.7
+  },
+  {
+   "state": "IDLE",
+   "frame": 1,
+   "cards": 3,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=1 cards=3 fps=8 heap=8449336",
+   "t": 415.8
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 2,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=2 fps=8 heap=8449336",
+   "t": 418.9
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 1,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=1 fps=8 heap=8449336",
+   "t": 422.1
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 425.2
+  },
+  {
+   "state": "OFFLINE",
+   "frame": 1,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=OFFLINE frame=1 cards=0 fps=8 heap=8449336",
+   "t": 428.3
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 431.4
+  },
+  {
+   "state": "FAILED",
+   "frame": 3,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=FAILED frame=3 cards=0 fps=8 heap=8449336",
+   "t": 434.5
+  },
+  {
+   "state": "DONE",
+   "frame": 2,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=DONE frame=2 cards=0 fps=8 heap=8449336",
+   "t": 437.6
+  },
+  {
+   "state": "INPUT_REQUIRED",
+   "frame": 5,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=INPUT_REQUIRED frame=5 cards=0 fps=8 heap=8449336",
+   "t": 440.8
+  },
+  {
+   "state": "WORKING",
+   "frame": 4,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=WORKING frame=4 cards=0 fps=8 heap=8449336",
+   "t": 443.9
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 447.0
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 450.1
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 3,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=3 fps=8 heap=8449336",
+   "t": 453.3
+  },
+  {
+   "state": "IDLE",
+   "frame": 1,
+   "cards": 3,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=1 cards=3 fps=8 heap=8449336",
+   "t": 456.4
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 2,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=2 fps=8 heap=8449336",
+   "t": 459.6
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 1,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=1 fps=8 heap=8449336",
+   "t": 462.7
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 465.9
+  },
+  {
+   "state": "OFFLINE",
+   "frame": 1,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=OFFLINE frame=1 cards=0 fps=8 heap=8449336",
+   "t": 469.0
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 472.2
+  },
+  {
+   "state": "FAILED",
+   "frame": 3,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=FAILED frame=3 cards=0 fps=8 heap=8449336",
+   "t": 475.4
+  },
+  {
+   "state": "DONE",
+   "frame": 2,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=DONE frame=2 cards=0 fps=8 heap=8449336",
+   "t": 478.4
+  },
+  {
+   "state": "INPUT_REQUIRED",
+   "frame": 5,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=INPUT_REQUIRED frame=5 cards=0 fps=8 heap=8449336",
+   "t": 481.6
+  },
+  {
+   "state": "WORKING",
+   "frame": 4,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=WORKING frame=4 cards=0 fps=8 heap=8449336",
+   "t": 484.7
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 487.8
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 490.9
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 3,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=3 fps=8 heap=8449336",
+   "t": 494.1
+  },
+  {
+   "state": "IDLE",
+   "frame": 1,
+   "cards": 3,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=1 cards=3 fps=8 heap=8449336",
+   "t": 497.2
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 2,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=2 fps=8 heap=8449336",
+   "t": 500.3
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 1,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=1 fps=8 heap=8449336",
+   "t": 503.4
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 506.5
+  },
+  {
+   "state": "OFFLINE",
+   "frame": 1,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=OFFLINE frame=1 cards=0 fps=8 heap=8449336",
+   "t": 509.7
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 512.8
+  },
+  {
+   "state": "FAILED",
+   "frame": 3,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=FAILED frame=3 cards=0 fps=8 heap=8449336",
+   "t": 515.9
+  },
+  {
+   "state": "DONE",
+   "frame": 2,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=DONE frame=2 cards=0 fps=8 heap=8449336",
+   "t": 519.0
+  },
+  {
+   "state": "INPUT_REQUIRED",
+   "frame": 5,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=INPUT_REQUIRED frame=5 cards=0 fps=8 heap=8449336",
+   "t": 522.1
+  },
+  {
+   "state": "WORKING",
+   "frame": 4,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=WORKING frame=4 cards=0 fps=8 heap=8449336",
+   "t": 525.2
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 528.4
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 531.5
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 3,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=3 fps=8 heap=8449336",
+   "t": 534.6
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 3,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=3 fps=8 heap=8449336",
+   "t": 537.8
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 2,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=2 fps=8 heap=8449336",
+   "t": 541.0
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 1,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=1 fps=8 heap=8449336",
+   "t": 544.1
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 547.2
+  },
+  {
+   "state": "OFFLINE",
+   "frame": 1,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=OFFLINE frame=1 cards=0 fps=8 heap=8449336",
+   "t": 550.3
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 553.5
+  },
+  {
+   "state": "FAILED",
+   "frame": 3,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=FAILED frame=3 cards=0 fps=8 heap=8449336",
+   "t": 556.6
+  },
+  {
+   "state": "DONE",
+   "frame": 2,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=DONE frame=2 cards=0 fps=8 heap=8449336",
+   "t": 559.7
+  },
+  {
+   "state": "INPUT_REQUIRED",
+   "frame": 5,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=INPUT_REQUIRED frame=5 cards=0 fps=8 heap=8449336",
+   "t": 562.8
+  },
+  {
+   "state": "WORKING",
+   "frame": 4,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=WORKING frame=4 cards=0 fps=8 heap=8449336",
+   "t": 565.9
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 569.1
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 572.1
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 3,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=3 fps=8 heap=8449336",
+   "t": 575.3
+  },
+  {
+   "state": "IDLE",
+   "frame": 1,
+   "cards": 3,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=1 cards=3 fps=8 heap=8449336",
+   "t": 578.4
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 2,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=2 fps=8 heap=8449336",
+   "t": 581.6
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 1,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=1 fps=8 heap=8449336",
+   "t": 584.6
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 587.8
+  },
+  {
+   "state": "OFFLINE",
+   "frame": 1,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=OFFLINE frame=1 cards=0 fps=8 heap=8449336",
+   "t": 590.9
+  },
+  {
+   "state": "IDLE",
+   "frame": 0,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+   "t": 594.0
+  },
+  {
+   "state": "FAILED",
+   "frame": 3,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=FAILED frame=3 cards=0 fps=8 heap=8449336",
+   "t": 597.1
+  },
+  {
+   "state": "DONE",
+   "frame": 2,
+   "cards": 0,
+   "fps": 8,
+   "heap": 8449336,
+   "raw": "STATUS state=DONE frame=2 cards=0 fps=8 heap=8449336",
+   "t": 600.2
+  }
+ ],
+ "blink_frames": [
+  [
+   0,
+   0.13
+  ],
+  [
+   0,
+   0.19
+  ],
+  [
+   0,
+   0.32
+  ],
+  [
+   0,
+   0.45
+  ],
+  [
+   0,
+   0.58
+  ],
+  [
+   0,
+   0.71
+  ],
+  [
+   0,
+   0.83
+  ],
+  [
+   0,
+   0.96
+  ],
+  [
+   0,
+   1.16
+  ],
+  [
+   0,
+   1.28
+  ],
+  [
+   0,
+   1.41
+  ],
+  [
+   1,
+   1.09
+  ]
+ ],
+ "blink_ok": true,
+ "heap_first": 8449336,
+ "heap_last": 8449336,
+ "heap_min": 8449336,
+ "heap_max": 8449336,
+ "heap_delta": 0,
+ "fps_min": 8,
+ "fps_max": 8
+}

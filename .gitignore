@@ -19,3 +19,11 @@ artifacts/
 __pycache__/
 *.pyc
 .vscode/
+
+# host 单测构建产物（gcc 生成，可复跑重建）
+tests/build/
+*.exe
+
+# host 工具的无设备模拟输出（非验收证据，可复跑重建）
+tools/host/evidence/sim/
+

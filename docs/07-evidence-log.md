@@ -210,3 +210,105 @@ I (735) m1: DISPLAY READY M1 (240x240)
 - GPIO2 拉高后设备保持运行（USB 供电下；**电池供电保持仍未单独验**）。
 
 **不能证明**：40 MHz 的时序余量、长时间稳定性（G16）、电池供电（`PWR-01` 仅日志+USB）、触摸/IMU。
+
+## E15：Windows 原生 ESP-IDF 构建（2026-10-31，接手会话）
+
+**背景**：`tools/idf-env.sh` 假定 WSL；本机 `wsl.exe --status` 返回 `Wsl/E_ACCESSDENIED`，WSL 不可用。
+改为 Windows 原生 IDF（`D:\Espressif`，v5.5.4，python 3.14 env）。
+
+```powershell
+$env:IDF_TOOLS_PATH='D:\Espressif'; $env:IDF_PATH='D:\Espressif\frameworks\esp-idf-v5.5.4'
+. 'D:\Espressif\frameworks\esp-idf-v5.5.4\export.ps1'
+cd D:\DSH\ESP32-touch
+idf.py -B D:\DSH\esp-build\buddy154 -DIDF_TARGET=esp32s3 build
+```
+
+**观察**：`Project build complete`，exit 0；M1 源码 app = **0x41430 (267,312 B)**，`0x2bebd0 (92%) free`；无 warning/error。
+**可得结论**：本机存在可复现的 Windows 原生构建路径；`G17` 的"新 clone 可构建"不再只依赖 WSL。
+**不能证明**：换机器/换 IDF 小版本仍可构建（G17 完整口径）。
+
+## E16：M2 实现构建 + host T 测试 RED→GREEN（2026-10-31）
+
+**构建**（同 E15 命令，源含 `pet_state.c` / `pet_ui_240.c` / 新 `main.c`）：
+
+```text
+buddy154.bin binary size 0x84fd0 bytes. Smallest app partition is 0x300000 bytes. 0x27b030 bytes (83%) free.
+```
+
+**观察**：无 warning/error；app 544,720 B（含 16×16 CJK 字库与 VFS/USB 驱动）。
+**host 测试**：`pwsh -NoProfile -File tests/run_tests.ps1`
+
+```text
+SUMMARY pet_state: cases=9 passed=9 failed=0
+SUMMARY pet_ui_240: cases=5 passed=5 failed=0
+RESULT: PASS (all host tests green)
+```
+
+- RED 阶段（实现仍为桩）：13/14 用例断言失败（唯一通过的 ST-04 是桩默认 IDLE 恰好吻合），原始输出见 `tests/red-run.log` 与 `tests/RED-GREEN.md` §1。
+- 断言总数 214（124 + 90）。
+**可得结论**：`ST-01..09`、`UI-13`、`CARD-13`、`UI-11`、`GB-01` 的 T 级行为有可复现证据；实现与断言分离，未用"先实现后补红"。
+**不能证明**：真机行为（见 E17/E18）；测试覆盖之外的 API 组合。
+
+## E17：G1（UI-10/11/12）24 次真机观测（2026-10-31）
+
+**方法**：设备跑 M2 固件（COM7），host `tools/host/run_g1.py` 注入单字符命令；每态各 4 次共 24 次，
+每次读 `STATUS` 行 + 导出 115200 B 帧缓冲（CRC 校验一致）+ 像素断言 + 存 PNG。
+**结果**：
+
+```text
+结论：PASS — 观测 24/24 PASS，布局断言 6/6 PASS，6 态 PNG 哈希互异：是
+IDLE(frame0) WORKING(frame4) INPUT_REQUIRED(frame5) DONE(frame2) FAILED(frame3) OFFLINE(frame1)
+```
+
+**可得结论**（H+T）：
+- 6 态各 4 次进入/退出全部可辨（24/24）；`UI-10` 的"20 次"门槛按 24 次如实执行（`C03 §7 R8`）。
+- `UI-11`：`>` 只出现在 WORKING（x=115..124/y=2..15 白）、`!?` 只出现在 INPUT_REQUIRED（橙），其余态标记区无该两色。
+- `UI-12`：OFFLINE 整帧灰度（逐像素 `r5==g6>>1`、`b5==g6>>1`），网络点 `0xF800` 红。
+**证据文件**：`tools/host/evidence/g1.json`、`g1_summary.md`、`g1_obs0*.bin/.png`。
+**不能证明**：肉眼观感（无摄像头，H 需用户目视）；刷新撕裂（`FRM-01`）。
+
+## E18：G3（CARD-10..15）卡栈真机观测（2026-10-31）
+
+**方法**：20 轮 `x` 清栈 → `c`×3 → 断言 `CARDS ALPHA|BETA|GAMMA` → `c` 第 4 张 → 断言 `DELTA|ALPHA|BETA`（GAMMA 淘汰）；
+另单跑第 5..8 张验证同名置顶 / 空 title 占位 / 长标题截断 / CJK 标题；每轮导出帧 + 布局断言。
+
+```text
+结论：PASS — 卡栈轮次 20/20 PASS，特例 4/4 PASS，布局断言 24/24 PASS
+```
+
+- 同名（title+project）第 5 张 BETA 置顶：`BETA|DELTA|ALPHA`。
+- 空 title 第 6 张：CARDS 打印 `-`，渲染 `(untitled)`（非空白卡）。
+- 长标题第 7 张：行 2 宽 ≤180，尾 `..`，时长 `59S` 不被覆盖。
+- CJK 第 8 张：`中文标题测试` 用 16×16 点阵（顶边 y+12），时长 `1H00M`。
+**证据文件**：`tools/host/evidence/g3.json`、`g3_summary.md`、`g3_round*.png`、`g3_special*.png`。
+**不能证明**：真实宿主事件的卡内容（M5）；卡文本全字符集。
+
+## E20：缺陷 D-05 —— 头顶标记点阵被水平镜像（2026-10-31 真机发现并修复）
+
+**现象**：M2 首次真机帧缓冲导出显示 WORKING 标记是 `<` 而不是契约要求的 `>`（INPUT 的 `?` 弯钩也反向）。
+**根因**：上游 `pet_render.c` 的标记点阵表按 **MSB=最左**书写，而 `draw_glyph` 按 **bit0=最左** 绘制；两者互为镜像。
+`!` 垂直对称故不受影响，`>`/`?` 方向错误。
+**修复**：`pet_ui_240.c` 镜像 `GLYPH_GT` / `GLYPH_QUEST` 两张表（`bit0=最左` 口径不变，C03 §1 未改）。
+**回归**：`tests/test_ui240.c` UI-11 增方向断言（D-05 回归，先对旧表记录 RED 再 GREEN，见 `tests/RED-GREEN.md` §3）；
+重刷后 `g1_obs02_working.png` 为正确的 `>`。
+**不能证明**：135×240 上游视图的同一问题已修（本项目不修改上游 `pet_render.c`，135×240 视图是死代码）。
+
+## E19：MEM-01 10 分钟压力+堆采样、IDLE 眨眼（2026-10-31）
+
+**方法**：`tools/host/evidence/mem01.json` 同源脚本（Lead 会话内脚本 `soak_mem.py`）：
+600 s 持续注入事件/卡（每 250 ms 一条，含心跳 `n`），每 ~3.3 s 读一次 `STATUS`；另在开头重置 IDLE 相位后 1.4 s 内连续采样帧号观察眨眼。
+
+```text
+samples: 192
+heap first=8449336 last=8449336 min=8449336 max=8449336 delta=0
+fps 范围：8..8
+blink frames observed: frame=0 (0.13..1.41s 多次) 与 frame=1 (1.09s)
+blink_ok: True
+```
+
+**可得结论**：
+- 10 min 压力下 `STATUS heap=` **无下降**（192 点全相同；该值为 `esp_get_free_heap_size`，含 PSRAM，渲染/事件路径无逐帧分配）。
+- 全程 `fps=8`；状态/卡注入期间无死机、无看门狗复位。
+- IDLE 眨眼由 `pet_state` 相位驱动，观测到 `frame=1`（EYES_CLOSED）与 `frame=0` 交替（`M2 §9.2` 提案节拍 1000/125 ms）。
+**证据文件**：`tools/host/evidence/mem01.json`、`mem01_summary.md`。
+**不能证明**：`G16` 的 2 小时插入稳定性/电池 1 小时（未跑）；堆碎片与峰值；`FRM-01` 撕裂（无摄像头）。

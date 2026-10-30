@@ -1,0 +1,1560 @@
+{
+  "tool": "run_g1.py",
+  "version": 1,
+  "started": "2026-10-31T00:21:15.514+08:00",
+  "finished": "2026-10-31T00:21:36.211+08:00",
+  "mode": "serial",
+  "port": "COM7",
+  "baud": 115200,
+  "expected_frames": {
+    "IDLE": [
+      0,
+      1
+    ],
+    "WORKING": [
+      4
+    ],
+    "INPUT_REQUIRED": [
+      5
+    ],
+    "DONE": [
+      2
+    ],
+    "FAILED": [
+      3
+    ],
+    "OFFLINE": [
+      1
+    ]
+  },
+  "obs_per_state": 4,
+  "observations": [
+    {
+      "index": 1,
+      "round": 1,
+      "time": "2026-10-31T00:21:17.251+08:00",
+      "injected": [
+        "3",
+        "0"
+      ],
+      "expected_state": "IDLE",
+      "actual_state": "IDLE",
+      "frame": 0,
+      "frame_expected": [
+        0,
+        1
+      ],
+      "state_ok": true,
+      "frame_ok": true,
+      "frame_strict": true,
+      "cards": 0,
+      "cards_ok": true,
+      "status_line": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+      "cards_line": null,
+      "bin": "g1_obs01_idle.bin",
+      "png": "g1_obs01_idle.png",
+      "crc32": "a9f7eb93",
+      "png_sha256": "4cd1ba7ab12bb6e584baa51b8baa6fea0633c7f631893d5bfd60a327f975e040",
+      "layout_ok": true,
+      "layout": {
+        "state": "IDLE",
+        "card_count": 0,
+        "ok": true,
+        "checks": [
+          {
+            "name": "frame_size",
+            "ok": true,
+            "detail": "115200 bytes = 240x240 RGB565LE",
+            "evidence": []
+          },
+          {
+            "name": "network_dot",
+            "ok": true,
+            "detail": "(4,4,4,4) == 0x07E0: 16/16 px",
+            "evidence": []
+          },
+          {
+            "name": "marker_absent",
+            "ok": true,
+            "detail": "marker region (111, 2, 18, 14) has no 0xFFFF/0xFD20: white=0 orange=0",
+            "evidence": []
+          },
+          {
+            "name": "card_empty[0]",
+            "ok": true,
+            "detail": "(4, 152, 232, 28) must be all 0x0000: 6496/6496 px",
+            "evidence": []
+          },
+          {
+            "name": "card_empty[1]",
+            "ok": true,
+            "detail": "(4, 180, 232, 28) must be all 0x0000: 6496/6496 px",
+            "evidence": []
+          },
+          {
+            "name": "card_empty[2]",
+            "ok": true,
+            "detail": "(4, 208, 232, 28) must be all 0x0000: 6496/6496 px",
+            "evidence": []
+          },
+          {
+            "name": "pet_drawn",
+            "ok": true,
+            "detail": "(72, 20, 96, 128) has 6128 non-bg px",
+            "evidence": [
+              "pet_rect=(72, 20, 96, 128)"
+            ]
+          },
+          {
+            "name": "bg.bar_left_margin",
+            "ok": true,
+            "detail": "(0, 0, 4, 12) all 0x0000: 48/48 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.bar_content_gap",
+            "ok": true,
+            "detail": "(8, 0, 103, 12) all 0x0000: 1236/1236 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.bar_mid_blank",
+            "ok": true,
+            "detail": "(129, 0, 67, 12) all 0x0000: 804/804 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.bar_right_blank",
+            "ok": true,
+            "detail": "(196, 0, 44, 12) all 0x0000: 528/528 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.above_pet",
+            "ok": true,
+            "detail": "(0, 16, 240, 4) all 0x0000: 960/960 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.pet_left",
+            "ok": true,
+            "detail": "(0, 20, 72, 128) all 0x0000: 9216/9216 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.pet_right",
+            "ok": true,
+            "detail": "(168, 20, 72, 128) all 0x0000: 9216/9216 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.below_pet",
+            "ok": true,
+            "detail": "(0, 148, 240, 4) all 0x0000: 960/960 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.card_left_margin",
+            "ok": true,
+            "detail": "(0, 152, 4, 84) all 0x0000: 336/336 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.card_right_margin",
+            "ok": true,
+            "detail": "(236, 152, 4, 84) all 0x0000: 336/336 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.footer",
+            "ok": true,
+            "detail": "(0, 236, 240, 4) all 0x0000: 960/960 px",
+            "evidence": []
+          }
+        ]
+      },
+      "state_png_sha256": "4cd1ba7ab12bb6e584baa51b8baa6fea0633c7f631893d5bfd60a327f975e040"
+    },
+    {
+      "index": 2,
+      "round": 1,
+      "time": "2026-10-31T00:21:18.211+08:00",
+      "injected": [
+        "1"
+      ],
+      "expected_state": "WORKING",
+      "actual_state": "WORKING",
+      "frame": 4,
+      "frame_expected": [
+        4
+      ],
+      "state_ok": true,
+      "frame_ok": true,
+      "frame_strict": true,
+      "cards": 0,
+      "cards_ok": true,
+      "status_line": "STATUS state=WORKING frame=4 cards=0 fps=8 heap=8449336",
+      "cards_line": null,
+      "bin": "g1_obs02_working.bin",
+      "png": "g1_obs02_working.png",
+      "crc32": "24ee1ef9",
+      "png_sha256": "c568ca052a0cb0e33774b00ac521f641edfb4170ddf8cca3be5475306f1ede23",
+      "layout_ok": true,
+      "layout": {
+        "state": "WORKING",
+        "card_count": 0,
+        "ok": true,
+        "checks": [
+          {
+            "name": "frame_size",
+            "ok": true,
+            "detail": "115200 bytes = 240x240 RGB565LE",
+            "evidence": []
+          },
+          {
+            "name": "network_dot",
+            "ok": true,
+            "detail": "(4,4,4,4) == 0x07E0: 16/16 px",
+            "evidence": []
+          },
+          {
+            "name": "marker_working",
+            "ok": true,
+            "detail": "marker_working: 0xFFFF px=28 bbox=(115, 2, 8, 14) other=0xFD20 px=0",
+            "evidence": [
+              "region=(115, 2, 10, 14) expected_color=0xFFFF",
+              "ink_bbox=(115,2,w=8,h=14) center_x=118.5",
+              "contained=True vertical_span_y2..15=True centered_120=True"
+            ]
+          },
+          {
+            "name": "card_empty[0]",
+            "ok": true,
+            "detail": "(4, 152, 232, 28) must be all 0x0000: 6496/6496 px",
+            "evidence": []
+          },
+          {
+            "name": "card_empty[1]",
+            "ok": true,
+            "detail": "(4, 180, 232, 28) must be all 0x0000: 6496/6496 px",
+            "evidence": []
+          },
+          {
+            "name": "card_empty[2]",
+            "ok": true,
+            "detail": "(4, 208, 232, 28) must be all 0x0000: 6496/6496 px",
+            "evidence": []
+          },
+          {
+            "name": "pet_drawn",
+            "ok": true,
+            "detail": "(72, 20, 96, 128) has 6128 non-bg px",
+            "evidence": [
+              "pet_rect=(72, 20, 96, 128)"
+            ]
+          },
+          {
+            "name": "bg.bar_left_margin",
+            "ok": true,
+            "detail": "(0, 0, 4, 12) all 0x0000: 48/48 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.bar_content_gap",
+            "ok": true,
+            "detail": "(8, 0, 103, 12) all 0x0000: 1236/1236 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.bar_mid_blank",
+            "ok": true,
+            "detail": "(129, 0, 67, 12) all 0x0000: 804/804 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.bar_right_blank",
+            "ok": true,
+            "detail": "(196, 0, 44, 12) all 0x0000: 528/528 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.above_pet",
+            "ok": true,
+            "detail": "(0, 16, 240, 4) all 0x0000: 960/960 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.pet_left",
+            "ok": true,
+            "detail": "(0, 20, 72, 128) all 0x0000: 9216/9216 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.pet_right",
+            "ok": true,
+            "detail": "(168, 20, 72, 128) all 0x0000: 9216/9216 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.below_pet",
+            "ok": true,
+            "detail": "(0, 148, 240, 4) all 0x0000: 960/960 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.card_left_margin",
+            "ok": true,
+            "detail": "(0, 152, 4, 84) all 0x0000: 336/336 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.card_right_margin",
+            "ok": true,
+            "detail": "(236, 152, 4, 84) all 0x0000: 336/336 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.footer",
+            "ok": true,
+            "detail": "(0, 236, 240, 4) all 0x0000: 960/960 px",
+            "evidence": []
+          }
+        ]
+      },
+      "state_png_sha256": "c568ca052a0cb0e33774b00ac521f641edfb4170ddf8cca3be5475306f1ede23"
+    },
+    {
+      "index": 3,
+      "round": 1,
+      "time": "2026-10-31T00:21:19.171+08:00",
+      "injected": [
+        "2"
+      ],
+      "expected_state": "INPUT_REQUIRED",
+      "actual_state": "INPUT_REQUIRED",
+      "frame": 5,
+      "frame_expected": [
+        5
+      ],
+      "state_ok": true,
+      "frame_ok": true,
+      "frame_strict": true,
+      "cards": 0,
+      "cards_ok": true,
+      "status_line": "STATUS state=INPUT_REQUIRED frame=5 cards=0 fps=8 heap=8449336",
+      "cards_line": null,
+      "bin": "g1_obs03_input_required.bin",
+      "png": "g1_obs03_input_required.png",
+      "crc32": "268307fb",
+      "png_sha256": "dadeadbe3e7869e405e434e0cd063e79e9dbffff8c26458ea165e3f947b9d6b5",
+      "layout_ok": true,
+      "layout": {
+        "state": "INPUT_REQUIRED",
+        "card_count": 0,
+        "ok": true,
+        "checks": [
+          {
+            "name": "frame_size",
+            "ok": true,
+            "detail": "115200 bytes = 240x240 RGB565LE",
+            "evidence": []
+          },
+          {
+            "name": "network_dot",
+            "ok": true,
+            "detail": "(4,4,4,4) == 0x07E0: 16/16 px",
+            "evidence": []
+          },
+          {
+            "name": "marker_input",
+            "ok": true,
+            "detail": "marker_input: 0xFD20 px=60 bbox=(113, 2, 16, 14) other=0xFFFF px=0",
+            "evidence": [
+              "region=(111, 2, 18, 14) expected_color=0xFD20",
+              "ink_bbox=(113,2,w=16,h=14) center_x=120.5",
+              "contained=True vertical_span_y2..15=True centered_120=True"
+            ]
+          },
+          {
+            "name": "card_empty[0]",
+            "ok": true,
+            "detail": "(4, 152, 232, 28) must be all 0x0000: 6496/6496 px",
+            "evidence": []
+          },
+          {
+            "name": "card_empty[1]",
+            "ok": true,
+            "detail": "(4, 180, 232, 28) must be all 0x0000: 6496/6496 px",
+            "evidence": []
+          },
+          {
+            "name": "card_empty[2]",
+            "ok": true,
+            "detail": "(4, 208, 232, 28) must be all 0x0000: 6496/6496 px",
+            "evidence": []
+          },
+          {
+            "name": "pet_drawn",
+            "ok": true,
+            "detail": "(72, 20, 96, 128) has 6372 non-bg px",
+            "evidence": [
+              "pet_rect=(72, 20, 96, 128)"
+            ]
+          },
+          {
+            "name": "bg.bar_left_margin",
+            "ok": true,
+            "detail": "(0, 0, 4, 12) all 0x0000: 48/48 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.bar_content_gap",
+            "ok": true,
+            "detail": "(8, 0, 103, 12) all 0x0000: 1236/1236 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.bar_mid_blank",
+            "ok": true,
+            "detail": "(129, 0, 67, 12) all 0x0000: 804/804 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.bar_right_blank",
+            "ok": true,
+            "detail": "(196, 0, 44, 12) all 0x0000: 528/528 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.above_pet",
+            "ok": true,
+            "detail": "(0, 16, 240, 4) all 0x0000: 960/960 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.pet_left",
+            "ok": true,
+            "detail": "(0, 20, 72, 128) all 0x0000: 9216/9216 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.pet_right",
+            "ok": true,
+            "detail": "(168, 20, 72, 128) all 0x0000: 9216/9216 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.below_pet",
+            "ok": true,
+            "detail": "(0, 148, 240, 4) all 0x0000: 960/960 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.card_left_margin",
+            "ok": true,
+            "detail": "(0, 152, 4, 84) all 0x0000: 336/336 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.card_right_margin",
+            "ok": true,
+            "detail": "(236, 152, 4, 84) all 0x0000: 336/336 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.footer",
+            "ok": true,
+            "detail": "(0, 236, 240, 4) all 0x0000: 960/960 px",
+            "evidence": []
+          }
+        ]
+      },
+      "state_png_sha256": "dadeadbe3e7869e405e434e0cd063e79e9dbffff8c26458ea165e3f947b9d6b5"
+    },
+    {
+      "index": 4,
+      "round": 1,
+      "time": "2026-10-31T00:21:21.571+08:00",
+      "injected": [
+        "1",
+        "0"
+      ],
+      "expected_state": "DONE",
+      "actual_state": "DONE",
+      "frame": 2,
+      "frame_expected": [
+        2
+      ],
+      "state_ok": true,
+      "frame_ok": true,
+      "frame_strict": true,
+      "cards": 0,
+      "cards_ok": true,
+      "status_line": "STATUS state=DONE frame=2 cards=0 fps=8 heap=8449336",
+      "cards_line": null,
+      "bin": "g1_obs04_done.bin",
+      "png": "g1_obs04_done.png",
+      "crc32": "b0ab754d",
+      "png_sha256": "1a5ffe6bdfeff88192469f4e23a92e7ddc2fb19612e65c521ba5954594f63f12",
+      "layout_ok": true,
+      "layout": {
+        "state": "DONE",
+        "card_count": 0,
+        "ok": true,
+        "checks": [
+          {
+            "name": "frame_size",
+            "ok": true,
+            "detail": "115200 bytes = 240x240 RGB565LE",
+            "evidence": []
+          },
+          {
+            "name": "network_dot",
+            "ok": true,
+            "detail": "(4,4,4,4) == 0x07E0: 16/16 px",
+            "evidence": []
+          },
+          {
+            "name": "marker_absent",
+            "ok": true,
+            "detail": "marker region (111, 2, 18, 14) has no 0xFFFF/0xFD20: white=0 orange=0",
+            "evidence": []
+          },
+          {
+            "name": "card_empty[0]",
+            "ok": true,
+            "detail": "(4, 152, 232, 28) must be all 0x0000: 6496/6496 px",
+            "evidence": []
+          },
+          {
+            "name": "card_empty[1]",
+            "ok": true,
+            "detail": "(4, 180, 232, 28) must be all 0x0000: 6496/6496 px",
+            "evidence": []
+          },
+          {
+            "name": "card_empty[2]",
+            "ok": true,
+            "detail": "(4, 208, 232, 28) must be all 0x0000: 6496/6496 px",
+            "evidence": []
+          },
+          {
+            "name": "pet_drawn",
+            "ok": true,
+            "detail": "(72, 20, 96, 128) has 6196 non-bg px",
+            "evidence": [
+              "pet_rect=(72, 20, 96, 128)"
+            ]
+          },
+          {
+            "name": "bg.bar_left_margin",
+            "ok": true,
+            "detail": "(0, 0, 4, 12) all 0x0000: 48/48 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.bar_content_gap",
+            "ok": true,
+            "detail": "(8, 0, 103, 12) all 0x0000: 1236/1236 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.bar_mid_blank",
+            "ok": true,
+            "detail": "(129, 0, 67, 12) all 0x0000: 804/804 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.bar_right_blank",
+            "ok": true,
+            "detail": "(196, 0, 44, 12) all 0x0000: 528/528 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.above_pet",
+            "ok": true,
+            "detail": "(0, 16, 240, 4) all 0x0000: 960/960 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.pet_left",
+            "ok": true,
+            "detail": "(0, 20, 72, 128) all 0x0000: 9216/9216 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.pet_right",
+            "ok": true,
+            "detail": "(168, 20, 72, 128) all 0x0000: 9216/9216 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.below_pet",
+            "ok": true,
+            "detail": "(0, 148, 240, 4) all 0x0000: 960/960 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.card_left_margin",
+            "ok": true,
+            "detail": "(0, 152, 4, 84) all 0x0000: 336/336 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.card_right_margin",
+            "ok": true,
+            "detail": "(236, 152, 4, 84) all 0x0000: 336/336 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.footer",
+            "ok": true,
+            "detail": "(0, 236, 240, 4) all 0x0000: 960/960 px",
+            "evidence": []
+          }
+        ]
+      },
+      "state_png_sha256": "1a5ffe6bdfeff88192469f4e23a92e7ddc2fb19612e65c521ba5954594f63f12"
+    },
+    {
+      "index": 5,
+      "round": 1,
+      "time": "2026-10-31T00:21:22.531+08:00",
+      "injected": [
+        "4"
+      ],
+      "expected_state": "FAILED",
+      "actual_state": "FAILED",
+      "frame": 3,
+      "frame_expected": [
+        3
+      ],
+      "state_ok": true,
+      "frame_ok": true,
+      "frame_strict": true,
+      "cards": 0,
+      "cards_ok": true,
+      "status_line": "STATUS state=FAILED frame=3 cards=0 fps=8 heap=8449336",
+      "cards_line": null,
+      "bin": "g1_obs05_failed.bin",
+      "png": "g1_obs05_failed.png",
+      "crc32": "1a193be3",
+      "png_sha256": "002aa0969ca5c2d1231e165ce0ac38dde276ab52452b24535ded86681af8df61",
+      "layout_ok": true,
+      "layout": {
+        "state": "FAILED",
+        "card_count": 0,
+        "ok": true,
+        "checks": [
+          {
+            "name": "frame_size",
+            "ok": true,
+            "detail": "115200 bytes = 240x240 RGB565LE",
+            "evidence": []
+          },
+          {
+            "name": "network_dot",
+            "ok": true,
+            "detail": "(4,4,4,4) == 0x07E0: 16/16 px",
+            "evidence": []
+          },
+          {
+            "name": "marker_absent",
+            "ok": true,
+            "detail": "marker region (111, 2, 18, 14) has no 0xFFFF/0xFD20: white=0 orange=0",
+            "evidence": []
+          },
+          {
+            "name": "card_empty[0]",
+            "ok": true,
+            "detail": "(4, 152, 232, 28) must be all 0x0000: 6496/6496 px",
+            "evidence": []
+          },
+          {
+            "name": "card_empty[1]",
+            "ok": true,
+            "detail": "(4, 180, 232, 28) must be all 0x0000: 6496/6496 px",
+            "evidence": []
+          },
+          {
+            "name": "card_empty[2]",
+            "ok": true,
+            "detail": "(4, 208, 232, 28) must be all 0x0000: 6496/6496 px",
+            "evidence": []
+          },
+          {
+            "name": "pet_drawn",
+            "ok": true,
+            "detail": "(72, 20, 96, 128) has 6160 non-bg px",
+            "evidence": [
+              "pet_rect=(72, 20, 96, 128)"
+            ]
+          },
+          {
+            "name": "bg.bar_left_margin",
+            "ok": true,
+            "detail": "(0, 0, 4, 12) all 0x0000: 48/48 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.bar_content_gap",
+            "ok": true,
+            "detail": "(8, 0, 103, 12) all 0x0000: 1236/1236 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.bar_mid_blank",
+            "ok": true,
+            "detail": "(129, 0, 67, 12) all 0x0000: 804/804 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.bar_right_blank",
+            "ok": true,
+            "detail": "(196, 0, 44, 12) all 0x0000: 528/528 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.above_pet",
+            "ok": true,
+            "detail": "(0, 16, 240, 4) all 0x0000: 960/960 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.pet_left",
+            "ok": true,
+            "detail": "(0, 20, 72, 128) all 0x0000: 9216/9216 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.pet_right",
+            "ok": true,
+            "detail": "(168, 20, 72, 128) all 0x0000: 9216/9216 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.below_pet",
+            "ok": true,
+            "detail": "(0, 148, 240, 4) all 0x0000: 960/960 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.card_left_margin",
+            "ok": true,
+            "detail": "(0, 152, 4, 84) all 0x0000: 336/336 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.card_right_margin",
+            "ok": true,
+            "detail": "(236, 152, 4, 84) all 0x0000: 336/336 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.footer",
+            "ok": true,
+            "detail": "(0, 236, 240, 4) all 0x0000: 960/960 px",
+            "evidence": []
+          }
+        ]
+      },
+      "state_png_sha256": "002aa0969ca5c2d1231e165ce0ac38dde276ab52452b24535ded86681af8df61"
+    },
+    {
+      "index": 6,
+      "round": 1,
+      "time": "2026-10-31T00:21:23.391+08:00",
+      "injected": [
+        "5"
+      ],
+      "expected_state": "OFFLINE",
+      "actual_state": "OFFLINE",
+      "frame": 1,
+      "frame_expected": [
+        1
+      ],
+      "state_ok": true,
+      "frame_ok": true,
+      "frame_strict": true,
+      "cards": 0,
+      "cards_ok": true,
+      "status_line": "STATUS state=OFFLINE frame=1 cards=0 fps=8 heap=8449336",
+      "cards_line": null,
+      "bin": "g1_obs06_offline.bin",
+      "png": "g1_obs06_offline.png",
+      "crc32": "a547ce94",
+      "png_sha256": "9a789341f6e2b09a64726ab3ce9c136637c3499433046efcdd139ced51145c7c",
+      "layout_ok": true,
+      "layout": {
+        "state": "OFFLINE",
+        "card_count": 0,
+        "ok": true,
+        "checks": [
+          {
+            "name": "frame_size",
+            "ok": true,
+            "detail": "115200 bytes = 240x240 RGB565LE",
+            "evidence": []
+          },
+          {
+            "name": "network_dot",
+            "ok": true,
+            "detail": "(4,4,4,4) == 0xF800: 16/16 px",
+            "evidence": []
+          },
+          {
+            "name": "marker_absent",
+            "ok": true,
+            "detail": "marker region (111, 2, 18, 14) has no 0xFFFF/0xFD20: white=0 orange=0",
+            "evidence": []
+          },
+          {
+            "name": "offline_gray",
+            "ok": true,
+            "detail": "all 57584 px outside network dot satisfy r5==g6>>1 and b5==g6>>1",
+            "evidence": []
+          },
+          {
+            "name": "card_empty[0]",
+            "ok": true,
+            "detail": "(4, 152, 232, 28) must be all 0x0000: 6496/6496 px",
+            "evidence": []
+          },
+          {
+            "name": "card_empty[1]",
+            "ok": true,
+            "detail": "(4, 180, 232, 28) must be all 0x0000: 6496/6496 px",
+            "evidence": []
+          },
+          {
+            "name": "card_empty[2]",
+            "ok": true,
+            "detail": "(4, 208, 232, 28) must be all 0x0000: 6496/6496 px",
+            "evidence": []
+          },
+          {
+            "name": "pet_drawn",
+            "ok": true,
+            "detail": "(72, 20, 96, 128) has 6128 non-bg px",
+            "evidence": [
+              "pet_rect=(72, 20, 96, 128)"
+            ]
+          },
+          {
+            "name": "bg.bar_left_margin",
+            "ok": true,
+            "detail": "(0, 0, 4, 12) all 0x0000: 48/48 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.bar_content_gap",
+            "ok": true,
+            "detail": "(8, 0, 103, 12) all 0x0000: 1236/1236 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.bar_mid_blank",
+            "ok": true,
+            "detail": "(129, 0, 67, 12) all 0x0000: 804/804 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.bar_right_blank",
+            "ok": true,
+            "detail": "(196, 0, 44, 12) all 0x0000: 528/528 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.above_pet",
+            "ok": true,
+            "detail": "(0, 16, 240, 4) all 0x0000: 960/960 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.pet_left",
+            "ok": true,
+            "detail": "(0, 20, 72, 128) all 0x0000: 9216/9216 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.pet_right",
+            "ok": true,
+            "detail": "(168, 20, 72, 128) all 0x0000: 9216/9216 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.below_pet",
+            "ok": true,
+            "detail": "(0, 148, 240, 4) all 0x0000: 960/960 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.card_left_margin",
+            "ok": true,
+            "detail": "(0, 152, 4, 84) all 0x0000: 336/336 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.card_right_margin",
+            "ok": true,
+            "detail": "(236, 152, 4, 84) all 0x0000: 336/336 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.footer",
+            "ok": true,
+            "detail": "(0, 236, 240, 4) all 0x0000: 960/960 px",
+            "evidence": []
+          }
+        ]
+      },
+      "recovery": {
+        "injected": "u",
+        "state": "FAILED",
+        "ok": true
+      },
+      "state_png_sha256": "9a789341f6e2b09a64726ab3ce9c136637c3499433046efcdd139ced51145c7c"
+    },
+    {
+      "index": 7,
+      "round": 2,
+      "time": "2026-10-31T00:21:24.931+08:00",
+      "injected": [
+        "3",
+        "0"
+      ],
+      "expected_state": "IDLE",
+      "actual_state": "IDLE",
+      "frame": 0,
+      "frame_expected": [
+        0,
+        1
+      ],
+      "state_ok": true,
+      "frame_ok": true,
+      "frame_strict": true,
+      "cards": 0,
+      "cards_ok": true,
+      "status_line": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+      "cards_line": null,
+      "bin": null,
+      "png": null,
+      "crc32": null,
+      "png_sha256": null,
+      "layout_ok": null,
+      "layout": null,
+      "state_png_sha256": "4cd1ba7ab12bb6e584baa51b8baa6fea0633c7f631893d5bfd60a327f975e040"
+    },
+    {
+      "index": 8,
+      "round": 2,
+      "time": "2026-10-31T00:21:25.411+08:00",
+      "injected": [
+        "1"
+      ],
+      "expected_state": "WORKING",
+      "actual_state": "WORKING",
+      "frame": 4,
+      "frame_expected": [
+        4
+      ],
+      "state_ok": true,
+      "frame_ok": true,
+      "frame_strict": true,
+      "cards": 0,
+      "cards_ok": true,
+      "status_line": "STATUS state=WORKING frame=4 cards=0 fps=8 heap=8449336",
+      "cards_line": null,
+      "bin": null,
+      "png": null,
+      "crc32": null,
+      "png_sha256": null,
+      "layout_ok": null,
+      "layout": null,
+      "state_png_sha256": "c568ca052a0cb0e33774b00ac521f641edfb4170ddf8cca3be5475306f1ede23"
+    },
+    {
+      "index": 9,
+      "round": 2,
+      "time": "2026-10-31T00:21:25.891+08:00",
+      "injected": [
+        "2"
+      ],
+      "expected_state": "INPUT_REQUIRED",
+      "actual_state": "INPUT_REQUIRED",
+      "frame": 5,
+      "frame_expected": [
+        5
+      ],
+      "state_ok": true,
+      "frame_ok": true,
+      "frame_strict": true,
+      "cards": 0,
+      "cards_ok": true,
+      "status_line": "STATUS state=INPUT_REQUIRED frame=5 cards=0 fps=8 heap=8449336",
+      "cards_line": null,
+      "bin": null,
+      "png": null,
+      "crc32": null,
+      "png_sha256": null,
+      "layout_ok": null,
+      "layout": null,
+      "state_png_sha256": "dadeadbe3e7869e405e434e0cd063e79e9dbffff8c26458ea165e3f947b9d6b5"
+    },
+    {
+      "index": 10,
+      "round": 2,
+      "time": "2026-10-31T00:21:26.371+08:00",
+      "injected": [
+        "3"
+      ],
+      "expected_state": "DONE",
+      "actual_state": "DONE",
+      "frame": 2,
+      "frame_expected": [
+        2
+      ],
+      "state_ok": true,
+      "frame_ok": true,
+      "frame_strict": true,
+      "cards": 0,
+      "cards_ok": true,
+      "status_line": "STATUS state=DONE frame=2 cards=0 fps=8 heap=8449336",
+      "cards_line": null,
+      "bin": null,
+      "png": null,
+      "crc32": null,
+      "png_sha256": null,
+      "layout_ok": null,
+      "layout": null,
+      "state_png_sha256": "1a5ffe6bdfeff88192469f4e23a92e7ddc2fb19612e65c521ba5954594f63f12"
+    },
+    {
+      "index": 11,
+      "round": 2,
+      "time": "2026-10-31T00:21:26.851+08:00",
+      "injected": [
+        "4"
+      ],
+      "expected_state": "FAILED",
+      "actual_state": "FAILED",
+      "frame": 3,
+      "frame_expected": [
+        3
+      ],
+      "state_ok": true,
+      "frame_ok": true,
+      "frame_strict": true,
+      "cards": 0,
+      "cards_ok": true,
+      "status_line": "STATUS state=FAILED frame=3 cards=0 fps=8 heap=8449336",
+      "cards_line": null,
+      "bin": null,
+      "png": null,
+      "crc32": null,
+      "png_sha256": null,
+      "layout_ok": null,
+      "layout": null,
+      "state_png_sha256": "002aa0969ca5c2d1231e165ce0ac38dde276ab52452b24535ded86681af8df61"
+    },
+    {
+      "index": 12,
+      "round": 2,
+      "time": "2026-10-31T00:21:27.231+08:00",
+      "injected": [
+        "5"
+      ],
+      "expected_state": "OFFLINE",
+      "actual_state": "OFFLINE",
+      "frame": 1,
+      "frame_expected": [
+        1
+      ],
+      "state_ok": true,
+      "frame_ok": true,
+      "frame_strict": true,
+      "cards": 0,
+      "cards_ok": true,
+      "status_line": "STATUS state=OFFLINE frame=1 cards=0 fps=8 heap=8449336",
+      "cards_line": null,
+      "bin": null,
+      "png": null,
+      "crc32": null,
+      "png_sha256": null,
+      "layout_ok": null,
+      "layout": null,
+      "recovery": {
+        "injected": "u",
+        "state": "FAILED",
+        "ok": true
+      },
+      "state_png_sha256": "9a789341f6e2b09a64726ab3ce9c136637c3499433046efcdd139ced51145c7c"
+    },
+    {
+      "index": 13,
+      "round": 3,
+      "time": "2026-10-31T00:21:28.291+08:00",
+      "injected": [
+        "3",
+        "0"
+      ],
+      "expected_state": "IDLE",
+      "actual_state": "IDLE",
+      "frame": 0,
+      "frame_expected": [
+        0,
+        1
+      ],
+      "state_ok": true,
+      "frame_ok": true,
+      "frame_strict": true,
+      "cards": 0,
+      "cards_ok": true,
+      "status_line": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+      "cards_line": null,
+      "bin": null,
+      "png": null,
+      "crc32": null,
+      "png_sha256": null,
+      "layout_ok": null,
+      "layout": null,
+      "state_png_sha256": "4cd1ba7ab12bb6e584baa51b8baa6fea0633c7f631893d5bfd60a327f975e040"
+    },
+    {
+      "index": 14,
+      "round": 3,
+      "time": "2026-10-31T00:21:28.771+08:00",
+      "injected": [
+        "1"
+      ],
+      "expected_state": "WORKING",
+      "actual_state": "WORKING",
+      "frame": 4,
+      "frame_expected": [
+        4
+      ],
+      "state_ok": true,
+      "frame_ok": true,
+      "frame_strict": true,
+      "cards": 0,
+      "cards_ok": true,
+      "status_line": "STATUS state=WORKING frame=4 cards=0 fps=8 heap=8449336",
+      "cards_line": null,
+      "bin": null,
+      "png": null,
+      "crc32": null,
+      "png_sha256": null,
+      "layout_ok": null,
+      "layout": null,
+      "state_png_sha256": "c568ca052a0cb0e33774b00ac521f641edfb4170ddf8cca3be5475306f1ede23"
+    },
+    {
+      "index": 15,
+      "round": 3,
+      "time": "2026-10-31T00:21:29.251+08:00",
+      "injected": [
+        "2"
+      ],
+      "expected_state": "INPUT_REQUIRED",
+      "actual_state": "INPUT_REQUIRED",
+      "frame": 5,
+      "frame_expected": [
+        5
+      ],
+      "state_ok": true,
+      "frame_ok": true,
+      "frame_strict": true,
+      "cards": 0,
+      "cards_ok": true,
+      "status_line": "STATUS state=INPUT_REQUIRED frame=5 cards=0 fps=8 heap=8449336",
+      "cards_line": null,
+      "bin": null,
+      "png": null,
+      "crc32": null,
+      "png_sha256": null,
+      "layout_ok": null,
+      "layout": null,
+      "state_png_sha256": "dadeadbe3e7869e405e434e0cd063e79e9dbffff8c26458ea165e3f947b9d6b5"
+    },
+    {
+      "index": 16,
+      "round": 3,
+      "time": "2026-10-31T00:21:31.171+08:00",
+      "injected": [
+        "1",
+        "0"
+      ],
+      "expected_state": "DONE",
+      "actual_state": "DONE",
+      "frame": 2,
+      "frame_expected": [
+        2
+      ],
+      "state_ok": true,
+      "frame_ok": true,
+      "frame_strict": true,
+      "cards": 0,
+      "cards_ok": true,
+      "status_line": "STATUS state=DONE frame=2 cards=0 fps=8 heap=8449336",
+      "cards_line": null,
+      "bin": null,
+      "png": null,
+      "crc32": null,
+      "png_sha256": null,
+      "layout_ok": null,
+      "layout": null,
+      "state_png_sha256": "1a5ffe6bdfeff88192469f4e23a92e7ddc2fb19612e65c521ba5954594f63f12"
+    },
+    {
+      "index": 17,
+      "round": 3,
+      "time": "2026-10-31T00:21:31.651+08:00",
+      "injected": [
+        "4"
+      ],
+      "expected_state": "FAILED",
+      "actual_state": "FAILED",
+      "frame": 3,
+      "frame_expected": [
+        3
+      ],
+      "state_ok": true,
+      "frame_ok": true,
+      "frame_strict": true,
+      "cards": 0,
+      "cards_ok": true,
+      "status_line": "STATUS state=FAILED frame=3 cards=0 fps=8 heap=8449336",
+      "cards_line": null,
+      "bin": null,
+      "png": null,
+      "crc32": null,
+      "png_sha256": null,
+      "layout_ok": null,
+      "layout": null,
+      "state_png_sha256": "002aa0969ca5c2d1231e165ce0ac38dde276ab52452b24535ded86681af8df61"
+    },
+    {
+      "index": 18,
+      "round": 3,
+      "time": "2026-10-31T00:21:32.031+08:00",
+      "injected": [
+        "5"
+      ],
+      "expected_state": "OFFLINE",
+      "actual_state": "OFFLINE",
+      "frame": 1,
+      "frame_expected": [
+        1
+      ],
+      "state_ok": true,
+      "frame_ok": true,
+      "frame_strict": true,
+      "cards": 0,
+      "cards_ok": true,
+      "status_line": "STATUS state=OFFLINE frame=1 cards=0 fps=8 heap=8449336",
+      "cards_line": null,
+      "bin": null,
+      "png": null,
+      "crc32": null,
+      "png_sha256": null,
+      "layout_ok": null,
+      "layout": null,
+      "recovery": {
+        "injected": "u",
+        "state": "FAILED",
+        "ok": true
+      },
+      "state_png_sha256": "9a789341f6e2b09a64726ab3ce9c136637c3499433046efcdd139ced51145c7c"
+    },
+    {
+      "index": 19,
+      "round": 4,
+      "time": "2026-10-31T00:21:33.091+08:00",
+      "injected": [
+        "3",
+        "0"
+      ],
+      "expected_state": "IDLE",
+      "actual_state": "IDLE",
+      "frame": 0,
+      "frame_expected": [
+        0,
+        1
+      ],
+      "state_ok": true,
+      "frame_ok": true,
+      "frame_strict": true,
+      "cards": 0,
+      "cards_ok": true,
+      "status_line": "STATUS state=IDLE frame=0 cards=0 fps=8 heap=8449336",
+      "cards_line": null,
+      "bin": null,
+      "png": null,
+      "crc32": null,
+      "png_sha256": null,
+      "layout_ok": null,
+      "layout": null,
+      "state_png_sha256": "4cd1ba7ab12bb6e584baa51b8baa6fea0633c7f631893d5bfd60a327f975e040"
+    },
+    {
+      "index": 20,
+      "round": 4,
+      "time": "2026-10-31T00:21:33.571+08:00",
+      "injected": [
+        "1"
+      ],
+      "expected_state": "WORKING",
+      "actual_state": "WORKING",
+      "frame": 4,
+      "frame_expected": [
+        4
+      ],
+      "state_ok": true,
+      "frame_ok": true,
+      "frame_strict": true,
+      "cards": 0,
+      "cards_ok": true,
+      "status_line": "STATUS state=WORKING frame=4 cards=0 fps=8 heap=8449336",
+      "cards_line": null,
+      "bin": null,
+      "png": null,
+      "crc32": null,
+      "png_sha256": null,
+      "layout_ok": null,
+      "layout": null,
+      "state_png_sha256": "c568ca052a0cb0e33774b00ac521f641edfb4170ddf8cca3be5475306f1ede23"
+    },
+    {
+      "index": 21,
+      "round": 4,
+      "time": "2026-10-31T00:21:34.051+08:00",
+      "injected": [
+        "2"
+      ],
+      "expected_state": "INPUT_REQUIRED",
+      "actual_state": "INPUT_REQUIRED",
+      "frame": 5,
+      "frame_expected": [
+        5
+      ],
+      "state_ok": true,
+      "frame_ok": true,
+      "frame_strict": true,
+      "cards": 0,
+      "cards_ok": true,
+      "status_line": "STATUS state=INPUT_REQUIRED frame=5 cards=0 fps=8 heap=8449336",
+      "cards_line": null,
+      "bin": null,
+      "png": null,
+      "crc32": null,
+      "png_sha256": null,
+      "layout_ok": null,
+      "layout": null,
+      "state_png_sha256": "dadeadbe3e7869e405e434e0cd063e79e9dbffff8c26458ea165e3f947b9d6b5"
+    },
+    {
+      "index": 22,
+      "round": 4,
+      "time": "2026-10-31T00:21:34.531+08:00",
+      "injected": [
+        "3"
+      ],
+      "expected_state": "DONE",
+      "actual_state": "DONE",
+      "frame": 2,
+      "frame_expected": [
+        2
+      ],
+      "state_ok": true,
+      "frame_ok": true,
+      "frame_strict": true,
+      "cards": 0,
+      "cards_ok": true,
+      "status_line": "STATUS state=DONE frame=2 cards=0 fps=8 heap=8449336",
+      "cards_line": null,
+      "bin": null,
+      "png": null,
+      "crc32": null,
+      "png_sha256": null,
+      "layout_ok": null,
+      "layout": null,
+      "state_png_sha256": "1a5ffe6bdfeff88192469f4e23a92e7ddc2fb19612e65c521ba5954594f63f12"
+    },
+    {
+      "index": 23,
+      "round": 4,
+      "time": "2026-10-31T00:21:35.011+08:00",
+      "injected": [
+        "4"
+      ],
+      "expected_state": "FAILED",
+      "actual_state": "FAILED",
+      "frame": 3,
+      "frame_expected": [
+        3
+      ],
+      "state_ok": true,
+      "frame_ok": true,
+      "frame_strict": true,
+      "cards": 0,
+      "cards_ok": true,
+      "status_line": "STATUS state=FAILED frame=3 cards=0 fps=8 heap=8449336",
+      "cards_line": null,
+      "bin": null,
+      "png": null,
+      "crc32": null,
+      "png_sha256": null,
+      "layout_ok": null,
+      "layout": null,
+      "state_png_sha256": "002aa0969ca5c2d1231e165ce0ac38dde276ab52452b24535ded86681af8df61"
+    },
+    {
+      "index": 24,
+      "round": 4,
+      "time": "2026-10-31T00:21:35.391+08:00",
+      "injected": [
+        "5"
+      ],
+      "expected_state": "OFFLINE",
+      "actual_state": "OFFLINE",
+      "frame": 1,
+      "frame_expected": [
+        1
+      ],
+      "state_ok": true,
+      "frame_ok": true,
+      "frame_strict": true,
+      "cards": 0,
+      "cards_ok": true,
+      "status_line": "STATUS state=OFFLINE frame=1 cards=0 fps=8 heap=8449336",
+      "cards_line": null,
+      "bin": null,
+      "png": null,
+      "crc32": null,
+      "png_sha256": null,
+      "layout_ok": null,
+      "layout": null,
+      "recovery": {
+        "injected": "u",
+        "state": "FAILED",
+        "ok": true
+      },
+      "state_png_sha256": "9a789341f6e2b09a64726ab3ce9c136637c3499433046efcdd139ced51145c7c"
+    }
+  ],
+  "frames": {
+    "IDLE": {
+      "bin": "g1_obs01_idle.bin",
+      "png": "g1_obs01_idle.png",
+      "crc32": "a9f7eb93",
+      "frame_sha256": "b117f682b6f0ee61a369ba4d6404d71256a0e1b63438fd987031269324dd4116",
+      "png_sha256": "4cd1ba7ab12bb6e584baa51b8baa6fea0633c7f631893d5bfd60a327f975e040",
+      "layout_ok": true,
+      "layout_failed": []
+    },
+    "WORKING": {
+      "bin": "g1_obs02_working.bin",
+      "png": "g1_obs02_working.png",
+      "crc32": "24ee1ef9",
+      "frame_sha256": "055bf51bcc9d0d94423588f5515112286a72a6a675dbc4a60ef04597a35d5508",
+      "png_sha256": "c568ca052a0cb0e33774b00ac521f641edfb4170ddf8cca3be5475306f1ede23",
+      "layout_ok": true,
+      "layout_failed": []
+    },
+    "INPUT_REQUIRED": {
+      "bin": "g1_obs03_input_required.bin",
+      "png": "g1_obs03_input_required.png",
+      "crc32": "268307fb",
+      "frame_sha256": "412f18ebe07b1b13e53080a078a6d85437fd2d14046935615dbe511f53b0147c",
+      "png_sha256": "dadeadbe3e7869e405e434e0cd063e79e9dbffff8c26458ea165e3f947b9d6b5",
+      "layout_ok": true,
+      "layout_failed": []
+    },
+    "DONE": {
+      "bin": "g1_obs04_done.bin",
+      "png": "g1_obs04_done.png",
+      "crc32": "b0ab754d",
+      "frame_sha256": "0cfb30c5cbc085e37d10b0ff78a8b0430ae6a0b4df5754f9cc77892efc7dffe7",
+      "png_sha256": "1a5ffe6bdfeff88192469f4e23a92e7ddc2fb19612e65c521ba5954594f63f12",
+      "layout_ok": true,
+      "layout_failed": []
+    },
+    "FAILED": {
+      "bin": "g1_obs05_failed.bin",
+      "png": "g1_obs05_failed.png",
+      "crc32": "1a193be3",
+      "frame_sha256": "261441057b8daa0a72da8e50cf2e8615ff5c7ff6634d305ad0f1a468ebc4a47a",
+      "png_sha256": "002aa0969ca5c2d1231e165ce0ac38dde276ab52452b24535ded86681af8df61",
+      "layout_ok": true,
+      "layout_failed": []
+    },
+    "OFFLINE": {
+      "bin": "g1_obs06_offline.bin",
+      "png": "g1_obs06_offline.png",
+      "crc32": "a547ce94",
+      "frame_sha256": "e2975de053c4fd9b9be0dd437437d90b40da892e6e6161d07e6bfb66f9027e73",
+      "png_sha256": "9a789341f6e2b09a64726ab3ce9c136637c3499433046efcdd139ced51145c7c",
+      "layout_ok": true,
+      "layout_failed": []
+    }
+  },
+  "preflight": {
+    "clear_cards": {
+      "state": "IDLE",
+      "cards": 0,
+      "ok": true
+    },
+    "link_down": {
+      "injected": "5",
+      "state": "OFFLINE",
+      "ok": true
+    },
+    "link_up": {
+      "injected": "u",
+      "state": "IDLE",
+      "ok": true
+    },
+    "ok": true,
+    "final_link_up": {
+      "injected": "u",
+      "state": "FAILED",
+      "ok": true
+    }
+  },
+  "summary": {
+    "observations": 24,
+    "recorded_observations": 24,
+    "passed_observations": 24,
+    "failed_observations": 0,
+    "state_counts": {
+      "IDLE": 4,
+      "WORKING": 4,
+      "INPUT_REQUIRED": 4,
+      "DONE": 4,
+      "FAILED": 4,
+      "OFFLINE": 4
+    },
+    "state_pass": {
+      "IDLE": 4,
+      "WORKING": 4,
+      "INPUT_REQUIRED": 4,
+      "DONE": 4,
+      "FAILED": 4,
+      "OFFLINE": 4
+    },
+    "layout_total": 6,
+    "layout_pass": 6,
+    "layout_fail": 0,
+    "hashes_distinct": true,
+    "png_sha256": {
+      "IDLE": "4cd1ba7ab12bb6e584baa51b8baa6fea0633c7f631893d5bfd60a327f975e040",
+      "WORKING": "c568ca052a0cb0e33774b00ac521f641edfb4170ddf8cca3be5475306f1ede23",
+      "INPUT_REQUIRED": "dadeadbe3e7869e405e434e0cd063e79e9dbffff8c26458ea165e3f947b9d6b5",
+      "DONE": "1a5ffe6bdfeff88192469f4e23a92e7ddc2fb19612e65c521ba5954594f63f12",
+      "FAILED": "002aa0969ca5c2d1231e165ce0ac38dde276ab52452b24535ded86681af8df61",
+      "OFFLINE": "9a789341f6e2b09a64726ab3ce9c136637c3499433046efcdd139ced51145c7c"
+    }
+  },
+  "result": "PASS",
+  "error": null
+}

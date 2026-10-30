@@ -90,3 +90,15 @@ firmware/README-M1.md               本文件
 ```
 
 `sdkconfig.defaults` 要点：esp32s3 / 16MB flash / `SPIRAM=y` + `MODE_OCT` + `SPEED_80M` / `ESP_CONSOLE_USB_SERIAL_JTAG` / 自定义分区表 / `LOG_DEFAULT_LEVEL_INFO` / `MAIN_TASK_STACK_SIZE=8192` / CPU 240 MHz。无 WiFi/BLE 组件被引入。
+
+## 8. 勘误（2026-10-31，接手会话核对）
+
+原文与本仓库实际内容不一致，以下以仓库实际为准：
+
+| 原文声称 | 实际 |
+| --- | --- |
+| `firmware/CMakeLists.txt`（canonical 入口） | **不存在**；只有仓库根 `CMakeLists.txt` 入口 shim（`EXTRA_COMPONENT_DIRS` 指向 `firmware/`） |
+| host 端 BMP 预览（M1 交付第 4 项） | **不存在**；M2 改为"真机帧缓冲导出 → PNG + 像素断言"（`tools/host/`，见 `docs/08-m2-development.md` §4） |
+| `pet_state.c` 已从上游复制 | M1 时**不存在**；M2 才新增（`pet_state.c`，派生自上游，见 `NOTICE.md`） |
+| 构建需在 WSL 原生盘 | 本机另有 Windows 原生 IDF v5.5.4（`D:\Espressif`），`idf.py build/flash` 已验证可用（`E15`）；WSL 非唯一路径 |
+| M1 状态 "构建通过；未刷机" | 后续会话已完成真机刷写与目视（`E12`–`E14`），本文件第 3 节保留为历史步骤 |

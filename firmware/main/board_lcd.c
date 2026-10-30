@@ -203,9 +203,11 @@ esp_err_t board_lcd_present(const uint16_t *framebuffer)
         ESP_LOGE(TAG, "esp_lcd_panel_draw_bitmap failed: %s", esp_err_to_name(err));
         return err;
     }
-    /* 队深 10 + max_transfer=28800 → 一整帧会被拆成 4 个 chunk，
-     * 每个 chunk 完成各 give 一次。M1 只送一帧、不复用缓冲，故这里只等首个
-     * chunk；M2 起若复用缓冲，必须改为等待全部 chunk（见 README-M1 §6）。 */
+    /* 队深 10 + max_transfer=28800 → 一整帧被拆成 4 个 chunk（CS 保持）。
+     * esp_lcd_panel_io_spi.c 只在**最后一个** chunk 上置 en_trans_done_cb
+     * （IDF v5.5.4 源码 371-378 行），因此这里等到的一次完成 = 整帧完成。
+     * M2 起每帧复用同一 fb，依赖此语义；D-02 的"只等首个 chunk"结论已更正
+     * （见 docs/08-m2-development.md §6 C5）。 */
     if (xSemaphoreTake(s_color_done, pdMS_TO_TICKS(2000)) != pdTRUE) {
         ESP_LOGE(TAG, "color transfer timeout");
         return ESP_ERR_TIMEOUT;

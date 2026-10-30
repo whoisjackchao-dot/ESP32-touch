@@ -1,16 +1,21 @@
 # pet_ui NOTICE —— 来源与许可
 
 代码复制自上游 **ESP32-buddy**（MIT，`LICENSE © 2026 whoisjackchao-dot`），
-路径 `/home/home/ESP32-buddy/firmware/components/pet/`，**逐字节未改动**
-（md5 已核对）。本项目对其派生使用已获 `Q02=A` 批准（2026-10-30）。
+路径 `/home/home/ESP32-buddy/firmware/components/pet/`；**逐字节复制**的文件见下表。
+本项目对其派生使用已获 `Q02=A` 批准（2026-10-30）。
 
-| 本目录文件 | 上游来源 | 许可 |
-| --- | --- | --- |
-| `pet_render.c`、`pet_text.c` | `components/pet/pet_render.c`、`pet_text.c` | MIT |
-| `include/pet_render.h`、`pet_text.h`、`pet_types.h`、`pet_menu.h`、`pet_pomo.h`、`pet_button.h` | `components/pet/include/` 同名文件 | MIT |
-| `font8x8_basic.h` | `components/pet/font8x8_basic.h` | Public Domain（Daniel Hepper / Marcel Sondaar / IBM VGA） |
-| `assets/robot.look` | `components/pet/assets/robot.look` | MIT（上游原创程序化生成素材） |
-| `assets/cjk16.h` | `components/pet/assets/cjk16.h` | OFL 1.1（由 Noto Sans SC 光栅化生成） |
+| 本目录文件 | 上游来源 | 许可 | 备注 |
+| --- | --- | --- | --- |
+| `pet_render.c`、`pet_text.c` | `components/pet/pet_render.c`、`pet_text.c` | MIT | 逐字节 |
+| `pet_state.c` | `components/pet/pet_state.c`（行为规格） | MIT | **派生**：按 `C03 §3` 改卡栈语义（同名=title 且 project；空 title 仍入栈）；D-05 标记点阵修正见 `pet_ui_240.c` |
+| `pet_ui_240.c` | 无（本项目新实现） | MIT | 240×240 版式，契约 `C03`（含 §7 修订）、`docs/08-m2-development.md` |
+| `include/pet_render.h`、`pet_text.h`、`pet_menu.h`、`pet_pomo.h`、`pet_button.h` | `components/pet/include/` 同名文件 | MIT | 逐字节 |
+| `include/pet_types.h` | `components/pet/include/pet_types.h` | MIT | **派生**：`pet_card_t` 增 `agent[PET_AGENT_MAX]`（`C03 §7 R2`），其余字段不变 |
+| `include/pet_state.h` | `components/pet/include/pet_state.h` | MIT | **派生**：`pet_event_t` 增 `agent`；注释按本项目契约 |
+| `include/pet_ui_240.h` | 无（本项目新增） | MIT | |
+| `font8x8_basic.h` | `components/pet/font8x8_basic.h` | Public Domain（Daniel Hepper / Marcel Sondar / IBM VGA） | |
+| `assets/robot.look` | `components/pet/assets/robot.look` | MIT（上游原创程序化生成素材） | |
+| `assets/cjk16.h` | `components/pet/assets/cjk16.h` | OFL 1.1（由 Noto Sans SC 光栅化生成） | M2 起被卡片标题 16×16 真正使用 |
 
 ## 范围说明
 
