@@ -184,7 +184,7 @@ static void handle_cmd(struct pet_state *st, uint8_t cmd, uint32_t now)
 static void console_task(void *arg)
 {
     (void)arg;
-    const usb_serial_jtag_driver_config_t cfg = {
+    usb_serial_jtag_driver_config_t cfg = {
         .rx_buffer_size = 1024,
         .tx_buffer_size = 4096,
     };
