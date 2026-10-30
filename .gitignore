@@ -1,0 +1,21 @@
+# ESP-IDF build artifacts
+build/
+sdkconfig
+sdkconfig.old
+*.bin
+*.elf
+*.map
+managed_components/
+dependencies.lock
+
+# Root CMake shim generates this derived copy of firmware/partitions.csv
+/partitions.csv
+
+# Local factory-firmware backup (16 MB) — not redistributed
+artifacts/
+
+# Editor / OS
+.DS_Store
+__pycache__/
+*.pyc
+.vscode/

@@ -1,0 +1,27 @@
+# M1 最小配置（docs/contracts/C06、05-plan M1）：esp32s3 + 16MB flash + 8MB octal PSRAM。
+# 无 WiFi/BLE——本工程没有引入会拉起它们的组件。
+CONFIG_IDF_TARGET="esp32s3"
+
+# 16 MB Flash（E06 实物核对）
+CONFIG_ESPTOOLPY_FLASHSIZE_16MB=y
+
+# 8 MB Octal PSRAM @80 MHz（出厂固件已实测，E07）
+CONFIG_SPIRAM=y
+CONFIG_SPIRAM_MODE_OCT=y
+CONFIG_SPIRAM_SPEED_80M=y
+
+# 控制台走 USB-Serial-JTAG（与烧录同口 COM7）
+CONFIG_ESP_CONSOLE_USB_SERIAL_JTAG=y
+
+# 自定义分区表（C06 冻结表，见 partitions.csv）
+CONFIG_PARTITION_TABLE_CUSTOM=y
+CONFIG_PARTITION_TABLE_CUSTOM_FILENAME="partitions.csv"
+
+# 日志 INFO：M1 要靠串口日志确认启动阶段
+CONFIG_LOG_DEFAULT_LEVEL_INFO=y
+
+# 主任务栈 8192（渲染一帧 + 日志留余量）
+CONFIG_ESP_MAIN_TASK_STACK_SIZE=8192
+
+# CPU 240 MHz
+CONFIG_ESP_DEFAULT_CPU_FREQ_MHZ_240=y
