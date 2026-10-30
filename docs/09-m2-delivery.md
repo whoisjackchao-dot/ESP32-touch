@@ -29,6 +29,9 @@ idf.py -B D:\DSH\esp-build\buddy154 -DIDF_TARGET=esp32s3 build
 
 预期：`buddy154.bin binary size 0x84fd0`（544,720 B，factory 83% free），无 warning/error（`E16`）。
 
+**新 clone 可复现**（`E21`，提交 `24876dd`）：`git clone` → `idf.py -B <新目录> build` → 无 warning，
+产物同样 `0x84fd0`；clone 内 `tests/run_tests.ps1` 亦 PASS。二进制 sha256 因构建时间戳不同而不同，属正常。
+
 ### host 单测（不需要设备）
 
 ```powershell

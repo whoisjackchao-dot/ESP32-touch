@@ -312,3 +312,24 @@ blink_ok: True
 - IDLE 眨眼由 `pet_state` 相位驱动，观测到 `frame=1`（EYES_CLOSED）与 `frame=0` 交替（`M2 §9.2` 提案节拍 1000/125 ms）。
 **证据文件**：`tools/host/evidence/mem01.json`、`mem01_summary.md`。
 **不能证明**：`G16` 的 2 小时插入稳定性/电池 1 小时（未跑）；堆碎片与峰值；`FRM-01` 撕裂（无摄像头）。
+
+## E21：新 clone 可复现构建 + 0 warning 收口（2026-10-31）
+
+**方法**：从仓库最终提交 `24876dd` 新 clone 到 `D:\DSH\esp-build\verify-clone2`，用独立的
+`-B D:\DSH\esp-build\verify-build2` 构建，并在 clone 内跑 host 单测。
+
+```text
+git clone D:\DSH\ESP32-touch D:\DSH\esp-build\verify-clone2
+idf.py -B D:\DSH\esp-build\verify-build2 -DIDF_TARGET=esp32s3 build
+buddy154.bin binary size 0x84fd0 bytes. Smallest app partition is 0x300000 bytes. 0x27b030 bytes (83%) free.
+Project build complete.
+=== host tests === RESULT: PASS (all host tests green)
+```
+
+**观察**：无 warning/error；产物大小与本机构建一致（0x84fd0）。二进制 sha256 不同属正常
+（app descriptor 含构建时间戳），故以"大小 + 构建成功 + 单测通过"为可复现判据。
+**前序发现**：首次 clone 构建（`4d5584e`）暴露一个只在**全量编译**出现的
+`-Wdiscarded-qualifiers`（`usb_serial_jtag_driver_install` 参数非 const）；已修（`24876dd`），
+增量构建曾掩盖该 warning——记录为流程教训：收口必须做一次新 clone 全量构建。
+**可得结论**：`G17` 的"新机器 clone → idf.py build 成功、无手工修补"在本机环境成立
+（同一 IDF v5.5.4 / 同机，未跨机器验证）。**不能证明**：跨机器/跨 IDF 小版本可复现。

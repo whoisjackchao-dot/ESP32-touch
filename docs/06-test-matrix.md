@@ -39,6 +39,7 @@
 | `FRM-01` | `R11` | 8 fps 连续渲染无撕裂/闪烁 | H | **PARTIAL** | `E17` 日志 `fps=8`；撕裂/闪烁需人眼，未测 |
 | `MEM-01` | `R26` | 循环 10 分钟无内存持续下降 | H | **PASS** | `E19`（10 min，堆无下降趋势） |
 | `BLD-03` | `G17` | M2 源码全量构建 exit 0、无 warning | T | **PASS** | `E16`（app 544,720 B，83% free） |
+| `BLD-04` | `G17` | **新 clone** → `idf.py build` 成功、无 warning、clone 内 host 单测 PASS | T | **PASS** | `E21`（提交 `24876dd`） |
 
 ## 3. 后置（v1 不做，保留编号）
 
