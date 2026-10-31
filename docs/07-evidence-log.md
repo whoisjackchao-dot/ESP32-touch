@@ -755,3 +755,33 @@ RESULT PASS
 - **未捕获任何长按事件**（mute / menu / PWR 日志均为 0）→ 判断为采集窗口内**用户不在设备旁未按键**，
   非设备/固件失败（合成长按已由 `G6` 覆盖 20/20）。
 **结论**：`KEY-02`（长按）/`KEY-05`（PWR 长按）真机 H **仍 PENDING**；等用户在设备旁时再跑（10 分钟窗口脚本已就绪）。
+
+## E43：KEY-02/05 长按真机 H（2026-10-31，用户在场）
+
+**方法**：`key_long_h.py` 接管串口（600 s 窗口）；用户长按 BOOT×3、PLUS×3、PWR×1。
+**采集（`key_long_h_summary.md`）**：
+
+```text
+mute_toggle=3   (mute 1→0→1，t=19.6/24.0/28.0 s；KEY1 长按 3/3)
+mode=2          (POMO/DUTY，用户短按穿插，非长按判定项)
+menu_open=2 / menu_closed=1  (t=36.5 open / 38.4 closed / 41.4 open；KEY2 长按 3/3 开/关/开)
+pwr_long_off=1  (t=47.9，"PWR long: power off (backlight off, GPIO2 low)"；KEY5 长按 1/1)
+```
+
+**结论（H）**：`KEY-02` 长按 **PASS**（静音翻转 3/3、菜单开/关 3/3）；`KEY-05` PWR 长按 **PASS**
+（进入关机流程 1/1；短按无应用动作见 `E35`）。`Q11` 缩减样本口径（每项 3 次）已在该范围内达标。
+
+**硬件事实（重要）**：本板 **没有独立 RST 复位键**。PWR 长按进入关机后，USB 供电下表现为**黑屏不恢复**；
+恢复方式：**拔插 USB** 或串口硬复位（esptool `--after hard_reset` / DTR-RTS 复位）。
+本次由 Lead 通过 `esptool chip_id --after hard_reset` 恢复；复位后设备正常启动（`STATUS WORKING`、插件卡片
+`CARDS DSH`），插件自动重连。
+
+## E44：M4.1 后全新 clone 构建验证（2026-10-31）
+
+```text
+git clone --depth 1 https://github.com/whoisjackchao-dot/ESP32-touch D:\DSH\esp-build\clone-m4-verify
+idf.py -B .\build -DIDF_TARGET=esp32s3 build
+-> buddy154.bin binary size 0xc46c0 bytes (804,544 B). 74% free. 0 warning
+-> CLONE BUILD OK
+```
+证据：`D:\DSH\esp-build\clone-m4-build.log`。结论：干净 clone 可复现构建（M4.1 含 ES8311 组件/语音资产/静音图标）。
