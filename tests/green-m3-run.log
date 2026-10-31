@@ -1,0 +1,31 @@
+[MODE] GREEN: firmware/components/pet_ui
+[CC] test_m3_logic.c + button/keymap/menu/pomo
+[CC] test_m3_ui.c + ui_pomo_240/ui_menu_240 + pet_render.c + pet_text.c
+=== RUN test_m3_logic.exe ===
+PASS BTN-01-press-short-release (9 asserts)
+PASS BTN-02-long-once (6 asserts)
+PASS BTN-03-queue-fifo (11 asserts)
+PASS KEY-03-boundary-595-605 (18 asserts)
+PASS KEYMAP-01..08 (20 asserts)
+PASS MENU-01-cycle (13 asserts)
+PASS MENU-02-exec (10 asserts)
+PASS MENU-03-close-ignore (7 asserts)
+PASS POMO-01-full-transition (48 asserts)
+PASS POMO-02-pause-no-advance (10 asserts)
+PASS POMO-03-stats-alarm (20 asserts)
+PASS POMO-04-long-abort (16 asserts)
+PASS POMO-05-set-durations (15 asserts)
+PASS POMO-06-encode-decode (43 asserts)
+PASS POMO-07-set-day (15 asserts)
+SUMMARY m3_logic: cases=15 passed=15 failed=0
+=== EXIT 0 (test_m3_logic.exe) ===
+=== RUN test_m3_ui.exe ===
+PASS UI-20-pomo-ring-geometry (15 asserts)
+PASS UI-20-pomo-progress-colors (21 asserts)
+PASS UI-20-pomo-title-center-stats (19 asserts)
+PASS UI-21-menu-title (7 asserts)
+PASS UI-21-menu-rows (190 asserts)
+PASS UI-21-menu-content-follows-view (4 asserts)
+SUMMARY m3_ui: cases=6 passed=6 failed=0
+=== EXIT 0 (test_m3_ui.exe) ===
+RESULT: PASS (all M3 host tests green)

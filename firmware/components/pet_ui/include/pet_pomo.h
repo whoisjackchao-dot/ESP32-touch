@@ -38,6 +38,8 @@ typedef struct {
     uint32_t since_ms;      /* 上次推进/相位进入的时刻 */
     uint32_t elapsed_ms;    /* 本段已累计 */
     uint32_t total_ms;      /* 本段总时长 */
+    uint32_t focus_ms;      /* M3 扩展：本段焦点时长，默认 POMO_FOCUS_MS */
+    uint32_t break_ms;      /* M3 扩展：本段休息时长，默认 POMO_BREAK_MS */
     uint32_t done_count;    /* 当日完成专注段数 */
     uint32_t focus_seconds; /* 当日累计专注秒 */
     bool alarm;             /* 待响铃（取走即清） */
@@ -61,6 +63,10 @@ void pet_pomo_tick(pet_pomo_t *p, uint32_t now_ms);
 void pet_pomo_set_day(pet_pomo_t *p, int32_t day);
 void pet_pomo_view_get(const pet_pomo_t *p, pet_pomo_view_t *out);
 bool pet_pomo_take_alarm(pet_pomo_t *p); /* 返回待响铃并清零 */
+
+/* M3 扩展（本项目）：运行期改本段时长，仅用于 G5 演示（默认 25/5 为发布值）。
+ * 只影响**下一段**启动与到点判定；不重置当前段。 */
+void pet_pomo_set_durations(pet_pomo_t *p, uint32_t focus_ms, uint32_t break_ms);
 
 /* ---- M7 增量 2：当日统计持久化编解码（契约 §7.3，host 可测）---- */
 

@@ -1,0 +1,40 @@
+  frame g6_duty                  page=duty layout=PASS
+  frame g6_pomo_idle             page=pomo layout=PASS
+  frame g6_pomo_focus            page=pomo layout=PASS
+  frame g6_pomo_paused           page=pomo layout=PASS
+[01/13] duty_key1_short (20 次)
+        -> 20/20 PASS (OK)
+[02/13] duty_key1_long (20 次)
+        -> 20/20 PASS (OK)
+[03/13] duty_key2_short (20 次)
+        -> 20/20 PASS (OK)
+[04/13] duty_key2_long (20 次)
+        -> 20/20 PASS (OK)
+[05/13] pomo_key1_short (20 次)
+        -> 20/20 PASS (OK)
+[06/13] pomo_key1_long (20 次)
+        -> 20/20 PASS (OK)
+[07/13] pomo_key2_short (20 次)
+        -> 20/20 PASS (OK)
+[08/13] menu_key1_short (20 次)
+  frame g6_menu_sel0             page=menu layout=PASS
+  frame g6_menu_sel1             page=menu layout=PASS
+  frame g6_menu_sel2             page=menu layout=PASS
+  frame g6_menu_sel3             page=menu layout=PASS
+  frame g6_menu_sel4             page=menu layout=PASS
+        -> 20/20 PASS (OK)
+[09/13] menu_key2_long (20 次)
+        -> 20/20 PASS (OK)
+[10/13] menu_exec_mute (20 次)
+        -> 20/20 PASS (OK)
+[11/13] menu_exec_back (20 次)
+        -> 20/20 PASS (OK)
+[12/13] menu_exec_wifi (20 次)
+        -> 20/20 PASS (OK)
+[13/13] menu_exec_bt (20 次)
+        -> 20/20 PASS (OK)
+
+summary: items 13/13 ok, iterations 260/260 PASS, layout 9/9 PASS, mute_persist=True
+evidence: D:\DSH\ESP32-touch\tools\host\evidence\g6.json
+summary : D:\DSH\ESP32-touch\tools\host\evidence\g6_summary.md
+RESULT PASS

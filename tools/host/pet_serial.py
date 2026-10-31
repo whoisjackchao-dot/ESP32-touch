@@ -1,20 +1,36 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""pet_serial.py - ESP32 桌面宠物 M2 调试串口驱动（pyserial 封装，可被其它脚本 import）。
+"""pet_serial.py - ESP32 桌面宠物 M2/M3 调试串口驱动（pyserial 封装，可被其它脚本 import）。
 
-协议见 docs/08-m2-development.md §4（USB-Serial-JTAG，默认 COM7，115200 8N1）：
+协议见 docs/08-m2-development.md §4 + docs/10-m3-development.md §4
+（USB-Serial-JTAG，默认 COM7，115200 8N1）：
 
-  单字符命令 1 2 3 4 0 5 u n c x p d（不需要回车，\\r\\n 忽略）
+  M2 单字符命令 1 2 3 4 0 5 u n c x p d（不需要回车，\\r\\n 忽略）
   p -> STATUS state=<...> frame=<..> cards=<..> fps=<..> heap=<..>
        CARDS <title>|<title>|<title>      （仅 cards>0）
   d -> FBBIN 240 240 115200\\n + 115200 B RGB565-LE + \\nFBEND <crc32-ieee-hex>\\n
 
+  M3 追加命令（docs/10 §4）：
+    K/L/J/H 合成 KEY1 短 / KEY1 长 / KEY2 短 / KEY2 长
+    m       打印一行 MODE 状态（mode/menu/phase/remain_ms/total_ms/done/
+            focus_s/muted/day/has_day）
+    y       模拟跨日（has_day ? set_day(day+1) : set_day(1)），并落盘
+    R       软重启（G5 重启持久化用）；本驱动 `reboot()` 会关端口→重连→等 READY
+    t       临时缩短本段时长（focus 6 s / break 3 s，G5 演示）
+
+  真机 2026-10-31 的 `m` 行比 docs/10 §4 多 4 个字段（Lead 追加，已实测）：
+    ... muted=<0|1> day=<n|-> has_day=<0|1> sel=<0..4> key1=<0|1> key2=<0|1> pwr=<0|1>
+  `sel` 是菜单选中行，key1/key2/pwr 是原始按下状态；`parse_mode_line()` 兼容
+  “有/没有这些字段”两种情况（缺失时对应值为 None）。
+
 CLI::
 
     python pet_serial.py --status
+    python pet_serial.py --mode
     python pet_serial.py --send "1pc"
     python pet_serial.py --dump out.bin
     python pet_serial.py --wait m2:READY --wait-timeout 20
+    python pet_serial.py --reboot --mode
     python pet_serial.py --list-ports
 
 保证：
@@ -58,6 +74,19 @@ STATUS_RE = re.compile(
 FBBIN_RE = re.compile(r"FBBIN\s+(\d+)\s+(\d+)\s+(\d+)")
 FBEND_RE = re.compile(r"FBEND\s+([0-9a-fA-F]{1,8})")
 
+# M3 `m` 行（docs/10 §4）：MODE mode=<DUTY|POMO> menu=<0|1> phase=<...>
+# remain_ms=<n> total_ms=<n> done=<n> focus_s=<n> muted=<0|1> day=<n|-> has_day=<0|1>
+MODE_MARK = "MODE"
+MODE_KEYS = ("mode", "menu", "phase", "remain_ms", "total_ms", "done",
+             "focus_s", "muted", "day", "has_day")
+# M3 真机（2026-10-31 Lead）在 docs/10 §4 之外追加了 sel/key1/key2/pwr 字段；
+# 解析时兼容“有/没有”两种情况：有就填进返回 dict，没有就是 None。
+MODE_OPTIONAL_KEYS = ("sel", "key1", "key2", "pwr")
+MODE_PHASES = ("IDLE", "FOCUS", "FOCUS_PAUSED", "BREAK", "BREAK_PAUSED",
+               "FOCUS_DONE", "BREAK_DONE")
+MODE_MODES = ("DUTY", "POMO")
+_KV_RE = re.compile(r"([A-Za-z_][A-Za-z0-9_]*)=(\S+)")
+
 
 class PetSerialError(RuntimeError):
     """串口/协议错误基类。"""
@@ -94,6 +123,67 @@ def parse_wait_spec(spec):
 def frame_crc32(frame):
     import zlib
     return "%08x" % (zlib.crc32(frame) & 0xFFFFFFFF)
+
+
+def parse_mode_line(line):
+    """解析 M3 的 `MODE ...` 单行；不是 MODE 行返回 None。
+
+    返回 dict（字段名见 ``MODE_KEYS``，数值已转 int；day 为 None 表示 `-`），
+    并带 ``raw``（原始行）与 ``fields``（原始文本值）。字段缺失/非法抛 ValueError。
+    """
+    if not line or MODE_MARK not in line:
+        return None
+    if "mode=" not in line:
+        return None
+    raw = {}
+    for key, val in _KV_RE.findall(line):
+        raw[key] = val
+    missing = [k for k in MODE_KEYS if k not in raw]
+    if missing:
+        raise ValueError("MODE line missing field(s) %s: %r"
+                         % (", ".join(missing), line))
+
+    def _int(name):
+        try:
+            return int(raw[name], 10)
+        except ValueError:
+            raise ValueError("MODE line field %s=%r is not an integer: %r"
+                             % (name, raw[name], line))
+
+    mode = raw["mode"].upper()
+    phase = raw["phase"].upper()
+    if mode not in MODE_MODES:
+        raise ValueError("MODE line mode=%r not in %s: %r"
+                         % (raw["mode"], MODE_MODES, line))
+    if phase not in MODE_PHASES:
+        raise ValueError("MODE line phase=%r not in %s: %r"
+                         % (raw["phase"], MODE_PHASES, line))
+    day_txt = raw["day"].strip()
+    day = None if day_txt in ("-", "", "null") else _int("day")
+    out = {
+        "mode": mode,
+        "menu": _int("menu"),
+        "phase": phase,
+        "remain_ms": _int("remain_ms"),
+        "total_ms": _int("total_ms"),
+        "done": _int("done"),
+        "focus_s": _int("focus_s"),
+        "muted": _int("muted"),
+        "day": day,
+        "has_day": _int("has_day"),
+        "fields": raw,
+        "raw": line,
+    }
+    for key in MODE_OPTIONAL_KEYS:
+        if key in raw:
+            try:
+                out[key] = int(raw[key], 10)
+            except ValueError:
+                raise ValueError("MODE line field %s=%r is not an integer: %r"
+                                 % (key, raw[key], line))
+        else:
+            out[key] = None
+    return out
 
 
 # --------------------------------------------------------------------------
@@ -332,6 +422,105 @@ class PetSerial:
             out["cards_line"] = cards_line
         return out
 
+    # -- M3 mode / pomodoro state ---------------------------------------
+    def mode(self, timeout=None, retries=1):
+        """发 `m`，读回并解析一行 `MODE ...`（docs/10 §4）。失败重试一次。"""
+        last_err = None
+        for attempt in range(retries + 1):
+            try:
+                return self._mode_once(timeout)
+            except (SerialTimeout, PetSerialError, ValueError) as exc:
+                last_err = exc
+                if attempt < retries:
+                    self.flush_input()
+                    time.sleep(0.15)
+        raise SerialTimeout("mode via `m` failed after %d attempt(s): %s"
+                            % (retries + 1, last_err)) from last_err
+
+    def _mode_once(self, timeout=None):
+        self.flush_input()
+        self.send("m")
+        deadline = time.monotonic() + (self.timeout if timeout is None
+                                       else float(timeout))
+        while True:
+            remaining = deadline - time.monotonic()
+            if remaining <= 0:
+                raise SerialTimeout("no MODE line after `m`")
+            candidate = self.read_line(remaining)
+            if candidate is None:
+                raise SerialTimeout("no MODE line after `m`")
+            if MODE_MARK in candidate and "mode=" in candidate:
+                return parse_mode_line(candidate)
+            self._debug(candidate)
+
+    def drain(self, duration=0.3):
+        """读取并返回 `duration` 秒内到达的所有行（用于抓设备日志，如 M5 提示）。"""
+        lines = []
+        deadline = time.monotonic() + float(duration)
+        while True:
+            remaining = deadline - time.monotonic()
+            if remaining <= 0:
+                break
+            line = self.read_line(remaining)
+            if line is None:
+                break
+            lines.append(line)
+        return lines
+
+    # -- M3 soft reboot ---------------------------------------------------
+    def reboot(self, ready_spec="READY", wait_timeout=20.0, settle=0.6,
+               max_open_attempts=40):
+        """发 `R` 软重启 → 关端口 → 重连（带重试）→ 等启动 READY 行。
+
+        设备 `R` 调 `esp_restart()`：USB-Serial/JTAG 会重新枚举，故必须先关掉
+        旧句柄再重开；重开失败按 ``settle`` 间隔重试。返回 dict 证据。
+        """
+        if self._ser is None:
+            raise PetSerialError("serial port is not open")
+        self.flush_input()
+        self.send("R")
+        time.sleep(0.1)          # 让 write 落到设备，随后立即重启
+        self.close()
+        time.sleep(float(settle))
+        last_err = None
+        last_vent = time.monotonic() + float(wait_timeout)
+        attempts = 0
+        while attempts < max_open_attempts and time.monotonic() < last_vent:
+            attempts += 1
+            try:
+                self.open()
+                break
+            except SerialOpenError as exc:
+                last_err = exc
+                time.sleep(0.25)
+        if self._ser is None:
+            raise SerialOpenError(
+                "device did not come back after `R` (%d open attempts): %s"
+                % (attempts, last_err))
+        # 先等启动 READY；若在重连窗口里已经错过（USB 枚举慢），退化为确认 `m` 能应答。
+        ready_line = None
+        ready_caught = True
+        skipped = []
+        try:
+            ready_line, skipped = self.wait_for_line(ready_spec, wait_timeout)
+        except SerialTimeout:
+            ready_caught = False
+            deadline = time.monotonic() + float(wait_timeout)
+            while True:
+                try:
+                    self.mode(timeout=2.0, retries=0)
+                    break
+                except (SerialTimeout, PetSerialError, ValueError) as exc:
+                    if time.monotonic() >= deadline:
+                        raise SerialTimeout(
+                            "device reopened but neither %r nor `m` responded "
+                            "after `R`: %s" % (ready_spec, exc)) from exc
+                    time.sleep(0.3)
+        return {"command": "R", "ready_spec": ready_spec,
+                "ready_line": ready_line, "ready_caught": ready_caught,
+                "skipped": skipped, "open_attempts": attempts,
+                "reopened": True}
+
     # -- frame dump ------------------------------------------------------
     def dump(self, path, timeout=30.0, retries=2):
         """发 `d` 导出当前帧到 path；校验 115200 B + CRC32；失败最多重试 2 次。"""
@@ -482,6 +671,11 @@ def main(argv=None):
                     help="单次等待超时秒数（默认 %(default)s）")
     ap.add_argument("--send", help='发送命令串，如 "1pc"')
     ap.add_argument("--status", action="store_true", help="发 `p` 并解析状态")
+    ap.add_argument("--mode", action="store_true",
+                    help="发 `m` 并解析 M3 MODE 行")
+    ap.add_argument("--reboot", nargs="?", const="READY", metavar="SPEC",
+                    default=None,
+                    help="发 `R` 软重启：重开串口并等 READY 行（默认 SPEC=READY）")
     ap.add_argument("--dump", metavar="FILE.bin",
                     help="发 `d` 导出 115200 B 帧（校验 CRC，失败重试一次）")
     ap.add_argument("--wait", metavar="SPEC",
@@ -516,6 +710,31 @@ def main(argv=None):
             result["wait"] = {"spec": args.wait, "line": line,
                               "skipped": skipped}
             print("WAIT HIT> " + line)
+
+        if args.reboot is not None:
+            rb = dev.reboot(args.reboot, wait_timeout=args.wait_timeout)
+            result["reboot"] = rb
+            if not args.json:
+                print("REBOOT ready_caught=%s attempts=%d> %s"
+                      % (rb["ready_caught"], rb["open_attempts"],
+                         rb["ready_line"] or "(missed, `m` ok)"))
+
+        if args.mode:
+            st = dev.mode(timeout=args.timeout)
+            result["mode_state"] = st
+            if not args.json:
+                extra = ""
+                if st.get("sel") is not None:
+                    extra = " sel=%d key1=%s key2=%s pwr=%s" % (
+                        st["sel"], st.get("key1"), st.get("key2"),
+                        st.get("pwr"))
+                print("MODE mode=%s menu=%d phase=%s remain_ms=%d total_ms=%d "
+                      "done=%d focus_s=%d muted=%d day=%s has_day=%d%s"
+                      % (st["mode"], st["menu"], st["phase"], st["remain_ms"],
+                         st["total_ms"], st["done"], st["focus_s"],
+                         st["muted"],
+                         "-" if st["day"] is None else st["day"],
+                         st["has_day"], extra))
 
         if args.send:
             dev.send_command(args.send)

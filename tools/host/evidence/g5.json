@@ -1,0 +1,925 @@
+{
+  "tool": "run_g5.py",
+  "version": 1,
+  "started": "2026-10-31T08:01:57.567+08:00",
+  "finished": "2026-10-31T08:02:19.874+08:00",
+  "mode": "serial",
+  "port": "COM7",
+  "baud": 115200,
+  "short_durations": {
+    "focus_ms": 6000,
+    "break_ms": 3000
+  },
+  "protocol_notes": [
+    "m 行实际格式（2026-10-31 真机）比 docs/10 §4 多 sel/key1/key2/pwr；工具两种格式都解析。",
+    "M2 契约：15 s 无有效事件进 OFFLINE；本跑测用 `n` 心跳保活。",
+    "G5 用 `t` 把本段改为 focus 6 s / break 3 s；`R` 重启后回到默认 25/5。",
+    "统计断言用增量（NVS 里可能有上次会话残留的 done/focus_s）。"
+  ],
+  "baseline": {
+    "done": 0,
+    "focus_s": 0,
+    "muted": 1,
+    "has_day": 1,
+    "day": 2,
+    "total_ms": 1500000,
+    "raw": "MODE mode=DUTY menu=0 sel=0 phase=IDLE remain_ms=1500000 total_ms=1500000 done=0 focus_s=0 muted=1 day=2 has_day=1 key1=0 key2=0 pwr=0",
+    "reboot": {
+      "command": "R",
+      "ready_spec": "READY",
+      "ready_line": "I (733) m3: m3: READY (240x240, 8fps, keys=GPIO0/4/5, pomo 25/5)",
+      "ready_caught": true,
+      "skipped": [
+        "I (603) esp_psram: Reserving pool of 32K of internal memory for DMA/internal allocations",
+        "I (603) main_task: Calling app_main()",
+        "I (603) m3: power latched (GPIO2 high)",
+        "I (723) board_lcd: panel 240x240 ready, SPI mode 3, backlight on",
+        "I (733) m3: restored: done=2 focus_s=12 day=2 has_day=1 muted=1",
+        "I (733) m3: inject ready (M3): K/L/J/H=keys m=mode y=day R=restart t=fast-pomo; M2: 1..5 0 u n c x p d",
+        "I (733) m3: keys init: KEY1=GPIO0 KEY2=GPIO4 PWR=GPIO5 (low active)"
+      ],
+      "open_attempts": 1,
+      "reopened": true
+    },
+    "reboot_after_crossday": {
+      "command": "R",
+      "ready_spec": "READY",
+      "ready_line": "I (733) m3: m3: READY (240x240, 8fps, keys=GPIO0/4/5, pomo 25/5)",
+      "ready_caught": true,
+      "skipped": [
+        "I (603) esp_psram: Reserving pool of 32K of internal memory for DMA/internal allocations",
+        "I (603) main_task: Calling app_main()",
+        "I (603) m3: power latched (GPIO2 high)",
+        "I (723) board_lcd: panel 240x240 ready, SPI mode 3, backlight on",
+        "I (733) m3: restored: done=0 focus_s=0 day=3 has_day=1 muted=1",
+        "I (733) m3: inject ready (M3): K/L/J/H=keys m=mode y=day R=restart t=fast-pomo; M2: 1..5 0 u n c x p d",
+        "I (733) m3: keys init: KEY1=GPIO0 KEY2=GPIO4 PWR=GPIO5 (low active)"
+      ],
+      "open_attempts": 1,
+      "reopened": true
+    }
+  },
+  "steps": [
+    {
+      "step": "preflight_duty_idle",
+      "ok": true,
+      "detail": "mode=DUTY menu=0 phase=IDLE",
+      "time": "2026-10-31T08:01:57.770+08:00",
+      "state": {
+        "mode": "DUTY",
+        "menu": 0,
+        "phase": "IDLE",
+        "remain_ms": 1500000,
+        "total_ms": 1500000,
+        "done": 0,
+        "focus_s": 0,
+        "muted": 1,
+        "day": 2,
+        "has_day": 1
+      }
+    },
+    {
+      "step": "t_short_durations",
+      "ok": true,
+      "detail": "total_ms after `t` = 6000（文档：下一段起 focus=6000 ms；下一段总时长在 focus_start 再断言）",
+      "time": "2026-10-31T08:01:58.130+08:00",
+      "state": {
+        "mode": "DUTY",
+        "menu": 0,
+        "phase": "IDLE",
+        "remain_ms": 6000,
+        "total_ms": 6000,
+        "done": 0,
+        "focus_s": 0,
+        "muted": 1,
+        "day": 2,
+        "has_day": 1,
+        "fields": {
+          "mode": "DUTY",
+          "menu": "0",
+          "sel": "0",
+          "phase": "IDLE",
+          "remain_ms": "6000",
+          "total_ms": "6000",
+          "done": "0",
+          "focus_s": "0",
+          "muted": "1",
+          "day": "2",
+          "has_day": "1",
+          "key1": "0",
+          "key2": "0",
+          "pwr": "0"
+        },
+        "raw": "MODE mode=DUTY menu=0 sel=0 phase=IDLE remain_ms=6000 total_ms=6000 done=0 focus_s=0 muted=1 day=2 has_day=1 key1=0 key2=0 pwr=0",
+        "sel": 0,
+        "key1": 0,
+        "key2": 0,
+        "pwr": 0
+      }
+    },
+    {
+      "step": "enter_pomo",
+      "ok": true,
+      "detail": "mode=POMO menu=0 phase=IDLE",
+      "time": "2026-10-31T08:01:58.950+08:00",
+      "state": {
+        "mode": "POMO",
+        "menu": 0,
+        "phase": "IDLE",
+        "remain_ms": 6000,
+        "total_ms": 6000,
+        "done": 0,
+        "focus_s": 0,
+        "muted": 1,
+        "day": 2,
+        "has_day": 1
+      }
+    },
+    {
+      "step": "focus_start",
+      "ok": true,
+      "detail": "phase=FOCUS total_ms=6000 (expect 6000) done=0",
+      "time": "2026-10-31T08:02:00.040+08:00",
+      "state": {
+        "mode": "POMO",
+        "menu": 0,
+        "phase": "FOCUS",
+        "remain_ms": 5760,
+        "total_ms": 6000,
+        "done": 0,
+        "focus_s": 0,
+        "muted": 1,
+        "day": 2,
+        "has_day": 1
+      }
+    },
+    {
+      "step": "focus_pause",
+      "ok": true,
+      "detail": "phase=FOCUS_PAUSED remain_ms=4670",
+      "time": "2026-10-31T08:02:01.500+08:00",
+      "state": {
+        "mode": "POMO",
+        "menu": 0,
+        "phase": "FOCUS_PAUSED",
+        "remain_ms": 4670,
+        "total_ms": 6000,
+        "done": 0,
+        "focus_s": 0,
+        "muted": 1,
+        "day": 2,
+        "has_day": 1
+      }
+    },
+    {
+      "step": "pause_remain_frozen",
+      "ok": true,
+      "detail": "1 s 后 phase=FOCUS_PAUSED remain_ms=4670（暂停前 4670，应不变）",
+      "time": "2026-10-31T08:02:03.320+08:00",
+      "state": {
+        "mode": "POMO",
+        "menu": 0,
+        "phase": "FOCUS_PAUSED",
+        "remain_ms": 4670,
+        "total_ms": 6000,
+        "done": 0,
+        "focus_s": 0,
+        "muted": 1,
+        "day": 2,
+        "has_day": 1
+      }
+    },
+    {
+      "step": "focus_resume",
+      "ok": true,
+      "detail": "phase=FOCUS",
+      "time": "2026-10-31T08:02:03.823+08:00",
+      "state": {
+        "mode": "POMO",
+        "menu": 0,
+        "phase": "FOCUS",
+        "remain_ms": 4420,
+        "total_ms": 6000,
+        "done": 0,
+        "focus_s": 0,
+        "muted": 1,
+        "day": 2,
+        "has_day": 1
+      }
+    },
+    {
+      "step": "focus_done",
+      "ok": true,
+      "detail": "phase=FOCUS_DONE done=1 (expect 1) focus_s=6 (expect 6) remain_ms=0",
+      "time": "2026-10-31T08:02:08.520+08:00",
+      "state": {
+        "mode": "POMO",
+        "menu": 0,
+        "phase": "FOCUS_DONE",
+        "remain_ms": 0,
+        "total_ms": 6000,
+        "done": 1,
+        "focus_s": 6,
+        "muted": 1,
+        "day": 2,
+        "has_day": 1
+      }
+    },
+    {
+      "step": "break_start",
+      "ok": true,
+      "detail": "phase=BREAK total_ms=3000 (expect 3000)",
+      "time": "2026-10-31T08:02:09.620+08:00",
+      "state": {
+        "mode": "POMO",
+        "menu": 0,
+        "phase": "BREAK",
+        "remain_ms": 2760,
+        "total_ms": 3000,
+        "done": 1,
+        "focus_s": 6,
+        "muted": 1,
+        "day": 2,
+        "has_day": 1
+      }
+    },
+    {
+      "step": "break_abandon",
+      "ok": true,
+      "detail": "phase=IDLE done=1（放弃不计完成，应仍 1）",
+      "time": "2026-10-31T08:02:10.730+08:00",
+      "state": {
+        "mode": "POMO",
+        "menu": 0,
+        "phase": "IDLE",
+        "remain_ms": 3000,
+        "total_ms": 3000,
+        "done": 1,
+        "focus_s": 6,
+        "muted": 1,
+        "day": 2,
+        "has_day": 1
+      }
+    },
+    {
+      "step": "segment2_start",
+      "ok": true,
+      "detail": "phase=FOCUS total_ms=6000",
+      "time": "2026-10-31T08:02:11.220+08:00",
+      "state": {
+        "mode": "POMO",
+        "menu": 0,
+        "phase": "FOCUS",
+        "remain_ms": 5760,
+        "total_ms": 6000,
+        "done": 1,
+        "focus_s": 6,
+        "muted": 1,
+        "day": 2,
+        "has_day": 1
+      }
+    },
+    {
+      "step": "segment2_done",
+      "ok": true,
+      "detail": "phase=FOCUS_DONE done=2 (expect 2) focus_s=12 (expect 12)",
+      "time": "2026-10-31T08:02:17.040+08:00",
+      "state": {
+        "mode": "POMO",
+        "menu": 0,
+        "phase": "FOCUS_DONE",
+        "remain_ms": 0,
+        "total_ms": 6000,
+        "done": 2,
+        "focus_s": 12,
+        "muted": 1,
+        "day": 2,
+        "has_day": 1
+      }
+    },
+    {
+      "step": "back_duty",
+      "ok": true,
+      "detail": "mode=DUTY",
+      "time": "2026-10-31T08:02:17.410+08:00",
+      "state": {
+        "mode": "DUTY",
+        "menu": 0,
+        "phase": "FOCUS_DONE",
+        "remain_ms": 0,
+        "total_ms": 6000,
+        "done": 2,
+        "focus_s": 12,
+        "muted": 1,
+        "day": 2,
+        "has_day": 1
+      }
+    },
+    {
+      "step": "reboot_persist",
+      "ok": true,
+      "detail": "重启后 mode=DUTY phase=IDLE done=2 (expect 2) focus_s=12 (expect 12) muted=1 (expect 1)",
+      "time": "2026-10-31T08:02:18.402+08:00",
+      "state": {
+        "mode": "DUTY",
+        "menu": 0,
+        "phase": "IDLE",
+        "remain_ms": 1500000,
+        "total_ms": 1500000,
+        "done": 2,
+        "focus_s": 12,
+        "muted": 1,
+        "day": 2,
+        "has_day": 1
+      }
+    },
+    {
+      "step": "crossday_zero",
+      "ok": true,
+      "detail": "y 后 done=0 (expect 0) focus_s=0 (expect 0) has_day=1 day=3",
+      "time": "2026-10-31T08:02:18.882+08:00",
+      "state": {
+        "mode": "DUTY",
+        "menu": 0,
+        "phase": "IDLE",
+        "remain_ms": 1500000,
+        "total_ms": 1500000,
+        "done": 0,
+        "focus_s": 0,
+        "muted": 1,
+        "day": 3,
+        "has_day": 1
+      }
+    },
+    {
+      "step": "crossday_day",
+      "ok": true,
+      "detail": "has_day=1 day=3 (expect 1/3)",
+      "time": "2026-10-31T08:02:18.882+08:00",
+      "state": {
+        "mode": "DUTY",
+        "menu": 0,
+        "phase": "IDLE",
+        "remain_ms": 1500000,
+        "total_ms": 1500000,
+        "done": 0,
+        "focus_s": 0,
+        "muted": 1,
+        "day": 3,
+        "has_day": 1
+      }
+    },
+    {
+      "step": "crossday_persist",
+      "ok": true,
+      "detail": "重启后 done=0 (expect 0) focus_s=0 (expect 0) has_day=1 day=3",
+      "time": "2026-10-31T08:02:19.874+08:00",
+      "state": {
+        "mode": "DUTY",
+        "menu": 0,
+        "phase": "IDLE",
+        "remain_ms": 1500000,
+        "total_ms": 1500000,
+        "done": 0,
+        "focus_s": 0,
+        "muted": 1,
+        "day": 3,
+        "has_day": 1
+      }
+    }
+  ],
+  "frames": {
+    "g5_pomo_idle": {
+      "name": "g5_pomo_idle",
+      "page": "pomo",
+      "bin": "g5_pomo_idle.bin",
+      "png": "g5_pomo_idle.png",
+      "bytes": 115200,
+      "crc32": "d96adc3c",
+      "frame_sha256": "1ceb317071532ca48acffcbbb53d9f8c29949119769a84cb80f5ae71d395607e",
+      "png_sha256": "c9add6508d8c40586b9a105daf22ef3cef4b23ee30e0147b5a47fa72e9a0677b",
+      "layout_ok": true,
+      "layout_failed": [],
+      "layout_checks": 16,
+      "layout": {
+        "page": "pomo",
+        "phase": "IDLE",
+        "selected": null,
+        "expected_progress": 0.0,
+        "measured_progress": 0.0,
+        "ok": true,
+        "checks": [
+          {
+            "name": "frame_size",
+            "ok": true,
+            "detail": "115200 bytes = 240x240 RGB565LE",
+            "evidence": []
+          },
+          {
+            "name": "bg.top",
+            "ok": true,
+            "detail": "(0, 0, 240, 14) all 0x0000: 3360/3360 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.title_ring_gap",
+            "ok": true,
+            "detail": "(0, 24, 240, 4) all 0x0000: 960/960 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.ring_footer_gap",
+            "ok": true,
+            "detail": "(0, 182, 240, 16) all 0x0000: 3840/3840 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.bottom",
+            "ok": true,
+            "detail": "(0, 208, 240, 32) all 0x0000: 7680/7680 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.left",
+            "ok": true,
+            "detail": "(0, 28, 40, 152) all 0x0000: 6080/6080 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.right",
+            "ok": true,
+            "detail": "(200, 28, 40, 152) all 0x0000: 6080/6080 px",
+            "evidence": []
+          },
+          {
+            "name": "ring_present",
+            "ok": true,
+            "detail": "mid-radius 71 sampled at 2 deg: 180/180 px are track/progress",
+            "evidence": []
+          },
+          {
+            "name": "ring_bbox",
+            "ok": true,
+            "detail": "ring bbox=(44,28,w=153,h=153) center=(120.0,104.0) expect center=(120,104) d=153",
+            "evidence": [
+              "contained=True sized=True"
+            ]
+          },
+          {
+            "name": "ring_thickness",
+            "ok": true,
+            "detail": "270deg radial ring-color run=11 px (expect ~10, 6..14)",
+            "evidence": [
+              "first_ring_radius=66 (expect ~66..76)"
+            ]
+          },
+          {
+            "name": "progress_fraction",
+            "ok": true,
+            "detail": "measured=0.000 expected=0.000 (remain_ms=6000 total_ms=6000)",
+            "evidence": [
+              "tolerance=0.05 (18 deg)"
+            ]
+          },
+          {
+            "name": "progress_color_zero",
+            "ok": true,
+            "detail": "progress=0%: 0/180 ring samples are progress color (expect <=3)",
+            "evidence": []
+          },
+          {
+            "name": "ring_track_all",
+            "ok": true,
+            "detail": "IDLE: 180/180 ring samples are track 0x4208",
+            "evidence": []
+          },
+          {
+            "name": "phase_title",
+            "ok": true,
+            "detail": "title band (0, 14, 240, 12) non_bg=144, color 0x8410 px=144 (expected 'READY')",
+            "evidence": [
+              "phase=IDLE color=0x8410"
+            ]
+          },
+          {
+            "name": "countdown_text",
+            "ok": true,
+            "detail": "white px in countdown window (76, 90, 88, 28) = 416 (whole frame 416)",
+            "evidence": [
+              "white only in countdown area: True"
+            ]
+          },
+          {
+            "name": "footer_stats",
+            "ok": true,
+            "detail": "footer band (0, 196, 240, 16) gray 0x8410 px=229 (DONE <n>  <m>M)",
+            "evidence": []
+          }
+        ]
+      },
+      "context": {
+        "phase": "IDLE",
+        "remain_ms": 6000,
+        "total_ms": 6000,
+        "done": 0,
+        "focus_s": 0
+      }
+    },
+    "g5_pomo_focus_paused": {
+      "name": "g5_pomo_focus_paused",
+      "page": "pomo",
+      "bin": "g5_pomo_focus_paused.bin",
+      "png": "g5_pomo_focus_paused.png",
+      "bytes": 115200,
+      "crc32": "f10b8599",
+      "frame_sha256": "b593b4c40c5421bb1b937673cad2830e99bec747f74228fd8262c9683f4fc805",
+      "png_sha256": "f8bb68e07c99fb08b09790b4ea605b19a4dcab6fc5081d1acdf9df0620a22f6b",
+      "layout_ok": true,
+      "layout_failed": [],
+      "layout_checks": 16,
+      "layout": {
+        "page": "pomo",
+        "phase": "FOCUS_PAUSED",
+        "selected": null,
+        "expected_progress": 0.22166666666666668,
+        "measured_progress": 0.2222222222222222,
+        "ok": true,
+        "checks": [
+          {
+            "name": "frame_size",
+            "ok": true,
+            "detail": "115200 bytes = 240x240 RGB565LE",
+            "evidence": []
+          },
+          {
+            "name": "bg.top",
+            "ok": true,
+            "detail": "(0, 0, 240, 14) all 0x0000: 3360/3360 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.title_ring_gap",
+            "ok": true,
+            "detail": "(0, 24, 240, 4) all 0x0000: 960/960 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.ring_footer_gap",
+            "ok": true,
+            "detail": "(0, 182, 240, 16) all 0x0000: 3840/3840 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.bottom",
+            "ok": true,
+            "detail": "(0, 208, 240, 32) all 0x0000: 7680/7680 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.left",
+            "ok": true,
+            "detail": "(0, 28, 40, 152) all 0x0000: 6080/6080 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.right",
+            "ok": true,
+            "detail": "(200, 28, 40, 152) all 0x0000: 6080/6080 px",
+            "evidence": []
+          },
+          {
+            "name": "ring_present",
+            "ok": true,
+            "detail": "mid-radius 71 sampled at 2 deg: 180/180 px are track/progress",
+            "evidence": []
+          },
+          {
+            "name": "ring_bbox",
+            "ok": true,
+            "detail": "ring bbox=(44,28,w=153,h=153) center=(120.0,104.0) expect center=(120,104) d=153",
+            "evidence": [
+              "contained=True sized=True"
+            ]
+          },
+          {
+            "name": "ring_thickness",
+            "ok": true,
+            "detail": "270deg radial ring-color run=11 px (expect ~10, 6..14)",
+            "evidence": [
+              "first_ring_radius=66 (expect ~66..76)"
+            ]
+          },
+          {
+            "name": "progress_fraction",
+            "ok": true,
+            "detail": "measured=0.222 expected=0.222 (remain_ms=4670 total_ms=6000)",
+            "evidence": [
+              "tolerance=0.05 (18 deg)"
+            ]
+          },
+          {
+            "name": "progress_direction",
+            "ok": true,
+            "detail": "clockwise from 12: deg<79.8 progress=0x8410, deg>79.8 track=0x4208",
+            "evidence": [
+              "at 51 deg -> 0x8410 (progress)",
+              "at 109 deg -> 0x4208 (track)"
+            ]
+          },
+          {
+            "name": "progress_color_present",
+            "ok": true,
+            "detail": "progress color 0x8410 on ring: 40/180 samples",
+            "evidence": []
+          },
+          {
+            "name": "phase_title",
+            "ok": true,
+            "detail": "title band (0, 14, 240, 12) non_bg=170, color 0x8410 px=170 (expected 'PAUSED')",
+            "evidence": [
+              "phase=FOCUS_PAUSED color=0x8410"
+            ]
+          },
+          {
+            "name": "countdown_text",
+            "ok": true,
+            "detail": "white px in countdown window (76, 90, 88, 28) = 432 (whole frame 432)",
+            "evidence": [
+              "white only in countdown area: True"
+            ]
+          },
+          {
+            "name": "footer_stats",
+            "ok": true,
+            "detail": "footer band (0, 196, 240, 16) gray 0x8410 px=229 (DONE <n>  <m>M)",
+            "evidence": []
+          }
+        ]
+      },
+      "context": {
+        "phase": "FOCUS_PAUSED",
+        "remain_ms": 4670,
+        "total_ms": 6000,
+        "done": 0,
+        "focus_s": 0
+      }
+    },
+    "g5_pomo_done": {
+      "name": "g5_pomo_done",
+      "page": "pomo",
+      "bin": "g5_pomo_done.bin",
+      "png": "g5_pomo_done.png",
+      "bytes": 115200,
+      "crc32": "612be77d",
+      "frame_sha256": "cc0dfa81ae9bdad97f7ae3f11060dde393b4ac790c816d7620ae8e601a951463",
+      "png_sha256": "f98bddc3fc26802b66f1a087ea680b403b7d38d718e74a41a6f7c3691f023ec4",
+      "layout_ok": true,
+      "layout_failed": [],
+      "layout_checks": 15,
+      "layout": {
+        "page": "pomo",
+        "phase": "FOCUS_DONE",
+        "selected": null,
+        "expected_progress": 1.0,
+        "measured_progress": 1.0,
+        "ok": true,
+        "checks": [
+          {
+            "name": "frame_size",
+            "ok": true,
+            "detail": "115200 bytes = 240x240 RGB565LE",
+            "evidence": []
+          },
+          {
+            "name": "bg.top",
+            "ok": true,
+            "detail": "(0, 0, 240, 14) all 0x0000: 3360/3360 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.title_ring_gap",
+            "ok": true,
+            "detail": "(0, 24, 240, 4) all 0x0000: 960/960 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.ring_footer_gap",
+            "ok": true,
+            "detail": "(0, 182, 240, 16) all 0x0000: 3840/3840 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.bottom",
+            "ok": true,
+            "detail": "(0, 208, 240, 32) all 0x0000: 7680/7680 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.left",
+            "ok": true,
+            "detail": "(0, 28, 40, 152) all 0x0000: 6080/6080 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.right",
+            "ok": true,
+            "detail": "(200, 28, 40, 152) all 0x0000: 6080/6080 px",
+            "evidence": []
+          },
+          {
+            "name": "ring_present",
+            "ok": true,
+            "detail": "mid-radius 71 sampled at 2 deg: 180/180 px are track/progress",
+            "evidence": []
+          },
+          {
+            "name": "ring_bbox",
+            "ok": true,
+            "detail": "ring bbox=(44,28,w=153,h=153) center=(120.0,104.0) expect center=(120,104) d=153",
+            "evidence": [
+              "contained=True sized=True"
+            ]
+          },
+          {
+            "name": "ring_thickness",
+            "ok": true,
+            "detail": "270deg radial ring-color run=11 px (expect ~10, 6..14)",
+            "evidence": [
+              "first_ring_radius=66 (expect ~66..76)"
+            ]
+          },
+          {
+            "name": "progress_fraction",
+            "ok": true,
+            "detail": "measured=1.000 expected=1.000 (remain_ms=0 total_ms=6000)",
+            "evidence": [
+              "tolerance=0.05 (18 deg)"
+            ]
+          },
+          {
+            "name": "progress_color_full",
+            "ok": true,
+            "detail": "progress=100%: 180/180 ring samples are 0x8410",
+            "evidence": []
+          },
+          {
+            "name": "phase_title",
+            "ok": true,
+            "detail": "title band (0, 14, 240, 12) non_bg=120, color 0x8410 px=120 (expected 'DONE')",
+            "evidence": [
+              "phase=FOCUS_DONE color=0x8410"
+            ]
+          },
+          {
+            "name": "countdown_text",
+            "ok": true,
+            "detail": "white px in countdown window (76, 90, 88, 28) = 464 (whole frame 464)",
+            "evidence": [
+              "white only in countdown area: True"
+            ]
+          },
+          {
+            "name": "footer_stats",
+            "ok": true,
+            "detail": "footer band (0, 196, 240, 16) gray 0x8410 px=212 (DONE <n>  <m>M)",
+            "evidence": []
+          }
+        ]
+      },
+      "context": {
+        "phase": "FOCUS_DONE",
+        "remain_ms": 0,
+        "total_ms": 6000,
+        "done": 1,
+        "focus_s": 6
+      }
+    },
+    "g5_pomo_break": {
+      "name": "g5_pomo_break",
+      "page": "pomo",
+      "bin": "g5_pomo_break.bin",
+      "png": "g5_pomo_break.png",
+      "bytes": 115200,
+      "crc32": "95596865",
+      "frame_sha256": "196efc669ef8e4266e8e8a4cc47256ac45fb421ce0bea1a6c4496686c5e8314c",
+      "png_sha256": "c3d0e766a50603806f49e3c6b7b6a1342965ec3fcd00e6bc16742cad31dae24b",
+      "layout_ok": true,
+      "layout_failed": [],
+      "layout_checks": 13,
+      "layout": {
+        "page": "pomo",
+        "phase": "BREAK",
+        "selected": null,
+        "expected_progress": null,
+        "measured_progress": 0.16666666666666666,
+        "ok": true,
+        "checks": [
+          {
+            "name": "frame_size",
+            "ok": true,
+            "detail": "115200 bytes = 240x240 RGB565LE",
+            "evidence": []
+          },
+          {
+            "name": "bg.top",
+            "ok": true,
+            "detail": "(0, 0, 240, 14) all 0x0000: 3360/3360 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.title_ring_gap",
+            "ok": true,
+            "detail": "(0, 24, 240, 4) all 0x0000: 960/960 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.ring_footer_gap",
+            "ok": true,
+            "detail": "(0, 182, 240, 16) all 0x0000: 3840/3840 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.bottom",
+            "ok": true,
+            "detail": "(0, 208, 240, 32) all 0x0000: 7680/7680 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.left",
+            "ok": true,
+            "detail": "(0, 28, 40, 152) all 0x0000: 6080/6080 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.right",
+            "ok": true,
+            "detail": "(200, 28, 40, 152) all 0x0000: 6080/6080 px",
+            "evidence": []
+          },
+          {
+            "name": "ring_present",
+            "ok": true,
+            "detail": "mid-radius 71 sampled at 2 deg: 180/180 px are track/progress",
+            "evidence": []
+          },
+          {
+            "name": "ring_bbox",
+            "ok": true,
+            "detail": "ring bbox=(44,28,w=153,h=153) center=(120.0,104.0) expect center=(120,104) d=153",
+            "evidence": [
+              "contained=True sized=True"
+            ]
+          },
+          {
+            "name": "ring_thickness",
+            "ok": true,
+            "detail": "270deg radial ring-color run=11 px (expect ~10, 6..14)",
+            "evidence": [
+              "first_ring_radius=66 (expect ~66..76)"
+            ]
+          },
+          {
+            "name": "phase_title",
+            "ok": true,
+            "detail": "title band (0, 14, 240, 12) non_bg=153, color 0x07E0 px=153 (expected 'BREAK')",
+            "evidence": [
+              "phase=BREAK color=0x07E0"
+            ]
+          },
+          {
+            "name": "countdown_text",
+            "ok": true,
+            "detail": "white px in countdown window (76, 90, 88, 28) = 420 (whole frame 420)",
+            "evidence": [
+              "white only in countdown area: True"
+            ]
+          },
+          {
+            "name": "footer_stats",
+            "ok": true,
+            "detail": "footer band (0, 196, 240, 16) gray 0x8410 px=212 (DONE <n>  <m>M)",
+            "evidence": []
+          }
+        ]
+      },
+      "context": {
+        "phase": "BREAK",
+        "remain_ms": null,
+        "total_ms": null,
+        "done": 1,
+        "focus_s": 6
+      }
+    }
+  },
+  "summary": {
+    "steps_total": 17,
+    "steps_pass": 17,
+    "steps_fail": 0,
+    "layout_total": 4,
+    "layout_pass": 4,
+    "layout_fail": 0,
+    "failed_steps": []
+  },
+  "result": "PASS",
+  "error": null
+}

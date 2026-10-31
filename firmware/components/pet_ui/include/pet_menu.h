@@ -27,10 +27,10 @@ typedef enum {
 void           pet_menu_init(pet_menu_t *m);
 pet_menu_cmd_t pet_menu_key(pet_menu_t *m, pet_key_t key, pet_key_event_t ev);
 
-/* §9.3 菜单整屏视图（渲染输入；pet_render_menu 消费） */
+/* §9.3 菜单整屏视图（渲染输入；本项目由 pet_ui_menu_240 消费） */
 typedef struct {
     bool     muted;
-    int      selected;    /* 0..2 */
+    int      selected;    /* 0..PET_MENU_ITEMS-1（本项目 5 项：0..4） */
     int      mode;        /* 0=DUTY, 1=POMO */
     int      phase;       /* pet_pomo_phase_t */
     uint32_t done_count;

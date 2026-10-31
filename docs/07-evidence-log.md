@@ -333,3 +333,102 @@ Project build complete.
 增量构建曾掩盖该 warning——记录为流程教训：收口必须做一次新 clone 全量构建。
 **可得结论**：`G17` 的"新机器 clone → idf.py build 成功、无手工修补"在本机环境成立
 （同一 IDF v5.5.4 / 同机，未跨机器验证）。**不能证明**：跨机器/跨 IDF 小版本可复现。
+
+## E22：M3 构建与刷机（2026-10-31）
+
+**构建**（Windows 原生 IDF v5.5.4，命令同 `E15`）：
+
+```text
+buddy154.bin binary size 0x8bef0 bytes (573,168 B). Smallest app partition is 0x300000 bytes. 0x274110 bytes (82%) free.
+Project build complete.  （无 warning/error）
+```
+
+**刷机**：`idf.py -B D:\DSH\esp-build\buddy154 -p COM7 flash` → bootloader/partition/otadata/app 四段
+`Hash of data verified`；复位后串口：
+
+```text
+I (...) m3: power latched (GPIO2 high)
+I (...) board_lcd: panel 240x240 ready, SPI mode 3, backlight on
+I (...) m3: restored: done=... focus_s=... day=... has_day=... muted=...
+I (...) m3: keys init: KEY1=GPIO0 KEY2=GPIO4 PWR=GPIO5 (low active)
+I (...) m3: m3: READY (240x240, 8fps, keys=GPIO0/4/5, pomo 25/5)
+```
+
+**可得结论**：M3 源码（按键/菜单/番茄钟/NVS/三页渲染）可构建、可刷写、可启动，无 warning。
+**不能证明**：按键 GPIO 电平（见 `E26` 真机按键）、NVS 掉电持久（只验证了软重启 `R`）。
+
+## E23：M3 host T 测试 RED→GREEN（2026-10-31）
+
+**命令**：`pwsh -NoProfile -File tests/run_m3_tests.ps1`（M2 回归另跑 `tests/run_tests.ps1`）
+
+```text
+RED（桩副本 D:\DSH\esp-build\m3-stubs\，脚本 -UseStubs）：21/21 用例 FAIL，517 断言中 389 失败，退出 1
+GREEN（真实现）：test_m3_logic 15/15（261 asserts）、test_m3_ui 6/6（256 asserts）
+          合计 21/21 用例、517/517 断言 PASS，退出 0
+M2 回归：run_tests.ps1 → RESULT: PASS（15 用例/231 断言）
+```
+
+- 覆盖：`BTN-01..03`、`KEY-03`、`KEYMAP-01..08`、`MENU-01..03`、`POMO-01..07`、`UI-20`（3 例）、`UI-21`（3 例）。
+- **RED 为断言失败而非编译/环境错误**（桩仅空实现）；RED→GREEN 原始输出与逐用例统计见 `tests/RED-GREEN-M3.md`。
+**可得结论**：M3 纯逻辑与两页像素行为有可复现的 T 级证据。
+**不能证明**：GPIO 采样/真实按键（`E26`）、I2S 无（M4）。
+
+## E24：G6 合成键真机跑测（2026-10-31）
+
+**方法**：`python tools/host/run_g6.py --port COM7`；通过串口 `K/L/J/H` 合成键事件（与真实按键同一
+处理路径），每项 20 次，读 `m` 行断言状态/菜单/静音；每页导出帧做像素断言。设备跑最终 M3 固件。
+
+```text
+summary: items 13/13 ok, iterations 260/260 PASS, layout 9/9 PASS, mute_persist=True
+RESULT PASS
+```
+
+13 项：DUTY 四组（KEY1短/长、KEY2短/长）、POMO 三组（KEY1短/长、KEY2短）、MENU 六组（KEY1短循环、
+KEY2长关闭、MUTE 执行、BACK 执行、WIFI/BT 关闭）。`muted=1` 在 `R` 重启后仍为 1（NVS）。
+**证据**：`tools/host/evidence/g6.json`、`g6_summary.md`、`g6_run.log`、9 张 PNG。
+**不能证明**：物理按键电平（合成事件绕过 GPIO/去抖，见 `E26`）。
+
+## E25：G5 番茄钟 + 重启持久化 + 跨日（2026-10-31）
+
+**方法**：`python tools/host/run_g5.py --port COM7`；先用 `t` 把本段改为 focus 6 s / break 3 s，
+走完 开始→暂停→继续→到点→休息→放弃→第二段完成 → `R` 重启 → `y` 跨日 → 再 `R`。
+
+```text
+summary: steps 17/17 PASS, layout 4/4 PASS
+[5] focus_pause phase=FOCUS_PAUSED remain=4670
+[6] pause_remain_frozen 1s 后 remain 仍 4670（暂停不推进）
+[8] focus_done phase=FOCUS_DONE done=1 focus_s=6 remain=0
+[10] break_abandon 放弃不计完成（done 仍 1）
+[14] reboot_persist 重启后 done=2 focus_s=12 muted=1 均持久
+[15..17] y 后 done=0 focus_s=0 day 递增；再重启仍为 0 且 day 持久
+RESULT PASS
+```
+
+**证据**：`tools/host/evidence/g5.json`、`g5_summary.md`、4 张番茄钟页 PNG（idle/focus_paused/done/break）。
+**不能证明**：25/5 真实时长下的 25 分钟完整段（用 6 s/3 s 等价验证状态机与持久化；常量 25/5 由
+`tests` 断言与代码审查保证）；跨日"当天"来源（M5 NTP）。
+
+## E26：真机按键 H —— 首轮采集（2026-10-31，**未得出结论，KEY-01/02/05 仍 PENDING**）
+
+**方法**：`keyh_capture.py` 连续读串口日志 430 s，按行为分类计数；每秒发 `n` 心跳。用户按
+"KEY1 短/长各 20、KEY2 短/长各 20、PWR 短 5、PWR 长 5" 的说明操作。
+
+**原始结果**（`D:\DSH\esp-build\keyh_result.json`）：
+
+```text
+key1_short_send=0  key1_long_mute=0
+key2_short_mode=3  key2_long_menu_open=2  key2_long_menu_close=2
+pwr_long_off=0  reboots=0  alarms=0
+事件时间：0.7s/3.2s/5.8s/7.8s（菜单开/关×2）、19.2s/21.0s/21.6s（模式切换×3）——22 s 后无任何事件
+```
+
+**可得结论**：
+- `KEY2`（GPIO4）**真实按压可被固件识别**：菜单开/关与 DUTY↔POMO 切换均产生了对应日志；
+- `KEY1`（GPIO0）与 `PWR`（GPIO5）**本次未观测到任何事件**；不能据此断言硬件/固件失败——
+  采集只覆盖 22 s、用户可能未按到/未识别该两键，且首版采集脚本未把 POMO 模式下的 KEY1
+  日志纳入分类（`pomo short/long`），存在漏计。
+**不能证明**：`KEY-01/02/05` 达标或失败；`B09`（按键逐键未验证）仍未关闭。
+
+**后续（已备好工具）**：`D:\DSH\esp-build\keyprobe.py`（90 s 原始电平采集，逐次记录
+`key1/key2/pwr` 位变化）用于区分"用户没按到" vs "GPIO 读不到"；用户本轮选择先提交，故
+`KEY-01/02/05` 记为 **PENDING**，恢复测试后补 `E26b`。

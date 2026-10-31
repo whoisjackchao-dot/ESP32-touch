@@ -1,0 +1,3130 @@
+{
+  "tool": "run_g6.py",
+  "version": 1,
+  "started": "2026-10-31T08:02:20.156+08:00",
+  "finished": "2026-10-31T08:09:18.251+08:00",
+  "mode": "serial",
+  "port": "COM7",
+  "baud": 115200,
+  "iterations": 20,
+  "min_pass": 19,
+  "protocol_notes": [
+    "m 行实际格式（2026-10-31 真机）比 docs/10 §4 多 sel/key1/key2/pwr；工具两种格式都解析（缺字段时 sel=None，菜单选中回退为帧推断）。",
+    "M2 契约：15 s 无有效事件进 OFFLINE；本跑测用 `n` 心跳保活。"
+  ],
+  "preflight": {
+    "initial": {
+      "mode": "DUTY",
+      "menu": 0,
+      "phase": "IDLE",
+      "remain_ms": 1500000,
+      "total_ms": 1500000,
+      "done": 0,
+      "focus_s": 0,
+      "muted": 1,
+      "day": 3,
+      "has_day": 1,
+      "fields": {
+        "mode": "DUTY",
+        "menu": "0",
+        "sel": "0",
+        "phase": "IDLE",
+        "remain_ms": "1500000",
+        "total_ms": "1500000",
+        "done": "0",
+        "focus_s": "0",
+        "muted": "1",
+        "day": "3",
+        "has_day": "1",
+        "key1": "0",
+        "key2": "0",
+        "pwr": "0"
+      },
+      "raw": "MODE mode=DUTY menu=0 sel=0 phase=IDLE remain_ms=1500000 total_ms=1500000 done=0 focus_s=0 muted=1 day=3 has_day=1 key1=0 key2=0 pwr=0",
+      "sel": 0,
+      "key1": 0,
+      "key2": 0,
+      "pwr": 0
+    },
+    "total_ms": 1500000,
+    "m_raw": "MODE mode=DUTY menu=0 sel=0 phase=IDLE remain_ms=1500000 total_ms=1500000 done=0 focus_s=0 muted=1 day=3 has_day=1 key1=0 key2=0 pwr=0"
+  },
+  "items": [
+    {
+      "name": "duty_key1_short",
+      "description": "值班 KEY1 短：只记 SEND 日志，模式/相位/muted/done 不变",
+      "iterations": 20,
+      "pass": 20,
+      "fail": 0,
+      "pass_rate": 1.0,
+      "min_pass": 19,
+      "ok": true,
+      "rows": [
+        {
+          "iteration": 1,
+          "time": "2026-10-31T08:02:26.774+08:00",
+          "ok": true,
+          "detail": "before[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0] after[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 2,
+          "time": "2026-10-31T08:02:27.494+08:00",
+          "ok": true,
+          "detail": "before[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0] after[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 3,
+          "time": "2026-10-31T08:02:28.214+08:00",
+          "ok": true,
+          "detail": "before[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0] after[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 4,
+          "time": "2026-10-31T08:02:28.934+08:00",
+          "ok": true,
+          "detail": "before[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0] after[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 5,
+          "time": "2026-10-31T08:02:29.654+08:00",
+          "ok": true,
+          "detail": "before[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0] after[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 6,
+          "time": "2026-10-31T08:02:30.374+08:00",
+          "ok": true,
+          "detail": "before[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0] after[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 7,
+          "time": "2026-10-31T08:02:31.094+08:00",
+          "ok": true,
+          "detail": "before[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0] after[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 8,
+          "time": "2026-10-31T08:02:31.815+08:00",
+          "ok": true,
+          "detail": "before[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0] after[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 9,
+          "time": "2026-10-31T08:02:32.535+08:00",
+          "ok": true,
+          "detail": "before[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0] after[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 10,
+          "time": "2026-10-31T08:02:33.254+08:00",
+          "ok": true,
+          "detail": "before[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0] after[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 11,
+          "time": "2026-10-31T08:02:33.974+08:00",
+          "ok": true,
+          "detail": "before[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0] after[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 12,
+          "time": "2026-10-31T08:02:34.695+08:00",
+          "ok": true,
+          "detail": "before[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0] after[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 13,
+          "time": "2026-10-31T08:02:35.414+08:00",
+          "ok": true,
+          "detail": "before[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0] after[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 14,
+          "time": "2026-10-31T08:02:36.134+08:00",
+          "ok": true,
+          "detail": "before[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0] after[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 15,
+          "time": "2026-10-31T08:02:36.855+08:00",
+          "ok": true,
+          "detail": "before[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0] after[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 16,
+          "time": "2026-10-31T08:02:37.574+08:00",
+          "ok": true,
+          "detail": "before[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0] after[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 17,
+          "time": "2026-10-31T08:02:38.294+08:00",
+          "ok": true,
+          "detail": "before[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0] after[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 18,
+          "time": "2026-10-31T08:02:39.015+08:00",
+          "ok": true,
+          "detail": "before[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0] after[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 19,
+          "time": "2026-10-31T08:02:39.734+08:00",
+          "ok": true,
+          "detail": "before[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0] after[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 20,
+          "time": "2026-10-31T08:02:40.455+08:00",
+          "ok": true,
+          "detail": "before[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0] after[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        }
+      ]
+    },
+    {
+      "name": "duty_key1_long",
+      "description": "值班 KEY1 长：muted 0<->1 翻转",
+      "iterations": 20,
+      "pass": 20,
+      "fail": 0,
+      "pass_rate": 1.0,
+      "min_pass": 19,
+      "ok": true,
+      "rows": [
+        {
+          "iteration": 1,
+          "time": "2026-10-31T08:02:41.174+08:00",
+          "ok": true,
+          "detail": "muted 1->0 expect 0; mode=DUTY menu=0 phase=IDLE muted=0 done=0 focus_s=0"
+        },
+        {
+          "iteration": 2,
+          "time": "2026-10-31T08:02:41.895+08:00",
+          "ok": true,
+          "detail": "muted 0->1 expect 1; mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0"
+        },
+        {
+          "iteration": 3,
+          "time": "2026-10-31T08:02:42.615+08:00",
+          "ok": true,
+          "detail": "muted 1->0 expect 0; mode=DUTY menu=0 phase=IDLE muted=0 done=0 focus_s=0"
+        },
+        {
+          "iteration": 4,
+          "time": "2026-10-31T08:02:43.335+08:00",
+          "ok": true,
+          "detail": "muted 0->1 expect 1; mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0"
+        },
+        {
+          "iteration": 5,
+          "time": "2026-10-31T08:02:44.055+08:00",
+          "ok": true,
+          "detail": "muted 1->0 expect 0; mode=DUTY menu=0 phase=IDLE muted=0 done=0 focus_s=0"
+        },
+        {
+          "iteration": 6,
+          "time": "2026-10-31T08:02:44.775+08:00",
+          "ok": true,
+          "detail": "muted 0->1 expect 1; mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0"
+        },
+        {
+          "iteration": 7,
+          "time": "2026-10-31T08:02:45.495+08:00",
+          "ok": true,
+          "detail": "muted 1->0 expect 0; mode=DUTY menu=0 phase=IDLE muted=0 done=0 focus_s=0"
+        },
+        {
+          "iteration": 8,
+          "time": "2026-10-31T08:02:46.215+08:00",
+          "ok": true,
+          "detail": "muted 0->1 expect 1; mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0"
+        },
+        {
+          "iteration": 9,
+          "time": "2026-10-31T08:02:46.935+08:00",
+          "ok": true,
+          "detail": "muted 1->0 expect 0; mode=DUTY menu=0 phase=IDLE muted=0 done=0 focus_s=0"
+        },
+        {
+          "iteration": 10,
+          "time": "2026-10-31T08:02:47.655+08:00",
+          "ok": true,
+          "detail": "muted 0->1 expect 1; mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0"
+        },
+        {
+          "iteration": 11,
+          "time": "2026-10-31T08:02:48.375+08:00",
+          "ok": true,
+          "detail": "muted 1->0 expect 0; mode=DUTY menu=0 phase=IDLE muted=0 done=0 focus_s=0"
+        },
+        {
+          "iteration": 12,
+          "time": "2026-10-31T08:02:49.095+08:00",
+          "ok": true,
+          "detail": "muted 0->1 expect 1; mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0"
+        },
+        {
+          "iteration": 13,
+          "time": "2026-10-31T08:02:49.815+08:00",
+          "ok": true,
+          "detail": "muted 1->0 expect 0; mode=DUTY menu=0 phase=IDLE muted=0 done=0 focus_s=0"
+        },
+        {
+          "iteration": 14,
+          "time": "2026-10-31T08:02:50.535+08:00",
+          "ok": true,
+          "detail": "muted 0->1 expect 1; mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0"
+        },
+        {
+          "iteration": 15,
+          "time": "2026-10-31T08:02:51.255+08:00",
+          "ok": true,
+          "detail": "muted 1->0 expect 0; mode=DUTY menu=0 phase=IDLE muted=0 done=0 focus_s=0"
+        },
+        {
+          "iteration": 16,
+          "time": "2026-10-31T08:02:51.975+08:00",
+          "ok": true,
+          "detail": "muted 0->1 expect 1; mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0"
+        },
+        {
+          "iteration": 17,
+          "time": "2026-10-31T08:02:52.695+08:00",
+          "ok": true,
+          "detail": "muted 1->0 expect 0; mode=DUTY menu=0 phase=IDLE muted=0 done=0 focus_s=0"
+        },
+        {
+          "iteration": 18,
+          "time": "2026-10-31T08:02:53.415+08:00",
+          "ok": true,
+          "detail": "muted 0->1 expect 1; mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0"
+        },
+        {
+          "iteration": 19,
+          "time": "2026-10-31T08:02:54.135+08:00",
+          "ok": true,
+          "detail": "muted 1->0 expect 0; mode=DUTY menu=0 phase=IDLE muted=0 done=0 focus_s=0"
+        },
+        {
+          "iteration": 20,
+          "time": "2026-10-31T08:02:54.855+08:00",
+          "ok": true,
+          "detail": "muted 0->1 expect 1; mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0"
+        }
+      ]
+    },
+    {
+      "name": "duty_key2_short",
+      "description": "值班 KEY2 短：DUTY->POMO，再按回 DUTY",
+      "iterations": 20,
+      "pass": 20,
+      "fail": 0,
+      "pass_rate": 1.0,
+      "min_pass": 19,
+      "ok": true,
+      "rows": [
+        {
+          "iteration": 1,
+          "time": "2026-10-31T08:02:55.935+08:00",
+          "ok": true,
+          "detail": "->mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0 ->mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0"
+        },
+        {
+          "iteration": 2,
+          "time": "2026-10-31T08:02:57.015+08:00",
+          "ok": true,
+          "detail": "->mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0 ->mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0"
+        },
+        {
+          "iteration": 3,
+          "time": "2026-10-31T08:02:58.095+08:00",
+          "ok": true,
+          "detail": "->mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0 ->mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0"
+        },
+        {
+          "iteration": 4,
+          "time": "2026-10-31T08:02:59.175+08:00",
+          "ok": true,
+          "detail": "->mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0 ->mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0"
+        },
+        {
+          "iteration": 5,
+          "time": "2026-10-31T08:03:00.255+08:00",
+          "ok": true,
+          "detail": "->mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0 ->mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0"
+        },
+        {
+          "iteration": 6,
+          "time": "2026-10-31T08:03:01.335+08:00",
+          "ok": true,
+          "detail": "->mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0 ->mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0"
+        },
+        {
+          "iteration": 7,
+          "time": "2026-10-31T08:03:02.415+08:00",
+          "ok": true,
+          "detail": "->mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0 ->mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0"
+        },
+        {
+          "iteration": 8,
+          "time": "2026-10-31T08:03:03.495+08:00",
+          "ok": true,
+          "detail": "->mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0 ->mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0"
+        },
+        {
+          "iteration": 9,
+          "time": "2026-10-31T08:03:04.575+08:00",
+          "ok": true,
+          "detail": "->mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0 ->mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0"
+        },
+        {
+          "iteration": 10,
+          "time": "2026-10-31T08:03:05.655+08:00",
+          "ok": true,
+          "detail": "->mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0 ->mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0"
+        },
+        {
+          "iteration": 11,
+          "time": "2026-10-31T08:03:06.735+08:00",
+          "ok": true,
+          "detail": "->mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0 ->mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0"
+        },
+        {
+          "iteration": 12,
+          "time": "2026-10-31T08:03:07.815+08:00",
+          "ok": true,
+          "detail": "->mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0 ->mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0"
+        },
+        {
+          "iteration": 13,
+          "time": "2026-10-31T08:03:08.895+08:00",
+          "ok": true,
+          "detail": "->mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0 ->mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0"
+        },
+        {
+          "iteration": 14,
+          "time": "2026-10-31T08:03:09.975+08:00",
+          "ok": true,
+          "detail": "->mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0 ->mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0"
+        },
+        {
+          "iteration": 15,
+          "time": "2026-10-31T08:03:11.055+08:00",
+          "ok": true,
+          "detail": "->mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0 ->mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0"
+        },
+        {
+          "iteration": 16,
+          "time": "2026-10-31T08:03:12.135+08:00",
+          "ok": true,
+          "detail": "->mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0 ->mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0"
+        },
+        {
+          "iteration": 17,
+          "time": "2026-10-31T08:03:13.215+08:00",
+          "ok": true,
+          "detail": "->mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0 ->mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0"
+        },
+        {
+          "iteration": 18,
+          "time": "2026-10-31T08:03:14.295+08:00",
+          "ok": true,
+          "detail": "->mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0 ->mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0"
+        },
+        {
+          "iteration": 19,
+          "time": "2026-10-31T08:03:15.375+08:00",
+          "ok": true,
+          "detail": "->mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0 ->mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0"
+        },
+        {
+          "iteration": 20,
+          "time": "2026-10-31T08:03:16.455+08:00",
+          "ok": true,
+          "detail": "->mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0 ->mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0"
+        }
+      ]
+    },
+    {
+      "name": "duty_key2_long",
+      "description": "值班 KEY2 长：开菜单 menu=1，再长按关闭",
+      "iterations": 20,
+      "pass": 20,
+      "fail": 0,
+      "pass_rate": 1.0,
+      "min_pass": 19,
+      "ok": true,
+      "rows": [
+        {
+          "iteration": 1,
+          "time": "2026-10-31T08:03:17.415+08:00",
+          "ok": true,
+          "detail": "open[mode=DUTY menu=1 phase=IDLE muted=1 done=0 focus_s=0] close[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 2,
+          "time": "2026-10-31T08:03:18.375+08:00",
+          "ok": true,
+          "detail": "open[mode=DUTY menu=1 phase=IDLE muted=1 done=0 focus_s=0] close[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 3,
+          "time": "2026-10-31T08:03:19.335+08:00",
+          "ok": true,
+          "detail": "open[mode=DUTY menu=1 phase=IDLE muted=1 done=0 focus_s=0] close[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 4,
+          "time": "2026-10-31T08:03:20.295+08:00",
+          "ok": true,
+          "detail": "open[mode=DUTY menu=1 phase=IDLE muted=1 done=0 focus_s=0] close[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 5,
+          "time": "2026-10-31T08:03:21.255+08:00",
+          "ok": true,
+          "detail": "open[mode=DUTY menu=1 phase=IDLE muted=1 done=0 focus_s=0] close[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 6,
+          "time": "2026-10-31T08:03:22.215+08:00",
+          "ok": true,
+          "detail": "open[mode=DUTY menu=1 phase=IDLE muted=1 done=0 focus_s=0] close[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 7,
+          "time": "2026-10-31T08:03:23.175+08:00",
+          "ok": true,
+          "detail": "open[mode=DUTY menu=1 phase=IDLE muted=1 done=0 focus_s=0] close[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 8,
+          "time": "2026-10-31T08:03:24.135+08:00",
+          "ok": true,
+          "detail": "open[mode=DUTY menu=1 phase=IDLE muted=1 done=0 focus_s=0] close[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 9,
+          "time": "2026-10-31T08:03:25.095+08:00",
+          "ok": true,
+          "detail": "open[mode=DUTY menu=1 phase=IDLE muted=1 done=0 focus_s=0] close[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 10,
+          "time": "2026-10-31T08:03:26.055+08:00",
+          "ok": true,
+          "detail": "open[mode=DUTY menu=1 phase=IDLE muted=1 done=0 focus_s=0] close[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 11,
+          "time": "2026-10-31T08:03:27.015+08:00",
+          "ok": true,
+          "detail": "open[mode=DUTY menu=1 phase=IDLE muted=1 done=0 focus_s=0] close[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 12,
+          "time": "2026-10-31T08:03:27.975+08:00",
+          "ok": true,
+          "detail": "open[mode=DUTY menu=1 phase=IDLE muted=1 done=0 focus_s=0] close[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 13,
+          "time": "2026-10-31T08:03:28.935+08:00",
+          "ok": true,
+          "detail": "open[mode=DUTY menu=1 phase=IDLE muted=1 done=0 focus_s=0] close[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 14,
+          "time": "2026-10-31T08:03:29.895+08:00",
+          "ok": true,
+          "detail": "open[mode=DUTY menu=1 phase=IDLE muted=1 done=0 focus_s=0] close[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 15,
+          "time": "2026-10-31T08:03:30.855+08:00",
+          "ok": true,
+          "detail": "open[mode=DUTY menu=1 phase=IDLE muted=1 done=0 focus_s=0] close[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 16,
+          "time": "2026-10-31T08:03:31.815+08:00",
+          "ok": true,
+          "detail": "open[mode=DUTY menu=1 phase=IDLE muted=1 done=0 focus_s=0] close[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 17,
+          "time": "2026-10-31T08:03:32.775+08:00",
+          "ok": true,
+          "detail": "open[mode=DUTY menu=1 phase=IDLE muted=1 done=0 focus_s=0] close[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 18,
+          "time": "2026-10-31T08:03:33.735+08:00",
+          "ok": true,
+          "detail": "open[mode=DUTY menu=1 phase=IDLE muted=1 done=0 focus_s=0] close[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 19,
+          "time": "2026-10-31T08:03:34.695+08:00",
+          "ok": true,
+          "detail": "open[mode=DUTY menu=1 phase=IDLE muted=1 done=0 focus_s=0] close[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 20,
+          "time": "2026-10-31T08:03:35.656+08:00",
+          "ok": true,
+          "detail": "open[mode=DUTY menu=1 phase=IDLE muted=1 done=0 focus_s=0] close[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        }
+      ]
+    },
+    {
+      "name": "pomo_key1_short",
+      "description": "POMO KEY1 短：IDLE->FOCUS->FOCUS_PAUSED->FOCUS",
+      "iterations": 20,
+      "pass": 20,
+      "fail": 0,
+      "pass_rate": 1.0,
+      "min_pass": 19,
+      "ok": true,
+      "rows": [
+        {
+          "iteration": 1,
+          "time": "2026-10-31T08:03:38.326+08:00",
+          "ok": true,
+          "detail": "IDLE->FOCUS->FOCUS_PAUSED->FOCUS->abandon[IDLE] done 0->0"
+        },
+        {
+          "iteration": 2,
+          "time": "2026-10-31T08:03:40.676+08:00",
+          "ok": true,
+          "detail": "IDLE->FOCUS->FOCUS_PAUSED->FOCUS->abandon[IDLE] done 0->0"
+        },
+        {
+          "iteration": 3,
+          "time": "2026-10-31T08:03:43.026+08:00",
+          "ok": true,
+          "detail": "IDLE->FOCUS->FOCUS_PAUSED->FOCUS->abandon[IDLE] done 0->0"
+        },
+        {
+          "iteration": 4,
+          "time": "2026-10-31T08:03:45.376+08:00",
+          "ok": true,
+          "detail": "IDLE->FOCUS->FOCUS_PAUSED->FOCUS->abandon[IDLE] done 0->0"
+        },
+        {
+          "iteration": 5,
+          "time": "2026-10-31T08:03:47.726+08:00",
+          "ok": true,
+          "detail": "IDLE->FOCUS->FOCUS_PAUSED->FOCUS->abandon[IDLE] done 0->0"
+        },
+        {
+          "iteration": 6,
+          "time": "2026-10-31T08:03:50.076+08:00",
+          "ok": true,
+          "detail": "IDLE->FOCUS->FOCUS_PAUSED->FOCUS->abandon[IDLE] done 0->0"
+        },
+        {
+          "iteration": 7,
+          "time": "2026-10-31T08:03:52.426+08:00",
+          "ok": true,
+          "detail": "IDLE->FOCUS->FOCUS_PAUSED->FOCUS->abandon[IDLE] done 0->0"
+        },
+        {
+          "iteration": 8,
+          "time": "2026-10-31T08:03:54.776+08:00",
+          "ok": true,
+          "detail": "IDLE->FOCUS->FOCUS_PAUSED->FOCUS->abandon[IDLE] done 0->0"
+        },
+        {
+          "iteration": 9,
+          "time": "2026-10-31T08:03:57.126+08:00",
+          "ok": true,
+          "detail": "IDLE->FOCUS->FOCUS_PAUSED->FOCUS->abandon[IDLE] done 0->0"
+        },
+        {
+          "iteration": 10,
+          "time": "2026-10-31T08:03:59.476+08:00",
+          "ok": true,
+          "detail": "IDLE->FOCUS->FOCUS_PAUSED->FOCUS->abandon[IDLE] done 0->0"
+        },
+        {
+          "iteration": 11,
+          "time": "2026-10-31T08:04:01.826+08:00",
+          "ok": true,
+          "detail": "IDLE->FOCUS->FOCUS_PAUSED->FOCUS->abandon[IDLE] done 0->0"
+        },
+        {
+          "iteration": 12,
+          "time": "2026-10-31T08:04:04.176+08:00",
+          "ok": true,
+          "detail": "IDLE->FOCUS->FOCUS_PAUSED->FOCUS->abandon[IDLE] done 0->0"
+        },
+        {
+          "iteration": 13,
+          "time": "2026-10-31T08:04:06.526+08:00",
+          "ok": true,
+          "detail": "IDLE->FOCUS->FOCUS_PAUSED->FOCUS->abandon[IDLE] done 0->0"
+        },
+        {
+          "iteration": 14,
+          "time": "2026-10-31T08:04:08.876+08:00",
+          "ok": true,
+          "detail": "IDLE->FOCUS->FOCUS_PAUSED->FOCUS->abandon[IDLE] done 0->0"
+        },
+        {
+          "iteration": 15,
+          "time": "2026-10-31T08:04:11.226+08:00",
+          "ok": true,
+          "detail": "IDLE->FOCUS->FOCUS_PAUSED->FOCUS->abandon[IDLE] done 0->0"
+        },
+        {
+          "iteration": 16,
+          "time": "2026-10-31T08:04:13.576+08:00",
+          "ok": true,
+          "detail": "IDLE->FOCUS->FOCUS_PAUSED->FOCUS->abandon[IDLE] done 0->0"
+        },
+        {
+          "iteration": 17,
+          "time": "2026-10-31T08:04:15.926+08:00",
+          "ok": true,
+          "detail": "IDLE->FOCUS->FOCUS_PAUSED->FOCUS->abandon[IDLE] done 0->0"
+        },
+        {
+          "iteration": 18,
+          "time": "2026-10-31T08:04:18.276+08:00",
+          "ok": true,
+          "detail": "IDLE->FOCUS->FOCUS_PAUSED->FOCUS->abandon[IDLE] done 0->0"
+        },
+        {
+          "iteration": 19,
+          "time": "2026-10-31T08:04:20.626+08:00",
+          "ok": true,
+          "detail": "IDLE->FOCUS->FOCUS_PAUSED->FOCUS->abandon[IDLE] done 0->0"
+        },
+        {
+          "iteration": 20,
+          "time": "2026-10-31T08:04:22.976+08:00",
+          "ok": true,
+          "detail": "IDLE->FOCUS->FOCUS_PAUSED->FOCUS->abandon[IDLE] done 0->0"
+        }
+      ]
+    },
+    {
+      "name": "pomo_key1_long",
+      "description": "POMO KEY1 长：->IDLE 且 done 不变",
+      "iterations": 20,
+      "pass": 20,
+      "fail": 0,
+      "pass_rate": 1.0,
+      "min_pass": 19,
+      "ok": true,
+      "rows": [
+        {
+          "iteration": 1,
+          "time": "2026-10-31T08:04:24.346+08:00",
+          "ok": true,
+          "detail": "FOCUS -> abandon[IDLE] done 0->0"
+        },
+        {
+          "iteration": 2,
+          "time": "2026-10-31T08:04:25.716+08:00",
+          "ok": true,
+          "detail": "FOCUS -> abandon[IDLE] done 0->0"
+        },
+        {
+          "iteration": 3,
+          "time": "2026-10-31T08:04:27.086+08:00",
+          "ok": true,
+          "detail": "FOCUS -> abandon[IDLE] done 0->0"
+        },
+        {
+          "iteration": 4,
+          "time": "2026-10-31T08:04:28.456+08:00",
+          "ok": true,
+          "detail": "FOCUS -> abandon[IDLE] done 0->0"
+        },
+        {
+          "iteration": 5,
+          "time": "2026-10-31T08:04:29.826+08:00",
+          "ok": true,
+          "detail": "FOCUS -> abandon[IDLE] done 0->0"
+        },
+        {
+          "iteration": 6,
+          "time": "2026-10-31T08:04:31.196+08:00",
+          "ok": true,
+          "detail": "FOCUS -> abandon[IDLE] done 0->0"
+        },
+        {
+          "iteration": 7,
+          "time": "2026-10-31T08:04:32.566+08:00",
+          "ok": true,
+          "detail": "FOCUS -> abandon[IDLE] done 0->0"
+        },
+        {
+          "iteration": 8,
+          "time": "2026-10-31T08:04:33.936+08:00",
+          "ok": true,
+          "detail": "FOCUS -> abandon[IDLE] done 0->0"
+        },
+        {
+          "iteration": 9,
+          "time": "2026-10-31T08:04:35.306+08:00",
+          "ok": true,
+          "detail": "FOCUS -> abandon[IDLE] done 0->0"
+        },
+        {
+          "iteration": 10,
+          "time": "2026-10-31T08:04:36.676+08:00",
+          "ok": true,
+          "detail": "FOCUS -> abandon[IDLE] done 0->0"
+        },
+        {
+          "iteration": 11,
+          "time": "2026-10-31T08:04:38.047+08:00",
+          "ok": true,
+          "detail": "FOCUS -> abandon[IDLE] done 0->0"
+        },
+        {
+          "iteration": 12,
+          "time": "2026-10-31T08:04:39.417+08:00",
+          "ok": true,
+          "detail": "FOCUS -> abandon[IDLE] done 0->0"
+        },
+        {
+          "iteration": 13,
+          "time": "2026-10-31T08:04:40.787+08:00",
+          "ok": true,
+          "detail": "FOCUS -> abandon[IDLE] done 0->0"
+        },
+        {
+          "iteration": 14,
+          "time": "2026-10-31T08:04:42.157+08:00",
+          "ok": true,
+          "detail": "FOCUS -> abandon[IDLE] done 0->0"
+        },
+        {
+          "iteration": 15,
+          "time": "2026-10-31T08:04:43.527+08:00",
+          "ok": true,
+          "detail": "FOCUS -> abandon[IDLE] done 0->0"
+        },
+        {
+          "iteration": 16,
+          "time": "2026-10-31T08:04:44.897+08:00",
+          "ok": true,
+          "detail": "FOCUS -> abandon[IDLE] done 0->0"
+        },
+        {
+          "iteration": 17,
+          "time": "2026-10-31T08:04:46.267+08:00",
+          "ok": true,
+          "detail": "FOCUS -> abandon[IDLE] done 0->0"
+        },
+        {
+          "iteration": 18,
+          "time": "2026-10-31T08:04:47.637+08:00",
+          "ok": true,
+          "detail": "FOCUS -> abandon[IDLE] done 0->0"
+        },
+        {
+          "iteration": 19,
+          "time": "2026-10-31T08:04:49.007+08:00",
+          "ok": true,
+          "detail": "FOCUS -> abandon[IDLE] done 0->0"
+        },
+        {
+          "iteration": 20,
+          "time": "2026-10-31T08:04:50.377+08:00",
+          "ok": true,
+          "detail": "FOCUS -> abandon[IDLE] done 0->0"
+        }
+      ]
+    },
+    {
+      "name": "pomo_key2_short",
+      "description": "POMO KEY2 短：回 DUTY",
+      "iterations": 20,
+      "pass": 20,
+      "fail": 0,
+      "pass_rate": 1.0,
+      "min_pass": 19,
+      "ok": true,
+      "rows": [
+        {
+          "iteration": 1,
+          "time": "2026-10-31T08:04:51.617+08:00",
+          "ok": true,
+          "detail": "->mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0 ->mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0"
+        },
+        {
+          "iteration": 2,
+          "time": "2026-10-31T08:04:52.857+08:00",
+          "ok": true,
+          "detail": "->mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0 ->mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0"
+        },
+        {
+          "iteration": 3,
+          "time": "2026-10-31T08:04:54.097+08:00",
+          "ok": true,
+          "detail": "->mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0 ->mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0"
+        },
+        {
+          "iteration": 4,
+          "time": "2026-10-31T08:04:55.337+08:00",
+          "ok": true,
+          "detail": "->mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0 ->mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0"
+        },
+        {
+          "iteration": 5,
+          "time": "2026-10-31T08:04:56.577+08:00",
+          "ok": true,
+          "detail": "->mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0 ->mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0"
+        },
+        {
+          "iteration": 6,
+          "time": "2026-10-31T08:04:57.827+08:00",
+          "ok": true,
+          "detail": "->mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0 ->mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0"
+        },
+        {
+          "iteration": 7,
+          "time": "2026-10-31T08:04:59.147+08:00",
+          "ok": true,
+          "detail": "->mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0 ->mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0"
+        },
+        {
+          "iteration": 8,
+          "time": "2026-10-31T08:05:00.467+08:00",
+          "ok": true,
+          "detail": "->mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0 ->mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0"
+        },
+        {
+          "iteration": 9,
+          "time": "2026-10-31T08:05:01.787+08:00",
+          "ok": true,
+          "detail": "->mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0 ->mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0"
+        },
+        {
+          "iteration": 10,
+          "time": "2026-10-31T08:05:03.107+08:00",
+          "ok": true,
+          "detail": "->mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0 ->mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0"
+        },
+        {
+          "iteration": 11,
+          "time": "2026-10-31T08:05:04.427+08:00",
+          "ok": true,
+          "detail": "->mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0 ->mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0"
+        },
+        {
+          "iteration": 12,
+          "time": "2026-10-31T08:05:05.747+08:00",
+          "ok": true,
+          "detail": "->mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0 ->mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0"
+        },
+        {
+          "iteration": 13,
+          "time": "2026-10-31T08:05:07.067+08:00",
+          "ok": true,
+          "detail": "->mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0 ->mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0"
+        },
+        {
+          "iteration": 14,
+          "time": "2026-10-31T08:05:08.387+08:00",
+          "ok": true,
+          "detail": "->mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0 ->mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0"
+        },
+        {
+          "iteration": 15,
+          "time": "2026-10-31T08:05:09.707+08:00",
+          "ok": true,
+          "detail": "->mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0 ->mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0"
+        },
+        {
+          "iteration": 16,
+          "time": "2026-10-31T08:05:11.027+08:00",
+          "ok": true,
+          "detail": "->mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0 ->mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0"
+        },
+        {
+          "iteration": 17,
+          "time": "2026-10-31T08:05:12.347+08:00",
+          "ok": true,
+          "detail": "->mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0 ->mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0"
+        },
+        {
+          "iteration": 18,
+          "time": "2026-10-31T08:05:13.667+08:00",
+          "ok": true,
+          "detail": "->mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0 ->mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0"
+        },
+        {
+          "iteration": 19,
+          "time": "2026-10-31T08:05:14.987+08:00",
+          "ok": true,
+          "detail": "->mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0 ->mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0"
+        },
+        {
+          "iteration": 20,
+          "time": "2026-10-31T08:05:16.307+08:00",
+          "ok": true,
+          "detail": "->mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0 ->mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0"
+        }
+      ]
+    },
+    {
+      "name": "menu_key1_short",
+      "description": "菜单 KEY1 短：选中循环 0..4",
+      "iterations": 20,
+      "pass": 20,
+      "fail": 0,
+      "pass_rate": 1.0,
+      "min_pass": 19,
+      "ok": true,
+      "rows": [
+        {
+          "iteration": 1,
+          "time": "2026-10-31T08:05:18.947+08:00",
+          "ok": true,
+          "detail": "K#1 -> sel=1 expect 1 (m.sel) open_sel0=True"
+        },
+        {
+          "iteration": 2,
+          "time": "2026-10-31T08:05:19.915+08:00",
+          "ok": true,
+          "detail": "K#2 -> sel=2 expect 2 (m.sel) open_sel0=True"
+        },
+        {
+          "iteration": 3,
+          "time": "2026-10-31T08:05:20.873+08:00",
+          "ok": true,
+          "detail": "K#3 -> sel=3 expect 3 (m.sel) open_sel0=True"
+        },
+        {
+          "iteration": 4,
+          "time": "2026-10-31T08:05:21.819+08:00",
+          "ok": true,
+          "detail": "K#4 -> sel=4 expect 4 (m.sel) open_sel0=True"
+        },
+        {
+          "iteration": 5,
+          "time": "2026-10-31T08:05:22.227+08:00",
+          "ok": true,
+          "detail": "K#5 -> sel=0 expect 0 (m.sel) open_sel0=True"
+        },
+        {
+          "iteration": 6,
+          "time": "2026-10-31T08:05:22.587+08:00",
+          "ok": true,
+          "detail": "K#6 -> sel=1 expect 1 (m.sel) open_sel0=True"
+        },
+        {
+          "iteration": 7,
+          "time": "2026-10-31T08:05:22.947+08:00",
+          "ok": true,
+          "detail": "K#7 -> sel=2 expect 2 (m.sel) open_sel0=True"
+        },
+        {
+          "iteration": 8,
+          "time": "2026-10-31T08:05:23.307+08:00",
+          "ok": true,
+          "detail": "K#8 -> sel=3 expect 3 (m.sel) open_sel0=True"
+        },
+        {
+          "iteration": 9,
+          "time": "2026-10-31T08:05:23.667+08:00",
+          "ok": true,
+          "detail": "K#9 -> sel=4 expect 4 (m.sel) open_sel0=True"
+        },
+        {
+          "iteration": 10,
+          "time": "2026-10-31T08:05:24.027+08:00",
+          "ok": true,
+          "detail": "K#10 -> sel=0 expect 0 (m.sel) open_sel0=True"
+        },
+        {
+          "iteration": 11,
+          "time": "2026-10-31T08:05:24.387+08:00",
+          "ok": true,
+          "detail": "K#11 -> sel=1 expect 1 (m.sel) open_sel0=True"
+        },
+        {
+          "iteration": 12,
+          "time": "2026-10-31T08:05:24.747+08:00",
+          "ok": true,
+          "detail": "K#12 -> sel=2 expect 2 (m.sel) open_sel0=True"
+        },
+        {
+          "iteration": 13,
+          "time": "2026-10-31T08:05:25.107+08:00",
+          "ok": true,
+          "detail": "K#13 -> sel=3 expect 3 (m.sel) open_sel0=True"
+        },
+        {
+          "iteration": 14,
+          "time": "2026-10-31T08:05:25.467+08:00",
+          "ok": true,
+          "detail": "K#14 -> sel=4 expect 4 (m.sel) open_sel0=True"
+        },
+        {
+          "iteration": 15,
+          "time": "2026-10-31T08:05:25.827+08:00",
+          "ok": true,
+          "detail": "K#15 -> sel=0 expect 0 (m.sel) open_sel0=True"
+        },
+        {
+          "iteration": 16,
+          "time": "2026-10-31T08:05:26.187+08:00",
+          "ok": true,
+          "detail": "K#16 -> sel=1 expect 1 (m.sel) open_sel0=True"
+        },
+        {
+          "iteration": 17,
+          "time": "2026-10-31T08:05:26.547+08:00",
+          "ok": true,
+          "detail": "K#17 -> sel=2 expect 2 (m.sel) open_sel0=True"
+        },
+        {
+          "iteration": 18,
+          "time": "2026-10-31T08:05:26.907+08:00",
+          "ok": true,
+          "detail": "K#18 -> sel=3 expect 3 (m.sel) open_sel0=True"
+        },
+        {
+          "iteration": 19,
+          "time": "2026-10-31T08:05:27.267+08:00",
+          "ok": true,
+          "detail": "K#19 -> sel=4 expect 4 (m.sel) open_sel0=True"
+        },
+        {
+          "iteration": 20,
+          "time": "2026-10-31T08:05:27.977+08:00",
+          "ok": true,
+          "detail": "K#20 -> sel=0 expect 0 (m.sel) open_sel0=True"
+        }
+      ]
+    },
+    {
+      "name": "menu_key2_long",
+      "description": "菜单 KEY2 长：关闭菜单",
+      "iterations": 20,
+      "pass": 20,
+      "fail": 0,
+      "pass_rate": 1.0,
+      "min_pass": 19,
+      "ok": true,
+      "rows": [
+        {
+          "iteration": 1,
+          "time": "2026-10-31T08:05:30.017+08:00",
+          "ok": true,
+          "detail": "open[mode=POMO menu=1 phase=IDLE muted=1 done=0 focus_s=0] close[mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0] back[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 2,
+          "time": "2026-10-31T08:05:32.057+08:00",
+          "ok": true,
+          "detail": "open[mode=POMO menu=1 phase=IDLE muted=1 done=0 focus_s=0] close[mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0] back[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 3,
+          "time": "2026-10-31T08:05:34.097+08:00",
+          "ok": true,
+          "detail": "open[mode=POMO menu=1 phase=IDLE muted=1 done=0 focus_s=0] close[mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0] back[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 4,
+          "time": "2026-10-31T08:05:36.137+08:00",
+          "ok": true,
+          "detail": "open[mode=POMO menu=1 phase=IDLE muted=1 done=0 focus_s=0] close[mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0] back[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 5,
+          "time": "2026-10-31T08:05:38.177+08:00",
+          "ok": true,
+          "detail": "open[mode=POMO menu=1 phase=IDLE muted=1 done=0 focus_s=0] close[mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0] back[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 6,
+          "time": "2026-10-31T08:05:40.218+08:00",
+          "ok": true,
+          "detail": "open[mode=POMO menu=1 phase=IDLE muted=1 done=0 focus_s=0] close[mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0] back[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 7,
+          "time": "2026-10-31T08:05:42.258+08:00",
+          "ok": true,
+          "detail": "open[mode=POMO menu=1 phase=IDLE muted=1 done=0 focus_s=0] close[mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0] back[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 8,
+          "time": "2026-10-31T08:05:44.298+08:00",
+          "ok": true,
+          "detail": "open[mode=POMO menu=1 phase=IDLE muted=1 done=0 focus_s=0] close[mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0] back[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 9,
+          "time": "2026-10-31T08:05:46.337+08:00",
+          "ok": true,
+          "detail": "open[mode=POMO menu=1 phase=IDLE muted=1 done=0 focus_s=0] close[mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0] back[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 10,
+          "time": "2026-10-31T08:05:48.378+08:00",
+          "ok": true,
+          "detail": "open[mode=POMO menu=1 phase=IDLE muted=1 done=0 focus_s=0] close[mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0] back[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 11,
+          "time": "2026-10-31T08:05:50.418+08:00",
+          "ok": true,
+          "detail": "open[mode=POMO menu=1 phase=IDLE muted=1 done=0 focus_s=0] close[mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0] back[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 12,
+          "time": "2026-10-31T08:05:52.458+08:00",
+          "ok": true,
+          "detail": "open[mode=POMO menu=1 phase=IDLE muted=1 done=0 focus_s=0] close[mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0] back[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 13,
+          "time": "2026-10-31T08:05:54.498+08:00",
+          "ok": true,
+          "detail": "open[mode=POMO menu=1 phase=IDLE muted=1 done=0 focus_s=0] close[mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0] back[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 14,
+          "time": "2026-10-31T08:05:56.538+08:00",
+          "ok": true,
+          "detail": "open[mode=POMO menu=1 phase=IDLE muted=1 done=0 focus_s=0] close[mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0] back[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 15,
+          "time": "2026-10-31T08:05:58.578+08:00",
+          "ok": true,
+          "detail": "open[mode=POMO menu=1 phase=IDLE muted=1 done=0 focus_s=0] close[mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0] back[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 16,
+          "time": "2026-10-31T08:06:00.618+08:00",
+          "ok": true,
+          "detail": "open[mode=POMO menu=1 phase=IDLE muted=1 done=0 focus_s=0] close[mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0] back[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 17,
+          "time": "2026-10-31T08:06:02.658+08:00",
+          "ok": true,
+          "detail": "open[mode=POMO menu=1 phase=IDLE muted=1 done=0 focus_s=0] close[mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0] back[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 18,
+          "time": "2026-10-31T08:06:04.698+08:00",
+          "ok": true,
+          "detail": "open[mode=POMO menu=1 phase=IDLE muted=1 done=0 focus_s=0] close[mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0] back[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 19,
+          "time": "2026-10-31T08:06:06.738+08:00",
+          "ok": true,
+          "detail": "open[mode=POMO menu=1 phase=IDLE muted=1 done=0 focus_s=0] close[mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0] back[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        },
+        {
+          "iteration": 20,
+          "time": "2026-10-31T08:06:08.778+08:00",
+          "ok": true,
+          "detail": "open[mode=POMO menu=1 phase=IDLE muted=1 done=0 focus_s=0] close[mode=POMO menu=0 phase=IDLE muted=1 done=0 focus_s=0] back[mode=DUTY menu=0 phase=IDLE muted=1 done=0 focus_s=0]"
+        }
+      ]
+    },
+    {
+      "name": "menu_exec_mute",
+      "description": "菜单 MUTE 项：muted 翻转并留在菜单",
+      "iterations": 20,
+      "pass": 20,
+      "fail": 0,
+      "pass_rate": 1.0,
+      "min_pass": 19,
+      "ok": true,
+      "rows": [
+        {
+          "iteration": 1,
+          "time": "2026-10-31T08:06:10.338+08:00",
+          "ok": true,
+          "detail": "muted 1->0 expect 0; menu stays=1"
+        },
+        {
+          "iteration": 2,
+          "time": "2026-10-31T08:06:11.898+08:00",
+          "ok": true,
+          "detail": "muted 0->1 expect 1; menu stays=1"
+        },
+        {
+          "iteration": 3,
+          "time": "2026-10-31T08:06:13.458+08:00",
+          "ok": true,
+          "detail": "muted 1->0 expect 0; menu stays=1"
+        },
+        {
+          "iteration": 4,
+          "time": "2026-10-31T08:06:15.018+08:00",
+          "ok": true,
+          "detail": "muted 0->1 expect 1; menu stays=1"
+        },
+        {
+          "iteration": 5,
+          "time": "2026-10-31T08:06:16.578+08:00",
+          "ok": true,
+          "detail": "muted 1->0 expect 0; menu stays=1"
+        },
+        {
+          "iteration": 6,
+          "time": "2026-10-31T08:06:18.138+08:00",
+          "ok": true,
+          "detail": "muted 0->1 expect 1; menu stays=1"
+        },
+        {
+          "iteration": 7,
+          "time": "2026-10-31T08:06:19.698+08:00",
+          "ok": true,
+          "detail": "muted 1->0 expect 0; menu stays=1"
+        },
+        {
+          "iteration": 8,
+          "time": "2026-10-31T08:06:21.258+08:00",
+          "ok": true,
+          "detail": "muted 0->1 expect 1; menu stays=1"
+        },
+        {
+          "iteration": 9,
+          "time": "2026-10-31T08:06:22.818+08:00",
+          "ok": true,
+          "detail": "muted 1->0 expect 0; menu stays=1"
+        },
+        {
+          "iteration": 10,
+          "time": "2026-10-31T08:06:24.378+08:00",
+          "ok": true,
+          "detail": "muted 0->1 expect 1; menu stays=1"
+        },
+        {
+          "iteration": 11,
+          "time": "2026-10-31T08:06:25.938+08:00",
+          "ok": true,
+          "detail": "muted 1->0 expect 0; menu stays=1"
+        },
+        {
+          "iteration": 12,
+          "time": "2026-10-31T08:06:27.498+08:00",
+          "ok": true,
+          "detail": "muted 0->1 expect 1; menu stays=1"
+        },
+        {
+          "iteration": 13,
+          "time": "2026-10-31T08:06:29.058+08:00",
+          "ok": true,
+          "detail": "muted 1->0 expect 0; menu stays=1"
+        },
+        {
+          "iteration": 14,
+          "time": "2026-10-31T08:06:30.618+08:00",
+          "ok": true,
+          "detail": "muted 0->1 expect 1; menu stays=1"
+        },
+        {
+          "iteration": 15,
+          "time": "2026-10-31T08:06:32.178+08:00",
+          "ok": true,
+          "detail": "muted 1->0 expect 0; menu stays=1"
+        },
+        {
+          "iteration": 16,
+          "time": "2026-10-31T08:06:33.738+08:00",
+          "ok": true,
+          "detail": "muted 0->1 expect 1; menu stays=1"
+        },
+        {
+          "iteration": 17,
+          "time": "2026-10-31T08:06:35.298+08:00",
+          "ok": true,
+          "detail": "muted 1->0 expect 0; menu stays=1"
+        },
+        {
+          "iteration": 18,
+          "time": "2026-10-31T08:06:36.858+08:00",
+          "ok": true,
+          "detail": "muted 0->1 expect 1; menu stays=1"
+        },
+        {
+          "iteration": 19,
+          "time": "2026-10-31T08:06:38.418+08:00",
+          "ok": true,
+          "detail": "muted 1->0 expect 0; menu stays=1"
+        },
+        {
+          "iteration": 20,
+          "time": "2026-10-31T08:06:39.978+08:00",
+          "ok": true,
+          "detail": "muted 0->1 expect 1; menu stays=1"
+        }
+      ]
+    },
+    {
+      "name": "menu_exec_back",
+      "description": "菜单 BACK 项：关闭菜单",
+      "iterations": 20,
+      "pass": 20,
+      "fail": 0,
+      "pass_rate": 1.0,
+      "min_pass": 19,
+      "ok": true,
+      "rows": [
+        {
+          "iteration": 1,
+          "time": "2026-10-31T08:06:42.378+08:00",
+          "ok": true,
+          "detail": "sel=4 -> execute BACK -> menu=0 mode=DUTY"
+        },
+        {
+          "iteration": 2,
+          "time": "2026-10-31T08:06:44.778+08:00",
+          "ok": true,
+          "detail": "sel=4 -> execute BACK -> menu=0 mode=DUTY"
+        },
+        {
+          "iteration": 3,
+          "time": "2026-10-31T08:06:47.179+08:00",
+          "ok": true,
+          "detail": "sel=4 -> execute BACK -> menu=0 mode=DUTY"
+        },
+        {
+          "iteration": 4,
+          "time": "2026-10-31T08:06:49.578+08:00",
+          "ok": true,
+          "detail": "sel=4 -> execute BACK -> menu=0 mode=DUTY"
+        },
+        {
+          "iteration": 5,
+          "time": "2026-10-31T08:06:51.978+08:00",
+          "ok": true,
+          "detail": "sel=4 -> execute BACK -> menu=0 mode=DUTY"
+        },
+        {
+          "iteration": 6,
+          "time": "2026-10-31T08:06:54.379+08:00",
+          "ok": true,
+          "detail": "sel=4 -> execute BACK -> menu=0 mode=DUTY"
+        },
+        {
+          "iteration": 7,
+          "time": "2026-10-31T08:06:56.779+08:00",
+          "ok": true,
+          "detail": "sel=4 -> execute BACK -> menu=0 mode=DUTY"
+        },
+        {
+          "iteration": 8,
+          "time": "2026-10-31T08:06:59.179+08:00",
+          "ok": true,
+          "detail": "sel=4 -> execute BACK -> menu=0 mode=DUTY"
+        },
+        {
+          "iteration": 9,
+          "time": "2026-10-31T08:07:01.579+08:00",
+          "ok": true,
+          "detail": "sel=4 -> execute BACK -> menu=0 mode=DUTY"
+        },
+        {
+          "iteration": 10,
+          "time": "2026-10-31T08:07:03.979+08:00",
+          "ok": true,
+          "detail": "sel=4 -> execute BACK -> menu=0 mode=DUTY"
+        },
+        {
+          "iteration": 11,
+          "time": "2026-10-31T08:07:06.379+08:00",
+          "ok": true,
+          "detail": "sel=4 -> execute BACK -> menu=0 mode=DUTY"
+        },
+        {
+          "iteration": 12,
+          "time": "2026-10-31T08:07:08.779+08:00",
+          "ok": true,
+          "detail": "sel=4 -> execute BACK -> menu=0 mode=DUTY"
+        },
+        {
+          "iteration": 13,
+          "time": "2026-10-31T08:07:11.179+08:00",
+          "ok": true,
+          "detail": "sel=4 -> execute BACK -> menu=0 mode=DUTY"
+        },
+        {
+          "iteration": 14,
+          "time": "2026-10-31T08:07:13.579+08:00",
+          "ok": true,
+          "detail": "sel=4 -> execute BACK -> menu=0 mode=DUTY"
+        },
+        {
+          "iteration": 15,
+          "time": "2026-10-31T08:07:15.979+08:00",
+          "ok": true,
+          "detail": "sel=4 -> execute BACK -> menu=0 mode=DUTY"
+        },
+        {
+          "iteration": 16,
+          "time": "2026-10-31T08:07:18.379+08:00",
+          "ok": true,
+          "detail": "sel=4 -> execute BACK -> menu=0 mode=DUTY"
+        },
+        {
+          "iteration": 17,
+          "time": "2026-10-31T08:07:20.779+08:00",
+          "ok": true,
+          "detail": "sel=4 -> execute BACK -> menu=0 mode=DUTY"
+        },
+        {
+          "iteration": 18,
+          "time": "2026-10-31T08:07:23.179+08:00",
+          "ok": true,
+          "detail": "sel=4 -> execute BACK -> menu=0 mode=DUTY"
+        },
+        {
+          "iteration": 19,
+          "time": "2026-10-31T08:07:25.579+08:00",
+          "ok": true,
+          "detail": "sel=4 -> execute BACK -> menu=0 mode=DUTY"
+        },
+        {
+          "iteration": 20,
+          "time": "2026-10-31T08:07:27.979+08:00",
+          "ok": true,
+          "detail": "sel=4 -> execute BACK -> menu=0 mode=DUTY"
+        }
+      ]
+    },
+    {
+      "name": "menu_exec_wifi",
+      "description": "菜单 WIFI (M5)：关闭菜单 + 日志 M5",
+      "iterations": 20,
+      "pass": 20,
+      "fail": 0,
+      "pass_rate": 1.0,
+      "min_pass": 19,
+      "ok": true,
+      "rows": [
+        {
+          "iteration": 1,
+          "time": "2026-10-31T08:07:30.499+08:00",
+          "ok": true,
+          "detail": "sel_ok=True menu=0 logs(M5)=['I (309495) m3: menu: WIFI -> M5 not implemented']"
+        },
+        {
+          "iteration": 2,
+          "time": "2026-10-31T08:07:33.019+08:00",
+          "ok": true,
+          "detail": "sel_ok=True menu=0 logs(M5)=['I (312015) m3: menu: WIFI -> M5 not implemented']"
+        },
+        {
+          "iteration": 3,
+          "time": "2026-10-31T08:07:35.539+08:00",
+          "ok": true,
+          "detail": "sel_ok=True menu=0 logs(M5)=['I (314535) m3: menu: WIFI -> M5 not implemented']"
+        },
+        {
+          "iteration": 4,
+          "time": "2026-10-31T08:07:38.059+08:00",
+          "ok": true,
+          "detail": "sel_ok=True menu=0 logs(M5)=['I (317055) m3: menu: WIFI -> M5 not implemented']"
+        },
+        {
+          "iteration": 5,
+          "time": "2026-10-31T08:07:40.579+08:00",
+          "ok": true,
+          "detail": "sel_ok=True menu=0 logs(M5)=['I (319575) m3: menu: WIFI -> M5 not implemented']"
+        },
+        {
+          "iteration": 6,
+          "time": "2026-10-31T08:07:43.099+08:00",
+          "ok": true,
+          "detail": "sel_ok=True menu=0 logs(M5)=['I (322095) m3: menu: WIFI -> M5 not implemented']"
+        },
+        {
+          "iteration": 7,
+          "time": "2026-10-31T08:07:45.619+08:00",
+          "ok": true,
+          "detail": "sel_ok=True menu=0 logs(M5)=['I (324615) m3: menu: WIFI -> M5 not implemented']"
+        },
+        {
+          "iteration": 8,
+          "time": "2026-10-31T08:07:48.139+08:00",
+          "ok": true,
+          "detail": "sel_ok=True menu=0 logs(M5)=['I (327135) m3: menu: WIFI -> M5 not implemented']"
+        },
+        {
+          "iteration": 9,
+          "time": "2026-10-31T08:07:50.659+08:00",
+          "ok": true,
+          "detail": "sel_ok=True menu=0 logs(M5)=['I (329655) m3: menu: WIFI -> M5 not implemented']"
+        },
+        {
+          "iteration": 10,
+          "time": "2026-10-31T08:07:53.179+08:00",
+          "ok": true,
+          "detail": "sel_ok=True menu=0 logs(M5)=['I (332175) m3: menu: WIFI -> M5 not implemented']"
+        },
+        {
+          "iteration": 11,
+          "time": "2026-10-31T08:07:55.700+08:00",
+          "ok": true,
+          "detail": "sel_ok=True menu=0 logs(M5)=['I (334695) m3: menu: WIFI -> M5 not implemented']"
+        },
+        {
+          "iteration": 12,
+          "time": "2026-10-31T08:07:58.220+08:00",
+          "ok": true,
+          "detail": "sel_ok=True menu=0 logs(M5)=['I (337215) m3: menu: WIFI -> M5 not implemented']"
+        },
+        {
+          "iteration": 13,
+          "time": "2026-10-31T08:08:00.740+08:00",
+          "ok": true,
+          "detail": "sel_ok=True menu=0 logs(M5)=['I (339735) m3: menu: WIFI -> M5 not implemented']"
+        },
+        {
+          "iteration": 14,
+          "time": "2026-10-31T08:08:03.260+08:00",
+          "ok": true,
+          "detail": "sel_ok=True menu=0 logs(M5)=['I (342255) m3: menu: WIFI -> M5 not implemented']"
+        },
+        {
+          "iteration": 15,
+          "time": "2026-10-31T08:08:05.780+08:00",
+          "ok": true,
+          "detail": "sel_ok=True menu=0 logs(M5)=['I (344775) m3: menu: WIFI -> M5 not implemented']"
+        },
+        {
+          "iteration": 16,
+          "time": "2026-10-31T08:08:08.300+08:00",
+          "ok": true,
+          "detail": "sel_ok=True menu=0 logs(M5)=['I (347295) m3: menu: WIFI -> M5 not implemented']"
+        },
+        {
+          "iteration": 17,
+          "time": "2026-10-31T08:08:10.820+08:00",
+          "ok": true,
+          "detail": "sel_ok=True menu=0 logs(M5)=['I (349815) m3: menu: WIFI -> M5 not implemented']"
+        },
+        {
+          "iteration": 18,
+          "time": "2026-10-31T08:08:13.340+08:00",
+          "ok": true,
+          "detail": "sel_ok=True menu=0 logs(M5)=['I (352335) m3: menu: WIFI -> M5 not implemented']"
+        },
+        {
+          "iteration": 19,
+          "time": "2026-10-31T08:08:15.860+08:00",
+          "ok": true,
+          "detail": "sel_ok=True menu=0 logs(M5)=['I (354855) m3: menu: WIFI -> M5 not implemented']"
+        },
+        {
+          "iteration": 20,
+          "time": "2026-10-31T08:08:18.380+08:00",
+          "ok": true,
+          "detail": "sel_ok=True menu=0 logs(M5)=['I (357375) m3: menu: WIFI -> M5 not implemented']"
+        }
+      ]
+    },
+    {
+      "name": "menu_exec_bt",
+      "description": "菜单 BT (M5)：关闭菜单 + 日志 M5",
+      "iterations": 20,
+      "pass": 20,
+      "fail": 0,
+      "pass_rate": 1.0,
+      "min_pass": 19,
+      "ok": true,
+      "rows": [
+        {
+          "iteration": 1,
+          "time": "2026-10-31T08:08:21.260+08:00",
+          "ok": true,
+          "detail": "sel_ok=True menu=0 logs(M5)=['I (360255) m3: menu: BT -> M5 not implemented']"
+        },
+        {
+          "iteration": 2,
+          "time": "2026-10-31T08:08:24.140+08:00",
+          "ok": true,
+          "detail": "sel_ok=True menu=0 logs(M5)=['I (363135) m3: menu: BT -> M5 not implemented']"
+        },
+        {
+          "iteration": 3,
+          "time": "2026-10-31T08:08:27.020+08:00",
+          "ok": true,
+          "detail": "sel_ok=True menu=0 logs(M5)=['I (366015) m3: menu: BT -> M5 not implemented']"
+        },
+        {
+          "iteration": 4,
+          "time": "2026-10-31T08:08:29.900+08:00",
+          "ok": true,
+          "detail": "sel_ok=True menu=0 logs(M5)=['I (368895) m3: menu: BT -> M5 not implemented']"
+        },
+        {
+          "iteration": 5,
+          "time": "2026-10-31T08:08:32.780+08:00",
+          "ok": true,
+          "detail": "sel_ok=True menu=0 logs(M5)=['I (371775) m3: menu: BT -> M5 not implemented']"
+        },
+        {
+          "iteration": 6,
+          "time": "2026-10-31T08:08:35.660+08:00",
+          "ok": true,
+          "detail": "sel_ok=True menu=0 logs(M5)=['I (374655) m3: menu: BT -> M5 not implemented']"
+        },
+        {
+          "iteration": 7,
+          "time": "2026-10-31T08:08:38.540+08:00",
+          "ok": true,
+          "detail": "sel_ok=True menu=0 logs(M5)=['I (377535) m3: menu: BT -> M5 not implemented']"
+        },
+        {
+          "iteration": 8,
+          "time": "2026-10-31T08:08:41.420+08:00",
+          "ok": true,
+          "detail": "sel_ok=True menu=0 logs(M5)=['I (380415) m3: menu: BT -> M5 not implemented']"
+        },
+        {
+          "iteration": 9,
+          "time": "2026-10-31T08:08:44.300+08:00",
+          "ok": true,
+          "detail": "sel_ok=True menu=0 logs(M5)=['I (383295) m3: menu: BT -> M5 not implemented']"
+        },
+        {
+          "iteration": 10,
+          "time": "2026-10-31T08:08:47.180+08:00",
+          "ok": true,
+          "detail": "sel_ok=True menu=0 logs(M5)=['I (386175) m3: menu: BT -> M5 not implemented']"
+        },
+        {
+          "iteration": 11,
+          "time": "2026-10-31T08:08:50.060+08:00",
+          "ok": true,
+          "detail": "sel_ok=True menu=0 logs(M5)=['I (389055) m3: menu: BT -> M5 not implemented']"
+        },
+        {
+          "iteration": 12,
+          "time": "2026-10-31T08:08:52.940+08:00",
+          "ok": true,
+          "detail": "sel_ok=True menu=0 logs(M5)=['I (391935) m3: menu: BT -> M5 not implemented']"
+        },
+        {
+          "iteration": 13,
+          "time": "2026-10-31T08:08:55.820+08:00",
+          "ok": true,
+          "detail": "sel_ok=True menu=0 logs(M5)=['I (394815) m3: menu: BT -> M5 not implemented']"
+        },
+        {
+          "iteration": 14,
+          "time": "2026-10-31T08:08:58.701+08:00",
+          "ok": true,
+          "detail": "sel_ok=True menu=0 logs(M5)=['I (397695) m3: menu: BT -> M5 not implemented']"
+        },
+        {
+          "iteration": 15,
+          "time": "2026-10-31T08:09:01.581+08:00",
+          "ok": true,
+          "detail": "sel_ok=True menu=0 logs(M5)=['I (400575) m3: menu: BT -> M5 not implemented']"
+        },
+        {
+          "iteration": 16,
+          "time": "2026-10-31T08:09:04.461+08:00",
+          "ok": true,
+          "detail": "sel_ok=True menu=0 logs(M5)=['I (403455) m3: menu: BT -> M5 not implemented']"
+        },
+        {
+          "iteration": 17,
+          "time": "2026-10-31T08:09:07.341+08:00",
+          "ok": true,
+          "detail": "sel_ok=True menu=0 logs(M5)=['I (406335) m3: menu: BT -> M5 not implemented']"
+        },
+        {
+          "iteration": 18,
+          "time": "2026-10-31T08:09:10.221+08:00",
+          "ok": true,
+          "detail": "sel_ok=True menu=0 logs(M5)=['I (409215) m3: menu: BT -> M5 not implemented']"
+        },
+        {
+          "iteration": 19,
+          "time": "2026-10-31T08:09:13.101+08:00",
+          "ok": true,
+          "detail": "sel_ok=True menu=0 logs(M5)=['I (412095) m3: menu: BT -> M5 not implemented']"
+        },
+        {
+          "iteration": 20,
+          "time": "2026-10-31T08:09:15.981+08:00",
+          "ok": true,
+          "detail": "sel_ok=True menu=0 logs(M5)=['I (414975) m3: menu: BT -> M5 not implemented']"
+        }
+      ]
+    }
+  ],
+  "persistence": {
+    "mute": {
+      "extra_toggles": 0,
+      "pre_reboot_muted": 1,
+      "reboot": {
+        "command": "R",
+        "ready_spec": "READY",
+        "ready_line": "I (733) m3: m3: READY (240x240, 8fps, keys=GPIO0/4/5, pomo 25/5)",
+        "ready_caught": true,
+        "skipped": [
+          "I (603) esp_psram: Reserving pool of 32K of internal memory for DMA/internal allocations",
+          "I (603) main_task: Calling app_main()",
+          "I (603) m3: power latched (GPIO2 high)",
+          "I (723) board_lcd: panel 240x240 ready, SPI mode 3, backlight on",
+          "I (733) m3: restored: done=0 focus_s=0 day=3 has_day=1 muted=1",
+          "I (733) m3: inject ready (M3): K/L/J/H=keys m=mode y=day R=restart t=fast-pomo; M2: 1..5 0 u n c x p d",
+          "I (733) m3: keys init: KEY1=GPIO0 KEY2=GPIO4 PWR=GPIO5 (low active)"
+        ],
+        "open_attempts": 1,
+        "reopened": true
+      },
+      "post_reboot": {
+        "muted": 1,
+        "mode": "DUTY",
+        "phase": "IDLE",
+        "done": 0,
+        "has_day": 1,
+        "day": 3,
+        "raw": "MODE mode=DUTY menu=0 sel=0 phase=IDLE remain_ms=1500000 total_ms=1500000 done=0 focus_s=0 muted=1 day=3 has_day=1 key1=0 key2=0 pwr=0"
+      },
+      "ok": true
+    }
+  },
+  "frames": {
+    "g6_duty": {
+      "name": "g6_duty",
+      "page": "duty",
+      "bin": "g6_duty.bin",
+      "png": "g6_duty.png",
+      "bytes": 115200,
+      "crc32": "a9f7eb93",
+      "frame_sha256": "b117f682b6f0ee61a369ba4d6404d71256a0e1b63438fd987031269324dd4116",
+      "png_sha256": "4cd1ba7ab12bb6e584baa51b8baa6fea0633c7f631893d5bfd60a327f975e040",
+      "layout_ok": true,
+      "layout_failed": [],
+      "layout_checks": 18,
+      "layout": {
+        "state": "IDLE",
+        "card_count": 0,
+        "ok": true,
+        "checks": [
+          {
+            "name": "frame_size",
+            "ok": true,
+            "detail": "115200 bytes = 240x240 RGB565LE",
+            "evidence": []
+          },
+          {
+            "name": "network_dot",
+            "ok": true,
+            "detail": "(4,4,4,4) == 0x07E0: 16/16 px",
+            "evidence": []
+          },
+          {
+            "name": "marker_absent",
+            "ok": true,
+            "detail": "marker region (111, 2, 18, 14) has no 0xFFFF/0xFD20: white=0 orange=0",
+            "evidence": []
+          },
+          {
+            "name": "card_empty[0]",
+            "ok": true,
+            "detail": "(4, 152, 232, 28) must be all 0x0000: 6496/6496 px",
+            "evidence": []
+          },
+          {
+            "name": "card_empty[1]",
+            "ok": true,
+            "detail": "(4, 180, 232, 28) must be all 0x0000: 6496/6496 px",
+            "evidence": []
+          },
+          {
+            "name": "card_empty[2]",
+            "ok": true,
+            "detail": "(4, 208, 232, 28) must be all 0x0000: 6496/6496 px",
+            "evidence": []
+          },
+          {
+            "name": "pet_drawn",
+            "ok": true,
+            "detail": "(72, 20, 96, 128) has 6128 non-bg px",
+            "evidence": [
+              "pet_rect=(72, 20, 96, 128)"
+            ]
+          },
+          {
+            "name": "bg.bar_left_margin",
+            "ok": true,
+            "detail": "(0, 0, 4, 12) all 0x0000: 48/48 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.bar_content_gap",
+            "ok": true,
+            "detail": "(8, 0, 103, 12) all 0x0000: 1236/1236 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.bar_mid_blank",
+            "ok": true,
+            "detail": "(129, 0, 67, 12) all 0x0000: 804/804 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.bar_right_blank",
+            "ok": true,
+            "detail": "(196, 0, 44, 12) all 0x0000: 528/528 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.above_pet",
+            "ok": true,
+            "detail": "(0, 16, 240, 4) all 0x0000: 960/960 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.pet_left",
+            "ok": true,
+            "detail": "(0, 20, 72, 128) all 0x0000: 9216/9216 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.pet_right",
+            "ok": true,
+            "detail": "(168, 20, 72, 128) all 0x0000: 9216/9216 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.below_pet",
+            "ok": true,
+            "detail": "(0, 148, 240, 4) all 0x0000: 960/960 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.card_left_margin",
+            "ok": true,
+            "detail": "(0, 152, 4, 84) all 0x0000: 336/336 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.card_right_margin",
+            "ok": true,
+            "detail": "(236, 152, 4, 84) all 0x0000: 336/336 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.footer",
+            "ok": true,
+            "detail": "(0, 236, 240, 4) all 0x0000: 960/960 px",
+            "evidence": []
+          }
+        ]
+      },
+      "context": {
+        "state": "IDLE",
+        "cards": 0
+      }
+    },
+    "g6_pomo_idle": {
+      "name": "g6_pomo_idle",
+      "page": "pomo",
+      "bin": "g6_pomo_idle.bin",
+      "png": "g6_pomo_idle.png",
+      "bytes": 115200,
+      "crc32": "eff88910",
+      "frame_sha256": "14b52133b147b28ebe088e02aa06ed17624df66e760e639836d518bebf112383",
+      "png_sha256": "e0214398f0d5c21613b1ef92a1750b231ac4452ae6c4a25d65090cd7f8cfa92e",
+      "layout_ok": true,
+      "layout_failed": [],
+      "layout_checks": 16,
+      "layout": {
+        "page": "pomo",
+        "phase": "IDLE",
+        "selected": null,
+        "expected_progress": 0.0,
+        "measured_progress": 0.0,
+        "ok": true,
+        "checks": [
+          {
+            "name": "frame_size",
+            "ok": true,
+            "detail": "115200 bytes = 240x240 RGB565LE",
+            "evidence": []
+          },
+          {
+            "name": "bg.top",
+            "ok": true,
+            "detail": "(0, 0, 240, 14) all 0x0000: 3360/3360 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.title_ring_gap",
+            "ok": true,
+            "detail": "(0, 24, 240, 4) all 0x0000: 960/960 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.ring_footer_gap",
+            "ok": true,
+            "detail": "(0, 182, 240, 16) all 0x0000: 3840/3840 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.bottom",
+            "ok": true,
+            "detail": "(0, 208, 240, 32) all 0x0000: 7680/7680 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.left",
+            "ok": true,
+            "detail": "(0, 28, 40, 152) all 0x0000: 6080/6080 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.right",
+            "ok": true,
+            "detail": "(200, 28, 40, 152) all 0x0000: 6080/6080 px",
+            "evidence": []
+          },
+          {
+            "name": "ring_present",
+            "ok": true,
+            "detail": "mid-radius 71 sampled at 2 deg: 180/180 px are track/progress",
+            "evidence": []
+          },
+          {
+            "name": "ring_bbox",
+            "ok": true,
+            "detail": "ring bbox=(44,28,w=153,h=153) center=(120.0,104.0) expect center=(120,104) d=153",
+            "evidence": [
+              "contained=True sized=True"
+            ]
+          },
+          {
+            "name": "ring_thickness",
+            "ok": true,
+            "detail": "270deg radial ring-color run=11 px (expect ~10, 6..14)",
+            "evidence": [
+              "first_ring_radius=66 (expect ~66..76)"
+            ]
+          },
+          {
+            "name": "progress_fraction",
+            "ok": true,
+            "detail": "measured=0.000 expected=0.000 (remain_ms=1500000 total_ms=1500000)",
+            "evidence": [
+              "tolerance=0.05 (18 deg)"
+            ]
+          },
+          {
+            "name": "progress_color_zero",
+            "ok": true,
+            "detail": "progress=0%: 0/180 ring samples are progress color (expect <=3)",
+            "evidence": []
+          },
+          {
+            "name": "ring_track_all",
+            "ok": true,
+            "detail": "IDLE: 180/180 ring samples are track 0x4208",
+            "evidence": []
+          },
+          {
+            "name": "phase_title",
+            "ok": true,
+            "detail": "title band (0, 14, 240, 12) non_bg=144, color 0x8410 px=144 (expected 'READY')",
+            "evidence": [
+              "phase=IDLE color=0x8410"
+            ]
+          },
+          {
+            "name": "countdown_text",
+            "ok": true,
+            "detail": "white px in countdown window (76, 90, 88, 28) = 520 (whole frame 520)",
+            "evidence": [
+              "white only in countdown area: True"
+            ]
+          },
+          {
+            "name": "footer_stats",
+            "ok": true,
+            "detail": "footer band (0, 196, 240, 16) gray 0x8410 px=229 (DONE <n>  <m>M)",
+            "evidence": []
+          }
+        ]
+      },
+      "context": {
+        "phase": "IDLE",
+        "remain_ms": 1500000,
+        "total_ms": 1500000,
+        "done": 0,
+        "focus_s": 0
+      }
+    },
+    "g6_pomo_focus": {
+      "name": "g6_pomo_focus",
+      "page": "pomo",
+      "bin": "g6_pomo_focus.bin",
+      "png": "g6_pomo_focus.png",
+      "bytes": 115200,
+      "crc32": "5b6e9c64",
+      "frame_sha256": "ac50898b694a32340b5e67fbdcd23a2fb7fe182a1c5a948612871aa4f69bf58b",
+      "png_sha256": "eb808f2ae224ad8386acf8c1b24821c47c354f67d7913e5a4f6dfc9cd42bd689",
+      "layout_ok": true,
+      "layout_failed": [],
+      "layout_checks": 15,
+      "layout": {
+        "page": "pomo",
+        "phase": "FOCUS",
+        "selected": null,
+        "expected_progress": 0.00016,
+        "measured_progress": 0.0,
+        "ok": true,
+        "checks": [
+          {
+            "name": "frame_size",
+            "ok": true,
+            "detail": "115200 bytes = 240x240 RGB565LE",
+            "evidence": []
+          },
+          {
+            "name": "bg.top",
+            "ok": true,
+            "detail": "(0, 0, 240, 14) all 0x0000: 3360/3360 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.title_ring_gap",
+            "ok": true,
+            "detail": "(0, 24, 240, 4) all 0x0000: 960/960 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.ring_footer_gap",
+            "ok": true,
+            "detail": "(0, 182, 240, 16) all 0x0000: 3840/3840 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.bottom",
+            "ok": true,
+            "detail": "(0, 208, 240, 32) all 0x0000: 7680/7680 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.left",
+            "ok": true,
+            "detail": "(0, 28, 40, 152) all 0x0000: 6080/6080 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.right",
+            "ok": true,
+            "detail": "(200, 28, 40, 152) all 0x0000: 6080/6080 px",
+            "evidence": []
+          },
+          {
+            "name": "ring_present",
+            "ok": true,
+            "detail": "mid-radius 71 sampled at 2 deg: 180/180 px are track/progress",
+            "evidence": []
+          },
+          {
+            "name": "ring_bbox",
+            "ok": true,
+            "detail": "ring bbox=(44,28,w=153,h=153) center=(120.0,104.0) expect center=(120,104) d=153",
+            "evidence": [
+              "contained=True sized=True"
+            ]
+          },
+          {
+            "name": "ring_thickness",
+            "ok": true,
+            "detail": "270deg radial ring-color run=11 px (expect ~10, 6..14)",
+            "evidence": [
+              "first_ring_radius=66 (expect ~66..76)"
+            ]
+          },
+          {
+            "name": "progress_fraction",
+            "ok": true,
+            "detail": "measured=0.000 expected=0.000 (remain_ms=1499760 total_ms=1500000)",
+            "evidence": [
+              "tolerance=0.05 (18 deg)"
+            ]
+          },
+          {
+            "name": "progress_color_zero",
+            "ok": true,
+            "detail": "progress=0%: 0/180 ring samples are progress color (expect <=3)",
+            "evidence": []
+          },
+          {
+            "name": "phase_title",
+            "ok": true,
+            "detail": "title band (0, 14, 240, 12) non_bg=129, color 0xFD20 px=129 (expected 'FOCUS')",
+            "evidence": [
+              "phase=FOCUS color=0xFD20"
+            ]
+          },
+          {
+            "name": "countdown_text",
+            "ok": true,
+            "detail": "white px in countdown window (76, 90, 88, 28) = 440 (whole frame 440)",
+            "evidence": [
+              "white only in countdown area: True"
+            ]
+          },
+          {
+            "name": "footer_stats",
+            "ok": true,
+            "detail": "footer band (0, 196, 240, 16) gray 0x8410 px=229 (DONE <n>  <m>M)",
+            "evidence": []
+          }
+        ]
+      },
+      "context": {
+        "phase": "FOCUS",
+        "remain_ms": 1499760,
+        "total_ms": 1500000,
+        "done": 0,
+        "focus_s": 0
+      }
+    },
+    "g6_pomo_paused": {
+      "name": "g6_pomo_paused",
+      "page": "pomo",
+      "bin": "g6_pomo_paused.bin",
+      "png": "g6_pomo_paused.png",
+      "bytes": 115200,
+      "crc32": "c1171c9a",
+      "frame_sha256": "72bbbcf8cc0718640a6ece05a8b375e84547a3c241bbf80ac5b598cf99c35987",
+      "png_sha256": "78f913e19794c8cb5b009c34e752a3ab0eac19b73cf34aa005d3969535aace21",
+      "layout_ok": true,
+      "layout_failed": [],
+      "layout_checks": 15,
+      "layout": {
+        "page": "pomo",
+        "phase": "FOCUS_PAUSED",
+        "selected": null,
+        "expected_progress": 0.0006466666666666667,
+        "measured_progress": 0.0,
+        "ok": true,
+        "checks": [
+          {
+            "name": "frame_size",
+            "ok": true,
+            "detail": "115200 bytes = 240x240 RGB565LE",
+            "evidence": []
+          },
+          {
+            "name": "bg.top",
+            "ok": true,
+            "detail": "(0, 0, 240, 14) all 0x0000: 3360/3360 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.title_ring_gap",
+            "ok": true,
+            "detail": "(0, 24, 240, 4) all 0x0000: 960/960 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.ring_footer_gap",
+            "ok": true,
+            "detail": "(0, 182, 240, 16) all 0x0000: 3840/3840 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.bottom",
+            "ok": true,
+            "detail": "(0, 208, 240, 32) all 0x0000: 7680/7680 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.left",
+            "ok": true,
+            "detail": "(0, 28, 40, 152) all 0x0000: 6080/6080 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.right",
+            "ok": true,
+            "detail": "(200, 28, 40, 152) all 0x0000: 6080/6080 px",
+            "evidence": []
+          },
+          {
+            "name": "ring_present",
+            "ok": true,
+            "detail": "mid-radius 71 sampled at 2 deg: 180/180 px are track/progress",
+            "evidence": []
+          },
+          {
+            "name": "ring_bbox",
+            "ok": true,
+            "detail": "ring bbox=(44,28,w=153,h=153) center=(120.0,104.0) expect center=(120,104) d=153",
+            "evidence": [
+              "contained=True sized=True"
+            ]
+          },
+          {
+            "name": "ring_thickness",
+            "ok": true,
+            "detail": "270deg radial ring-color run=11 px (expect ~10, 6..14)",
+            "evidence": [
+              "first_ring_radius=66 (expect ~66..76)"
+            ]
+          },
+          {
+            "name": "progress_fraction",
+            "ok": true,
+            "detail": "measured=0.000 expected=0.001 (remain_ms=1499030 total_ms=1500000)",
+            "evidence": [
+              "tolerance=0.05 (18 deg)"
+            ]
+          },
+          {
+            "name": "progress_color_zero",
+            "ok": true,
+            "detail": "progress=0%: 0/180 ring samples are progress color (expect <=3)",
+            "evidence": []
+          },
+          {
+            "name": "phase_title",
+            "ok": true,
+            "detail": "title band (0, 14, 240, 12) non_bg=170, color 0x8410 px=170 (expected 'PAUSED')",
+            "evidence": [
+              "phase=FOCUS_PAUSED color=0x8410"
+            ]
+          },
+          {
+            "name": "countdown_text",
+            "ok": true,
+            "detail": "white px in countdown window (76, 90, 88, 28) = 440 (whole frame 440)",
+            "evidence": [
+              "white only in countdown area: True"
+            ]
+          },
+          {
+            "name": "footer_stats",
+            "ok": true,
+            "detail": "footer band (0, 196, 240, 16) gray 0x8410 px=229 (DONE <n>  <m>M)",
+            "evidence": []
+          }
+        ]
+      },
+      "context": {
+        "phase": "FOCUS_PAUSED",
+        "remain_ms": 1499030,
+        "total_ms": 1500000,
+        "done": 0,
+        "focus_s": 0
+      }
+    },
+    "g6_menu_sel0": {
+      "name": "g6_menu_sel0",
+      "page": "menu",
+      "bin": "g6_menu_sel0.bin",
+      "png": "g6_menu_sel0.png",
+      "bytes": 115200,
+      "crc32": "75f03e5b",
+      "frame_sha256": "fc05f89249c5f1b0f1f6ee3cf5fff969d563d6d5ecd2203548d62a8df0456781",
+      "png_sha256": "3768252f2243c89c33746a9ffbbc494d5cc47d1906357f652c1a59c934b8888f",
+      "layout_ok": true,
+      "layout_failed": [],
+      "layout_checks": 21,
+      "layout": {
+        "page": "menu",
+        "phase": null,
+        "selected": 0,
+        "expected_progress": null,
+        "measured_progress": null,
+        "ok": true,
+        "checks": [
+          {
+            "name": "frame_size",
+            "ok": true,
+            "detail": "115200 bytes = 240x240 RGB565LE",
+            "evidence": []
+          },
+          {
+            "name": "bg.top",
+            "ok": true,
+            "detail": "(0, 0, 240, 10) all 0x0000: 2400/2400 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.title_rows_gap",
+            "ok": true,
+            "detail": "(0, 28, 240, 20) all 0x0000: 4800/4800 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.bottom",
+            "ok": true,
+            "detail": "(0, 220, 240, 20) all 0x0000: 4800/4800 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.left",
+            "ok": true,
+            "detail": "(0, 48, 4, 156) all 0x0000: 624/624 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.right",
+            "ok": true,
+            "detail": "(236, 48, 4, 156) all 0x0000: 624/624 px",
+            "evidence": []
+          },
+          {
+            "name": "menu_title",
+            "ok": true,
+            "detail": "title band (0, 10, 240, 20) white px=524 (MENU scale2)",
+            "evidence": []
+          },
+          {
+            "name": "selected_row",
+            "ok": true,
+            "detail": "inferred selected=0 expected=0",
+            "evidence": []
+          },
+          {
+            "name": "row_0",
+            "ok": true,
+            "detail": "selected row(4, 48, 232, 28) base 0xFFFF: 6309/6496 px (>=50%)",
+            "evidence": []
+          },
+          {
+            "name": "row_0_inverse_text",
+            "ok": true,
+            "detail": "selected row(4, 48, 232, 28) inverse text 0x0000 px=187 (>=8)",
+            "evidence": []
+          },
+          {
+            "name": "row_1",
+            "ok": true,
+            "detail": "row(4, 80, 232, 28) card bg 0x18E3: 6344/6496 px (>=50%)",
+            "evidence": []
+          },
+          {
+            "name": "row_1_text",
+            "ok": true,
+            "detail": "row(4, 80, 232, 28) non-bg (text) px=152 (>=8)",
+            "evidence": []
+          },
+          {
+            "name": "row_2",
+            "ok": true,
+            "detail": "row(4, 112, 232, 28) card bg 0x18E3: 6310/6496 px (>=50%)",
+            "evidence": []
+          },
+          {
+            "name": "row_2_text",
+            "ok": true,
+            "detail": "row(4, 112, 232, 28) non-bg (text) px=186 (>=8)",
+            "evidence": []
+          },
+          {
+            "name": "row_3",
+            "ok": true,
+            "detail": "row(4, 144, 232, 28) card bg 0x18E3: 6351/6496 px (>=50%)",
+            "evidence": []
+          },
+          {
+            "name": "row_3_text",
+            "ok": true,
+            "detail": "row(4, 144, 232, 28) non-bg (text) px=145 (>=8)",
+            "evidence": []
+          },
+          {
+            "name": "row_4",
+            "ok": true,
+            "detail": "row(4, 176, 232, 28) card bg 0x18E3: 6383/6496 px (>=50%)",
+            "evidence": []
+          },
+          {
+            "name": "row_4_text",
+            "ok": true,
+            "detail": "row(4, 176, 232, 28) non-bg (text) px=113 (>=8)",
+            "evidence": []
+          },
+          {
+            "name": "row_gap",
+            "ok": true,
+            "detail": "row gaps all 0x0000: gap0=928/928, gap1=928/928, gap2=928/928, gap3=928/928",
+            "evidence": []
+          },
+          {
+            "name": "row_footer_gap",
+            "ok": true,
+            "detail": "(4, 204, 232, 4) all 0x0000: 928/928 px",
+            "evidence": []
+          },
+          {
+            "name": "footer_stats",
+            "ok": true,
+            "detail": "footer band (0, 208, 240, 20) gray 0x8410 px=335 (DONE <n>  <m>M   <mode>)",
+            "evidence": []
+          }
+        ]
+      },
+      "context": {
+        "selected": 0,
+        "mode": "DUTY",
+        "muted": 1,
+        "done": 0,
+        "focus_s": 0
+      }
+    },
+    "g6_menu_sel1": {
+      "name": "g6_menu_sel1",
+      "page": "menu",
+      "bin": "g6_menu_sel1.bin",
+      "png": "g6_menu_sel1.png",
+      "bytes": 115200,
+      "crc32": "b5a34a6a",
+      "frame_sha256": "48a3499d8da75d957145a2b436a9d52c85cbb0aff299df97d9ea01e8765ebd99",
+      "png_sha256": "fef628415671ebab7d68357695bd1442e25396cc1c863df984c86f3ad5c9f201",
+      "layout_ok": true,
+      "layout_failed": [],
+      "layout_checks": 21,
+      "layout": {
+        "page": "menu",
+        "phase": null,
+        "selected": 1,
+        "expected_progress": null,
+        "measured_progress": null,
+        "ok": true,
+        "checks": [
+          {
+            "name": "frame_size",
+            "ok": true,
+            "detail": "115200 bytes = 240x240 RGB565LE",
+            "evidence": []
+          },
+          {
+            "name": "bg.top",
+            "ok": true,
+            "detail": "(0, 0, 240, 10) all 0x0000: 2400/2400 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.title_rows_gap",
+            "ok": true,
+            "detail": "(0, 28, 240, 20) all 0x0000: 4800/4800 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.bottom",
+            "ok": true,
+            "detail": "(0, 220, 240, 20) all 0x0000: 4800/4800 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.left",
+            "ok": true,
+            "detail": "(0, 48, 4, 156) all 0x0000: 624/624 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.right",
+            "ok": true,
+            "detail": "(236, 48, 4, 156) all 0x0000: 624/624 px",
+            "evidence": []
+          },
+          {
+            "name": "menu_title",
+            "ok": true,
+            "detail": "title band (0, 10, 240, 20) white px=524 (MENU scale2)",
+            "evidence": []
+          },
+          {
+            "name": "selected_row",
+            "ok": true,
+            "detail": "inferred selected=1 expected=1",
+            "evidence": []
+          },
+          {
+            "name": "row_0",
+            "ok": true,
+            "detail": "row(4, 48, 232, 28) card bg 0x18E3: 6309/6496 px (>=50%)",
+            "evidence": []
+          },
+          {
+            "name": "row_0_text",
+            "ok": true,
+            "detail": "row(4, 48, 232, 28) non-bg (text) px=187 (>=8)",
+            "evidence": []
+          },
+          {
+            "name": "row_1",
+            "ok": true,
+            "detail": "selected row(4, 80, 232, 28) base 0xFFFF: 6344/6496 px (>=50%)",
+            "evidence": []
+          },
+          {
+            "name": "row_1_inverse_text",
+            "ok": true,
+            "detail": "selected row(4, 80, 232, 28) inverse text 0x0000 px=152 (>=8)",
+            "evidence": []
+          },
+          {
+            "name": "row_2",
+            "ok": true,
+            "detail": "row(4, 112, 232, 28) card bg 0x18E3: 6310/6496 px (>=50%)",
+            "evidence": []
+          },
+          {
+            "name": "row_2_text",
+            "ok": true,
+            "detail": "row(4, 112, 232, 28) non-bg (text) px=186 (>=8)",
+            "evidence": []
+          },
+          {
+            "name": "row_3",
+            "ok": true,
+            "detail": "row(4, 144, 232, 28) card bg 0x18E3: 6351/6496 px (>=50%)",
+            "evidence": []
+          },
+          {
+            "name": "row_3_text",
+            "ok": true,
+            "detail": "row(4, 144, 232, 28) non-bg (text) px=145 (>=8)",
+            "evidence": []
+          },
+          {
+            "name": "row_4",
+            "ok": true,
+            "detail": "row(4, 176, 232, 28) card bg 0x18E3: 6383/6496 px (>=50%)",
+            "evidence": []
+          },
+          {
+            "name": "row_4_text",
+            "ok": true,
+            "detail": "row(4, 176, 232, 28) non-bg (text) px=113 (>=8)",
+            "evidence": []
+          },
+          {
+            "name": "row_gap",
+            "ok": true,
+            "detail": "row gaps all 0x0000: gap0=928/928, gap1=928/928, gap2=928/928, gap3=928/928",
+            "evidence": []
+          },
+          {
+            "name": "row_footer_gap",
+            "ok": true,
+            "detail": "(4, 204, 232, 4) all 0x0000: 928/928 px",
+            "evidence": []
+          },
+          {
+            "name": "footer_stats",
+            "ok": true,
+            "detail": "footer band (0, 208, 240, 20) gray 0x8410 px=335 (DONE <n>  <m>M   <mode>)",
+            "evidence": []
+          }
+        ]
+      },
+      "context": {
+        "selected": 1,
+        "mode": "DUTY",
+        "muted": 1,
+        "done": 0,
+        "focus_s": 0
+      }
+    },
+    "g6_menu_sel2": {
+      "name": "g6_menu_sel2",
+      "page": "menu",
+      "bin": "g6_menu_sel2.bin",
+      "png": "g6_menu_sel2.png",
+      "bytes": 115200,
+      "crc32": "8c6409cf",
+      "frame_sha256": "9addea240e76e9a7e5d4d580bda64c3b0091626c118ecdf8a84c68f2ae41c7ce",
+      "png_sha256": "9bb44febd3cddc54b512e956b3c8d20943d3bbefdf526cfafae70b7f27c8de9d",
+      "layout_ok": true,
+      "layout_failed": [],
+      "layout_checks": 21,
+      "layout": {
+        "page": "menu",
+        "phase": null,
+        "selected": 2,
+        "expected_progress": null,
+        "measured_progress": null,
+        "ok": true,
+        "checks": [
+          {
+            "name": "frame_size",
+            "ok": true,
+            "detail": "115200 bytes = 240x240 RGB565LE",
+            "evidence": []
+          },
+          {
+            "name": "bg.top",
+            "ok": true,
+            "detail": "(0, 0, 240, 10) all 0x0000: 2400/2400 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.title_rows_gap",
+            "ok": true,
+            "detail": "(0, 28, 240, 20) all 0x0000: 4800/4800 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.bottom",
+            "ok": true,
+            "detail": "(0, 220, 240, 20) all 0x0000: 4800/4800 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.left",
+            "ok": true,
+            "detail": "(0, 48, 4, 156) all 0x0000: 624/624 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.right",
+            "ok": true,
+            "detail": "(236, 48, 4, 156) all 0x0000: 624/624 px",
+            "evidence": []
+          },
+          {
+            "name": "menu_title",
+            "ok": true,
+            "detail": "title band (0, 10, 240, 20) white px=524 (MENU scale2)",
+            "evidence": []
+          },
+          {
+            "name": "selected_row",
+            "ok": true,
+            "detail": "inferred selected=2 expected=2",
+            "evidence": []
+          },
+          {
+            "name": "row_0",
+            "ok": true,
+            "detail": "row(4, 48, 232, 28) card bg 0x18E3: 6309/6496 px (>=50%)",
+            "evidence": []
+          },
+          {
+            "name": "row_0_text",
+            "ok": true,
+            "detail": "row(4, 48, 232, 28) non-bg (text) px=187 (>=8)",
+            "evidence": []
+          },
+          {
+            "name": "row_1",
+            "ok": true,
+            "detail": "row(4, 80, 232, 28) card bg 0x18E3: 6344/6496 px (>=50%)",
+            "evidence": []
+          },
+          {
+            "name": "row_1_text",
+            "ok": true,
+            "detail": "row(4, 80, 232, 28) non-bg (text) px=152 (>=8)",
+            "evidence": []
+          },
+          {
+            "name": "row_2",
+            "ok": true,
+            "detail": "selected row(4, 112, 232, 28) base 0xFFFF: 6310/6496 px (>=50%)",
+            "evidence": []
+          },
+          {
+            "name": "row_2_inverse_text",
+            "ok": true,
+            "detail": "selected row(4, 112, 232, 28) inverse text 0x0000 px=186 (>=8)",
+            "evidence": []
+          },
+          {
+            "name": "row_3",
+            "ok": true,
+            "detail": "row(4, 144, 232, 28) card bg 0x18E3: 6351/6496 px (>=50%)",
+            "evidence": []
+          },
+          {
+            "name": "row_3_text",
+            "ok": true,
+            "detail": "row(4, 144, 232, 28) non-bg (text) px=145 (>=8)",
+            "evidence": []
+          },
+          {
+            "name": "row_4",
+            "ok": true,
+            "detail": "row(4, 176, 232, 28) card bg 0x18E3: 6383/6496 px (>=50%)",
+            "evidence": []
+          },
+          {
+            "name": "row_4_text",
+            "ok": true,
+            "detail": "row(4, 176, 232, 28) non-bg (text) px=113 (>=8)",
+            "evidence": []
+          },
+          {
+            "name": "row_gap",
+            "ok": true,
+            "detail": "row gaps all 0x0000: gap0=928/928, gap1=928/928, gap2=928/928, gap3=928/928",
+            "evidence": []
+          },
+          {
+            "name": "row_footer_gap",
+            "ok": true,
+            "detail": "(4, 204, 232, 4) all 0x0000: 928/928 px",
+            "evidence": []
+          },
+          {
+            "name": "footer_stats",
+            "ok": true,
+            "detail": "footer band (0, 208, 240, 20) gray 0x8410 px=335 (DONE <n>  <m>M   <mode>)",
+            "evidence": []
+          }
+        ]
+      },
+      "context": {
+        "selected": 2,
+        "mode": "DUTY",
+        "muted": 1,
+        "done": 0,
+        "focus_s": 0
+      }
+    },
+    "g6_menu_sel3": {
+      "name": "g6_menu_sel3",
+      "page": "menu",
+      "bin": "g6_menu_sel3.bin",
+      "png": "g6_menu_sel3.png",
+      "bytes": 115200,
+      "crc32": "7be1b2fc",
+      "frame_sha256": "ef518f52a416e9cd0b6107565e50511981f37a5de804acb54eaa55d685c85707",
+      "png_sha256": "adacc9943211876c34aee69c2659d9e1bcaa91a8f0eacc08257dd4a95dbaf586",
+      "layout_ok": true,
+      "layout_failed": [],
+      "layout_checks": 21,
+      "layout": {
+        "page": "menu",
+        "phase": null,
+        "selected": 3,
+        "expected_progress": null,
+        "measured_progress": null,
+        "ok": true,
+        "checks": [
+          {
+            "name": "frame_size",
+            "ok": true,
+            "detail": "115200 bytes = 240x240 RGB565LE",
+            "evidence": []
+          },
+          {
+            "name": "bg.top",
+            "ok": true,
+            "detail": "(0, 0, 240, 10) all 0x0000: 2400/2400 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.title_rows_gap",
+            "ok": true,
+            "detail": "(0, 28, 240, 20) all 0x0000: 4800/4800 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.bottom",
+            "ok": true,
+            "detail": "(0, 220, 240, 20) all 0x0000: 4800/4800 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.left",
+            "ok": true,
+            "detail": "(0, 48, 4, 156) all 0x0000: 624/624 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.right",
+            "ok": true,
+            "detail": "(236, 48, 4, 156) all 0x0000: 624/624 px",
+            "evidence": []
+          },
+          {
+            "name": "menu_title",
+            "ok": true,
+            "detail": "title band (0, 10, 240, 20) white px=524 (MENU scale2)",
+            "evidence": []
+          },
+          {
+            "name": "selected_row",
+            "ok": true,
+            "detail": "inferred selected=3 expected=3",
+            "evidence": []
+          },
+          {
+            "name": "row_0",
+            "ok": true,
+            "detail": "row(4, 48, 232, 28) card bg 0x18E3: 6309/6496 px (>=50%)",
+            "evidence": []
+          },
+          {
+            "name": "row_0_text",
+            "ok": true,
+            "detail": "row(4, 48, 232, 28) non-bg (text) px=187 (>=8)",
+            "evidence": []
+          },
+          {
+            "name": "row_1",
+            "ok": true,
+            "detail": "row(4, 80, 232, 28) card bg 0x18E3: 6344/6496 px (>=50%)",
+            "evidence": []
+          },
+          {
+            "name": "row_1_text",
+            "ok": true,
+            "detail": "row(4, 80, 232, 28) non-bg (text) px=152 (>=8)",
+            "evidence": []
+          },
+          {
+            "name": "row_2",
+            "ok": true,
+            "detail": "row(4, 112, 232, 28) card bg 0x18E3: 6310/6496 px (>=50%)",
+            "evidence": []
+          },
+          {
+            "name": "row_2_text",
+            "ok": true,
+            "detail": "row(4, 112, 232, 28) non-bg (text) px=186 (>=8)",
+            "evidence": []
+          },
+          {
+            "name": "row_3",
+            "ok": true,
+            "detail": "selected row(4, 144, 232, 28) base 0xFFFF: 6351/6496 px (>=50%)",
+            "evidence": []
+          },
+          {
+            "name": "row_3_inverse_text",
+            "ok": true,
+            "detail": "selected row(4, 144, 232, 28) inverse text 0x0000 px=145 (>=8)",
+            "evidence": []
+          },
+          {
+            "name": "row_4",
+            "ok": true,
+            "detail": "row(4, 176, 232, 28) card bg 0x18E3: 6383/6496 px (>=50%)",
+            "evidence": []
+          },
+          {
+            "name": "row_4_text",
+            "ok": true,
+            "detail": "row(4, 176, 232, 28) non-bg (text) px=113 (>=8)",
+            "evidence": []
+          },
+          {
+            "name": "row_gap",
+            "ok": true,
+            "detail": "row gaps all 0x0000: gap0=928/928, gap1=928/928, gap2=928/928, gap3=928/928",
+            "evidence": []
+          },
+          {
+            "name": "row_footer_gap",
+            "ok": true,
+            "detail": "(4, 204, 232, 4) all 0x0000: 928/928 px",
+            "evidence": []
+          },
+          {
+            "name": "footer_stats",
+            "ok": true,
+            "detail": "footer band (0, 208, 240, 20) gray 0x8410 px=335 (DONE <n>  <m>M   <mode>)",
+            "evidence": []
+          }
+        ]
+      },
+      "context": {
+        "selected": 3,
+        "mode": "DUTY",
+        "muted": 1,
+        "done": 0,
+        "focus_s": 0
+      }
+    },
+    "g6_menu_sel4": {
+      "name": "g6_menu_sel4",
+      "page": "menu",
+      "bin": "g6_menu_sel4.bin",
+      "png": "g6_menu_sel4.png",
+      "bytes": 115200,
+      "crc32": "7786f07b",
+      "frame_sha256": "2dd632cf385723c9c85894b90efbdb56e1132ac0fb35b3d60f0280af495163e9",
+      "png_sha256": "99c430ddc9cfb0e7862b6863f98decbd03435661cba2c80c85c95b1ee5039df0",
+      "layout_ok": true,
+      "layout_failed": [],
+      "layout_checks": 21,
+      "layout": {
+        "page": "menu",
+        "phase": null,
+        "selected": 4,
+        "expected_progress": null,
+        "measured_progress": null,
+        "ok": true,
+        "checks": [
+          {
+            "name": "frame_size",
+            "ok": true,
+            "detail": "115200 bytes = 240x240 RGB565LE",
+            "evidence": []
+          },
+          {
+            "name": "bg.top",
+            "ok": true,
+            "detail": "(0, 0, 240, 10) all 0x0000: 2400/2400 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.title_rows_gap",
+            "ok": true,
+            "detail": "(0, 28, 240, 20) all 0x0000: 4800/4800 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.bottom",
+            "ok": true,
+            "detail": "(0, 220, 240, 20) all 0x0000: 4800/4800 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.left",
+            "ok": true,
+            "detail": "(0, 48, 4, 156) all 0x0000: 624/624 px",
+            "evidence": []
+          },
+          {
+            "name": "bg.right",
+            "ok": true,
+            "detail": "(236, 48, 4, 156) all 0x0000: 624/624 px",
+            "evidence": []
+          },
+          {
+            "name": "menu_title",
+            "ok": true,
+            "detail": "title band (0, 10, 240, 20) white px=524 (MENU scale2)",
+            "evidence": []
+          },
+          {
+            "name": "selected_row",
+            "ok": true,
+            "detail": "inferred selected=4 expected=4",
+            "evidence": []
+          },
+          {
+            "name": "row_0",
+            "ok": true,
+            "detail": "row(4, 48, 232, 28) card bg 0x18E3: 6309/6496 px (>=50%)",
+            "evidence": []
+          },
+          {
+            "name": "row_0_text",
+            "ok": true,
+            "detail": "row(4, 48, 232, 28) non-bg (text) px=187 (>=8)",
+            "evidence": []
+          },
+          {
+            "name": "row_1",
+            "ok": true,
+            "detail": "row(4, 80, 232, 28) card bg 0x18E3: 6344/6496 px (>=50%)",
+            "evidence": []
+          },
+          {
+            "name": "row_1_text",
+            "ok": true,
+            "detail": "row(4, 80, 232, 28) non-bg (text) px=152 (>=8)",
+            "evidence": []
+          },
+          {
+            "name": "row_2",
+            "ok": true,
+            "detail": "row(4, 112, 232, 28) card bg 0x18E3: 6310/6496 px (>=50%)",
+            "evidence": []
+          },
+          {
+            "name": "row_2_text",
+            "ok": true,
+            "detail": "row(4, 112, 232, 28) non-bg (text) px=186 (>=8)",
+            "evidence": []
+          },
+          {
+            "name": "row_3",
+            "ok": true,
+            "detail": "row(4, 144, 232, 28) card bg 0x18E3: 6351/6496 px (>=50%)",
+            "evidence": []
+          },
+          {
+            "name": "row_3_text",
+            "ok": true,
+            "detail": "row(4, 144, 232, 28) non-bg (text) px=145 (>=8)",
+            "evidence": []
+          },
+          {
+            "name": "row_4",
+            "ok": true,
+            "detail": "selected row(4, 176, 232, 28) base 0xFFFF: 6383/6496 px (>=50%)",
+            "evidence": []
+          },
+          {
+            "name": "row_4_inverse_text",
+            "ok": true,
+            "detail": "selected row(4, 176, 232, 28) inverse text 0x0000 px=113 (>=8)",
+            "evidence": []
+          },
+          {
+            "name": "row_gap",
+            "ok": true,
+            "detail": "row gaps all 0x0000: gap0=928/928, gap1=928/928, gap2=928/928, gap3=928/928",
+            "evidence": []
+          },
+          {
+            "name": "row_footer_gap",
+            "ok": true,
+            "detail": "(4, 204, 232, 4) all 0x0000: 928/928 px",
+            "evidence": []
+          },
+          {
+            "name": "footer_stats",
+            "ok": true,
+            "detail": "footer band (0, 208, 240, 20) gray 0x8410 px=335 (DONE <n>  <m>M   <mode>)",
+            "evidence": []
+          }
+        ]
+      },
+      "context": {
+        "selected": 4,
+        "mode": "DUTY",
+        "muted": 1,
+        "done": 0,
+        "focus_s": 0
+      }
+    }
+  },
+  "send_log_sample": [
+    "I (1213) m3: SEND -> host (M5 not implemented)"
+  ],
+  "summary": {
+    "items_total": 13,
+    "items_ok": 13,
+    "iterations_total": 260,
+    "iterations_pass": 260,
+    "iterations_fail": 0,
+    "layout_total": 9,
+    "layout_pass": 9,
+    "layout_fail": 0
+  },
+  "result": "PASS",
+  "error": null
+}
