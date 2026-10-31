@@ -14,7 +14,7 @@
 | `M2` | 6 态动画 + 3 卡栈（240×240 版式 `C03`，含 2026-10-31 §7 修订） | ✅ **已交付**（2026-10-31）：真机 G1 **24/24**、G3 **20/20**、MEM-01 10 min、`D-05` 修复；人眼 H 待用户确认。见 [`docs/09-m2-delivery.md`](docs/09-m2-delivery.md) |
 | `M3` | 2 应用键 + 5 项菜单 + 番茄钟（240×240） | ✅ **已交付**（2026-10-31）：T 21/21、G5 17/17、G6 260/260；真机按压 `KEY-01/02/05` **PENDING**（待用户）。见 [`docs/11-m3-delivery.md`](docs/11-m3-delivery.md) |
 | `M5a` | **DSH 插件**（`host-plugin/` bundle）+ USB 事件入口（`C05`） | ✅ **已交付（2026-10-31）**：设备事件入口 H **16/16**（0.165 s）、插件 `node --test` 56/56、desktop 安装 + 重启后**真实 DSH 会话 E2E 用户目视 PASS**（WORKING `>` + 会话标题卡片 + 绿点）。见 [`docs/13-m5a-delivery.md`](docs/13-m5a-delivery.md) |
-| `M4` | 语音播报（ES8311 输出） | 🟡 **进行中**（2026-10-31）：C04 冻结 + 实现 + T 28/28 + 构建 0 warning；**H 听感确认待用户**。见 [`docs/contracts/C04-audio-output.md`](docs/contracts/C04-audio-output.md) |
+| `M4` | 语音播报（ES8311 输出） | ✅ **已交付（2026-10-31）**：C04 冻结、T 28/28、构建 0 warning、真机听感用户确认"都正确"（三类/静音/重启保持）。`G9` 正式 60/60 留发布前。见 [`docs/14-m4-delivery.md`](docs/14-m4-delivery.md) |
 | `M5b` | WiFi / BLE 通道 + 配网 + NTP | 计划 |
 | 后置 | 触摸、IMU、AEC、OTA、语音输入 | 需求保留，未取消 |
 
@@ -96,6 +96,7 @@ python -m esptool --chip esp32s3 -p COM7 -b 921600 --before default_reset --afte
 - 不使用 "VibeBuddy" 名称或角色商标。
 
 详见 [`NOTICE.md`](NOTICE.md)。
+
 
 
 
