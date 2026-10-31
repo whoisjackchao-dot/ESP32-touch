@@ -813,3 +813,29 @@ idf.py -B .\build -DIDF_TARGET=esp32s3 build
 G6 260/260、G9 60/60 + 60/60、KEY/FRM-01/C03/G1 用户确认、clone 构建 PASS。
 
 **剩余（下一里程碑）**：M5b = WiFi TCP 8766 + NTP + 配网（AP 网页）→ BLE GATT；`Q08/Q09` 在相关语音功能前决策。
+
+## E47：M5b-1 WiFi TCP + 配网 + NTP 真机 H（2026-10-31）
+
+**固件**：`0x157600`（1,404,416 B，3 MB 分区 **55% free**，0 warning），已刷入 COM7。
+
+**配网（用户操作，G13 成功路径）**：手机连接 `ESP32-Touch-4BE5`（WPA2 `touch154`）→ `http://192.168.4.1/`
+→ 选择 **Xiaomi_F7A5** + 密码 → 保存 → 设备重启连接。串口自检：
+
+```text
+NET state=online ssid=Xiaomi_F7A5 ip=192.168.31.175 rssi=-47 time_valid=1
+```
+
+**TCP 事件（G12/NET-03）**：PC（192.168.31.119，同一 WiFi）→ `192.168.31.175:8766` 发送 C05 `task.start`：
+`tcp->state latency = 0.345 s`（≤1 s **PASS**）。
+
+**跨通道去重（NET-05）**：
+- 同通道 1 s 内重复行 → `dedupe: duplicate line dropped` **PASS**；
+- USB 先发、1 s 内 TCP 再发同一行 → **同样 DROP PASS**（共用去重器）。
+
+**NTP（NET-04）**：`time_valid=1`（STA 获得 IP 后 SNTP 同步；`CST-8`）**PASS**。
+
+**C08 实现对齐（新增）**：HTTP `/` `/scan` `/save` **仅在 AP 配网模式启动**；STA 模式 80 端口不监听，
+自检用串口 `p` 的 `NET ...` 行（`/status` 未在 STA 提供）。→ 已记入 `C08 §8`。
+
+**未完成（PENDING）**：G13 正式计数（扫描 ≥3 AP、60 s 内 IP、**错密码 2 min 回落 AP**）、
+WiFi 断线重连（NET-05 重连部分）、`G16` 2 小时长稳；BLE 属 M5b-2。

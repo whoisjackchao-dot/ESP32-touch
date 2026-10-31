@@ -34,6 +34,7 @@
 #include "pet_linebuf.h"
 #include "pet_link.h"
 #include "pet_menu.h"
+#include "pet_net.h"
 #include "pet_pomo.h"
 #include "pet_pomo_store.h"
 #include "pet_render.h"
@@ -151,6 +152,12 @@ static void print_status(uint32_t fps)
     printf("STATUS state=%s frame=%d cards=%d fps=%lu heap=%lu\n",
            state_name(v.state), (int)v.frame, v.card_count,
            (unsigned long)fps, (unsigned long)esp_get_free_heap_size());
+    /* M5b-1：网络自检行（TCP/NTP/G13 判读用；C08 §4） */
+    pet_net_status_t ns;
+    pet_net_get_status(&ns);
+    printf("NET state=%s ssid=%s ip=%s rssi=%d time_valid=%d\n",
+           pet_net_state_name(ns.state), ns.ssid, ns.ip, ns.rssi,
+           ns.time_valid ? 1 : 0);
     if (v.card_count > 0) {
         printf("CARDS ");
         for (int i = 0; i < v.card_count; i++) {
@@ -257,7 +264,8 @@ static void handle_menu_key(pet_key_t key, pet_key_event_t ev)
         break;
     case PET_MENU_CMD_PROVISION:
         s_menu_open = false;
-        ESP_LOGI(TAG, "menu: WIFI -> M5 not implemented");
+        ESP_LOGI(TAG, "menu: WIFI -> provisioning (AP mode)");
+        pet_net_enter_provisioning();
         break;
     case PET_MENU_CMD_BT_PAIR:
         s_menu_open = false;
@@ -385,6 +393,12 @@ static void handle_cmd(uint8_t cmd, uint32_t now)
         vTaskDelay(pdMS_TO_TICKS(50));
         esp_restart();
         break;
+
+    /* M5b-1：进入 AP 配网（C08 §2；菜单 WIFI 同路径） */
+    case 'W':
+        ESP_LOGI(TAG, "serial: enter provisioning (AP mode)");
+        pet_net_enter_provisioning();
+        break;
     default: break; /* \r \n 等忽略 */
     }
 }
@@ -405,6 +419,20 @@ static void apply_link_msg(const pet_link_msg_t *m, uint32_t now)
         }
     } else if (m->has_card) {
         pet_state_set_card(s_state, &m->card);
+    }
+}
+
+/* M5b-1：WiFi TCP 收到的 C05 行（已跨通道去重）。在 pet_net 内部任务上下文调用，
+ * 只做解析 + 入队，不阻塞（C08 §4 / pet_net.h 接线说明）。 */
+static void net_line_cb(const char *line, size_t len)
+{
+    pet_link_msg_t m;
+    if (pet_link_parse(line, len, &m) == PET_LINK_OK) {
+        if (s_evt_q != NULL) {
+            (void)xQueueSend(s_evt_q, &m, 0);
+        }
+    } else {
+        ESP_LOGW(TAG, "wifi event line dropped");
     }
 }
 
@@ -448,6 +476,10 @@ static void console_task(void *arg)
             const pet_line_feed_t r = pet_linebuf_feed(&lb, c);
             if (r == PET_LINE_READY) {
                 json_mode = false;
+                /* C08 §1.1：USB 与 WiFi 共用一个去重器（1 s 内同指纹只处理一次） */
+                if (!pet_net_line_accept(now_ms_u32(), lb.buf, lb.len)) {
+                    continue;
+                }
                 pet_link_msg_t m;
                 const pet_link_status_t st = pet_link_parse(lb.buf, lb.len, &m);
                 if (st == PET_LINK_OK) {
@@ -632,7 +664,16 @@ void app_main(void)
         }
     }
 
-    ESP_LOGI(TAG, "m4: READY (240x240, 8fps, keys=GPIO0/4/5, pomo 25/5, C05 USB events, audio=%s)",
+    /* M5b-1：WiFi 事件通道（TCP 8766）+ 配网 + NTP；失败只降级（C08 §4） */
+    pet_net_set_line_cb(net_line_cb);
+    {
+        const esp_err_t nerr2 = pet_net_start();
+        if (nerr2 != ESP_OK) {
+            ESP_LOGW(TAG, "net start failed (%s): WiFi 通道不可用", esp_err_to_name(nerr2));
+        }
+    }
+
+    ESP_LOGI(TAG, "m5b: READY (240x240, 8fps, keys=GPIO0/4/5, pomo 25/5, C05 USB+WiFi, audio=%s)",
              board_audio_ready() ? "on" : "off");
 
     /* ---- 7. 主循环 ---- */

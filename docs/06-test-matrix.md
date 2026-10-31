@@ -138,9 +138,10 @@
 
 | 用例 | 对应需求 | 判定 | 方法 | 状态 | 证据 |
 | --- | --- | --- | --- | --- | --- |
-| `NET-01` | `R21` | 跨通道去重：同指纹 1 s 内丢弃 | T | 进行中 | `tests/` |
-| `NET-02` | `R21` | 行切分/CRLF/超长复用 C05 解析 | T | 进行中 | `tests/` |
-| `NET-03` | `G12` | TCP NDJSON → 状态 ≤1 s | H | PENDING | — |
-| `G13` | 门槛 | AP 扫描/保存/60 s IP/错密码回落 | H | PENDING | — |
-| `NET-04` | `R21` | NTP 同步 + 本地日期统计（`D-03`） | H | PENDING | — |
-| `NET-05` | `R21` | WiFi 断线重连；跨通道重复只处理一次 | H | PENDING | — |
+| `NET-01` | `R21` | 跨通道去重：同指纹 1 s 内丢弃 | T | **PASS**（11/11 用例、193 断言） | `tests/m5b-run.log` |
+| `NET-02` | `R21` | 行切分/CRLF/超长复用 C05 解析 | T | **PASS**（复用 pet_linebuf） | `tests/m5b-run.log` |
+| `NET-03` | `G12` | TCP NDJSON → 状态 ≤1 s | H | **PASS 0.345 s** | `E47`、`tools/host/evidence/m5b/` |
+| `G13` | 门槛 | AP 扫描/保存/60 s IP/错密码回落 | H | **PARTIAL**（成功路径 PASS；扫描计数/错密码回落 PENDING） | `E47` |
+| `NET-04` | `R21` | NTP 同步 + 本地日期统计（`D-03`） | H | **PASS**（`time_valid=1`；统计日期链路待长稳） | `E47` |
+| `NET-05` | `R21` | WiFi 断线重连；跨通道重复只处理一次 | H | **PARTIAL**（跨通道去重 PASS；断线重连 PENDING） | `E47` |
+

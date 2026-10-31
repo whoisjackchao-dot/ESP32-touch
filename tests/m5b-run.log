@@ -1,0 +1,17 @@
+[MODE] GREEN: firmware/components/pet_net/pet_net_dedupe.c + firmware/components/pet_ui/pet_linebuf.c
+[CC] tests/test_m5b_net.c
+[RUN] test_m5b_net.exe
+PASS DED-01-fingerprint-vectors (11 asserts)
+PASS DED-02-init-and-first-accept (75 asserts)
+PASS DED-03-window-boundary (9 asserts)
+PASS DED-04-different-lines (10 asserts)
+PASS DED-05-ring-capacity (22 asserts)
+PASS DED-06-time-wrap (6 asserts)
+PASS DED-07-drop-does-not-refresh (5 asserts)
+PASS DED-08-null-guards (10 asserts)
+PASS NET-01-linebuf-contract-reuse (16 asserts)
+PASS NET-02-line-split-and-across-channel (16 asserts)
+PASS NET-03-multi-line-order (13 asserts)
+SUMMARY m5b_net: cases=11 passed=11 failed=0 asserts=193
+[EXIT] 0 (test_m5b_net.exe)
+RESULT: PASS (all M5b host tests green)

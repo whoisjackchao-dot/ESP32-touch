@@ -86,6 +86,16 @@ void      pet_net_set_line_cb(pet_net_line_cb_t cb);
 - BLE GATT（M5b-2）；TLS/鉴权（局域网可信，v1 无 token）；5 GHz；多客户端；MQTT/HTTP 事件入口；OTA。
 - 不做云端语音（`Q08`）/AEC（`Q09`）。
 
-## 7. 变更方式
+## 7. 实现对齐记录（2026-10-31，真机 H）
+
+| # | 契约表述 | 实现口径 |
+| --- | --- | --- |
+| `A1` | §2 状态页 `GET /status` | **仅 AP 配网模式**提供 `/` `/scan` `/save` `/status`；STA 模式不启动 HTTP。STA 自检用串口 `NET state=... ssid=... ip=... rssi=... time_valid=...` 行 |
+| `A2` | §2 AP 保存后重启 | 保存 NVS 后 `esp_restart()`；用户需重新上电等待 STA 连接（实测 <30 s） |
+| `A3` | §1.1 去重 | 同一 16 槽 FNV-1a64 环同时服务 USB 与 TCP；命中 `<1000 ms` 记 `dedupe: duplicate line dropped` |
+| `A4` | AP SSID | 实测 `ESP32-Touch-<MAC 后2字节 hex>`（例 `4BE5`）；C08 写"后 4 hex"按 MAC 低 16 位生成 |
+
+## 8. 变更方式
 
 传输/去重窗口/配网流程任一变更 → 修订本文件 + 重跑 `NET-*`/`G13`；`C05` 字段语义不得变化。
+
