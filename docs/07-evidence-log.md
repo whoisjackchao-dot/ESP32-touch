@@ -571,3 +571,18 @@ dsh plugin --profile desktop add D:\DSH\ESP32-touch\host-plugin
 
 **待办**：用户重启 DSH 后做**真实 DSH 会话 E2E**（`E2E-01`）：发消息/触发审批 → 设备变状态/出卡，
 用户目视确认（设备串口被插件占用，H 证据以用户观察/照片为准）。
+
+## E33：重启 DSH 后插件自动加载 + 用户目视设备正常（2026-10-31）
+
+**用户操作**：按要求重启 DSH。**用户反馈**："重启后正常，有宠物和工具栏"。
+
+**Host 侧客观事实**：
+- DSH 进程启动时间 **10:21:36**；插件 helper（`serial-bridge.ps1`）**10:21:47** 启动（PID 2928）→
+  profile 加载后插件自动激活（无需手工操作）。
+- `COM7` 被 helper 占用（pyserial PermissionError）→ 插件已与设备建立串口会话并持续心跳。
+- `dsh --profile desktop --dump-config` 仍显示插件行与 `config.port: COM7`。
+
+**可得结论**：`E32` 的安装 + 配置在**重启后**被 DSH 正常加载；设备显示宠物（用户目视），
+说明 C05 心跳链路已工作（否则 15 s 后应转灰/OFFLINE）。
+**尚不能证明（`E2E-01` 剩余部分）**：真实会话事件驱动状态切换与卡片内容（需用户在任务运行中观察
+`WORKING`/`DONE`/`INPUT_REQUIRED` 与底部卡片，或提供照片）。插件占用 COM7，H 证据以用户目视为准。
