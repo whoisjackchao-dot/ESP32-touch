@@ -709,6 +709,7 @@ void app_main(void)
         } else {
             pet_view_t view;
             pet_state_view(s_state, &view);
+            view.muted = s_muted; /* C03 §7 R9：待机画面静音图标 */
             pet_ui_scene_240(&view, s_look, &s_surface);
         }
 

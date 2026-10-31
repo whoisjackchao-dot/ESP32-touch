@@ -52,6 +52,7 @@ typedef struct {
     bool        mirror;
     bool        gray;
     bool        hair_right; /* 头顶毛发相位：false=左 / true=右（~1s 与眨眼同频） */
+    bool        muted;      /* 主循环注入：静音图标（C03 §7 R9） */
     bool        has_card;
     pet_card_t  card;      /* 顶部卡（M8 起与 cards[0] 同源，兼容旧代码） */
     int         card_count; /* M8 §8.3：栈深 0..3 */

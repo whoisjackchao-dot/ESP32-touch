@@ -40,6 +40,11 @@
 - `G9` 正式计数、`KEY-02` 长按、`KEY-05` PWR 长按、`G6` 正式 20 次/项为**发布前待办**（`Q11` 缩减决定）。
 - 刷机注意：factory app 偏移 **0x20000**（`C06`），手工 esptool 勿用 0x10000。
 
+## 4.1 M4.1 增补：待机画面静音图标（2026-10-31 用户要求）
+
+- 需求 `R30` / 契约 `C03 §7 R9`：待机页状态条右端 `(226,1,10,10)` 橙色静音图标；`UI-22` 像素断言 PASS。
+- `pet_view_t` 新增 `bool muted`（主循环注入 `s_muted`）；`mute_on/off/restart` 帧缓冲证据见 `tools/host/evidence/m4_1/`、`E39`。
+
 ## 5. 复现
 
 ```powershell
@@ -59,3 +64,4 @@ python tools/host/pet_event.py --port COMx   # 事件驱动播报
 
 `M5b`：WiFi TCP 8766 + BLE GATT + 配网 + NTP（`R21` 其余通道；`C05` 已冻结，多通道时补跨通道去重）。
 发布前：补 `G6/G9` 正式计数、`KEY-02/05` 长按 H、`Q10` tag/Release 授权。
+

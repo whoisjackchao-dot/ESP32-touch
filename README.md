@@ -16,7 +16,7 @@
 | `M5a` | **DSH 插件**（`host-plugin/` bundle）+ USB 事件入口（`C05`） | ✅ **已交付（2026-10-31）**：设备事件入口 H **16/16**（0.165 s）、插件 `node --test` 56/56、desktop 安装 + 重启后**真实 DSH 会话 E2E 用户目视 PASS**（WORKING `>` + 会话标题卡片 + 绿点）。见 [`docs/13-m5a-delivery.md`](docs/13-m5a-delivery.md) |
 | `M4` | 语音播报（ES8311 输出） | ✅ **已交付（2026-10-31）**：C04 冻结、T 28/28、构建 0 warning、真机听感用户确认"都正确"（三类/静音/重启保持）。`G9` 正式 60/60 留发布前。见 [`docs/14-m4-delivery.md`](docs/14-m4-delivery.md) |
 | `M5b` | WiFi / BLE 通道 + 配网 + NTP | 计划 |
-| 后置 | 触摸、IMU、AEC、OTA、语音输入 | 需求保留，未取消 |
+| `M4.1` | 待机页静音图标（用户要求） | ✅ 已交付（2026-10-31）：`C03 §7 R9` + `UI-22` PASS + 真机帧缓冲证据 |`r`n| 后置 | 触摸、IMU、AEC、OTA、语音输入 | 需求保留，未取消 |
 
 **v1 明确不做**：复制 GPL 代码、使用 VibeBuddy 商标、自动审批 Agent 动作。
 
@@ -96,6 +96,7 @@ python -m esptool --chip esp32s3 -p COM7 -b 921600 --before default_reset --afte
 - 不使用 "VibeBuddy" 名称或角色商标。
 
 详见 [`NOTICE.md`](NOTICE.md)。
+
 
 
 

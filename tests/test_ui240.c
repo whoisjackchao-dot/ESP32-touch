@@ -553,6 +553,35 @@ typedef struct {
     void (*fn)(void);
 } test_case_t;
 
+
+/* ---- UI-22（M4.1）：待机页面静音图标（C03 §7 R9） ---- */
+#define C_MUTE 0xFD20u
+
+static void case_ui22_mute_icon(void)
+{
+    pet_surface_t s = surface();
+    pet_view_t v;
+    view_reset(&v, PET_STATE_IDLE);
+
+    /* 未静音：右上图标区无橙色像素 */
+    fill_sentinel(&s);
+    pet_ui_scene_240(&v, NULL, &s);
+    CHECK_EQ(count_eq(&s, 226, 1, 235, 10, C_MUTE), 0);
+
+    /* 静音：49 个橙色像素（后腔 12 + 扩音锥 28 + 斜杠 9） */
+    v.muted = true;
+    fill_sentinel(&s);
+    pet_ui_scene_240(&v, NULL, &s);
+    CHECK_EQ(count_eq(&s, 226, 1, 235, 10, C_MUTE), 49);
+
+    /* 不侵入网络点/标记区/卡区/状态条以下/右边界外 */
+    CHECK_EQ(count_eq(&s, 4, 4, 7, 7, C_MUTE), 0);
+    CHECK_EQ(count_eq(&s, 111, 2, 129, 15, C_MUTE), 0);
+    CHECK_EQ(count_eq(&s, 0, 152, 239, 235, C_MUTE), 0);
+    CHECK_EQ(count_eq(&s, 0, 12, 239, 239, C_MUTE), 0);
+    CHECK_EQ(count_eq(&s, 236, 0, 239, 239, C_MUTE), 0);
+}
+
 int main(void)
 {
     static const test_case_t cases[] = {
@@ -562,6 +591,7 @@ int main(void)
         {"UI-11b-d05-marker-orientation", case_ui11b_d05_marker_orientation},
         {"UI-13-pet-layout", case_ui13_pet_layout},
         {"GB-01-offline-gray", case_gb01_offline_gray},
+        {"UI-22-mute-icon", case_ui22_mute_icon},
     };
 
     int failed_cases = 0;
@@ -585,4 +615,5 @@ int main(void)
     }
     return failed_cases == 0 ? 0 : 1;
 }
+
 

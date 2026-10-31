@@ -37,6 +37,7 @@
 | `R03` | 把 `second-state/vibebuddy` 与 `whoisjackchao-dot/ESP32-buddy` 中**可以适配和部署的功能**适配到 `R02` 的板子；不能适配的功能**明确说明并排除**，不静默删除 |
 | `R04` | 按 **dayu** 规范推进：先证据与需求，再规划与契约，未经批准不编码 |
 | `R29` | **宿主接入对象 = DeepSeek Harness (DSH)**（用户 2026-10-31 明确："接入对象是 deepseek harness"）。宿主桥必须交付为**符合 DSH 插件标准**的 bundle（`package.json` 的 `dsh.bundle.patch` + `cordis.patch.yml` + Cordis `apply(ctx)`），可通过 `dsh plugin add` 安装；设备事件协议按 `C05`（USB-Serial-JTAG NDJSON）。**宿主侧不再是自研 Python 桥**（`Q04` 已批准） |
+| `R30` | **待机画面必须能看出静音状态**（用户 2026-10-31："加入静音图标在待机画面。现在看画面看不出来是否静音了"）→ `C03 §7 R9`：状态条右端静音图标；`UI-22` 像素断言 + 真机 H |
 
 ## 3. 拟定需求（待审阅）
 
@@ -138,3 +139,4 @@
 | C：全新净室重写 | 成本最高，放弃已验收资产；不推荐 |
 
 > 若 A 的关键门槛失败，**重新提交设计选择**，不得自动退到 B。
+

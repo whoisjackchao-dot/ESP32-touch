@@ -1,6 +1,7 @@
 /* M2：240×240 版式渲染（Waveshare ESP32-S3-Touch-LCD-1.54）。
  * 契约：docs/contracts/C03-layout-240x240.md（含 §7 修订记录）；
  *       docs/08-m2-development.md §3（逐项落地取值）。
+ * M4.1：状态条右端静音图标（C03 §7 R9，2026-10-31 用户要求）。
  * 上游 135×240 的 pet_render_scene/pomo/menu/skit 坐标一律不改；本文件是本项目
  * 唯一允许出现 240×240 坐标的地方。 */
 
@@ -24,6 +25,15 @@
 #define PET_W (48 * 2) /* 96 */
 #define PET_H (64 * 2) /* 128 */
 #define PET_CX (PET_X + PET_W / 2) /* 120：标记横向居中基准 */
+
+/* ---- C03 §7 R9（M4.1）：静音图标（状态条右端，仅 muted 时绘制） ----
+ * 10×10：喇叭后腔 3×4 + 向右扩音锥 + 斜杠；橙色，与在线绿/离线红区分。
+ * 矩形 x=226..235, y=1..10；不进入标记区（x≈111..129）与卡区。 */
+#define MUTE_X 226
+#define MUTE_Y 1
+#define MUTE_W 10
+#define MUTE_H 10
+#define MUTE_COLOR 0xFD20u
 
 #define MARK_Y 2
 #define MARK_ASCALE 2
@@ -141,6 +151,23 @@ static void draw_status_marker(pet_surface_t *s, pet_state_t state)
     }
     default:
         break;
+    }
+}
+
+/* ---- 静音图标（C03 §7 R9）：仅在 view.muted 时调用 ---- */
+
+static void draw_mute_icon(pet_surface_t *s)
+{
+    /* 喇叭后腔 */
+    fill_rect(s, MUTE_X, MUTE_Y + 3, 3, 4, MUTE_COLOR);
+    /* 向右扩音锥：4 列，高度 4/6/8/10，垂直居中 */
+    for (int i = 0; i < 4; i++) {
+        const int h = 4 + i * 2;
+        fill_rect(s, MUTE_X + 3 + i, MUTE_Y + (MUTE_H - h) / 2, 1, h, MUTE_COLOR);
+    }
+    /* 斜杠（静音） */
+    for (int i = 0; i < 3; i++) {
+        fill_rect(s, MUTE_X + 7 + i, MUTE_Y + 1 + i * 3, 1, 3, MUTE_COLOR);
     }
 }
 
@@ -358,8 +385,11 @@ void pet_ui_scene_240(const pet_view_t *v, const pet_look_t *look,
     /* 底色（C03 §1 页脚/背景 0x0000） */
     fill_rect(s, 0, 0, s->width, s->height, C_BG);
 
-    /* 状态条：左上 4×4 网络点（右侧电池/时间 M3 起） */
+    /* 状态条：左上 4×4 网络点（右侧电池/时间 M3 起）；右端静音图标（C03 §7 R9） */
     fill_rect(s, DOT_X, DOT_Y, DOT_W, DOT_H, DOT_ONLINE);
+    if (v != NULL && v->muted) {
+        draw_mute_icon(s);
+    }
 
     /* 宠物（无标记副本，标记由本文件按 C03 居中绘制） */
     if (v != NULL && look != NULL) {
