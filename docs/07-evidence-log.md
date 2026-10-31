@@ -432,3 +432,19 @@ pwr_long_off=0  reboots=0  alarms=0
 **后续（已备好工具）**：`D:\DSH\esp-build\keyprobe.py`（90 s 原始电平采集，逐次记录
 `key1/key2/pwr` 位变化）用于区分"用户没按到" vs "GPIO 读不到"；用户本轮选择先提交，故
 `KEY-01/02/05` 记为 **PENDING**，恢复测试后补 `E26b`。
+
+## E27：M3 新 clone 可复现构建（2026-10-31）
+
+**方法**：从提交 `81517a2` 新 clone 到 `D:\DSH\esp-build\verify-clone3`，独立构建目录
+`D:\DSH\esp-build\verify-build3`；clone 内跑 M3 host 单测。
+
+```text
+git clone D:\DSH\ESP32-touch D:\DSH\esp-build\verify-clone3
+idf.py -B D:\DSH\esp-build\verify-build3 -DIDF_TARGET=esp32s3 build
+buddy154.bin binary size 0x8bef0 bytes. Smallest app partition is 0x300000 bytes. 0x274110 bytes (82%) free.
+Project build complete.        （无 warning/error）
+=== clone host tests === RESULT: PASS (all M3 host tests green)
+```
+
+**可得结论**：M3 提交在全新 clone 上可构建（与本地同尺寸 0x8bef0）、0 warning，host 单测通过；
+`G17` 的"新 clone 可构建、无手工修补"在 M3 上继续成立（同机同 IDF，未跨机器）。

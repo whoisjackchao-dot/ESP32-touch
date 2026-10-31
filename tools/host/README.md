@@ -340,18 +340,17 @@ ERROR: cannot open COM99 @ 115200 8N1: could not open port 'COM99': FileNotFound
 > 设备：ESP32-S3-Touch-LCD-1.54；M3 固件由 Lead 刷入（USB 供电）。
 > 证据等级：G5/G6 属 **H+T**（真机合成键 + 帧缓冲像素断言）；最终 H（人眼）仍需用户目视确认。
 >
-> **预刷机快照（2026-10-31 07:50–07:58）**：本节数据是最终固件（含 day 未知哨兵与 UI 修复）
-> 刷入**之前**的快照；最终固件刷新后由 Lead 用 §2.6 的同一条命令复跑 G5/G6，
-> 并以新的 `evidence/g5.json`、`evidence/g6.json`、`*_summary.md`、PNG 覆盖本节数据。
-> 复跑判据不变（G5 17/17 步 + 4/4 帧；G6 13/13 项 ×20 次 + 9/9 帧 + 静音持久化）。
+> **最终固件复跑（2026-10-31 08:01–08:09）**：本节数据为最终固件（含 day 未知哨兵与 UI 修复）
+> 上由 Lead 用 §2.6 同一条命令复跑的结果，已覆盖此前的预刷机快照：
+> G5 17/17 步 + 4/4 帧（day 2→3），G6 13/13 项 ×20 次 + 9/9 帧 + 静音持久化 PASS。
 
 ### 7.1 G5（番茄钟完成/暂停/放弃/继续 + 重启持久化 + 跨日清零）—— **17/17 PASS，布局 4/4 PASS**
 
-- 时间：`2026-10-31T07:50:55.657+08:00` → `2026-10-31T07:51:18.015+08:00`
+- 时间：`2026-10-31T08:01:57.567+08:00` → `2026-10-31T08:02:19.874+08:00`
 - `t` 后 `total_ms=6000`；focus 到点 `done=1 focus_s=6 remain_ms=0`；
   暂停 1 s 后 `remain_ms` 完全不变（4670 → 4670）；
   BREAK 放弃不计完成；第二段完成 `done=2 focus_s=12`；
-  `R` 重启后 done/focus_s/muted 全部持久；`y` 后 done=0 focus_s=0 day=2，再 `R` 后仍为 0。
+  `R` 重启后 done/focus_s/muted 全部持久；`y` 后 done=0 focus_s=0 **day 2→3**，再 `R` 后仍为 0。
 - 证据：`evidence/g5.json`、`evidence/g5_summary.md`、`g5_pomo_*.png/.bin`
 
 | 帧 | 相位 | 期望/实测进度 | PNG | 帧 CRC32 |
@@ -363,7 +362,7 @@ ERROR: cannot open COM99 @ 115200 8N1: could not open port 'COM99': FileNotFound
 
 ### 7.2 G6（合成键 / 菜单 / 静音持久化）—— **13/13 项、260/260 次 PASS，布局 9/9 PASS**
 
-- 时间：`2026-10-31T07:51:23.222+08:00` → `2026-10-31T07:58:20.856+08:00`
+- 时间：`2026-10-31T08:02:20.156+08:00` → `2026-10-31T08:09:18.251+08:00`
 - 每项 20 次全部 PASS（`duty_key1_short/long`、`duty_key2_short/long`、`pomo_key1_short/long`、
   `pomo_key2_short`、`menu_key1_short`、`menu_key2_long`、`menu_exec_mute/back/wifi/bt`）。
   菜单选中 `sel` 循环 0→1→2→3→4→0；MUTE 项 muted 翻转且留在菜单；WIFI/BT 关闭菜单且
@@ -374,7 +373,7 @@ ERROR: cannot open COM99 @ 115200 8N1: could not open port 'COM99': FileNotFound
 
 | 帧 | 页面 | PNG | 帧 CRC32 |
 | --- | --- | --- | --- |
-| `g6_duty` | 值班页 | `g6_duty.png` | `1a3e53bf` |
+| `g6_duty` | 值班页 | `g6_duty.png` | `a9f7eb93` |
 | `g6_pomo_idle` | 番茄钟 IDLE | `g6_pomo_idle.png` | `eff88910` |
 | `g6_pomo_focus` | 番茄钟 FOCUS | `g6_pomo_focus.png` | `5b6e9c64` |
 | `g6_pomo_paused` | 番茄钟 FOCUS_PAUSED | `g6_pomo_paused.png` | `c1171c9a` |
@@ -478,3 +477,5 @@ with PetSerial("COM7") as dev:          # 自动 open/close
   `evidence/sim/` 与 `evidence/` 真机产物分开存放。
 - **已知差异记录**：`run_g6.py` 的 `m` 行实际字段数（多 4 个）与 `docs/10 §4` 不同；
   未静默改协议，仅在工具内兼容解析，待 Lead 决定是否回写文档。
+
+> **状态注记（2026-10-31）**：M3 最终固件已复跑 g5/g6；run_key_h 真人按压待用户，2026-10-31 用户选择先提交。
