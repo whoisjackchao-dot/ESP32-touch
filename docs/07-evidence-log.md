@@ -797,3 +797,19 @@ idf.py -B .\build -DIDF_TARGET=esp32s3 build
 | `G1` 计数口径 | **认可按 24 次**（原文 20 为算术笔误） | `02-requirements.md G1` 注记批准日期 |
 
 至此发布前检查单中"需用户确认"项全部关闭；剩余仅：M5b（未开始）、`Q08/Q09`（M5b 前）、`Q10` tag/Release（未授权）。
+
+## E46：v1.0.0 正式发布（2026-10-31）
+
+**授权**：用户 2026-10-31："发布后继续 m5" → 视为 `Q10` 发布授权（tag/Release）。
+
+**发布物**：
+- 注释标签 **`v1.0.0`**（提交 `8c1a460`）已推送；
+- GitHub Release：**https://github.com/whoisjackchao-dot/ESP32-touch/releases/tag/v1.0.0**
+  - `esp32-touch-v1.0.0-full.bin`（935,616 B，`esptool merge_bin` @0x0，可整包刷写）
+  - `esp32-touch-plugin-0.1.0.zip`（42,378 B，`host-plugin/` 打包）
+- 发布说明：`docs/16-release-notes-v1.0.0.md`。
+
+**发布内容**：M1/M2/M3 + M4（语音）+ M4.1（静音图标）+ M5a（DSH 插件 USB 通道）；
+G6 260/260、G9 60/60 + 60/60、KEY/FRM-01/C03/G1 用户确认、clone 构建 PASS。
+
+**剩余（下一里程碑）**：M5b = WiFi TCP 8766 + NTP + 配网（AP 网页）→ BLE GATT；`Q08/Q09` 在相关语音功能前决策。
