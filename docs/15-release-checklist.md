@@ -55,11 +55,11 @@
 | 仓库根 LICENSE（MIT） | ✅ |
 | 插件包 LICENSE | ✅ `host-plugin/LICENSE` |
 
-## 5. 发布动作（未授权，仅清单）
+## 5. 发布动作（✅ 2026-10-31 用户授权"发布后继续 M5"）
 
 1. 最终构建 + **新 clone 构建**验证（`E27` 做法；M4/M4.1 后重跑一次）。
 2. 生成 `manifest`/版本号（如 `v1.0.0`），更新 README「当前状态」为已发布。
-3. `git tag -a v1.0.0` + GitHub Release（**需 `Q10` 授权**）。
+3. `git tag -a v1.0.0` + GitHub Release（✅ 用户 2026-10-31 授权：发布后继续 M5）。
 4. 可选：把 `host-plugin` 发布 npm 或 GitHub 子目录（**需用户授权**）。
 5. 归档证据：`docs/07-evidence-log.md`、`tools/host/evidence/`、`tests/*.log`。
 
@@ -90,5 +90,6 @@ cd host-plugin; node --test
 python tools\host\run_g6.py --port COM7 --iterations 20
 python D:\DSH\esp-build\run_g9.py
 ```
+
 
 

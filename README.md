@@ -8,6 +8,9 @@
 
 ## 当前状态
 
+> **v1.0.0 已发布（2026-10-31）**：固件 + DSH 插件 `host-plugin/`；详见 [`docs/16-release-notes-v1.0.0.md`](docs/16-release-notes-v1.0.0.md)。
+
+
 | 里程碑 | 内容 | 状态 |
 | --- | --- | --- |
 | `M1` | 板级点亮：GPIO2 电源锁存、SPI2 40 MHz、ST7789 240×240、背光、PSRAM 帧缓冲、一帧 IDLE + `READY` | ✅ **真机通过**（2026-10-30，目视：宠物+READY、颜色正常、居中完整） |
@@ -96,6 +99,7 @@ python -m esptool --chip esp32s3 -p COM7 -b 921600 --before default_reset --afte
 - 不使用 "VibeBuddy" 名称或角色商标。
 
 详见 [`NOTICE.md`](NOTICE.md)。
+
 
 
 
