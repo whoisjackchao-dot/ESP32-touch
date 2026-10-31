@@ -1,0 +1,19 @@
+{
+ "port": "COM7",
+ "playing": {
+  "input": 20,
+  "done": 20,
+  "failed": 20
+ },
+ "skipped": {
+  "input": 20,
+  "done": 20,
+  "failed": 20
+ },
+ "other_audio_lines": 2,
+ "pass": true,
+ "expect": {
+  "play_each": 20,
+  "muted_skip_each": 20
+ }
+}

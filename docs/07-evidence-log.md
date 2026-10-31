@@ -726,3 +726,32 @@ mute=0 → "AUDIO test input (ESP_OK)"         # 解除静音恢复
 
 **结论（H）**：`UI-22` / `R30` / `C03 §7 R9` 真机通过；M4.1 交付完成。
 **证据**：帧缓冲 `tools/host/evidence/m4_1/*.png`（`E39`）+ 用户目视确认（本条）。
+
+## E41：发布前正式计数（G6/G9，2026-10-31）
+
+**G6 合成键**（`tools/host/run_g6.py --iterations 20`，真机 COM7）：
+
+```text
+summary: items 13/13 ok, iterations 260/260 PASS, layout 9/9 PASS, mute_persist=True
+RESULT PASS
+```
+证据：`tools/host/evidence/release/g6.json`、`g6_summary.md`、9 张帧 PNG。
+
+**G9 语音**（`run_g9.py`，走真实触发路径 '2'/'3'/'4'）：
+
+```text
+played input -> 20 / done -> 20 / failed -> 20
+muted input -> 20 skipped / done -> 20 skipped / failed -> 20 skipped
+RESULT PASS
+```
+证据：`tools/host/evidence/release/g9.json`、`g9_summary.md`。
+结论：`G9` 正式 **60/60 + 静音 60/60** 计数达标（有声确认由 `E38` 用户听感覆盖）。
+
+## E42：KEY-02/05 长按真机 H（多次尝试，PENDING）
+
+**尝试**：`key_long_h.py` 三次窗口（180 s / 240 s / 600 s），每次先复位设备再监控长按日志。
+**观察**：
+- 每次串口探测正常（`STATUS`/`CARDS` 可回读，设备在线）；最后窗口探针显示 `cards=1 CARDS DSH`（插件卡片在）；
+- **未捕获任何长按事件**（mute / menu / PWR 日志均为 0）→ 判断为采集窗口内**用户不在设备旁未按键**，
+  非设备/固件失败（合成长按已由 `G6` 覆盖 20/20）。
+**结论**：`KEY-02`（长按）/`KEY-05`（PWR 长按）真机 H **仍 PENDING**；等用户在设备旁时再跑（10 分钟窗口脚本已就绪）。
