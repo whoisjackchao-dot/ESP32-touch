@@ -69,3 +69,4 @@ python tools\host\run_g5.py --port COM7                             # 约 25 s�
 1. `C04` 音频输出契约冻结（ES8311 @0x18 + I2S GPIO8/9/10/12 + PA GPIO7、3 条 PCM、静音语义）。
 2. 播放触发：INPUT_REQUIRED / DONE / FAILED 各一次；WORKING 期间静默；静音开关生效且**重启后仍静音**（M3 的 `voice/muted` 直接复用）。
 3. `G9`：60/60 + 静音 20/20；"只有 QUEUED 日志却没真响"不算完成。
+
