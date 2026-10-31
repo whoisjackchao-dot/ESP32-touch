@@ -1,0 +1,47 @@
+[CC] test_m4_audio.c + pet_audio_policy.c
+D:\DSH\ESP32-touch\tests\test_m4_audio.c: In function 'test_asset_file':
+D:\DSH\ESP32-touch\tests\test_m4_audio.c:68:43: warning: '%s' directive output may be truncated writing up to 127 bytes into a region of size 123 [-Wformat-truncation=]
+   68 |     snprintf(detail, sizeof detail, "path=%s size=%ld", path, bytes);
+      |                                           ^~            ~~~~
+D:\DSH\ESP32-touch\tests\test_m4_audio.c:68:5: note: 'snprintf' output between 13 and 150 bytes into a destination of size 128
+   68 |     snprintf(detail, sizeof detail, "path=%s size=%ld", path, bytes);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\DSH\ESP32-touch\tests\test_m4_audio.c:68:43: warning: '%s' directive output may be truncated writing up to 127 bytes into a region of size 123 [-Wformat-truncation=]
+   68 |     snprintf(detail, sizeof detail, "path=%s size=%ld", path, bytes);
+      |                                           ^~            ~~~~
+D:\DSH\ESP32-touch\tests\test_m4_audio.c:68:5: note: 'snprintf' output between 14 and 141 bytes into a destination of size 128
+   68 |     snprintf(detail, sizeof detail, "path=%s size=%ld", path, bytes);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== RUN test_m4_audio.exe ===
+PASS AUD-01-input-plays
+PASS AUD-01-done-plays
+PASS AUD-01-failed-plays
+PASS AUD-01-none-silent
+PASS AUD-02-muted-input
+PASS AUD-02-muted-done
+PASS AUD-02-muted-failed
+PASS AUD-02-muted-none
+PASS AUD-03-map-input
+PASS AUD-03-map-done
+PASS AUD-03-map-failed
+PASS AUD-03-map-none
+PASS AUD-03-name-input
+PASS AUD-03-name-done
+PASS AUD-03-name-failed
+PASS AUD-03-name-none
+PASS AUD-05-asset-exists
+PASS AUD-05-asset-even
+PASS AUD-05-asset-duration
+PASS AUD-05-asset-raw-pcm
+PASS AUD-05-asset-exists
+PASS AUD-05-asset-even
+PASS AUD-05-asset-duration
+PASS AUD-05-asset-raw-pcm
+PASS AUD-05-asset-exists
+PASS AUD-05-asset-even
+PASS AUD-05-asset-duration
+PASS AUD-05-asset-raw-pcm
+SUMMARY m4_audio: cases=28 passed=28 failed=0
+RESULT: PASS (all M4 audio host tests green)
+=== EXIT 0 (test_m4_audio.exe) ===
+RESULT: PASS (all M4 audio host tests green)

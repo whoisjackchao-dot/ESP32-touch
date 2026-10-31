@@ -5,6 +5,7 @@
 # 本项目新增：pet_state.c（M2 状态机）、pet_ui_240.c（M2 值班页）、
 #   pet_keymap.c（M3 键表）、pet_pomo_store.c（M3 NVS）、
 #   pet_ui_pomo_240.c / pet_ui_menu_240.c（M3 两页）、
+#   pet_audio_policy.c（M4 播报判定）、
 #   include/pet_link.h（C05 事件行解析）。
 # 立绘包 assets/robot.look 随组件嵌入（_binary_robot_look_start/_end）。
 idf_component_register(
@@ -16,6 +17,7 @@ idf_component_register(
          "pet_pomo_store.c"
          "pet_state.c"
          "pet_keymap.c"
+         "pet_audio_policy.c"
          "pet_linebuf.c"
          "pet_link.c"
          "pet_ui_240.c"

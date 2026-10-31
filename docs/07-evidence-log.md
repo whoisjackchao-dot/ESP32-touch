@@ -633,3 +633,48 @@ unexpected=0        （PWR 短按 3 次：无任何应用动作/误触发）
 
 **副作用与清理**：为抢串口多次 kill 插件 helper，导致运行中的 DSH 出现**两个 helper 进程**（重复重连链）；
 需**重启 DSH 一次**清理（重启后应只有 1 个 helper）。这是测试手法副作用，不是插件正常运行行为。
+
+## E36：DSH 重启后插件单实例干净状态（2026-10-31）
+
+**背景**：`E35` 的抢串口测试手法导致运行中的 DSH 出现两个 helper 进程（重复重连链）。
+用户按要求再次重启 DSH。
+
+**观察**：
+- DSH 启动时间 **10:33:56**；插件 helper **10:34:05** 启动（PID 15868），**仅 1 个**；
+- `COM7` 被 helper 占用（插件已连接、心跳正常）；
+- 用户目视：**宠物正常、绿点显示**。
+
+**可得结论**：插件在干净重启后为单实例、单 helper、单串口；C05 心跳链路正常。
+`E35` 的重复 helper 是测试手法副作用，已通过重启消除。
+
+## E37：M4 音频输出实现、构建与软件级验证（2026-10-31）
+
+**交付**：`docs/contracts/C04-audio-output.md` 冻结；`firmware/main/board_audio.c`（I2C 42/41 +
+I2S MCLK8/BCLK9/WS10/DOUT12 + ES8311 0x18 + PA GPIO7，16 kHz/stereo 槽位/MCLK×256，独立 audio
+任务队列）、`firmware/components/pet_ui/pet_audio_policy.c`（T）、`firmware/components/es8311/`
+（vendored Apache-2.0，保留 LICENSE）、`firmware/main/assets/voice/{input,done,failed}.pcm`
+（上游 MIT 仓库资产，16 kHz mono s16le）、主循环 `pet_state_take_sound` + 静音门控 + 注入命令
+`a`/`b`/`f`（H 测试用）。
+
+**构建**（0 warning）：
+
+```text
+buddy154.bin binary size 0xc4630 bytes. Smallest app partition is 0x300000 bytes. 0x23b9d0 bytes (74%) free.
+Project build complete.
+```
+
+**T 测试**（RED→GREEN）：`pwsh -NoProfile -File tests/run_m4_tests.ps1` → SUMMARY 28/28 PASS；
+RED 阶段 9 条失败（stub 实现），GREEN 后全过；M2 15/15、M3 21/21、M5a 29/436 回归全 PASS。
+
+**刷机事故与修正**：第一次手工 `esptool write_flash` 把 app 写到 `0x10000`（本板 factory 在
+**0x20000**，`C06` 分区表），导致 `No bootable app partitions` 启动循环；改为 `0x20000` 重烧后
+设备正常运行（STATUS/`m4: READY` 正常）。教训：手工刷机必须按 `C06` 分区表偏移，不能沿用常见 0x10000。
+
+**软件级播报验证**（`audio_h.py` 真机日志）：
+```text
+AUDIO test input/done/failed → (ESP_OK)     # 三声均入队
+mute=1 → 三次 "skipped (muted/off)"          # 静音门控生效
+（重启后）"skipped (muted/off)"              # 静音跨重启保持（NVS）
+mute=0 → "AUDIO test input (ESP_OK)"         # 解除静音恢复
+```
+**待办**：H 听感确认（用户在场听三声/静音/恢复）；若无声需查 ES8311 输出寄存器/PA 电平。

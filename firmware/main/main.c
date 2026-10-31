@@ -26,7 +26,9 @@
 #include "freertos/task.h"
 #include "nvs_flash.h"
 
+#include "board_audio.h"
 #include "board_lcd.h"
+#include "pet_audio_policy.h"
 #include "pet_button.h"
 #include "pet_keymap.h"
 #include "pet_linebuf.h"
@@ -333,6 +335,29 @@ static void handle_cmd(uint8_t cmd, uint32_t now)
     case 'p': s_status_req = true; break;
     case 'd': s_dump_req = true; break;
 
+    /* M4：直接播报（H 测试用；绕过状态机，仍受静音开关约束） */
+    case 'a':
+        if (pet_audio_should_play(PET_SOUND_INPUT, s_muted)) {
+            ESP_LOGI(TAG, "AUDIO test input (%s)", esp_err_to_name(board_audio_play(PET_SOUND_INPUT)));
+        } else {
+            ESP_LOGI(TAG, "AUDIO test input skipped (muted/off)");
+        }
+        break;
+    case 'b':
+        if (pet_audio_should_play(PET_SOUND_DONE, s_muted)) {
+            ESP_LOGI(TAG, "AUDIO test done (%s)", esp_err_to_name(board_audio_play(PET_SOUND_DONE)));
+        } else {
+            ESP_LOGI(TAG, "AUDIO test done skipped (muted/off)");
+        }
+        break;
+    case 'f':
+        if (pet_audio_should_play(PET_SOUND_FAILED, s_muted)) {
+            ESP_LOGI(TAG, "AUDIO test failed (%s)", esp_err_to_name(board_audio_play(PET_SOUND_FAILED)));
+        } else {
+            ESP_LOGI(TAG, "AUDIO test failed skipped (muted/off)");
+        }
+        break;
+
     /* M3：合成键事件（与真实按键走同一处理路径） */
     case 'K': handle_key(PET_KEY1, PET_KEY_EV_SHORT, now); break;
     case 'L': handle_key(PET_KEY1, PET_KEY_EV_LONG, now); break;
@@ -398,7 +423,7 @@ static void console_task(void *arg)
         return;
     }
     usb_serial_jtag_vfs_use_driver();
-    ESP_LOGI(TAG, "console ready (M5a): C05 NDJSON lines + M3 debug chars K/L/J/H m y R t; M2 chars 1..5 0 u n c x p d");
+    ESP_LOGI(TAG, "console ready (M5a): C05 NDJSON lines + M3 debug chars K/L/J/H m y R t a/b/f audio; M2 chars 1..5 0 u n c x p d");
 
     pet_linebuf_t lb;
     bool json_mode = false;
@@ -587,6 +612,12 @@ void app_main(void)
              (long)(s_pomo.has_day ? s_pomo.day : -1), s_pomo.has_day ? 1 : 0,
              s_muted ? 1 : 0);
 
+    /* ---- 5b. 音频输出（M4）：失败只降级为无声，不阻塞显示（C04 §5） ---- */
+    err = board_audio_init();
+    if (err != ESP_OK) {
+        ESP_LOGW(TAG, "audio init failed (%s): 播报降级为静音", esp_err_to_name(err));
+    }
+
     /* ---- 6. 队列 + 任务 ---- */
     s_cmd_q = xQueueCreate(32, sizeof(uint8_t));
     s_evt_q = xQueueCreate(8, sizeof(pet_link_msg_t));
@@ -601,7 +632,8 @@ void app_main(void)
         }
     }
 
-    ESP_LOGI(TAG, "m5a: READY (240x240, 8fps, keys=GPIO0/4/5, pomo 25/5, C05 USB events)");
+    ESP_LOGI(TAG, "m4: READY (240x240, 8fps, keys=GPIO0/4/5, pomo 25/5, C05 USB events, audio=%s)",
+             board_audio_ready() ? "on" : "off");
 
     /* ---- 7. 主循环 ---- */
     TickType_t last_wake = xTaskGetTickCount();
@@ -640,6 +672,21 @@ void app_main(void)
             save_stats();
             ESP_LOGI(TAG, "ALARM phase=%s done=%lu (audio M4)", pomo_phase_name(s_pomo.phase),
                      (unsigned long)s_pomo.done_count);
+        }
+
+        /* M4：一次性播报（C04 §3；去重由 take_sound "取走即清"保证） */
+        {
+            const pet_sound_t snd = pet_state_take_sound(s_state);
+            if (snd != PET_SOUND_NONE) {
+                const pet_audio_asset_t asset = pet_audio_asset_for(snd);
+                if (pet_audio_should_play(snd, s_muted)) {
+                    const esp_err_t perr = board_audio_play(snd);
+                    ESP_LOGI(TAG, "AUDIO play %s (%s)", pet_audio_asset_name(asset),
+                             perr == ESP_OK ? "queued" : esp_err_to_name(perr));
+                } else {
+                    ESP_LOGI(TAG, "AUDIO skipped %s (muted)", pet_audio_asset_name(asset));
+                }
+            }
         }
 
         /* 渲染：菜单 > 番茄钟 > 值班 */

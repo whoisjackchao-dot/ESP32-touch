@@ -16,6 +16,7 @@
 | `pet_keymap.c` | `components/pet/pet_keymap.c`（行为规格） | MIT | **派生**：类型独立于上游 `pet_engine`；DUTY `KEY1` 长按映射为静音（C07 §3） |
 | `pet_pomo_store.c` | `components/pet/pet_pomo_store.c` + 本项目静音 | MIT | **派生**：新增 `voice/muted` NVS 读写（M4 音频复用） |
 | `pet_ui_pomo_240.c`、`pet_ui_menu_240.c` | 无（本项目新实现） | MIT | M3 番茄钟页/菜单页，契约 `docs/10-m3-development.md` §5 |
+| `pet_audio_policy.c` + `include/pet_audio_policy.h` | 无（本项目新实现） | MIT | M4 播报判定/资产映射纯逻辑，契约 `C04 §3` |
 | `include/pet_render.h`、`pet_text.h`、`pet_menu.h`、`pet_button.h` | `components/pet/include/` 同名文件 | MIT | 逐字节 |
 | `include/pet_pomo.h` | `components/pet/include/pet_pomo.h` | MIT | **派生**：`pet_pomo_t` 增 `focus_ms/break_ms` 与 `pet_pomo_set_durations()`（M3 扩展） |
 | `include/pet_types.h` | `components/pet/include/pet_types.h` | MIT | **派生**：`pet_card_t` 增 `agent[PET_AGENT_MAX]`（`C03 §7 R2`），其余字段不变 |
@@ -27,9 +28,12 @@
 
 ## 范围说明
 
-- **未复制**：`pet_hal_sticks3.c/.h`、`pm1.c/.h`、`pet_audio.c/.h`、
-  `pet_keys.c/.h`、`pet_net.c/.h`、`pet_ble.c/.h`、`pet_engine.c`、`pet_leisure.c`、
-  `pet_render` 的 135×240 视图逻辑，以及任何 second-state/vibebuddy（GPL）代码。
+- **未复制**：`pet_hal_sticks3.c/.h`、`pm1.c/.h`、`pet_keys.c/.h`、`pet_net.c/.h`、
+  `pet_ble.c/.h`、`pet_engine.c`、`pet_leisure.c`、`pet_render` 的 135×240 视图逻辑，
+  以及任何 second-state/vibebuddy（GPL）代码。
+  `pet_audio.c` 未复制：本项目按 `C04` 契约在 `firmware/main/board_audio.c` **重写**
+  （不同板引脚/无 PMIC/16 kHz），仅沿用上游已验证的播放序列与 I2S 参数；
+  `pet_voice` 的资产格式与触发语义见 `C04`。
 - M1/M2 时 `pet_button/menu/pomo` 只有头文件被作为 `pet_render.h` 的传递依赖保留；
   **M3 起**其 `.c` 被真正编译（按键/菜单/番茄钟），来源与派生差异见上表。
 - `cjk16.h` 是 `pet_text.c` 编译期必需的头文件（1.5 MB 字库数据）；
@@ -41,4 +45,12 @@
 `pet_render.c` 中 `pet_render_scene`（135×240 固定坐标）、`pet_render_pomo`、
 `pet_render_menu`、`pet_render_skit` **不被本项目调用**（M2/M3 均用 `pet_ui_*_240` 新实现）；
 135×240 几何仅存留于未被链接的死代码中。
+
+## M4 音频：第三方组件与资产
+
+| 项 | 来源 | 许可 | 备注 |
+| --- | --- | --- | --- |
+| `firmware/components/es8311/`（`es8311.c/h`、`es8311_reg.h`、`README`、`LICENSE`） | `espressif/esp-bsp` `components/es8311` v1.0.0~1（commit `4dabefca`） | **Apache-2.0**（保留原 `LICENSE` 与版权头） | vendored 本地组件，离线可构建；契约 `C04 §1` |
+| `firmware/main/assets/voice/{input,done,failed}.pcm` | 上游 `ESP32-buddy` `components/pet/assets/*.pcm`（MIT 仓库） | 上游仓库 MIT；**语音内容由 Edge TTS（`zh-CN-XiaoyiNeural`）合成** | raw s16le/16 kHz/单声道；**再分发音频前需自行确认 Edge 服务条款**（上游 NOTICE §3 同提示） |
+
 
