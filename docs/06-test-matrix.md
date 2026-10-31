@@ -102,9 +102,10 @@
 | `C05-01..08` | `R29` | linebuf/link 正常/错误/边界（6 事件、agent、tasks、`has_tasks`、版本/类型/超长/非法） | C（host） | **PASS 29/29 用例、436 断言** | `E29`、`tests/RED-GREEN-M5A.md` |
 | `PLG-01..06` | `R29` | 插件 state/protocol/装配/helper/未配置端口零副作用 | T（node --test） | **PASS 56/56** | `host-plugin/test/console/node-test.txt` |
 | `PLG-07` | `R29` | 本地目录安装进 profile，`--dump-config` 出现插件行 | C/D | **PASS**（临时 profile `touch-test`） | `host-plugin/test/console/install-verify.txt` |
-| `E2E-01` | `R21/R29` | 真实 DSH 会话 → 设备 ≤1 s 变状态/出卡；停会话→OFFLINE→恢复 | H | **PARTIAL**（`E33`：重启后插件自动加载、COM7 心跳、用户目视宠物正常；动态状态/卡片待用户观察或照片） | `E31`（插件→真机）、`E33` |
+| `E2E-01` | `R21/R29` | 真实 DSH 会话 → 设备变状态/出卡；心跳在线 | H | **PASS**（用户目视：WORKING `>` + 会话标题卡片 + 绿点；`E34`） | `E34`；停链路 OFFLINE 由 `E30`/单测覆盖 |
 | `PLG-08` | `R29` | 插件真实代码路径（fake ctx + 真实串口 helper）→ 真机：会话标题/CJK/DSH 前缀/审批 INPUT_REQUIRED | H | **PASS** | `E31`、`tools/host/evidence/m5a/plugin_device_e2e.png` |
 | `C05-09` | `R29` | 设备端事件入口 H：6 事件/3 卡/心跳/非法输入/`tasks:[]` 清栈/OFFLINE 恢复 | H | **PASS 16/16** | `E30`、`tools/host/evidence/m5a/` |
+
 
 
 

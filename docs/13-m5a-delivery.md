@@ -65,6 +65,7 @@ dsh plugin --profile desktop add D:\DSH\ESP32-touch\host-plugin
 | C05 解析 C 测试 | **29/29 用例、436 断言 PASS**（linebuf + link：事件/agent/tasks/`has_tasks`/错误/超长/非法） | `E29`、`tests/RED-GREEN-M5A.md` |
 | C05 设备事件入口 H | **16/16 PASS**：WORKING 延迟 **0.165 s**、3 卡 top-first、`tasks:[]` 清栈、6 态切换、非法输入不崩、15 s OFFLINE/恢复；帧 CRC 一致 | `E30`、`tools/host/evidence/m5a/` |
 | 插件→真机路径 H | **PASS**：真实插件代码（fake ctx + 真实串口 helper）驱动真机，CJK 标题/`DSH` 前缀/审批 INPUT_REQUIRED 上屏 | `E31`、`tools/host/evidence/m5a/plugin_device_e2e.png` |
+| **真实 DSH 会话 E2E** | ✅ **PASS**：desktop 安装 + 重启后，真实子代理任务 → 设备 WORKING + 会话标题卡片 + 绿点（用户目视） | `E34` |
 | 插件 `node --test` | **56/56 PASS**（state/protocol/apply/helper/fake + PowerShell helper 冒烟） | `host-plugin/test/console/node-test.txt` |
 | 插件安装 | 临时 profile `touch-test`：`dsh plugin add` exit 0；`--dump-config` 出现 `id: esp32-touch-bridge`；卸载/re-add 干净 | `host-plugin/test/console/install-verify.txt` |
 | M2/M3 回归 | 15/15 + 21/21 用例 PASS（宿主测试） | `tests/*.log` |
@@ -73,7 +74,7 @@ dsh plugin --profile desktop add D:\DSH\ESP32-touch\host-plugin
 
 | 项 | 阻塞条件 | 解除动作 |
 | --- | --- | --- |
-| `E2E-01` 真实 DSH 会话 | 需安装到 desktop + **重启 DSH GUI**（本会话进程内无法重启） | 用户确认后 `dsh plugin --profile desktop add .../host-plugin` + 配 `config.port` + 重启；真实发消息/触发审批，看设备 ≤1 s 变化 |
+| `E2E-01` 真实 DSH 会话 | ✅ **已通过**（`E34`）：desktop 安装 + 重启后，90 s 子代理任务 → 用户目视 WORKING `>`、会话标题卡片、绿点 | — |
 | `KEY-01/02/05` 真机按压 | 同设备未连接（M3 PENDING） | 设备重连后跑 `keyprobe.py` + `keyh_capture.py` |
 
 ## 6. 已知限制
@@ -88,6 +89,7 @@ dsh plugin --profile desktop add D:\DSH\ESP32-touch\host-plugin
 
 本节点出口（设备 H + 真实 DSH E2E）闭合后：按 `05-plan.md` 顺序进入 **M4 语音播报**（`C04`），
 再 M5b（WiFi/BLE/配网/NTP）。
+
 
 
 
