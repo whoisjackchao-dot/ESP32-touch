@@ -1,0 +1,55 @@
+{
+  "name": "dsh-esp32-touch-bridge",
+  "version": "0.1.0",
+  "description": "DeepSeek Harness (DSH) host bridge: maps DSH session/agent state to C05 v1 NDJSON events and writes them to the ESP32-S3 desktop pet over a local USB serial port.",
+  "type": "module",
+  "main": "./lib/index.js",
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./package.json": "./package.json",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./locale/*.json": "./locale/*.json"
+  },
+  "icon": "./icon.svg",
+  "files": [
+    "lib",
+    "helper",
+    "locale",
+    "icon.svg",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "cordis",
+    "esp32",
+    "esp32-s3",
+    "serial",
+    "usb-serial-jtag",
+    "device-bridge",
+    "desktop-pet"
+  ],
+  "license": "MIT",
+  "author": {
+    "name": "whoisjackchao-dot",
+    "url": "https://github.com/whoisjackchao-dot"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/whoisjackchao-dot/ESP32-touch.git",
+    "directory": "host-plugin"
+  },
+  "homepage": "https://github.com/whoisjackchao-dot/ESP32-touch#readme",
+  "engines": {
+    "node": ">=20"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}

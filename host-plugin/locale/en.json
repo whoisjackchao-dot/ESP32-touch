@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "ESP32 Touch Bridge",
+    "description": "Host bridge for an ESP32-S3 desktop pet: streams DSH session and agent status (idle / working / input required / failed, plus a 3-card task stack) over a local USB serial port as C05 v1 NDJSON events."
+  }
+}

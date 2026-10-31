@@ -1,0 +1,24 @@
+[CC] test_pet_state.c + pet_state.c
+[CC] test_ui240.c + pet_ui_240.c + pet_render.c + pet_text.c
+=== RUN test_pet_state.exe ===
+PASS ST-01-event-to-state (12 asserts)
+PASS ST-02-done-edge-debounce (9 asserts)
+PASS ST-03-done-edge-cancelled (6 asserts)
+PASS ST-04-idle-agent-idle (5 asserts)
+PASS ST-05-done-dwell (4 asserts)
+PASS ST-06-link-timeout-recovery (12 asserts)
+PASS ST-07-card-stack (38 asserts)
+PASS ST-08-animation (18 asserts)
+PASS ST-09-view-fields (20 asserts)
+SUMMARY pet_state: cases=9 passed=9 failed=0
+=== EXIT 0 (test_pet_state.exe) ===
+=== RUN test_ui240.exe ===
+PASS UI-13-card-stack (61 asserts)
+PASS CARD-13-empty-fields (5 asserts)
+PASS UI-11-markers (11 asserts)
+PASS UI-11b-d05-marker-orientation (17 asserts)
+PASS UI-13-pet-layout (7 asserts)
+PASS GB-01-offline-gray (6 asserts)
+SUMMARY pet_ui_240: cases=6 passed=6 failed=0
+=== EXIT 0 (test_ui240.exe) ===
+RESULT: PASS (all host tests green)

@@ -1,0 +1,115 @@
+# 安装验证证据 — dsh-esp32-touch-bridge (M5a)
+
+- 日期：2026-10-31（Asia/Shanghai）
+- 环境：Windows；node v24.16.0；dsh 0.1.2-rc.1；插件 dsh-esp32-touch-bridge 0.1.0
+- 约束遵守：**未触碰 desktop / web 既有 profile**（只新建临时 profile `touch-test`），**未重启 DSH**。
+
+## 环境准备（可复跑）
+
+1. 用 web profile 的脚手架文件新建临时 profile `C:\Users\home\.dsh\profiles\touch-test`：
+   `cordis.yml`、`cordis.patch.yml`、`pnpm-workspace.yaml` 原样复制；
+   `package.json` 仅将 name 改为 `dsh-profile-touch-test`，bundles 保持
+   `@deepseek-ai/dsh-base` + `@deepseek-ai/dsh-web-app`。
+2. 本机 shell 的 PATH 中没有独立的 pnpm；DSH 运行时自带 pnpm 11.28.5。验证时仅在**当前进程**的
+   PATH 前置一个 `%TEMP%\dsh-plugin-tools\pnpm.cmd`，转发到
+   `C:\Users\home\.dsh\dsh-runtimes\dsh-primary-runtime\dependencies\pnpm\bin\pnpm.mjs`。
+   未修改系统 PATH、未全局安装任何包、未改 desktop/web profile。
+3. bundle 默认 config 将 `port` 注释掉（无 ESP32_TOUCH_PORT），因此安装本身**不打开串口、不 spawn helper**。
+
+## 1) 安装 + 配置合成
+
+```powershell
+PS> dsh plugin --profile touch-test add D:\DSH\ESP32-touch\host-plugin
+Already up to date
+
+dependencies:
++ dsh-esp32-touch-bridge 0.1.0 <- D:\DSH\ESP32-touch\host-plugin
+
+Done in 1s using pnpm v11.28.5
+Update available! 11.28.5 → 12.16.1.
+Changelog: https://pnpm.io/v/12.16.1
+To update, run: Invoke-WebRequest https://get.pnpm.io/install.ps1 -UseBasicParsing | Invoke-Expression
+```
+
+```powershell
+PS> dsh --profile touch-test --dump-config | Select-String esp32-touch-bridge -Context 2,8
+    default: standard
+# == dsh-esp32-touch-bridge
+- id: esp32-touch-bridge
+  name: dsh-esp32-touch-bridge
+  config:
+    baud: 115200
+    heartbeatMs: 10000
+```
+
+结论：合成配置树中出现插件行（id=`esp32-touch-bridge`，name=`dsh-esp32-touch-bridge`），config 为
+`baud: 115200` / `heartbeatMs: 10000`。
+
+## 2) profile 状态（安装后）
+
+```json
+{
+  "name": "dsh-profile-touch-test",
+  "private": true,
+  "dsh": {
+    "profile": {
+      "bundles": [
+        "@deepseek-ai/dsh-base",
+        "@deepseek-ai/dsh-web-app",
+        "dsh-esp32-touch-bridge"
+      ],
+      "patchReload": "live"
+    }
+  },
+  "dependencies": {
+    "dsh-esp32-touch-bridge": "link:D:/DSH/ESP32-touch/host-plugin"
+  }
+}
+```
+
+`node_modules\dsh-esp32-touch-bridge` 是指向 `D:\DSH\ESP32-touch\host-plugin` 的 Junction（本地目录安装）。
+
+## 3) 卸载回归（临时 profile，可选）
+
+```powershell
+PS> dsh plugin --profile touch-test remove dsh-esp32-touch-bridge
+✓ Lockfile passes supply-chain policies (verified 26s ago)
+Already up to date
+
+dependencies:
+- dsh-esp32-touch-bridge link:D:/DSH/ESP32-touch/host-plugin
+
+Done in 805ms using pnpm v11.28.5
+```
+
+- remove 后 `--dump-config | Select-String esp32-touch-bridge` 匹配行数：**0**（0 = 干净移除）。
+
+```powershell
+PS> dsh plugin --profile touch-test add D:\DSH\ESP32-touch\host-plugin
+✓ Lockfile passes supply-chain policies (verified 1s ago)
+Already up to date
+
+dependencies:
++ dsh-esp32-touch-bridge link:D:/DSH/ESP32-touch/host-plugin
+
+Done in 851ms using pnpm v11.28.5
+```
+
+- 重新 add 后 `--dump-config | Select-String esp32-touch-bridge` 匹配行数：**3**。
+
+## 说明
+
+- 本证据只证明 **DSH 标准 bundle 的安装 / 配置合成 / 卸载**；插件在真实 DSH 会话里的行为由
+  `node --test`（fake ctx/transport/child_process）覆盖，真实设备 H 与重启后 E2E 由 Lead 统一发起。
+- helper 是插件内部辅助进程，本证据**不**手动启动它。
+## 4) 已安装模块可从 profile 解析（不改 desktop/web、未重启 DSH）
+
+```powershell
+PS> cd $env:USERPROFILE\.dsh\profiles\touch-test
+PS> node -e "import('dsh-esp32-touch-bridge').then(...)"
+resolved from touch-test profile: esp32-touch-bridge function
+version 0.1.0 bundle ./cordis.patch.yml
+```
+
+说明：junction 指向工作区源码；安装/合成验证不导入插件模块，这一步额外确认了 Node 能从
+profile 解析到包入口（exports["."] -> ./lib/index.js）与 dsh.bundle.patch。

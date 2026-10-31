@@ -1,0 +1,76 @@
+# node --test 证据 — host-plugin（dsh-esp32-touch-bridge）
+
+- 日期：2026-10-31（Asia/Shanghai）
+- 环境：Windows；node v24.16.0；零第三方依赖、无构建步骤
+- 命令：在 `D:\DSH\ESP32-touch\host-plugin` 下执行 `node --test`
+- 退出码：0
+- 汇总：ℹ tests 56；ℹ pass 56；ℹ fail 0；ℹ skipped 0
+
+```text
+[e2e-device] skipped (ESP32_TOUCH_E2E is not 1); set ESP32_TOUCH_PORT and ESP32_TOUCH_E2E=1 to run
+✔ test\e2e-device.mjs (123.3516ms)
+✔ helper/serial-bridge.ps1 parses as PowerShell (537.4587ms)
+✔ helper process: ready, bad port reported, exits 0 when stdin closes (682.6473ms)
+✔ package.json is a DSH Host bundle manifest (2.7262ms)
+✔ cordis.patch.yml inserts the frozen row id/name with config (0.6563ms)
+✔ display metadata: locale files and icon exist in the documented shape (1.8259ms)
+✔ shipped files are declared and the helper script is present (0.7693ms)
+✔ README declares the internal helper, privacy, limits, install and uninstall (0.3432ms)
+✔ module exports the Cordis entry points (7.5273ms)
+✔ normalizeConfig: defaults, env fallback, auto rejection, warnings (5.1102ms)
+✔ unconfigured port: loads, observes, never spawns a transport (36.7256ms)
+✔ apply returns a disposer and wires all documented DSH events (0.737ms)
+✔ events map to the C05 edge events with cards attached (221.1522ms)
+✔ user-questions waterfall: observes, always calls next(), preserves the answer (62.8583ms)
+✔ user-questions waterfall: next() rejection is propagated unchanged (31.8183ms)
+✔ user-questions waterfall: abort clears the pending observation (62.4397ms)
+✔ user-questions waterfall without next() is left untouched (0.4251ms)
+✔ reconnect replays the current snapshot (level-triggered) (78.8754ms)
+✔ heartbeat runs on the configured interval and stops on dispose (141.7468ms)
+✔ transport receives port/baud and writes are serialized single-writer (46.3177ms)
+✔ dispose reclaims a transport that is still starting (bounded teardown) (15.5347ms)
+✔ after dispose no further emissions reach the transport (31.4293ms)
+✔ envelope: version 1, known event, NDJSON-safe, no trailing newline (4.2153ms)
+✔ heartbeat uses device.heartbeat and can carry the card stack (0.7523ms)
+✔ unknown or missing event names are rejected (1.0707ms)
+✔ top-level single-card fields come from cards[0] and omit status (0.4747ms)
+✔ title/project truncate at 63 code points and agent at 7 (3.9168ms)
+✔ truncation is by code point, never splitting a surrogate pair (0.9185ms)
+✔ invalid top-card values reject the whole line (0.6508ms)
+✔ tasks are capped at three and preserve top-first order (0.6566ms)
+✔ invalid task items are skipped, not fatal (C05 section 4) (0.541ms)
+✔ unknown task status defaults to working; empty title stays empty (0.4827ms)
+✔ three long CJK cards still fit the 512-byte line cap (6.1566ms)
+✔ escaped control characters stay on one line (0.3165ms)
+✔ heartbeat without cards is still a valid C05 envelope (0.2576ms)
+✔ helper script path exists and is a file (1.6579ms)
+✔ line protocol: ready -> open, state, write(base64), line(base64), error, ping (37.3521ms)
+✔ unexpected exit restarts the helper after restartDelayMs (78.6152ms)
+✔ start times out and rejects when the helper never becomes ready (32.7615ms)
+✔ whenConnected resolves false after dispose (1.3836ms)
+✔ non-JSON helper output is ignored (13.312ms)
+✔ empty state is IDLE with no cards (4.064ms)
+✔ session/created only refreshes the card stack (no state animation) (1.2183ms)
+✔ session/title overrides the cwd fallback; no cwd falls back to session <id6> (0.6063ms)
+✔ running -> WORKING/task.start and last idle -> agent.idle (0.5173ms)
+✔ two running sessions: agent.idle only after the last one stops (0.8986ms)
+✔ approval/asked -> INPUT_REQUIRED, approval/decided -> resume (0.5896ms)
+✔ overlapping approvals stay pending until every id is decided (0.312ms)
+✔ user questions keep INPUT_REQUIRED until the request ends (0.4132ms)
+✔ agent/error -> task.error with a failed card; new work clears the failure (0.5328ms)
+✔ cards sort by pending > running > newest and stop at three (0.6272ms)
+✔ session/disposed removes the card and falls back to IDLE (0.3145ms)
+✔ elapsed_s is a non-negative integer clamped at zero (0.2048ms)
+✔ unknown observations are ignored (1.5024ms)
+✔ late session/event for a disposed session does not resurrect a card (0.3206ms)
+✔ reduceEvents folds a list with a shared accumulator (0.5146ms)
+ℹ tests 56
+ℹ suites 0
+ℹ pass 56
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1399.9494
+```
+

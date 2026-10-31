@@ -1,0 +1,87 @@
+{
+ "port": "COM7",
+ "passed": 16,
+ "total": 16,
+ "results": [
+  {
+   "name": "boot_m5a_ready",
+   "pass": true,
+   "detail": "PIO0 KEY2=GPIO4 PWR=GPIO5 (low active) I (737) m3: m5a: READY (240x240, 8fps, keys=GPIO0/4/5, pomo 25/5, C05 USB events)"
+  },
+  {
+   "name": "task_start_working",
+   "pass": true,
+   "detail": "latency=0.165s {'state': 'WORKING', 'frame': 4, 'cards': 1}"
+  },
+  {
+   "name": "g12_latency_le_1s",
+   "pass": true,
+   "detail": "latency=0.165"
+  },
+  {
+   "name": "cards_text",
+   "pass": true,
+   "detail": "M5A-CARD"
+  },
+  {
+   "name": "dump_working",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "tasks3_order",
+   "pass": true,
+   "detail": "C-TOP|C-MID|C-OLD"
+  },
+  {
+   "name": "input_required",
+   "pass": true,
+   "detail": "{'state': 'INPUT_REQUIRED', 'frame': 5, 'cards': 3}"
+  },
+  {
+   "name": "dump_input",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "task_done",
+   "pass": true,
+   "detail": "{'state': 'DONE', 'frame': 2, 'cards': 3}"
+  },
+  {
+   "name": "dump_done",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "task_error",
+   "pass": true,
+   "detail": "{'state': 'FAILED', 'frame': 3, 'cards': 3}"
+  },
+  {
+   "name": "idle_edge_done",
+   "pass": true,
+   "detail": "{'state': 'DONE', 'frame': 2, 'cards': 3}"
+  },
+  {
+   "name": "invalid_no_crash",
+   "pass": true,
+   "detail": "{'state': 'DONE', 'frame': 2, 'cards': 3} -> {'state': 'DONE', 'frame': 2, 'cards': 3}"
+  },
+  {
+   "name": "tasks_empty_clears",
+   "pass": true,
+   "detail": "None"
+  },
+  {
+   "name": "offline_after_15s",
+   "pass": true,
+   "detail": "{'state': 'OFFLINE', 'frame': 1, 'cards': 0}"
+  },
+  {
+   "name": "heartbeat_restore",
+   "pass": true,
+   "detail": "{'state': 'WORKING', 'frame': 4, 'cards': 0}"
+  }
+ ]
+}

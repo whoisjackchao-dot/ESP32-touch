@@ -13,8 +13,9 @@
 | `M1` | 板级点亮：GPIO2 电源锁存、SPI2 40 MHz、ST7789 240×240、背光、PSRAM 帧缓冲、一帧 IDLE + `READY` | ✅ **真机通过**（2026-10-30，目视：宠物+READY、颜色正常、居中完整） |
 | `M2` | 6 态动画 + 3 卡栈（240×240 版式 `C03`，含 2026-10-31 §7 修订） | ✅ **已交付**（2026-10-31）：真机 G1 **24/24**、G3 **20/20**、MEM-01 10 min、`D-05` 修复；人眼 H 待用户确认。见 [`docs/09-m2-delivery.md`](docs/09-m2-delivery.md) |
 | `M3` | 2 应用键 + 5 项菜单 + 番茄钟（240×240） | ✅ **已交付**（2026-10-31）：T 21/21、G5 17/17、G6 260/260；真机按压 `KEY-01/02/05` **PENDING**（待用户）。见 [`docs/11-m3-delivery.md`](docs/11-m3-delivery.md) |
-| `M4` | 语音播报（ES8311 输出） | **下一节点** |
-| `M5` | USB / WiFi / BLE 事件入口 + 宿主桥 + 验收 | 计划 |
+| `M5a` | **DSH 插件**（`host-plugin/` bundle）+ USB 事件入口（`C05`） | 🟡 **收口待 E2E**（2026-10-31）：设备事件入口 H **15/15**（0.165 s）、插件→真机路径 PASS、`node --test` 56/56、临时 profile 安装 PASS；**真实 DSH 会话 E2E 待安装 desktop + 重启 GUI**。见 [`docs/13-m5a-delivery.md`](docs/13-m5a-delivery.md) |
+| `M4` | 语音播报（ES8311 输出） | 顺延（M5a 出口后） |
+| `M5b` | WiFi / BLE 通道 + 配网 + NTP | 计划 |
 | 后置 | 触摸、IMU、AEC、OTA、语音输入 | 需求保留，未取消 |
 
 **v1 明确不做**：复制 GPL 代码、使用 VibeBuddy 商标、自动审批 Agent 动作。
@@ -36,12 +37,13 @@
 ## 仓库结构
 
 ```text
-docs/                   dayu 文档：索引、需求、决策、可行性、计划、契约、证据、追踪矩阵、M2 交付
+docs/                   dayu 文档：索引、需求、决策、可行性、计划、契约、证据、追踪矩阵、各节点交付
 firmware/               ESP-IDF 工程（target esp32s3）
-  main/                 板级层（board_lcd.c）与主循环/注入（main.c）
-  components/pet_ui/    上游 MIT 渲染/文本（byte-identical）+ 本项目 pet_state/pet_ui_240
-tests/                  host 单测（mingw gcc，15 用例/231 断言，RED→GREEN 留档）
-tools/host/             串口注入、帧缓冲导出→PNG、像素断言、G1/G3 自动跑测、MEM 采样
+  main/                 板级层（board_lcd.c）与主循环/注入/事件入口（main.c）
+  components/pet_ui/    上游 MIT 渲染/文本/解析（派生标注见 NOTICE）+ 本项目状态机/240 页面
+host-plugin/            **DSH 插件包 `dsh-esp32-touch-bridge`**（bundle：package.json + cordis.patch.yml + lib + PowerShell 串口 helper）
+tests/                  host 单测（mingw gcc；M2 15/231、M3 21/517、M5a 29/436，RED→GREEN 留档）
+tools/host/             串口注入、帧缓冲导出→PNG、像素断言、G1/G3/G5/G6 跑测、C05 事件 H 脚本（pet_event.py）
 tools/idf-env.sh        ESP-IDF v5.5.4 环境包装（WSL 路径；Windows 原生见下）
 artifacts/              出厂固件备份（**不随仓库分发**，见 .gitignore）
 ```
@@ -94,3 +96,4 @@ python -m esptool --chip esp32s3 -p COM7 -b 921600 --before default_reset --afte
 - 不使用 "VibeBuddy" 名称或角色商标。
 
 详见 [`NOTICE.md`](NOTICE.md)。
+

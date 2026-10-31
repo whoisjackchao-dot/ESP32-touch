@@ -448,3 +448,91 @@ Project build complete.        （无 warning/error）
 
 **可得结论**：M3 提交在全新 clone 上可构建（与本地同尺寸 0x8bef0）、0 warning，host 单测通过；
 `G17` 的"新 clone 可构建、无手工修补"在 M3 上继续成立（同机同 IDF，未跨机器）。
+
+## E28：M5a 设备侧事件入口构建（2026-10-31）
+
+**动作**：新增 `pet_linebuf.c/h`、`pet_link.c/h`（派生自上游 MIT，C05 + `agent` 字段），
+`main.c` console 任务增加"以 `{` 开头的 NDJSON 行"分流：解析经 `pet_link_parse` 后入队，
+主任务统一 `pet_state_apply` + 卡栈，单写者、不阻塞；调试单字符命令保持兼容。
+
+```text
+buddy154.bin binary size 0x8cda0 bytes (576,928 B). Smallest app partition is 0x300000 bytes. 0x273260 bytes (82%) free.
+Project build complete.  （无 warning/error）
+```
+
+**可得结论**：M5a 设备侧可构建（C05 入口 + M2/M3 功能共存）。
+**不能证明**：真机事件入口行为（Waveshare 板当前未连接；本机 `COM5` 是另一台 StickS3，
+被旧项目 `file_to_serial.py` 占用）。真机 H 待重连后跑 `tools/host/pet_event.py`（脚本已就绪）。
+
+## E29：C05 设备事件解析 C 类契约测试（2026-10-31）
+
+**命令**：`pwsh -NoProfile -File tests/run_m5a_tests.ps1`
+
+```text
+SUMMARY m5a_event: cases=28 passed=28 failed=0 asserts=418
+RESULT: PASS (all M5a host tests green)   （gcc -Wall -Wextra 0 warning）
+回归：run_tests.ps1 PASS（M2 15 用例/231 断言）；run_m3_tests.ps1 PASS（M3 21 用例/517 断言）
+```
+
+覆盖：linebuf（逐字节/CRLF/空行/恰好 512/513 起 DROPPED 且可恢复/deliver_pending）；
+link 正常（C05 全事件名、`agent.blocked`→TASK_ERROR、顶层单卡四字段、tasks 3 卡/空数组/>3 截断/status 映射/agent、截断、linebuf+link 集成）；
+错误/边界（非法 JSON/未闭合/尾部/version/event/字段类型/tasks 非数组与坏项/超长/未知键嵌套/`\u`/显式 len）。
+
+**发现并已对齐的文档差异**（测试以真实实现为准；C05 已加 §9 对齐记录）：
+`elapsed_s` 非整数报 JSON 错（非 TYPE）、tasks 项 title 可缺省、`\u` 不支持、未知键嵌套 ≤8 层、
+`elapsed_s` 上限 1e9、按**字节**截断（63/63/7 B，CJK 可能被切断）、尾部空白接受。
+**证据**：`tests/RED-GREEN-M5A.md`（D1–D10、原始输出）、`tests/m5a-run.log`。
+
+## E30：C05 设备事件入口真机 H（2026-10-31，Waveshare 板 COM7）
+
+**方法**：`python tools/host/pet_event.py --port COM7`（Waveshare 板 MAC `44:1b:f6:86:4b:e4` 重新接回 COM7；
+M5a 固件刚刷入）。脚本发 C05 NDJSON、读 `p`/`m`、导出帧并校验 CRC，覆盖 6 事件/3 卡/非法输入/失联恢复。
+
+```text
+PASS boot_m5a_ready
+PASS task_start_working | latency=0.165s
+PASS g12_latency_le_1s | 0.165
+PASS cards_text | M5A-CARD
+PASS dump_working / tasks3_order | C-TOP|C-MID|C-OLD
+PASS input_required / dump_input
+PASS task_done / dump_done
+PASS task_error
+PASS idle_edge_done
+PASS invalid_no_crash | DONE -> DONE（4 条非法行被丢弃，不崩、不改状态）
+PASS tasks_empty_clears | tasks:[] 后 CARDS 为空（C05 §4）
+PASS offline_after_15s | OFFLINE
+PASS heartbeat_restore | WORKING
+RESULT PASS (16/16)
+```
+
+**可得结论**（H）：
+- C05 事件入口真机可用：`task.start`→WORKING **0.165 s**（G12 ≤1 s）、`tasks` 3 卡 top-first、`agent.input_required`→INPUT_REQUIRED、`task.done`→DONE、`task.error`→FAILED、`agent.idle` 边沿 1.5 s→DONE；
+- 非法 JSON/未知事件/version=2/类型错误均被丢弃且不崩溃；
+- 心跳停 15 s→OFFLINE，恢复心跳→回到失联前状态；
+- 帧导出 CRC 与设备一致，PNG 见 `tools/host/evidence/m5a/m5a_*.png`。
+
+**不能证明**：真实 DSH 会话产生的事件链（需安装插件到 desktop 并重启 DSH，见 `E31`/`E2E-01`）。
+
+## E31：DSH 插件 → 真机端到端（插件代码路径，2026-10-31）
+
+**方法**：用 `host-plugin/lib/index.js` 的 `applyWith()`（真实 state/protocol/serial-helper），
+**fake Cordis ctx** 捕获监听器，按真实 DSH 事件形状喂事件；串口经插件自己的 PowerShell helper 写
+`COM7`；随后用 `pet_event.Device` 查询设备状态并导出帧。
+
+```text
+[e2e-device] serial connected（helper spawn → COM7）
+写 6 条 C05 事件 + 3 卡；helper 退出码 0
+state: listeners=["session/created","session/disposed","session/event","agent/status","agent/error","user-questions/request"]
+设备：status=INPUT_REQUIRED frame=5 cards=2
+CARDS: DSH E2E 会话 | 插件会话
+dump: True（CRC 一致）
+```
+
+**可得结论**：
+- 插件的归约/编码/串口 helper **真实代码路径**能驱动真机：会话标题（含 CJK）与 `DSH` 前缀、elapsed、
+  审批等待→INPUT_REQUIRED 均正确上屏（`tools/host/evidence/m5a/plugin_device_e2e.png`）；
+- 无 port 配置时零副作用、waterfall 恒委派等由 `node --test` 覆盖（56/56）。
+
+**不能证明**：**真实 DSH 会话**驱动（`E2E-01`）：需把 `host-plugin/` 安装到 desktop profile 并重启 DSH GUI
+（当前会话进程内不能重启），之后用真实消息/审批观察设备。
+

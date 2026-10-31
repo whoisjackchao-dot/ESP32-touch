@@ -91,3 +91,20 @@
 - **无内存仪器**：`MEM-01` 只用 `STATUS heap=` 采样 10 min（`E19`），无 heap 碎片/泄漏断言的细分追踪。
 - **电池未验**：`PWR-01` 只走了 USB。
 - **注入通道是 M2 调试接口**（串口单字符），不是产品接口；M5 由事件协议取代前不得对外承诺兼容。
+
+## 7. M5a：DSH 插件 + USB 事件入口（进行中，2026-10-31 起）
+
+> 用户 2026-10-31 新增关键要求：接入对象 = DeepSeek Harness，宿主桥交付为 DSH bundle。
+> 契约：`C05`（设备事件协议）、`docs/12-dsh-plugin.md`（插件交付）。
+
+| 用例 | 对应需求 | 判定 | 方法 | 状态 | 证据 |
+| --- | --- | --- | --- | --- | --- |
+| `C05-01..08` | `R29` | linebuf/link 正常/错误/边界（6 事件、agent、tasks、`has_tasks`、版本/类型/超长/非法） | C（host） | **PASS 29/29 用例、436 断言** | `E29`、`tests/RED-GREEN-M5A.md` |
+| `PLG-01..06` | `R29` | 插件 state/protocol/装配/helper/未配置端口零副作用 | T（node --test） | **PASS 56/56** | `host-plugin/test/console/node-test.txt` |
+| `PLG-07` | `R29` | 本地目录安装进 profile，`--dump-config` 出现插件行 | C/D | **PASS**（临时 profile `touch-test`） | `host-plugin/test/console/install-verify.txt` |
+| `E2E-01` | `R21/R29` | 真实 DSH 会话 → 设备 ≤1 s 变状态/出卡；停会话→OFFLINE→恢复 | H | **PENDING**（插件代码→真机已过；**真实 DSH 会话需安装 desktop + 重启 GUI**） | `E31`（插件→真机）；`E2E-01` 待重启 |
+| `PLG-08` | `R29` | 插件真实代码路径（fake ctx + 真实串口 helper）→ 真机：会话标题/CJK/DSH 前缀/审批 INPUT_REQUIRED | H | **PASS** | `E31`、`tools/host/evidence/m5a/plugin_device_e2e.png` |
+| `C05-09` | `R29` | 设备端事件入口 H：6 事件/3 卡/心跳/非法输入/`tasks:[]` 清栈/OFFLINE 恢复 | H | **PASS 16/16** | `E30`、`tools/host/evidence/m5a/` |
+
+
+

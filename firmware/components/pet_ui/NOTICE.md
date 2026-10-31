@@ -10,6 +10,8 @@
 | `pet_state.c` | `components/pet/pet_state.c`（行为规格） | MIT | **派生**：按 `C03 §3` 改卡栈语义（同名=title 且 project；空 title 仍入栈）；D-05 标记点阵修正见 `pet_ui_240.c` |
 | `pet_ui_240.c` | 无（本项目新实现） | MIT | 240×240 版式，契约 `C03`（含 §7 修订）、`docs/08-m2-development.md` |
 | `pet_button.c`、`pet_menu.c` | `components/pet/pet_button.c`、`pet_menu.c` | MIT | 行为一致（M3 按键/菜单） |
+| `pet_linebuf.c`、`pet_link.c` | `components/pet/pet_linebuf.c`、`pet_link.c` | MIT | **派生**（M5a）：按 `C05` 增补 `agent` 字段（顶层 + tasks 项）；协议语义同上游 M4/M8 |
+| `include/pet_linebuf.h`、`pet_link.h` | `components/pet/include/` 同名文件 | MIT | **派生**：注释指向本项目 `C05`；`pet_link_msg_t` 同上游 |
 | `pet_pomo.c` | `components/pet/pet_pomo.c` | MIT | **派生**：本段时长可 `pet_pomo_set_durations()` 运行期覆盖（G5 演示）；默认仍 25/5；NVS 存储拆到 `pet_pomo_store.c` |
 | `pet_keymap.c` | `components/pet/pet_keymap.c`（行为规格） | MIT | **派生**：类型独立于上游 `pet_engine`；DUTY `KEY1` 长按映射为静音（C07 §3） |
 | `pet_pomo_store.c` | `components/pet/pet_pomo_store.c` + 本项目静音 | MIT | **派生**：新增 `voice/muted` NVS 读写（M4 音频复用） |

@@ -36,6 +36,7 @@
 | `R02` | 目标硬件为 **ESP32-S3 touch LCD-1.54**：三键；触摸 CST816S；显示 ST7789；8 MB PSRAM；16 MB Flash；6 轴 IMU QMI8658；AEC ES7210（用户原文 `ES7219`）；Codec ES8311（**2026-10-30 实机核对一致**：ESP32-S3 rev0.2 / 8 MB octal PSRAM 80 MHz / 16 MB flash / CST816 `IC id 182` / ES8311+ES7210 双麦 / QMI8658 / PCF85063A；见 `07-evidence-log.md`） |
 | `R03` | 把 `second-state/vibebuddy` 与 `whoisjackchao-dot/ESP32-buddy` 中**可以适配和部署的功能**适配到 `R02` 的板子；不能适配的功能**明确说明并排除**，不静默删除 |
 | `R04` | 按 **dayu** 规范推进：先证据与需求，再规划与契约，未经批准不编码 |
+| `R29` | **宿主接入对象 = DeepSeek Harness (DSH)**（用户 2026-10-31 明确："接入对象是 deepseek harness"）。宿主桥必须交付为**符合 DSH 插件标准**的 bundle（`package.json` 的 `dsh.bundle.patch` + `cordis.patch.yml` + Cordis `apply(ctx)`），可通过 `dsh plugin add` 安装；设备事件协议按 `C05`（USB-Serial-JTAG NDJSON）。**宿主侧不再是自研 Python 桥**（`Q04` 已批准） |
 
 ## 3. 拟定需求（待审阅）
 

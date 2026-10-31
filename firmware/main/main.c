@@ -29,6 +29,8 @@
 #include "board_lcd.h"
 #include "pet_button.h"
 #include "pet_keymap.h"
+#include "pet_linebuf.h"
+#include "pet_link.h"
 #include "pet_menu.h"
 #include "pet_pomo.h"
 #include "pet_pomo_store.h"
@@ -62,6 +64,8 @@ extern const uint8_t robot_look_end[] asm("_binary_robot_look_end");
 #define Q_EVT_KEY2_LONG  0x84u
 
 static QueueHandle_t s_cmd_q;
+/* M5a：C05 事件行解析结果队列（console 任务 → 主任务；状态只由主任务改写） */
+static QueueHandle_t s_evt_q;
 
 /* 全局状态（只在主任务读写；按键任务只投递事件） */
 static struct pet_state *s_state;
@@ -360,6 +364,25 @@ static void handle_cmd(uint8_t cmd, uint32_t now)
     }
 }
 
+/* M5a：把一条 C05 事件行应用到状态机 + 卡栈（只在主任务调用）。 */
+static void apply_link_msg(const pet_link_msg_t *m, uint32_t now)
+{
+    pet_event_t ev;
+    memset(&ev, 0, sizeof ev);
+    ev.kind = m->kind;
+    ev.now_ms = now;
+    pet_state_apply(s_state, &ev);
+    if (m->has_tasks) {
+        if (m->card_count > 0) {
+            pet_state_set_cards(s_state, m->cards, m->card_count); /* 整栈替换 */
+        } else {
+            pet_state_set_card(s_state, NULL); /* tasks:[] → 清空卡栈（C05 §4） */
+        }
+    } else if (m->has_card) {
+        pet_state_set_card(s_state, &m->card);
+    }
+}
+
 static void console_task(void *arg)
 {
     (void)arg;
@@ -375,17 +398,43 @@ static void console_task(void *arg)
         return;
     }
     usb_serial_jtag_vfs_use_driver();
-    ESP_LOGI(TAG, "inject ready (M3): K/L/J/H=keys m=mode y=day R=restart t=fast-pomo; M2: 1..5 0 u n c x p d");
+    ESP_LOGI(TAG, "console ready (M5a): C05 NDJSON lines + M3 debug chars K/L/J/H m y R t; M2 chars 1..5 0 u n c x p d");
 
+    pet_linebuf_t lb;
+    bool json_mode = false;
     uint8_t buf[64];
     for (;;) {
         int n = usb_serial_jtag_read_bytes(buf, sizeof buf, pdMS_TO_TICKS(100));
         for (int i = 0; i < n; i++) {
-            if (buf[i] == '\r' || buf[i] == '\n') {
+            const char c = (char)buf[i];
+            if (!json_mode) {
+                if (c == '{') {
+                    /* C05 事件行开始：行缓冲接管，直到 '\n' */
+                    json_mode = true;
+                    pet_linebuf_init(&lb);
+                    (void)pet_linebuf_feed(&lb, c);
+                } else if (c != '\r' && c != '\n') {
+                    if (s_cmd_q != NULL) {
+                        (void)xQueueSend(s_cmd_q, &buf[i], 0);
+                    }
+                }
                 continue;
             }
-            if (s_cmd_q != NULL) {
-                (void)xQueueSend(s_cmd_q, &buf[i], 0);
+            const pet_line_feed_t r = pet_linebuf_feed(&lb, c);
+            if (r == PET_LINE_READY) {
+                json_mode = false;
+                pet_link_msg_t m;
+                const pet_link_status_t st = pet_link_parse(lb.buf, lb.len, &m);
+                if (st == PET_LINK_OK) {
+                    if (s_evt_q != NULL) {
+                        (void)xQueueSend(s_evt_q, &m, 0);
+                    }
+                } else {
+                    ESP_LOGW(TAG, "event line dropped (status=%d)", (int)st);
+                }
+            } else if (r == PET_LINE_DROPPED) {
+                json_mode = false;
+                ESP_LOGW(TAG, "event line too long (dropped)");
             }
         }
     }
@@ -540,8 +589,9 @@ void app_main(void)
 
     /* ---- 6. 队列 + 任务 ---- */
     s_cmd_q = xQueueCreate(32, sizeof(uint8_t));
-    if (s_cmd_q == NULL) {
-        ESP_LOGE(TAG, "cmd queue alloc failed");
+    s_evt_q = xQueueCreate(8, sizeof(pet_link_msg_t));
+    if (s_cmd_q == NULL || s_evt_q == NULL) {
+        ESP_LOGE(TAG, "cmd/evt queue alloc failed");
     } else {
         if (xTaskCreate(console_task, "inject", 4096, NULL, 5, NULL) != pdPASS) {
             ESP_LOGE(TAG, "inject task create failed");
@@ -551,7 +601,7 @@ void app_main(void)
         }
     }
 
-    ESP_LOGI(TAG, "m3: READY (240x240, 8fps, keys=GPIO0/4/5, pomo 25/5)");
+    ESP_LOGI(TAG, "m5a: READY (240x240, 8fps, keys=GPIO0/4/5, pomo 25/5, C05 USB events)");
 
     /* ---- 7. 主循环 ---- */
     TickType_t last_wake = xTaskGetTickCount();
@@ -576,6 +626,12 @@ void app_main(void)
 
         if (s_pwr_off) {
             do_power_off();
+        }
+
+        /* M5a：应用 C05 事件（状态与卡栈只由主任务改写） */
+        pet_link_msg_t link_msg;
+        while (s_evt_q != NULL && xQueueReceive(s_evt_q, &link_msg, 0) == pdTRUE) {
+            apply_link_msg(&link_msg, now);
         }
 
         pet_state_tick(s_state, now);

@@ -1,0 +1,24 @@
+# Bundle patch for dsh-esp32-touch-bridge (see docs/12-dsh-plugin.md section 5).
+#
+# `insert` adds the plugin row to a DSH profile's composed config tree. `name`
+# must equal the package name (resolved from the profile after installation);
+# `id` is the row id shown by `dsh --profile <name> --dump-config`.
+#
+# Config is optional. Without `port` (and without ESP32_TOUCH_PORT) the plugin
+# loads but never creates the serial helper process or touches a device.
+#
+# - insert:
+#     - id: esp32-touch-bridge
+#       name: dsh-esp32-touch-bridge
+#         config:
+#           port: COM7
+#           baud: 115200
+#           heartbeatMs: 10000
+
+- insert:
+    - id: esp32-touch-bridge
+      name: dsh-esp32-touch-bridge
+      config:
+        # port: COM7          # required to enable the device; fallback: env ESP32_TOUCH_PORT
+        baud: 115200          # optional, default 115200 (USB CDC is baud-insensitive)
+        heartbeatMs: 10000    # optional, default 10000; must stay < 15000 so the device never goes OFFLINE

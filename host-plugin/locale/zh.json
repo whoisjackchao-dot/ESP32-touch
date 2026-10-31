@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "ESP32 触屏桌宠桥接",
+    "description": "把 DeepSeek Harness（DSH）的会话与 Agent 状态（空闲 / 工作中 / 等待输入 / 失败，以及最多 3 张任务卡）经本地 USB 串口以 C05 v1 NDJSON 事件写到 ESP32-S3 桌面宠物上。"
+  }
+}
