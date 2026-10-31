@@ -536,3 +536,38 @@ dump: True（CRC 一致）
 **不能证明**：**真实 DSH 会话**驱动（`E2E-01`）：需把 `host-plugin/` 安装到 desktop profile 并重启 DSH GUI
 （当前会话进程内不能重启），之后用真实消息/审批观察设备。
 
+
+## E32：DSH 插件安装进 desktop profile + HMR 已激活（2026-10-31）
+
+**授权**：用户 2026-10-31 明确"可以安装插件，装好了我重启 dsh"。
+
+**安装（本机，非模拟）**：
+
+```powershell
+$env:PATH="$env:TEMP\dsh-plugin-tools;$env:PATH"
+dsh plugin --profile desktop add D:\DSH\ESP32-touch\host-plugin
+# -> dependencies: + dsh-esp32-touch-bridge 0.1.0 <- D:\DSH\ESP32-touch\host-plugin
+```
+
+- `~/.dsh/profiles/desktop/package.json`：`dsh-esp32-touch-bridge: link:D:/DSH/ESP32-touch/host-plugin`，
+  且 `dsh.profile.bundles` 末尾追加 `dsh-esp32-touch-bridge`。
+- `node_modules/dsh-esp32-touch-bridge` 为 Junction → 仓库 `host-plugin/`（改动即时生效，无需重装）。
+- 用户 patch `cordis.patch.yml` 追加 id 覆盖行（port/baud/heartbeatMs）：
+
+```text
+# == dsh-esp32-touch-bridge, patched by ...\desktop\cordis.patch.yml
+- id: esp32-touch-bridge
+  name: dsh-esp32-touch-bridge
+  config: { port: COM7, baud: 115200, heartbeatMs: 10000 }
+```
+
+- 安装前已备份 profile（package.json / cordis.patch.yml / cordis.yml / pnpm-lock.yaml）到
+  `D:\DSH\esp-build\profile-backup-desktop-20261031-101527`。插件未改 desktop/web 之外的 profile。
+
+**HMR 激活证据（无需重启已被运行中的 DSH 加载）**：
+- 进程中存在插件 helper：`powershell.exe -File ...\host-plugin\helper\serial-bridge.ps1`（PID 19828，10:16:38 启动）；
+- `COM7` 被该 helper 占用（pyserial 打开返回 PermissionError）→ 插件正在向设备写心跳；
+- 说明桌面 profile 的 `patchReload: live` 使新 bundle 即时生效。
+
+**待办**：用户重启 DSH 后做**真实 DSH 会话 E2E**（`E2E-01`）：发消息/触发审批 → 设备变状态/出卡，
+用户目视确认（设备串口被插件占用，H 证据以用户观察/照片为准）。

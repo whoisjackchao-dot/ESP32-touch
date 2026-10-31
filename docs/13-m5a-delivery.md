@@ -52,6 +52,9 @@ dsh plugin --profile desktop add D:\DSH\ESP32-touch\host-plugin
 
 - 设备侧：烧录 M5a 固件（`idf.py -B D:\DSH\esp-build\buddy154 -p <COMx> flash`）；启动日志
   `m5a: READY ... C05 USB events`。
+- **本机已按此安装**（2026-10-31，`E32`）：desktop profile 已 link 本包 + bundles 追加 +
+  `config.port: COM7`；备份在 `D:\DSH\esp-build\profile-backup-desktop-20261031-101527`。
+  桌面 profile `patchReload: live` 使插件**即时激活**（helper 已持有 COM7）；重启 DSH 后做真实会话 E2E。
 - 端口以 Windows 设备管理器实际枚举为准（本机当前未连接 Waveshare 板；`COM5` 是另一台 StickS3）。
 
 ## 4. 已验证（本机，2026-10-31）
@@ -85,5 +88,6 @@ dsh plugin --profile desktop add D:\DSH\ESP32-touch\host-plugin
 
 本节点出口（设备 H + 真实 DSH E2E）闭合后：按 `05-plan.md` 顺序进入 **M4 语音播报**（`C04`），
 再 M5b（WiFi/BLE/配网/NTP）。
+
 
 
