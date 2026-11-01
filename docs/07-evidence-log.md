@@ -839,3 +839,27 @@ NET state=online ssid=Xiaomi_F7A5 ip=192.168.31.175 rssi=-47 time_valid=1
 
 **未完成（PENDING）**：G13 正式计数（扫描 ≥3 AP、60 s 内 IP、**错密码 2 min 回落 AP**）、
 WiFi 断线重连（NET-05 重连部分）、`G16` 2 小时长稳；BLE 属 M5b-2。
+
+## E48：G13 错密码回落 + NET-05 WiFi 断线重连（2026-11-01）
+
+**G13 回落（用户目视）**：错密码保存 → 设备重启 → `ESP32-Touch-4BE5` 热点消失，约 **30–60 s** 后重新出现；
+用户重连并保存正确密码 → 设备上线（`NET state=online ip=192.168.31.175`）。
+→ 判定 **PASS（H 目视；串口日志在设备重启时丢失，时间按目视约值）**。
+
+**NET-05 断线重连（用户重启路由器）**：设备日志（`net_reconnect.log`）：
+
+```text
+sta: disconnected reason=201 (NO_AP_FOUND), retry in 1000/2000/4000/8000 ms（退避重连）
+... 路由器恢复 ...
+sta: connecting ssid=Xiaomi_F7A5
+sta: connected ip=192.168.31.175
+sntp: synced 2026-11-01 08:27:52 CST-8
+```
+
+→ 自动断线检测 + 退避重连 + 重新获取 IP + NTP 重新同步 **PASS**。
+
+**测试手法缺陷（重要，非设备问题）**：采集脚本在"6 s 无日志"时重开串口；pyserial 重开时拉 DTR/RTS
+会触发 ESP32-S3 复位，导致日志中出现多次重启（99/124/146/156/170 s）。设备每次都能在 ~1.4 s 内重连、
+2.4 s 内拿到 IP。后续此类采集应 `Serial(..., dtr=False, rts=False)` 或静默时不重开。
+
+**仍未完成**：`G16` 2 小时长稳（设备已在线，可挂机计时）；BLE 属 M5b-2。

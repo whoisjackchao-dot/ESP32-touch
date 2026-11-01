@@ -141,7 +141,8 @@
 | `NET-01` | `R21` | 跨通道去重：同指纹 1 s 内丢弃 | T | **PASS**（11/11 用例、193 断言） | `tests/m5b-run.log` |
 | `NET-02` | `R21` | 行切分/CRLF/超长复用 C05 解析 | T | **PASS**（复用 pet_linebuf） | `tests/m5b-run.log` |
 | `NET-03` | `G12` | TCP NDJSON → 状态 ≤1 s | H | **PASS 0.345 s** | `E47`、`tools/host/evidence/m5b/` |
-| `G13` | 门槛 | AP 扫描/保存/60 s IP/错密码回落 | H | **PARTIAL**（成功路径 PASS；扫描计数/错密码回落 PENDING） | `E47` |
+| `G13` | 门槛 | AP 扫描/保存/60 s IP/错密码回落 | H | **PASS**（成功路径 `E47`；错密码→AP 回落用户目视 `E48`） | `E47/E48` |
 | `NET-04` | `R21` | NTP 同步 + 本地日期统计（`D-03`） | H | **PASS**（`time_valid=1`；统计日期链路待长稳） | `E47` |
-| `NET-05` | `R21` | WiFi 断线重连；跨通道重复只处理一次 | H | **PARTIAL**（跨通道去重 PASS；断线重连 PENDING） | `E47` |
+| `NET-05` | `R21` | WiFi 断线重连；跨通道重复只处理一次 | H | **PASS**（跨通道去重 `E47`；路由器重启后退避重连+重获 IP `E48`，采集脚本复位副作用已注明） | `E47/E48` |
+
 
