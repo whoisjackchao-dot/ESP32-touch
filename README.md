@@ -8,7 +8,7 @@
 
 ## 当前状态
 
-> **v1.0.0 已发布（2026-10-31）**：[GitHub Release](https://github.com/whoisjackchao-dot/ESP32-touch/releases/tag/v1.0.0)（固件整包 + DSH 插件包）；详见 [`docs/16-release-notes-v1.0.0.md`](docs/16-release-notes-v1.0.0.md)。
+> **v1.1.0 已发布（2026-11-01）**：加入 **WiFi TCP 8766 + 配网 + NTP + BLE GATT**（v1.0.0 为 USB 插件版）。详见 [`docs/18-release-notes-v1.1.0.md`](docs/18-release-notes-v1.1.0.md)。
 
 
 | 里程碑 | 内容 | 状态 |
@@ -99,6 +99,7 @@ python -m esptool --chip esp32s3 -p COM7 -b 921600 --before default_reset --afte
 - 不使用 "VibeBuddy" 名称或角色商标。
 
 详见 [`NOTICE.md`](NOTICE.md)。
+
 
 
 
