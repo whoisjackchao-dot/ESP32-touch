@@ -25,3 +25,23 @@ CONFIG_ESP_MAIN_TASK_STACK_SIZE=8192
 
 # CPU 240 MHz
 CONFIG_ESP_DEFAULT_CPU_FREQ_MHZ_240=y
+
+# ---- M5b-2 BLE GATT 事件通道（C09）：NimBLE peripheral，BLE only（无 Bluedroid/Classic BT）----
+# 只追加 BT/NimBLE 行，保留以上全部原有配置。
+CONFIG_BT_ENABLED=y
+CONFIG_BT_BLUEDROID_ENABLED=n
+CONFIG_BT_NIMBLE_ENABLED=y
+
+# 单连接（C09 §1）；ATT 协商 MTU 默认 256 ≥ 247（不依赖单包 ≤512）
+CONFIG_BT_NIMBLE_MAX_CONNECTIONS=1
+CONFIG_BT_NIMBLE_ATT_PREFERRED_MTU=256
+
+# NimBLE host 任务栈：GATT 写回调内同步执行「跨通道去重门 + main 回调（解析/入队）」，
+# 默认 4096 偏紧 → 6144（风险说明见 tests/RED-GREEN-M5B2.md）
+CONFIG_BT_NIMBLE_HOST_TASK_STACK_SIZE=6144
+
+# 控制器 BLE 活动实例：广播 + 1 连接 = 2（默认 6，每实例约 828 B RAM）
+CONFIG_BT_CTRL_BLE_MAX_ACT=2
+
+# WiFi + BLE 软件共存（WiFi 与 BT 同时启用时 Kconfig 默认 y；显式写出便于审计）
+CONFIG_ESP_COEX_SW_COEXIST_ENABLE=y

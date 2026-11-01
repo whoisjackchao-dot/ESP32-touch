@@ -9,6 +9,7 @@ idf_component_register(
                 "assets/voice/failed.pcm"
     PRIV_REQUIRES esp_lcd esp_driver_spi esp_driver_gpio esp_driver_ledc
                   esp_driver_i2c esp_driver_i2s
-                  esp_driver_usb_serial_jtag esp_timer nvs_flash pet_ui pet_net es8311
+                  esp_driver_usb_serial_jtag esp_timer nvs_flash pet_ui pet_net pet_ble es8311
 )
+
 

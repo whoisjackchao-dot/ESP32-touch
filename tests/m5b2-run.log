@@ -1,0 +1,16 @@
+[MODE] GREEN: firmware/components/pet_ble/pet_ble_lines.c + firmware/components/pet_ui/pet_linebuf.c
+[CC] tests/test_m5b_ble.c
+[RUN] test_m5b_ble.exe
+PASS BLE-01a-single-write-multi-line (14 asserts)
+PASS BLE-01b-across-write-half-line (15 asserts)
+PASS BLE-01c-crlf (12 asserts)
+PASS BLE-01d-empty-lines-skipped (8 asserts)
+PASS BLE-01e-oversize-drop-and-recover (25 asserts)
+PASS BLE-01f-mtu-sized-fragments (13 asserts)
+PASS BLE-01g-order-and-counts (11 asserts)
+PASS BLE-01h-defensive-args (13 asserts)
+PASS BLE-01i-dirty-init-and-reload (10 asserts)
+PASS BLE-01j-per-connection-isolation (16 asserts)
+SUMMARY m5b_ble: cases=10 passed=10 failed=0 asserts=137
+[EXIT] 0 (test_m5b_ble.exe)
+RESULT: PASS (all M5b-2 BLE host tests green)

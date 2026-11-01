@@ -35,6 +35,7 @@
 #include "pet_link.h"
 #include "pet_menu.h"
 #include "pet_net.h"
+#include "pet_ble.h"
 #include "pet_pomo.h"
 #include "pet_pomo_store.h"
 #include "pet_render.h"
@@ -158,6 +159,12 @@ static void print_status(uint32_t fps)
     printf("NET state=%s ssid=%s ip=%s rssi=%d time_valid=%d\n",
            pet_net_state_name(ns.state), ns.ssid, ns.ip, ns.rssi,
            ns.time_valid ? 1 : 0);
+    /* M5b-2：BLE 自检行（C09 §2） */
+    pet_ble_status_t bs;
+    pet_ble_get_status(&bs);
+    printf("BLE state=%s addr=%s mtu=%d lines=%lu\n",
+           pet_ble_state_name(bs.state), bs.addr, bs.mtu,
+           (unsigned long)bs.lines_total);
     if (v.card_count > 0) {
         printf("CARDS ");
         for (int i = 0; i < v.card_count; i++) {
@@ -422,9 +429,9 @@ static void apply_link_msg(const pet_link_msg_t *m, uint32_t now)
     }
 }
 
-/* M5b-1：WiFi TCP 收到的 C05 行（已跨通道去重）。在 pet_net 内部任务上下文调用，
- * 只做解析 + 入队，不阻塞（C08 §4 / pet_net.h 接线说明）。 */
-static void net_line_cb(const char *line, size_t len)
+/* M5b：WiFi/BLE 收到的 C05 行（已跨通道去重）。在 pet_net/pet_ble 任务上下文调用，
+ * 只做解析 + 入队，不阻塞（C08/C09 接线说明）。 */
+static void link_line_cb(const char *line, size_t len)
 {
     pet_link_msg_t m;
     if (pet_link_parse(line, len, &m) == PET_LINK_OK) {
@@ -432,7 +439,7 @@ static void net_line_cb(const char *line, size_t len)
             (void)xQueueSend(s_evt_q, &m, 0);
         }
     } else {
-        ESP_LOGW(TAG, "wifi event line dropped");
+        ESP_LOGW(TAG, "net event line dropped");
     }
 }
 
@@ -665,7 +672,7 @@ void app_main(void)
     }
 
     /* M5b-1：WiFi 事件通道（TCP 8766）+ 配网 + NTP；失败只降级（C08 §4） */
-    pet_net_set_line_cb(net_line_cb);
+    pet_net_set_line_cb(link_line_cb);
     {
         const esp_err_t nerr2 = pet_net_start();
         if (nerr2 != ESP_OK) {
@@ -673,7 +680,16 @@ void app_main(void)
         }
     }
 
-    ESP_LOGI(TAG, "m5b: READY (240x240, 8fps, keys=GPIO0/4/5, pomo 25/5, C05 USB+WiFi, audio=%s)",
+    /* M5b-2：BLE GATT 事件通道；失败只降级（C09 §2） */
+    pet_ble_set_line_cb(link_line_cb);
+    {
+        const esp_err_t berr = pet_ble_start();
+        if (berr != ESP_OK) {
+            ESP_LOGW(TAG, "ble start failed (%s): BLE 通道不可用", esp_err_to_name(berr));
+        }
+    }
+
+    ESP_LOGI(TAG, "m5b: READY (240x240, 8fps, keys=GPIO0/4/5, pomo 25/5, C05 USB+WiFi+BLE, audio=%s)",
              board_audio_ready() ? "on" : "off");
 
     /* ---- 7. 主循环 ---- */

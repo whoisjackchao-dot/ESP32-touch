@@ -863,3 +863,30 @@ sntp: synced 2026-11-01 08:27:52 CST-8
 2.4 s 内拿到 IP。后续此类采集应 `Serial(..., dtr=False, rts=False)` 或静默时不重开。
 
 **仍未完成**：`G16` 2 小时长稳（设备已在线，可挂机计时）；BLE 属 M5b-2。
+
+## E49：M5b-2 BLE GATT 实现与构建（2026-11-01）
+
+**组件**：`firmware/components/pet_ble/`（`pet_ble.c` 588 行 NimBLE peripheral + `pet_ble_lines.c` 行重装）+
+`firmware/sdkconfig.defaults` 追加 20 行 BT/NimBLE 配置（保留原 27 行）。
+
+**host T（BLE-01 行重装）**：RED 10/10 FAIL（137 断言）→ GREEN **10/10 PASS、137/137 断言、0 warning**
+（`tests/m5b2-run.log`、`tests/RED-GREEN-M5B2.md`）。
+
+**集成构建**（`buddy154`，sdkconfig 已按新 defaults 重新生成，BT/NimBLE 生效）：
+
+```text
+buddy154.bin binary size 0x18bcf0 bytes (1,621,232 B). 48% free. 0 warning
+```
+
+- main 接线：`link_line_cb`（USB/WiFi/BLE 共用解析入队）；`pet_net_start()` + `pet_ble_start()` 失败只降级；
+  自检新增 `BLE state=... addr=... mtu=... lines=...` 行。
+
+**未验证（真机 H）**：BLE-03（手机 nRF Connect 写 C05 → 状态 ≤1 s）、BLE-04 断开重连、
+BLE-05 WiFi+BLE 共存、G12 BLE 通道、G16 BLE 长稳。**长稳脚本正在占用 COM7，BLE 固件尚未刷入。**
+
+## E50：G16 长稳（进行中快照，2026-11-01）
+
+```text
+samples=32+（每 60 s）  resets=0  heap 稳定在 ~8,300,6xx B  fps=8
+```
+（2 h 窗口；如提前结束转刷 BLE，则记为 PARTIAL，另择时补完整 2 h。）
