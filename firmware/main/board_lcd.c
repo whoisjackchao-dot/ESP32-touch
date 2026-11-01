@@ -31,9 +31,12 @@ static const char *TAG = "board_lcd";
 #define LCD_SPI_HOST    SPI2_HOST
 #define LCD_PCLK_HZ     (40 * 1000 * 1000)
 #define LCD_SPI_MODE    3
-#define LCD_QUEUE_DEPTH 10
-/* 单次 DMA 上限 240*240*2/4（与官方 factory demo 一致；draw_bitmap 自动分块） */
-#define LCD_MAX_TRANSFER (BOARD_LCD_WIDTH * BOARD_LCD_HEIGHT * 2 / 4)
+#define LCD_QUEUE_DEPTH 4
+/* 单次 DMA 上限：M5b-2 起 BLE(NimBLE)+WiFi 占用内部 DMA RAM，原 28,800 B（整帧/4）在
+ * 首次 draw 时分配 DMA TX 缓冲失败（ESP_ERR_NO_MEM）。改为 8 行/块（3,840 B），
+ * draw_bitmap 自动分块；SPI 40 MHz 下整帧仍 ~30 ms（8 fps 主循环无影响）。
+ * 参考 `docs/07-evidence-log.md` E51；不改 C02 面板参数。 */
+#define LCD_MAX_TRANSFER (BOARD_LCD_WIDTH * 2 * 8)
 
 #define BL_LEDC_MODE    LEDC_LOW_SPEED_MODE
 #define BL_LEDC_TIMER   LEDC_TIMER_0

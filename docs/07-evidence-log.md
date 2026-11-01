@@ -890,3 +890,31 @@ BLE-05 WiFi+BLE 共存、G12 BLE 通道、G16 BLE 长稳。**长稳脚本正在�
 samples=32+（每 60 s）  resets=0  heap 稳定在 ~8,300,6xx B  fps=8
 ```
 （2 h 窗口；如提前结束转刷 BLE，则记为 PARTIAL，另择时补完整 2 h。）
+
+## E51：M5b-2 BLE 真机 H + BLE 引进的 LCD DMA 内存问题修复（2026-11-01）
+
+**固件**：main 接线 pet_ble 后 `0x18bcf0`（1,621,232 B，48% free，0 warning）；刷入 COM7。
+
+**问题与修复（重要）**：BLE/NimBLE 启用后首次 `esp_lcd_panel_draw_bitmap` 失败：
+`spi_master: setup_dma_priv_buffer failed` → `ESP_ERR_NO_MEM`（内部 DMA RAM 被 BT 控制器占用）。
+修复：`board_lcd.c` 单次 DMA 上限 **28,800 B（整帧/4）→ 3,840 B（8 行）**、`trans_queue_depth 10→4`；
+draw_bitmap 自动分块（整帧 30 块），8 fps 主循环下渲染正常（帧缓冲实测 PNG 正常，`tools/host/evidence/m5b2/ble_after.png`）。
+**未改** C02 面板参数（mode3/40MHz/invert/gap），仅改 DMA 分块大小（板级实现细节）。
+
+**BLE H（PC Intel BT + Python bleak）**：
+
+```text
+found BLE: ESP32-Touch-4BE6 (44:1B:F6:86:4B:E6)
+connected; mtu=256
+BLE-03 BLE 写 C05 → WORKING/cards=1 latency=0.234 s   (≤1 s PASS)
+BLE state=connected addr=B4:BB:7A:8A:4F:14 mtu=256 lines=1
+NET state=online ssid=Xiaomi_F7A5 ip=192.168.31.175  (WiFi 与 BLE 同时在线 PASS)
+跨通道去重（BLE 先写 + USB 1 s 内同内容）dropped=True PASS
+BLE-04 断开→重连→再写：cards>0 latency=0.443 s PASS
+```
+
+**结论**：`BLE-01`（T 10/10）、`BLE-03`、`BLE-04`、`BLE-05`（WiFi+BLE 共存）**PASS**；G12 BLE 通道 ≤1 s 达标。
+**未完成**：`G16` 完整 2 h 长稳（当前快照见 `E50`；需在最终固件上重跑）。
+
+**硬件/工具注**：pyserial 在插件 helper 刚被 kill 后首次 write 偶发 timeout（打开→立即写），
+重试或加 0.5–1 s 延迟即可；非设备问题。
