@@ -934,3 +934,15 @@ fps_min = 8
 所致；插件实际心跳 10 s（`C05 §3`），不属缺陷。
 
 **结论**：`G16`（插电 2 h 无死机/无看门狗/无内存持续下降）**PASS**。
+
+## E53：v1.1.0 正式发布（2026-11-01）
+
+**发布物**：
+- 标签 **`v1.1.0`**（`9baf8b9`）已推送；
+- GitHub Release：**https://github.com/whoisjackchao-dot/ESP32-touch/releases/tag/v1.1.0**
+  - `esp32-touch-v1.1.0-full.bin`（1,752,304 B，merge_bin @0x0）
+  - `esp32-touch-plugin-0.1.0.zip`（42,378 B，DSH USB 插件，未变）
+- 发布说明：`docs/18-release-notes-v1.1.0.md`。
+
+**内容**：M5b 全部 —— WiFi TCP 8766 + AP 配网 + NTP + BLE GATT（NUS）+ USB/WiFi/BLE 跨通道去重 +
+BLE 共存下的 LCD DMA 修复；`G13`/`NET-03/04/05`/`BLE-01..05`/`G16` 均 PASS（`E47/E48/E51/E52`）。
